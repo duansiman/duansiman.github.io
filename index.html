@@ -85,11 +85,17 @@
       
         <h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>使用<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>搭建个人博客，需要安装<a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>和<a href="http://git-scm.com/" target="_blank" rel="external">Git</a>，最后安装Hexo</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>生产博客网站需要的资源，随便指定一个目录名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line"><span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
+<p>执行命令，出现错误Error: Cannot find module ‘/root/hexo_blog/node_modules/dtrace-provider/scripts/install.js’，可能是Node.js版本兼容，可以低版本。我的安装环境：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div><div class="line">hexo: 3.2.2</div><div class="line">hexo-cli: 1.0.2</div><div class="line">os: Windows_NT 6.1.7601 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 6.9.5</div><div class="line">v8: 5.1.281.89</div><div class="line">uv: 1.9.1</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 57.1</div><div class="line">modules: 48</div><div class="line">openssl: 1.0.2k</div></pre></td></tr></table></figure></p>
+<h2 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h2><p>把博客网站资源放到Github上，这样可以通过互联网访问。在GitHub上创建一个仓库，名字为youname.github.io，必须是这格式。然后在hexo资源目录下的_config.yml文件最后加上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">    <span class="built_in">type</span>: git</div><div class="line">    repository: https://github.com/duansiman/duansiman.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure></p>
+<p>最后生产资源文件，部署到GitHub上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>执行如下命令,会生成md文件。然后生成资源文件，部署到Github上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"article title"</span></div></pre></td></tr></table></figure></p>
+<p>推荐编辑md文件工具<a href="http://markdownpad.com/" target="_blank" rel="external">MarkdownPad</a>，它的<a href="http://www.jianshu.com/p/9e5cd946696d" target="_blank" rel="external">注册码</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/31/Hexo-搭建个人博客/" data-id="cj0xhd36z0000ikleylk6m31h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/31/Hexo-搭建个人博客/" data-id="cj0xiw1nb0000uwlenavuw92a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/30/hello-world/" data-id="cj0xhd3730001iklefi8ptr5q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/30/hello-world/" data-id="cj0xiw1nf0001uwlebsc0ppyf" class="article-share-link">Share</a>
       
       
     </footer>
