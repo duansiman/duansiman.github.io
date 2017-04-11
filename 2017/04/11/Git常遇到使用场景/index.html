@@ -15,7 +15,8 @@
 忽略特殊文件　在git工作区间根目录创建.gitignore文件，然后把要忽略的文件添加进去。　Window环境创建该文件会提示输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore 然后把该文件提交">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/1.png">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/2.png">
-<meta property="og:updated_time" content="2017-04-11T11:11:59.945Z">
+<meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/2017/04/11/Git常遇到使用场景/3.png">
+<meta property="og:updated_time" content="2017-04-11T11:16:40.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常遇到问题场景">
 <meta name="twitter:description" content="删除仓库中目录或文件　git rm -r 目录 或者 git rm 文件　git commit -m “” 提交　误删可以恢复　git checkout – 文件
@@ -107,13 +108,13 @@
         
         <h2 id="删除仓库中目录或文件"><a href="#删除仓库中目录或文件" class="headerlink" title="删除仓库中目录或文件"></a>删除仓库中目录或文件</h2><p>　git rm -r 目录 或者 git rm 文件<br>　git commit -m “” 提交<br>　误删可以恢复<br>　git checkout – 文件</p>
 <h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>　在git工作区间根目录创建.gitignore文件，然后把要忽略的文件添加进去。<br>　Window环境创建该文件会提示输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore 然后把该文件提交到git<br>　A、被忽略的文件，要强制添加到git<br>　　　git add -f 文件<br>　B、查看忽略文件被个规则忽略了<br>　　　git check-ignore -v 文件<br>　常见的忽略文件：<a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a></p>
-<h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
+<h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/2017/04/11/Git常遇到使用场景/3.png" alt="This is an example image" title="This is an example image"><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
 <h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1dg6hwv0000dolepk7et2kw" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1dgcfnx0002l8lex4db8xip" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
