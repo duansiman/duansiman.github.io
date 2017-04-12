@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://duansiman.github.io/2017/04/12/Hexo的配置/5.jpg">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/12/Hexo的配置/6.jpg">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/12/Hexo的配置/7.jpg">
-<meta property="og:updated_time" content="2017-04-12T03:47:22.987Z">
+<meta property="og:updated_time" content="2017-04-12T06:21:35.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo的配置">
 <meta name="twitter:description" content="设置主题　官方主题网站，在主题下载放到themes目录。然后修改_config.yml配置文件　
@@ -135,11 +135,12 @@ ga('send', 'pageview');
 <h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
 <h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
 <p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1ekt4oi0005bglepf8gd1cq" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1elk1b70006rsleunjrsy3b" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -185,7 +186,7 @@ ga('send', 'pageview');
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置主题"><span class="toc-number">1.</span> <span class="toc-text">设置主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论插件"><span class="toc-number">2.</span> <span class="toc-text">评论插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-number">3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#云标签"><span class="toc-number">4.</span> <span class="toc-text">云标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置关于界面"><span class="toc-number">5.</span> <span class="toc-text">配置关于界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章中插入图片"><span class="toc-number">6.</span> <span class="toc-text">文章中插入图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS订阅"><span class="toc-number">7.</span> <span class="toc-text">RSS订阅</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置主题"><span class="toc-number">1.</span> <span class="toc-text">设置主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论插件"><span class="toc-number">2.</span> <span class="toc-text">评论插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-number">3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#云标签"><span class="toc-number">4.</span> <span class="toc-text">云标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置关于界面"><span class="toc-number">5.</span> <span class="toc-text">配置关于界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章中插入图片"><span class="toc-number">6.</span> <span class="toc-text">文章中插入图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS订阅"><span class="toc-number">7.</span> <span class="toc-text">RSS订阅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics"><span class="toc-number">8.</span> <span class="toc-text">Google Analytics</span></a></li></ol>
           </div>
       </div>
     </div>
