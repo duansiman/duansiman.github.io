@@ -101,17 +101,19 @@
         <!-- Table of Contents -->
         
         <h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
-<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/２.jpg" alt=""></p>
+<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
 <p>###注册Disqus账号<br>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
 <h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
 <h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
 <h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
+<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
+<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1efk2es0000bkle0vkg5uex" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1efqc200002l0leakq93etq" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -164,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1efk2g5000pbkle8juirije" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1efqc1u0000l0leg3p2242x" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -212,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1efk2f80005bkleqyad1wsb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1efqc270006l0ley7e1gxbs" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -261,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1efk2fd0006bklerwv5l958" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1efqc2a0007l0lea9dsrqmi" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
@@ -318,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1efk2f00002bkle51fyk38j" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1efqc240005l0lenogyan6t" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
