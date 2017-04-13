@@ -3,6 +3,29 @@
 
 
     
+  <url>
+    <loc>https://duansiman.github.io/2017/04/07/Redis-%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2017-04-13T06:35:17.880Z</lastmod>
+    <data>
+        <display>
+        <title>Redis 错误集</title>
+        <pubTime>2017-04-07T06:38:41.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+             
+              <breadCrumb title="Redis" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://duansiman.github.io/2017/04/12/Hexo%E7%9A%84%E9%85%8D%E7%BD%AE/</loc>
@@ -60,29 +83,6 @@
            
              
               <breadCrumb title="Blog" url="https://duansiman.github.io/categories/Blog/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/04/07/Redis-%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2017-04-11T09:08:58.229Z</lastmod>
-    <data>
-        <display>
-        <title>Redis 安装</title>
-        <pubTime>2017-04-07T06:38:41.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据库" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-          
-             
-              <breadCrumb title="Redis" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/"/>
           
         </display>
     </data>
