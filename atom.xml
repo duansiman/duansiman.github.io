@@ -80,16 +80,28 @@
     <link href="https://duansiman.github.io/2017/04/07/Redis-%E5%AE%89%E8%A3%85/"/>
     <id>https://duansiman.github.io/2017/04/07/Redis-安装/</id>
     <published>2017-04-07T06:38:41.000Z</published>
-    <updated>2017-04-13T06:35:17.880Z</updated>
+    <updated>2017-04-13T09:14:17.007Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/bin/sh: 1: cc: not found</div><div class="line">	需要安装gcc</div><div class="line">fatal error: jemalloc/jemalloc.h: No such file or directory</div><div class="line">	博客http://blog.csdn.net/bugall/article/details/45914867</div><div class="line">You need tcl 8.5 or newer <span class="keyword">in</span> order to run the Redis <span class="built_in">test</span></div><div class="line">	可以不运行redis <span class="built_in">test</span>, tcl官网http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
+</code></pre><p>需要安装gcc</p>
+<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
+</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
+<pre><code>You need tcl 8.5 or newer in order to run the Redis test
+</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
 <h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
-</code></pre><p>jedis包版本问题<br>    Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException:<br>    Could not get a resource from the pool</p>
+</code></pre><p>jedis包版本问题</p>
+<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
+Could not get a resource from the pool
+java.net.SocketTimeoutException: connect timed out
+</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
+<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
+</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Redis安装&quot;&gt;&lt;a href=&quot;#Redis安装&quot; class=&quot;headerlink&quot; title=&quot;Redis安装&quot;&gt;&lt;/a&gt;Redis安装&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;
+      &lt;h2 id=&quot;Redis安装&quot;&gt;&lt;a href=&quot;#Redis安装&quot; class=&quot;headerlink&quot; title=&quot;Redis安装&quot;&gt;&lt;/a&gt;Redis安装&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;/bin/sh: 1: cc: not found
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
     
     </summary>
     

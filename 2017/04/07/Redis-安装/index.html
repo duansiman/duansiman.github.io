@@ -5,16 +5,28 @@
   
   <title>Redis 错误集 | 安逸的小猫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis安装123456/bin/sh: 1: cc: not found	需要安装gccfatal error: jemalloc/jemalloc.h: No such file or directory	博客http://blog.csdn.net/bugall/article/details/45914867You need tcl 8.5 or newer in order to ru">
+  <meta name="description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 错误集">
 <meta property="og:url" content="https://duansiman.github.io/2017/04/07/Redis-安装/index.html">
 <meta property="og:site_name" content="安逸的小猫">
-<meta property="og:description" content="Redis安装123456/bin/sh: 1: cc: not found	需要安装gccfatal error: jemalloc/jemalloc.h: No such file or directory	博客http://blog.csdn.net/bugall/article/details/45914867You need tcl 8.5 or newer in order to ru">
-<meta property="og:updated_time" content="2017-04-13T06:35:17.880Z">
+<meta property="og:description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
+<meta property="og:updated_time" content="2017-04-13T09:14:17.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis 错误集">
-<meta name="twitter:description" content="Redis安装123456/bin/sh: 1: cc: not found	需要安装gccfatal error: jemalloc/jemalloc.h: No such file or directory	博客http://blog.csdn.net/bugall/article/details/45914867You need tcl 8.5 or newer in order to ru">
+<meta name="twitter:description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
   
     <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
   
@@ -112,14 +124,25 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/bin/sh: 1: cc: not found</div><div class="line">	需要安装gcc</div><div class="line">fatal error: jemalloc/jemalloc.h: No such file or directory</div><div class="line">	博客http://blog.csdn.net/bugall/article/details/45914867</div><div class="line">You need tcl 8.5 or newer <span class="keyword">in</span> order to run the Redis <span class="built_in">test</span></div><div class="line">	可以不运行redis <span class="built_in">test</span>, tcl官网http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</div></pre></td></tr></table></figure>
+        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
+</code></pre><p>需要安装gcc</p>
+<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
+</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
+<pre><code>You need tcl 8.5 or newer in order to run the Redis test
+</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
 <h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
-</code></pre><p>jedis包版本问题<br>    Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException:<br>    Could not get a resource from the pool</p>
+</code></pre><p>jedis包版本问题</p>
+<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
+Could not get a resource from the pool
+java.net.SocketTimeoutException: connect timed out
+</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
+<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
+</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1g26a5y0008xwle53hpp94u" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1gaddkv0008jglegwoy7vqm" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -174,7 +197,7 @@ ga('send', 'pageview');
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis安装"><span class="toc-number">1.</span> <span class="toc-text">Redis安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis代码访问"><span class="toc-number">2.</span> <span class="toc-text">Redis代码访问</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis安装"><span class="toc-number">1.</span> <span class="toc-text">Redis安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis代码访问"><span class="toc-number">2.</span> <span class="toc-text">Redis代码访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-命令学习"><span class="toc-number">3.</span> <span class="toc-text">Redis 命令学习</span></a></li></ol>
           </div>
       </div>
     </div>
