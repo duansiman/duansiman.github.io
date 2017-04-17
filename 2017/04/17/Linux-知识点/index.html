@@ -17,7 +17,7 @@ URL后面的字符串，分别对应相应的目录结构。进入dists目录，
 开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
 查看端口占用lsof">
-<meta property="og:updated_time" content="2017-04-17T06:55:50.224Z">
+<meta property="og:updated_time" content="2017-04-17T10:56:54.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 知识点">
 <meta name="twitter:description" content="源列表Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件sources.list文件内容：
@@ -129,17 +129,17 @@ netstat -ntlup | grep 端口号                  根据端口搜索进程
 ps -ef | grep 进程号                        查看进程
 netstat –apn                            查看所有的进程和端口使用情况
 kill -9 processId                        杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>###物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
-<p>###逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>####物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
+<p>####逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
 <pre><code>Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><p>###查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
-<p>###查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
-<p>###查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
+</code></pre><p>####查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
+<p>####查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
+<p>####查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1m01zuc000ex0le8eo6q0lh" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1m0a03p0009zslek2zzzvz1" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>

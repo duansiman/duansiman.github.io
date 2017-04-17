@@ -50,9 +50,9 @@ wait-timeout
     <link href="https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://duansiman.github.io/2017/04/17/Linux-常用命令/</id>
     <published>2017-04-17T03:07:22.000Z</published>
-    <updated>2017-04-17T03:22:52.599Z</updated>
+    <updated>2017-04-17T10:56:44.463Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>###删除</p>
+    <content type="html"><![CDATA[<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>####删除</p>
 <pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
 nx         连续向后删除 n 个字符
 dd         删除游标所在这行
@@ -65,9 +65,9 @@ d0         删除游标所在处，到该行的最前面一个字符
     
     <summary type="html">
     
-      &lt;h2 id=&quot;vim&quot;&gt;&lt;a href=&quot;#vim&quot; class=&quot;headerlink&quot; title=&quot;vim&quot;&gt;&lt;/a&gt;vim&lt;/h2&gt;&lt;p&gt;###删除&lt;/p&gt;
+      &lt;h2 id=&quot;vim&quot;&gt;&lt;a href=&quot;#vim&quot; class=&quot;headerlink&quot; title=&quot;vim&quot;&gt;&lt;/a&gt;vim&lt;/h2&gt;&lt;p&gt;####删除&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;x, X       x 为向后删除一个字符, X为向前删除一个字符
-nx        
+nx       
     
     </summary>
     
@@ -83,7 +83,7 @@ nx
     <link href="https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://duansiman.github.io/2017/04/17/Linux-知识点/</id>
     <published>2017-04-17T02:47:21.000Z</published>
-    <updated>2017-04-17T06:55:50.224Z</updated>
+    <updated>2017-04-17T10:56:54.555Z</updated>
     
     <content type="html"><![CDATA[<h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
 <pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
@@ -93,12 +93,12 @@ netstat -ntlup | grep 端口号                  根据端口搜索进程
 ps -ef | grep 进程号                        查看进程
 netstat –apn                            查看所有的进程和端口使用情况
 kill -9 processId                        杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>###物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
-<p>###逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>####物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
+<p>####逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
 <pre><code>Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><p>###查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
-<p>###查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
-<p>###查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
+</code></pre><p>####查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
+<p>####查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
+<p>####查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
 ]]></content>
     
     <summary type="html">
@@ -142,11 +142,11 @@ kill -9 processId                        杀进程
     <link href="https://duansiman.github.io/2017/04/12/Hexo%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
     <id>https://duansiman.github.io/2017/04/12/Hexo的配置/</id>
     <published>2017-04-12T02:20:34.000Z</published>
-    <updated>2017-04-12T06:52:36.368Z</updated>
+    <updated>2017-04-17T10:56:27.215Z</updated>
     
     <content type="html"><![CDATA[<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
 <h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
-<p>###注册Disqus账号<br>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
+<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
 <h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
 <h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
@@ -241,15 +241,15 @@ java.net.SocketTimeoutException: connect timed out
     <link href="https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"/>
     <id>https://duansiman.github.io/2017/04/06/SQL-常用语句/</id>
     <published>2017-04-06T07:14:32.000Z</published>
-    <updated>2017-04-17T10:40:23.007Z</updated>
+    <updated>2017-04-17T10:56:38.901Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>###数据导入导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure></p>
-<p>###连接数及状态信息<br>    show status like ‘%connect%’<br>        show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量<br>    show processlist;<br>        显示当前正在执行的mysql连接<br>    mysqladmin -u -p -h status<br>        显示当前mysql状态<br>    mysqladmin -u -p -h extended-status<br>        显示mysql的其他状态</p>
+    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>####数据导入导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure></p>
+<p>####连接数及状态信息<br>    show status like ‘%connect%’<br>        show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量<br>    show processlist;<br>        显示当前正在执行的mysql连接<br>    mysqladmin -u -p -h status<br>        显示当前mysql状态<br>    mysqladmin -u -p -h extended-status<br>        显示mysql的其他状态</p>
 <h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;p&gt;###数据导入导出&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;p&gt;####数据导入导出&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
     
     </summary>
     
