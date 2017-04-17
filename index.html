@@ -122,7 +122,7 @@ wait-timeout
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj1m0a03t000dzsler4cxqvo3" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj1m0d555000dqolerxa6lz99" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -179,7 +179,7 @@ d0         删除游标所在处，到该行的最前面一个字符
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj1m0a03k0008zslee7ozxke1" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj1m0d54z0008qolezjqlhhbt" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -231,17 +231,17 @@ netstat -ntlup | grep 端口号                  根据端口搜索进程
 ps -ef | grep 进程号                        查看进程
 netstat –apn                            查看所有的进程和端口使用情况
 kill -9 processId                        杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>####物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
-<p>####逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
+<h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
 <pre><code>Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><p>####查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
-<p>####查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
-<p>####查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
-
+</code></pre><h4 id="查看物理CPU的个数"><a href="#查看物理CPU的个数" class="headerlink" title="查看物理CPU的个数"></a>查看物理CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
+</code></pre><h4 id="查看逻辑CPU的个数"><a href="#查看逻辑CPU的个数" class="headerlink" title="查看逻辑CPU的个数"></a>查看逻辑CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
+</code></pre><h4 id="查看CPU是几核"><a href="#查看CPU是几核" class="headerlink" title="查看CPU是几核"></a>查看CPU是几核</h4><pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1m0a03p0009zslek2zzzvz1" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1m0d5520009qolexm0tt8q4" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -290,7 +290,7 @@ kill -9 processId                        杀进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj1m0a043000kzsleevxg726a" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj1m0d55b000iqoleqok1u6hx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -349,7 +349,7 @@ kill -9 processId                        杀进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1m0a03j0007zsle4w58bf59" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj1m0d54y0007qoleuib0wppo" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -402,7 +402,7 @@ kill -9 processId                        杀进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1m0a03a0002zsle9jybdytc" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1m0d54c0002qole01qznjj5" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -464,7 +464,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1m0a03w000fzslew3d2ehba" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1m0d557000fqolewkwey9mz" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -514,7 +514,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1m0a03z000izsleh3m4xxtn" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1m0d55d000kqoleh8m9niu9" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
@@ -571,7 +571,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1m0a03f0004zslef7eyug3i" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1m0d54q0004qolesq9r00n5" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
