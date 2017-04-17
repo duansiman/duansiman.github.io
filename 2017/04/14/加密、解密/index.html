@@ -3,30 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Redis 错误集 | 安逸的小猫</title>
+  <title>加密、解密 | 安逸的小猫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis安装/bin/sh: 1: cc: not found
-需要安装gcc
-fatal error: jemalloc/jemalloc.h: No such file or directory
-博客http://blog.csdn.net/bugall/article/details/45914867
-You need tcl 8.5 or newer in order to run th">
+  <meta name="description" content="Base64　　Base64编码要求把3个8位字节（38=24）转化为4个6位的字节（46=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis 错误集">
-<meta property="og:url" content="https://duansiman.github.io/2017/04/07/Redis-安装/index.html">
+<meta property="og:title" content="加密、解密">
+<meta property="og:url" content="https://duansiman.github.io/2017/04/14/加密、解密/index.html">
 <meta property="og:site_name" content="安逸的小猫">
-<meta property="og:description" content="Redis安装/bin/sh: 1: cc: not found
-需要安装gcc
-fatal error: jemalloc/jemalloc.h: No such file or directory
-博客http://blog.csdn.net/bugall/article/details/45914867
-You need tcl 8.5 or newer in order to run th">
-<meta property="og:updated_time" content="2017-04-13T09:14:17.007Z">
+<meta property="og:description" content="Base64　　Base64编码要求把3个8位字节（38=24）转化为4个6位的字节（46=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。">
+<meta property="og:updated_time" content="2017-04-17T10:51:44.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis 错误集">
-<meta name="twitter:description" content="Redis安装/bin/sh: 1: cc: not found
-需要安装gcc
-fatal error: jemalloc/jemalloc.h: No such file or directory
-博客http://blog.csdn.net/bugall/article/details/45914867
-You need tcl 8.5 or newer in order to run th">
+<meta name="twitter:title" content="加密、解密">
+<meta name="twitter:description" content="Base64　　Base64编码要求把3个8位字节（38=24）转化为4个6位的字节（46=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。">
   
     <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
   
@@ -96,14 +84,14 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Redis-安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-加密、解密" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/07/Redis-安装/" class="article-date">
-  <time datetime="2017-04-07T06:38:41.000Z" itemprop="datePublished">2017-04-07</time>
+    <a href="/2017/04/14/加密、解密/" class="article-date">
+  <time datetime="2017-04-14T09:00:53.000Z" itemprop="datePublished">2017-04-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/Redis/">Redis</a>
+    <a class="article-category-link" href="/categories/计算机/">计算机</a>
   </div>
 
   </div>
@@ -114,7 +102,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Redis 错误集
+      加密、解密
     </h1>
   
 
@@ -124,31 +112,18 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
-</code></pre><p>需要安装gcc</p>
-<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
-</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
-<pre><code>You need tcl 8.5 or newer in order to run the Redis test
-</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
-<h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
-</code></pre><p>jedis包版本问题</p>
-<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
-Could not get a resource from the pool
-java.net.SocketTimeoutException: connect timed out
-</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
-<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
-</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
+        <h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>　　Base64编码要求把3个8位字节（3<em>8=24）转化为4个6位的字节（4</em>6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1m01zua000cx0lednwnvsiu" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj1m03fuk0000t8lek5i5yr82" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
 
     </footer>
   </div>
@@ -156,19 +131,19 @@ java.net.SocketTimeoutException: connect timed out
     
 <nav id="article-nav">
   
-    <a href="/2017/04/11/Git常遇到使用场景/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/17/Linux-知识点/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          Git常遇到问题场景
+          Linux 知识点
         
       </div>
     </a>
   
   
-    <a href="/2017/04/06/SQL-常用语句/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/12/Hexo的配置/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">SQL  常用语句</div>
+      <div class="article-nav-title">Hexo的配置</div>
     </a>
   
 </nav>
@@ -197,7 +172,7 @@ java.net.SocketTimeoutException: connect timed out
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis安装"><span class="toc-number">1.</span> <span class="toc-text">Redis安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis代码访问"><span class="toc-number">2.</span> <span class="toc-text">Redis代码访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-命令学习"><span class="toc-number">3.</span> <span class="toc-text">Redis 命令学习</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Base64"><span class="toc-number">1.</span> <span class="toc-text">Base64</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -256,7 +231,7 @@ window.onload = function() {
 <script>
   var disqus_shortname = 'epdc123';
   
-  var disqus_url = 'https://duansiman.github.io/2017/04/07/Redis-安装/';
+  var disqus_url = 'https://duansiman.github.io/2017/04/14/加密、解密/';
   
   (function(){
     var dsq = document.createElement('script');

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duansiman.github.io/"/>
-  <updated>2017-04-12T06:52:36.368Z</updated>
+  <updated>2017-04-17T10:49:41.410Z</updated>
   <id>https://duansiman.github.io/</id>
   
   <author>
@@ -14,6 +14,128 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL 知识点</title>
+    <link href="https://duansiman.github.io/2017/04/17/MySQL-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>https://duansiman.github.io/2017/04/17/MySQL-知识点/</id>
+    <published>2017-04-17T10:40:55.000Z</published>
+    <updated>2017-04-17T10:49:41.410Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件在/etc/mysql/my.cnf,一些配置内容如下：</p>
+<pre><code>max_connections        
+    最大支持连接数，设置到500～1000比较合适
+wait-timeout        
+    数据库连接闲置最大时间值，默认值为8小时 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h2&gt;&lt;p&gt;配置文件在/etc/mysql/my.cnf,一些配置内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;max_connections       
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+    
+    
+      <category term="MySQL知识点" scheme="https://duansiman.github.io/tags/MySQL%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 常用命令</title>
+    <link href="https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://duansiman.github.io/2017/04/17/Linux-常用命令/</id>
+    <published>2017-04-17T03:07:22.000Z</published>
+    <updated>2017-04-17T03:22:52.599Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>###删除</p>
+<pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
+nx         连续向后删除 n 个字符
+dd         删除游标所在这行
+ndd        删除游标所在向下n行
+d1G        删除光标所在到第一行的所有数据
+dG         删除光标所在到最后一行的所有数据
+d$         删除游标所在处，到该行的最后一个字符
+d0         删除游标所在处，到该行的最前面一个字符
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;vim&quot;&gt;&lt;a href=&quot;#vim&quot; class=&quot;headerlink&quot; title=&quot;vim&quot;&gt;&lt;/a&gt;vim&lt;/h2&gt;&lt;p&gt;###删除&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x, X       x 为向后删除一个字符, X为向前删除一个字符
+nx        
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://duansiman.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux常用命令" scheme="https://duansiman.github.io/tags/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 知识点</title>
+    <link href="https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>https://duansiman.github.io/2017/04/17/Linux-知识点/</id>
+    <published>2017-04-17T02:47:21.000Z</published>
+    <updated>2017-04-17T06:55:50.224Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
+<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
+URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            查看占用该端口的进程
+netstat -ntlup | grep 端口号                  根据端口搜索进程
+ps -ef | grep 进程号                        查看进程
+netstat –apn                            查看所有的进程和端口使用情况
+kill -9 processId                        杀进程
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>###物理CPU<br>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
+<p>###逻辑CPU<br>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
+<pre><code>Linux下top查看的CPU也是逻辑CPU个数
+</code></pre><p>###查看物理CPU的个数<br>    cat /proc/cpuinfo |grep “physical id”|sort |uniq|wc -l</p>
+<p>###查看逻辑CPU的个数<br>    cat /proc/cpuinfo |grep “processor”|wc -l</p>
+<p>###查看CPU是几核<br>    cat /proc/cpuinfo |grep “cores”|uniq</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;源列表&quot;&gt;&lt;a href=&quot;#源列表&quot; class=&quot;headerlink&quot; title=&quot;源列表&quot;&gt;&lt;/a&gt;源列表&lt;/h2&gt;&lt;p&gt;Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://duansiman.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux知识点" scheme="https://duansiman.github.io/tags/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加密、解密</title>
+    <link href="https://duansiman.github.io/2017/04/14/%E5%8A%A0%E5%AF%86%E3%80%81%E8%A7%A3%E5%AF%86/"/>
+    <id>https://duansiman.github.io/2017/04/14/加密、解密/</id>
+    <published>2017-04-14T09:00:53.000Z</published>
+    <updated>2017-04-17T10:51:44.232Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>　　Base64编码要求把3个8位字节（3<em>8=24）转化为4个6位的字节（4</em>6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Base64&quot;&gt;&lt;a href=&quot;#Base64&quot; class=&quot;headerlink&quot; title=&quot;Base64&quot;&gt;&lt;/a&gt;Base64&lt;/h2&gt;&lt;p&gt;　　Base64编码要求把3个8位字节（3&lt;em&gt;8=24）转化为4个6位的字节（4&lt;/em&gt;6=24），之
+    
+    </summary>
+    
+      <category term="计算机" scheme="https://duansiman.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+      <category term="编码" scheme="https://duansiman.github.io/tags/%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo的配置</title>
@@ -119,14 +241,15 @@ java.net.SocketTimeoutException: connect timed out
     <link href="https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"/>
     <id>https://duansiman.github.io/2017/04/06/SQL-常用语句/</id>
     <published>2017-04-06T07:14:32.000Z</published>
-    <updated>2017-04-11T09:06:13.720Z</updated>
+    <updated>2017-04-17T10:40:23.007Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mysql --version		</div><div class="line">	mysql版本</div><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>###数据导入导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure></p>
+<p>###连接数及状态信息<br>    show status like ‘%connect%’<br>        show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量<br>    show processlist;<br>        显示当前正在执行的mysql连接<br>    mysqladmin -u -p -h status<br>        显示当前mysql状态<br>    mysqladmin -u -p -h extended-status<br>        显示mysql的其他状态</p>
 <h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;
+      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;p&gt;###数据导入导出&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
     
     </summary>
     
