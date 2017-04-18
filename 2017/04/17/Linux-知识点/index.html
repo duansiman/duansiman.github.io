@@ -17,7 +17,7 @@ URL后面的字符串，分别对应相应的目录结构。进入dists目录，
 开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
 查看端口占用lsof">
-<meta property="og:updated_time" content="2017-04-17T10:59:00.505Z">
+<meta property="og:updated_time" content="2017-04-17T11:05:19.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 知识点">
 <meta name="twitter:description" content="源列表Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件sources.list文件内容：
@@ -124,11 +124,16 @@ ga('send', 'pageview');
         <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
 <pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
-</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            查看占用该端口的进程
-netstat -ntlup | grep 端口号                  根据端口搜索进程
-ps -ef | grep 进程号                        查看进程
-netstat –apn                            查看所有的进程和端口使用情况
-kill -9 processId                        杀进程
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
+    查看占用该端口的进程
+netstat -ntlup | grep 端口号                  
+    根据端口搜索进程
+ps -ef | grep 进程号                        
+    查看进程
+netstat –apn                            
+    查看所有的进程和端口使用情况
+kill -9 processId                        
+    杀进程
 </code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
 <h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
 <pre><code>Linux下top查看的CPU也是逻辑CPU个数
@@ -139,7 +144,7 @@ kill -9 processId                        杀进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1m0h15z0008joleff4n14gw" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj1mxk6q10009d4lel4lx1evs" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>

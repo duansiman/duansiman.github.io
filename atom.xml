@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duansiman.github.io/"/>
-  <updated>2017-04-17T10:49:41.410Z</updated>
+  <updated>2017-04-18T02:28:26.592Z</updated>
   <id>https://duansiman.github.io/</id>
   
   <author>
@@ -14,6 +14,128 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单词词性</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
+    <id>https://duansiman.github.io/2017/04/18/单词词性/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-04-18T02:28:26.592Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
+<pre><code>I,You,He,She,It,We,You,They
+</code></pre><p>代词宾格：动后介后</p>
+<pre><code>me,you,him,her,it,us,you,them        
+Tom loves him.
+</code></pre><p>代词形容格:跟着名词    </p>
+<pre><code>my,your,his,her,its,our,your,their    
+her friend    她的朋友
+</code></pre><p>代词名词格        </p>
+<pre><code>mine,yours,his,hers,ours,yours,theirs    
+The car is yours
+</code></pre><p>名词格=形容格+名词    </p>
+<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
+</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
+<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
+</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
+<pre><code>例如：very happy
+</code></pre><p>修饰动词，放在反面</p>
+<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
+</code></pre><p>修饰名词，放在后面</p>
+<pre><code>例如：the kids there 哪里的小孩
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;人称代词&quot;&gt;&lt;a href=&quot;#人称代词&quot; class=&quot;headerlink&quot; title=&quot;人称代词&quot;&gt;&lt;/a&gt;人称代词&lt;/h2&gt;&lt;p&gt;代词主格：做主语    &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;I,You,He,She,It,We,You,They
+&lt;/code
+    
+    </summary>
+    
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
+    
+    
+      <category term="单词词性" scheme="https://duansiman.github.io/tags/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>句子成分</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
+    <id>https://duansiman.github.io/2017/04/18/句子成分/</id>
+    <published>2017-04-18T02:16:57.000Z</published>
+    <updated>2017-04-18T02:18:37.857Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
+<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
+<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
+<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
+<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
+<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;词性担当&quot;&gt;&lt;a href=&quot;#词性担当&quot; class=&quot;headerlink&quot; title=&quot;词性担当&quot;&gt;&lt;/a&gt;词性担当&lt;/h2&gt;&lt;p&gt;主语——名、代（主格）&lt;br&gt;谓语——动词&lt;br&gt;表语——名、代、形、副(少量)、介宾&lt;br&gt;宾语——名、代（宾格）&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
+    
+    
+      <category term="句子成分" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>句子结构</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E7%BB%93%E6%9E%84/"/>
+    <id>https://duansiman.github.io/2017/04/18/句子结构/</id>
+    <published>2017-04-18T02:12:19.000Z</published>
+    <updated>2017-04-18T02:17:30.149Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="主系表"><a href="#主系表" class="headerlink" title="主系表"></a>主系表</h2><pre><code>主语+be+表语
+</code></pre><p>肯定句:He is in the car.<br>否定句:He is not in the car.<br>一般疑问句:Is he in the car?</p>
+<p>谁在车里？<br>特殊疑问句——提问主语:Who is in the car?</p>
+<p>他在哪儿？<br>特殊疑问句——提问非主语:Where is he?</p>
+<h2 id="主谓（宾）"><a href="#主谓（宾）" class="headerlink" title="主谓（宾）"></a>主谓（宾）</h2><pre><code>主语+非be+(宾语)+状语
+</code></pre><h4 id="非三单-动原"><a href="#非三单-动原" class="headerlink" title="非三单+动原+"></a>非三单+动原+</h4><p>否定句：非三单+do not+动原+<br>一般疑问句:Do+非三单+动原+<br>特殊疑问句——提问主语：语序不变<br>特殊疑问句——提问非主语：特助主谓，特殊疑问词+主动词do+非三单+动原+</p>
+<h4 id="三单-动s"><a href="#三单-动s" class="headerlink" title="三单+动s+"></a>三单+动s+</h4><p>否定句:三单+does not+动原+<br>一般疑问句:Does+三单+动原+<br>特殊疑问句——提问主语：语序不变<br>特殊疑问句——提问非主语：特助主谓，特殊疑问词+主动词does+三单+动原+</p>
+<h4 id="三单"><a href="#三单" class="headerlink" title="三单"></a>三单</h4><p>人称代词：he、she、it<br>指示代词：this、this book、that、that dog<br>名词:单数</p>
+<h4 id="非三单"><a href="#非三单" class="headerlink" title="非三单"></a>非三单</h4><p>人称代词:I you we they<br>指示代词:these、those<br>名词:复数</p>
+<p>肯定句:They learn English every day.</p>
+<p>他们每天不学英语。<br>否定句:They don’t learn English every day.</p>
+<p>他们每天学英语吗？<br>一般疑问句:Do they learn English every day?</p>
+<p>谁每天学英语？<br>特殊疑问句——提问主语:Who learn English every day?</p>
+<p>他们每天学什么？<br>特殊疑问句——提问非主语:What do they learn every day?</p>
+<h2 id="There-be-结构"><a href="#There-be-结构" class="headerlink" title="There be 结构"></a>There be 结构</h2><pre><code>(There + is/are)(存在) + 名词 + (地点)
+</code></pre><p>There 不是主语，只是占主语位置。所以is/are由后面名词决定。<br>表达存在，而have表示拥有，例如：我有三辆车 I have three cars.</p>
+<h4 id="就近原则"><a href="#就近原则" class="headerlink" title="就近原则"></a>就近原则</h4><p>There is a cat and two dogs under the tree.<br>There are two dogs and a cat under the tree.</p>
+<p>肯定句:There are many students in the classroom<br>否定句:There are not many students in the classroom(some 在否定句中变成 any)<br>一般疑问句:Are there many students in the classroom?</p>
+<p>教室里有多少同学？<br>特殊疑问句:How many students are there in the classroom?<br>How much + 不可数名词+is there + 地点<br>How many + 可数名词 + are there + 地点</p>
+<h2 id="中译英"><a href="#中译英" class="headerlink" title="中译英"></a>中译英</h2><h4 id="找主谓——定结构"><a href="#找主谓——定结构" class="headerlink" title="找主谓——定结构"></a>找主谓——定结构</h4><pre><code>主谓（宾）
+主系表
+there be
+</code></pre><h4 id="中-中’-英——定语序"><a href="#中-中’-英——定语序" class="headerlink" title="中-中’-英——定语序"></a>中-中’-英——定语序</h4><pre><code>方式、地点、时间
+从小到大
+句首状语
+</code></pre><p>每天6点他在家写作业吗？<br>Dose he do his homework at home at six every day ?</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主系表&quot;&gt;&lt;a href=&quot;#主系表&quot; class=&quot;headerlink&quot; title=&quot;主系表&quot;&gt;&lt;/a&gt;主系表&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;主语+be+表语
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;肯定句:He is in the car.&lt;br&gt;否定句:He i
+    
+    </summary>
+    
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
+    
+    
+      <category term="句子结构" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL 知识点</title>
@@ -80,16 +202,21 @@ d0         删除游标所在处，到该行的最前面一个字符
     <link href="https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://duansiman.github.io/2017/04/17/Linux-知识点/</id>
     <published>2017-04-17T02:47:21.000Z</published>
-    <updated>2017-04-17T10:59:00.505Z</updated>
+    <updated>2017-04-17T11:05:19.925Z</updated>
     
     <content type="html"><![CDATA[<h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
 <pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
-</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            查看占用该端口的进程
-netstat -ntlup | grep 端口号                  根据端口搜索进程
-ps -ef | grep 进程号                        查看进程
-netstat –apn                            查看所有的进程和端口使用情况
-kill -9 processId                        杀进程
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
+    查看占用该端口的进程
+netstat -ntlup | grep 端口号                  
+    根据端口搜索进程
+ps -ef | grep 进程号                        
+    查看进程
+netstat –apn                            
+    查看所有的进程和端口使用情况
+kill -9 processId                        
+    杀进程
 </code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
 <h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
 <pre><code>Linux下top查看的CPU也是逻辑CPU个数
@@ -239,15 +366,22 @@ java.net.SocketTimeoutException: connect timed out
     <link href="https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"/>
     <id>https://duansiman.github.io/2017/04/06/SQL-常用语句/</id>
     <published>2017-04-06T07:14:32.000Z</published>
-    <updated>2017-04-17T10:56:38.901Z</updated>
+    <updated>2017-04-18T02:05:05.897Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>####数据导入导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure></p>
-<p>####连接数及状态信息<br>    show status like ‘%connect%’<br>        show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量<br>    show processlist;<br>        显示当前正在执行的mysql连接<br>    mysqladmin -u -p -h status<br>        显示当前mysql状态<br>    mysqladmin -u -p -h extended-status<br>        显示mysql的其他状态</p>
-<h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
+<h4 id="连接数及状态信息"><a href="#连接数及状态信息" class="headerlink" title="连接数及状态信息"></a>连接数及状态信息</h4><pre><code>show status like &apos;%connect%&apos;
+    show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
+show processlist;
+    显示当前正在执行的mysql连接
+mysqladmin -u -p -h status
+    显示当前mysql状态
+mysqladmin -u -p -h extended-status
+    显示mysql的其他状态
+</code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;p&gt;####数据导入导出&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      &lt;h2 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h2&gt;&lt;h4 id=&quot;数据导入导出&quot;&gt;&lt;a href=&quot;#数据导入导出&quot; class=&quot;headerlink&quot; title=&quot;数
     
     </summary>
     
