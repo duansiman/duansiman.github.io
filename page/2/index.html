@@ -85,6 +85,121 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Git常遇到使用场景" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/Git常遇到使用场景/" class="article-date">
+  <time datetime="2017-04-11T10:52:59.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/Git常遇到使用场景/">Git常遇到问题场景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="删除仓库中目录或文件"><a href="#删除仓库中目录或文件" class="headerlink" title="删除仓库中目录或文件"></a>删除仓库中目录或文件</h2><p>　git rm -r 目录 或者 git rm 文件<br>　git commit -m “” 提交<br>　误删可以恢复<br>　git checkout – 文件</p>
+<h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>　在git工作区间根目录创建.gitignore文件，然后把要忽略的文件添加进去。<br>　Window环境创建该文件会提示输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore 然后把该文件提交到git<br>　A、被忽略的文件，要强制添加到git<br>　　　git add -f 文件<br>　B、查看忽略文件被个规则忽略了<br>　　　git check-ignore -v 文件<br>　常见的忽略文件：<a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a></p>
+<h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/3.png" alt=""><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
+<h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
+<h2 id="让git-push命令不需要密码"><a href="#让git-push命令不需要密码" class="headerlink" title="让git push命令不需要密码"></a>让git push命令不需要密码</h2><p>　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1ngrhlz001ap8lemg3fddsc" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git问题场景/">Git问题场景</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Redis-安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/07/Redis-安装/" class="article-date">
+  <time datetime="2017-04-07T06:38:41.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/Redis-安装/">Redis 错误集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
+</code></pre><p>需要安装gcc</p>
+<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
+</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
+<pre><code>You need tcl 8.5 or newer in order to run the Redis test
+</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
+<h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
+</code></pre><p>jedis包版本问题</p>
+<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
+Could not get a resource from the pool
+java.net.SocketTimeoutException: connect timed out
+</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
+<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
+</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1ngrhke0008p8levwwr3g9c" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-SQL-常用语句" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/06/SQL-常用语句/" class="article-date">
@@ -126,7 +241,7 @@ mysqladmin -u -p -h extended-status
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1mxk6qb000id4lea73hvhwy" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1ngrhm5001gp8lekb01j22k" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
@@ -183,7 +298,7 @@ mysqladmin -u -p -h extended-status
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1mxk6pp0004d4lesgvqoo1t" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1ngrhmk001lp8le62y5ep0w" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -225,6 +340,14 @@ mysqladmin -u -p -h extended-status
       <ul>
         
           <li>
+            <a href="/2017/04/18/tomcat/">tomcat</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/18/nginx/">nginx</a>
+          </li>
+        
+          <li>
             <a href="/2017/04/18/单词词性/">单词词性</a>
           </li>
         
@@ -234,14 +357,6 @@ mysqladmin -u -p -h extended-status
         
           <li>
             <a href="/2017/04/18/句子结构/">句子结构</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/17/MySQL-知识点/">MySQL 知识点</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/17/Linux-常用命令/">Linux 常用命令</a>
           </li>
         
       </ul>

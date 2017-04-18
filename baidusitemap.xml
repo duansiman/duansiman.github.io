@@ -4,6 +4,86 @@
 
     
   <url>
+    <loc>https://duansiman.github.io/2017/04/18/nginx/</loc>
+    <lastmod>2017-04-18T11:26:05.200Z</lastmod>
+    <data>
+        <display>
+        <title>nginx</title>
+        <pubTime>2017-04-18T03:34:07.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="应用服务器" url="https://duansiman.github.io/categories/%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <lastmod>2017-04-18T09:42:03.147Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 知识点</title>
+        <pubTime>2017-04-17T02:47:21.000Z</pubTime>
+        
+        <tag>Linux知识点</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-04-18T09:38:04.666Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 常用命令</title>
+        <pubTime>2017-04-17T03:07:22.000Z</pubTime>
+        
+        <tag>Linux常用命令</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/04/18/tomcat/</loc>
+    <lastmod>2017-04-18T08:01:00.965Z</lastmod>
+    <data>
+        <display>
+        <title>tomcat</title>
+        <pubTime>2017-04-18T07:35:52.000Z</pubTime>
+        
+        <tag>Tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="应用服务器" url="https://duansiman.github.io/categories/%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/</loc>
     <lastmod>2017-04-18T02:28:26.592Z</lastmod>
     <data>
@@ -80,46 +160,6 @@
           
              
               <breadCrumb title="MySQL" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
-    <lastmod>2017-04-17T11:05:19.925Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 知识点</title>
-        <pubTime>2017-04-17T02:47:21.000Z</pubTime>
-        
-        <tag>Linux知识点</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-04-17T11:01:54.796Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 常用命令</title>
-        <pubTime>2017-04-17T03:07:22.000Z</pubTime>
-        
-        <tag>Linux常用命令</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
           
         </display>
     </data>
