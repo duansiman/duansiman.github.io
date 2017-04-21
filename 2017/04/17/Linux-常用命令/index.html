@@ -25,7 +25,7 @@ d1G        删除光标所在到第一行的所有数据
 dG         删除光标所在到最后一行的所有数据
 d$         删除游标所在处，到该行的最后一个字符
 d0">
-<meta property="og:updated_time" content="2017-04-18T09:38:04.666Z">
+<meta property="og:updated_time" content="2017-04-21T11:28:52.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 常用命令">
 <meta name="twitter:description" content="vim删除x, X       x 为向后删除一个字符, X为向前删除一个字符
@@ -141,6 +141,24 @@ d1G        删除光标所在到第一行的所有数据
 dG         删除光标所在到最后一行的所有数据
 d$         删除游标所在处，到该行的最后一个字符
 d0         删除游标所在处，到该行的最前面一个字符
+</code></pre><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><pre><code>y1G        复制光标所在行到第一行的所有数据
+yG        复制光标所在行到最后一行的所有数据
+y0        复制光标所在的那个字符到该行行首的所有数据
+y$        复制光标所在的那个字符到该行行尾的所有数据
+</code></pre><h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
+</code></pre><h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><pre><code>u        复原上一个动作
+</code></pre><h4 id="重复执行"><a href="#重复执行" class="headerlink" title="重复执行"></a>重复执行</h4><pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
+</code></pre><h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><pre><code>r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止
+</code></pre><h4 id="执行其他命令"><a href="#执行其他命令" class="headerlink" title="执行其他命令"></a>执行其他命令</h4><pre><code>:! command        离开 vi 到指令列模式下执行 command 的显示结果
+</code></pre><h4 id="行数"><a href="#行数" class="headerlink" title="行数"></a>行数</h4><pre><code>:set nu, :set nonu         显示行数和取消行数
+</code></pre><h4 id="翻页，移动光标"><a href="#翻页，移动光标" class="headerlink" title="翻页，移动光标"></a>翻页，移动光标</h4><pre><code>ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页
+h, j, k, l                      左，下，上，右
++, -                            移动下一行，上一行的非空格符号
+n&lt;space&gt;， n&lt;enter&gt;             向右移动n 个字符, 向下移动n行
+0, $                            移动行首,行尾
+H, M, L                         移动到屏幕的第一行，最后一行，中间行。
+G, nG, gg                       移动文档最后一行,第n行，第一行
+</code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre><code>n， N                    向后，前继续搜索
 </code></pre><h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive 递归复制
 </code></pre><h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><pre><code>PID：进程的ID
 USER：进程所有者
@@ -160,7 +178,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj1qc1bxv0003yclen5rczumj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj1rr7nn700040clekcgfknrf" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -215,7 +233,7 @@ COMMAND：进程启动命令名称
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">1.</span> <span class="toc-text">vim</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#删除"><span class="toc-number">1.0.1.</span> <span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp"><span class="toc-number">2.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top"><span class="toc-number">3.</span> <span class="toc-text">top</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一行"><span class="toc-number">3.0.1.</span> <span class="toc-text">第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二行"><span class="toc-number">3.0.2.</span> <span class="toc-text">第二行</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">1.</span> <span class="toc-text">vim</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#删除"><span class="toc-number">1.0.1.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制"><span class="toc-number">1.0.2.</span> <span class="toc-text">复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#粘贴"><span class="toc-number">1.0.3.</span> <span class="toc-text">粘贴</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#撤销"><span class="toc-number">1.0.4.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重复执行"><span class="toc-number">1.0.5.</span> <span class="toc-text">重复执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换"><span class="toc-number">1.0.6.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行其他命令"><span class="toc-number">1.0.7.</span> <span class="toc-text">执行其他命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#行数"><span class="toc-number">1.0.8.</span> <span class="toc-text">行数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#翻页，移动光标"><span class="toc-number">1.0.9.</span> <span class="toc-text">翻页，移动光标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搜索"><span class="toc-number">1.0.10.</span> <span class="toc-text">搜索</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp"><span class="toc-number">2.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top"><span class="toc-number">3.</span> <span class="toc-text">top</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一行"><span class="toc-number">3.0.1.</span> <span class="toc-text">第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二行"><span class="toc-number">3.0.2.</span> <span class="toc-text">第二行</span></a></li></ol></li></ol></li></ol>
           </div>
       </div>
     </div>
