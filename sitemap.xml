@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://duansiman.github.io/2017/05/04/%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    
+    <lastmod>2017-05-04T08:44:33.670Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://duansiman.github.io/2017/04/26/Maven/</loc>
+    
+    <lastmod>2017-05-03T10:26:59.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://duansiman.github.io/2017/04/26/Zookeeper/</loc>
+    
+    <lastmod>2017-05-03T10:07:35.334Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</loc>
+    
+    <lastmod>2017-05-03T07:35:59.585Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2017-04-21T11:28:52.876Z</lastmod>
+    <lastmod>2017-04-26T07:25:33.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://duansiman.github.io/2017/04/26/Java-RMI/</loc>
+    
+    <lastmod>2017-04-26T03:24:49.840Z</lastmod>
     
   </url>
   
@@ -47,13 +82,6 @@
     <loc>https://duansiman.github.io/2017/04/18/tomcat/</loc>
     
     <lastmod>2017-04-18T08:01:00.965Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</loc>
-    
-    <lastmod>2017-04-18T02:05:05.897Z</lastmod>
     
   </url>
   

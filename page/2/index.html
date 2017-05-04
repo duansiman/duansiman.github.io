@@ -85,6 +85,278 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux-常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux-常用命令/" class="article-date">
+  <time datetime="2017-04-17T03:07:22.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux-常用命令/">Linux 常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
+nx         连续向后删除 n 个字符
+dd         删除游标所在这行
+ndd        删除游标所在向下n行
+d1G        删除光标所在到第一行的所有数据
+dG         删除光标所在到最后一行的所有数据
+d$         删除游标所在处，到该行的最后一个字符
+d0         删除游标所在处，到该行的最前面一个字符
+</code></pre><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><pre><code>y1G        复制光标所在行到第一行的所有数据
+yG        复制光标所在行到最后一行的所有数据
+y0        复制光标所在的那个字符到该行行首的所有数据
+y$        复制光标所在的那个字符到该行行尾的所有数据
+</code></pre><h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
+</code></pre><h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><pre><code>u        复原上一个动作
+</code></pre><h4 id="重复执行"><a href="#重复执行" class="headerlink" title="重复执行"></a>重复执行</h4><pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
+</code></pre><h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><pre><code>r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止
+</code></pre><h4 id="执行其他命令"><a href="#执行其他命令" class="headerlink" title="执行其他命令"></a>执行其他命令</h4><pre><code>:! command        离开 vi 到指令列模式下执行 command 的显示结果
+</code></pre><h4 id="行数"><a href="#行数" class="headerlink" title="行数"></a>行数</h4><pre><code>:set nu, :set nonu         显示行数和取消行数
+</code></pre><h4 id="翻页，移动光标"><a href="#翻页，移动光标" class="headerlink" title="翻页，移动光标"></a>翻页，移动光标</h4><pre><code>ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页
+h, j, k, l                      左，下，上，右
++, -                            移动下一行，上一行的非空格符号
+n&lt;space&gt;， n&lt;enter&gt;             向右移动n 个字符, 向下移动n行
+0, $                            移动行首,行尾
+H, M, L                         移动到屏幕的第一行，最后一行，中间行。
+G, nG, gg                       移动文档最后一行,第n行，第一行
+</code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre><code>n， N                    向后，前继续搜索
+</code></pre><h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive   递归复制
+-p                    连同档案的属性一起复制过去，而非使用预设属性
+</code></pre><h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><pre><code>PID：进程的ID
+USER：进程所有者
+PR：进程的优先级别，越小越优先被执行
+NInice：值
+VIRT：进程占用的虚拟内存
+RES：进程占用的物理内存
+SHR：进程使用的共享内存
+S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数
+%CPU：进程占用CPU的使用率
+%MEM：进程使用的物理内存和总内存的百分比
+TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。
+COMMAND：进程启动命令名称
+</code></pre><h4 id="第一行"><a href="#第一行" class="headerlink" title="第一行"></a>第一行</h4><pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
+</code></pre><h4 id="第二行"><a href="#第二行" class="headerlink" title="第二行"></a>第二行</h4><pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2a6gad50008fcleirihu8gf" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux-知识点/" class="article-date">
+  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux-知识点/">Linux 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
+<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
+URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
+    查看占用该端口的进程
+netstat -ntlup | grep 端口号                  
+    根据端口搜索进程
+ps -ef | grep 进程号                        
+    查看进程
+netstat –apn                            
+    查看所有的进程和端口使用情况
+kill -9 processId                        
+    杀进程
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
+<h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
+<pre><code>Linux下top查看的CPU也是逻辑CPU个数
+</code></pre><h4 id="查看物理CPU的个数"><a href="#查看物理CPU的个数" class="headerlink" title="查看物理CPU的个数"></a>查看物理CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
+</code></pre><h4 id="查看逻辑CPU的个数"><a href="#查看逻辑CPU的个数" class="headerlink" title="查看逻辑CPU的个数"></a>查看逻辑CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
+</code></pre><h4 id="查看CPU是几核"><a href="#查看CPU是几核" class="headerlink" title="查看CPU是几核"></a>查看CPU是几核</h4><pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
+</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
+<pre><code>top                     查看内存和CPU    
+pmap -d processId        查看进程相关信息占用的内存情况
+free -m                 查看内存
+cat /proc/meminfo        查看内存额定值
+ll -h /proc/kcore        查看内存镜像文件的大小
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2a6gae2000ifcle26mcrzjb" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-加密、解密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/14/加密、解密/" class="article-date">
+  <time datetime="2017-04-14T09:00:53.000Z" itemprop="datePublished">2017-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/计算机/">计算机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/14/加密、解密/">加密、解密</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>　　Base64编码要求把3个8位字节（3<em>8=24）转化为4个6位的字节（4</em>6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2a6gae7000ofclepwiucyan" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo的配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/12/Hexo的配置/" class="article-date">
+  <time datetime="2017-04-12T02:20:34.000Z" itemprop="datePublished">2017-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/12/Hexo的配置/">Hexo的配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
+<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
+<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用markdown的#标题时，#和标题要隔个空格，否则解析不了。</p>
+<h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
+<h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
+<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
+<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
+<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
+<h2 id="提交搜索引擎（百度-谷歌）"><a href="#提交搜索引擎（百度-谷歌）" class="headerlink" title="提交搜索引擎（百度+谷歌）"></a>提交搜索引擎（百度+谷歌）</h2><p>　<a href="http://www.jianshu.com/p/619dab2d3c08" target="_blank" rel="external">参考博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2a6gady000efcle2xq5h0np" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Git常遇到使用场景" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/11/Git常遇到使用场景/" class="article-date">
@@ -122,7 +394,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj1rr7nn700020clevnvawbs8" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2a6gacd0004fcleecwv90j7" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -184,7 +456,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj1rr7nnn00090cled9ucussw" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj2a6gaed000ufcle4dq1qpwx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -238,10 +510,13 @@ mysqladmin -u -p -h status
 mysqladmin -u -p -h extended-status
     显示mysql的其他状态
 </code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
+show create function fun_name；        查看函数源码
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj1rr7no2000q0clewgadfd4n" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj2a6gaeg000yfcleufpgjaz8" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
@@ -298,7 +573,7 @@ mysqladmin -u -p -h extended-status
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj1rr7nnn00080cle4t7o6rcj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj2a6gacx0007fcleh3h7e1xl" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -340,23 +615,23 @@ mysqladmin -u -p -h extended-status
       <ul>
         
           <li>
+            <a href="/2017/05/04/快捷键/">快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/26/Maven/">Maven</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/26/Zookeeper/">Zookeeper</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/26/Java-RMI/">Java RMI</a>
+          </li>
+        
+          <li>
             <a href="/2017/04/18/tomcat/">tomcat</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/18/nginx/">nginx</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/18/单词词性/">单词词性</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/18/句子成分/">句子成分</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/18/句子结构/">句子结构</a>
           </li>
         
       </ul>

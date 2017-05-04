@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duansiman.github.io/"/>
-  <updated>2017-04-18T08:01:00.965Z</updated>
+  <updated>2017-05-04T08:44:33.670Z</updated>
   <id>https://duansiman.github.io/</id>
   
   <author>
@@ -14,6 +14,256 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快捷键</title>
+    <link href="https://duansiman.github.io/2017/05/04/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>https://duansiman.github.io/2017/05/04/快捷键/</id>
+    <published>2017-05-04T08:26:06.000Z</published>
+    <updated>2017-05-04T08:44:33.670Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Sublime-text-3"><a href="#Sublime-text-3" class="headerlink" title="Sublime text 3"></a>Sublime text 3</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ctrl Shift L</td>
+<td style="text-align:left">选中多行编辑</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl J</td>
+<td style="text-align:left">多行变一行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ctrl+Shift+V</td>
+<td style="text-align:left">选择剪切板上的文本进行插入</td>
+</tr>
+<tr>
+<td style="text-align:left">右击断点</td>
+<td style="text-align:left">可以看到断点属性</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+H</td>
+<td style="text-align:left">打开类的层次结构</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+W</td>
+<td style="text-align:left">选择文本</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt+F8/Alt+点击表达式</td>
+<td style="text-align:left">调试时看表达式值</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Q</td>
+<td style="text-align:left">查看文档说明</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+P</td>
+<td style="text-align:left">查看方法参数提示</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+B</td>
+<td style="text-align:left">打开方法或类声明地方</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+N</td>
+<td style="text-align:left">搜索类</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+N</td>
+<td style="text-align:left">搜索文件</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+Alt+N</td>
+<td style="text-align:left">搜索文本</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Alt+V</td>
+<td style="text-align:left">把表达式提出为局部</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt+Shift+C</td>
+<td style="text-align:left">查看项目最近修改地方</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+`</td>
+<td style="text-align:left">修改style/color scheme or keymap</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+Enter</td>
+<td style="text-align:left">自动补全代码if,do-while,return,try-catch</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Alt+Shift+C</td>
+<td style="text-align:left">复制field/method/class/file</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+向下上箭头</td>
+<td style="text-align:left">移动代码块</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt+Shift+F10</td>
+<td style="text-align:left">打开run/debug菜单</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+I</td>
+<td style="text-align:left">预览class/file/symbol代码</td>
+</tr>
+<tr>
+<td style="text-align:left">Shift+F6</td>
+<td style="text-align:left">重命名</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt+Home</td>
+<td style="text-align:left">导航栏，修改项目view</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt+F7</td>
+<td style="text-align:left">搜索方法，变量在哪被引用</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+F</td>
+<td style="text-align:left">全局搜索</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+Z</td>
+<td style="text-align:left">反撤销，Ctrl+Z的反操作</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Sublime-text-3&quot;&gt;&lt;a href=&quot;#Sublime-text-3&quot; class=&quot;headerlink&quot; title=&quot;Sublime text 3&quot;&gt;&lt;/a&gt;Sublime text 3&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th 
+    
+    </summary>
+    
+      <category term="计算机" scheme="https://duansiman.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+      <category term="快捷键" scheme="https://duansiman.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven</title>
+    <link href="https://duansiman.github.io/2017/04/26/Maven/"/>
+    <id>https://duansiman.github.io/2017/04/26/Maven/</id>
+    <published>2017-04-26T07:37:02.000Z</published>
+    <updated>2017-05-03T10:26:59.612Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code>mvn [options] [&lt;goal(s)&gt;] [&lt;phase(s)&gt;]
+options     可以用mvn -h 或 mvn --help查看
+phase        是生命周期阶段
+</code></pre><h2 id="生命周期阶段"><a href="#生命周期阶段" class="headerlink" title="生命周期阶段"></a>生命周期阶段</h2><p>有clean、default和site几类，下面出现的顺序就是执行顺序。</p>
+<h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><p>pre-clean, clean, post-clean</p>
+<h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy</p>
+<h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><p>pre-site, site, post-site, site-deploy</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><pre><code>mvn package -Dmaven.skip.test=true 
+    打war包
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    创建项目
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;mvn [options] [&amp;lt;goal(s)&amp;gt;] [&amp;lt;phase(s)&amp;gt;]
+options    
+    
+    </summary>
+    
+      <category term="Java" scheme="https://duansiman.github.io/categories/Java/"/>
+    
+    
+      <category term="Maven" scheme="https://duansiman.github.io/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper</title>
+    <link href="https://duansiman.github.io/2017/04/26/Zookeeper/"/>
+    <id>https://duansiman.github.io/2017/04/26/Zookeeper/</id>
+    <published>2017-04-26T06:49:57.000Z</published>
+    <updated>2017-05-03T10:07:35.334Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="配置-conf-zoo-cfg"><a href="#配置-conf-zoo-cfg" class="headerlink" title="配置(conf/zoo.cfg)"></a>配置(conf/zoo.cfg)</h2><p>启动时会找zoo.cfg文件作为默认配置文件,所以复制一份zoo_sample.cfg</p>
+<pre><code>tickTime：服务器之间或客户端与服务器之间维持心跳的时间间隔，每个 tickTime 时间就会发送一个心跳
+dataDir ：保存数据的目录，将写数据的日志文件也保存在这个目录里
+clientPort：监听这个端口，接受客户端的访问请求
+</code></pre><p>启动命令</p>
+<pre><code>./zkServer.sh start
+</code></pre><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><pre><code>./zkCli.sh -server localhost:2181
+</code></pre><h2 id="占用8080端口"><a href="#占用8080端口" class="headerlink" title="占用8080端口"></a>占用8080端口</h2><p>zookeeper有个内嵌的管理控制台是通过jetty启动，也会占用8080端口。可以启动脚本中修改</p>
+<pre><code>admin.serverPort=port 
+</code></pre><p>或者停止这服务</p>
+<pre><code>admin.enableServer=false
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;配置-conf-zoo-cfg&quot;&gt;&lt;a href=&quot;#配置-conf-zoo-cfg&quot; class=&quot;headerlink&quot; title=&quot;配置(conf/zoo.cfg)&quot;&gt;&lt;/a&gt;配置(conf/zoo.cfg)&lt;/h2&gt;&lt;p&gt;启动时会找zoo.cfg文件作为
+    
+    </summary>
+    
+      <category term="Java" scheme="https://duansiman.github.io/categories/Java/"/>
+    
+      <category term="分布式" scheme="https://duansiman.github.io/categories/Java/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="Zookeeper" scheme="https://duansiman.github.io/tags/Zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java RMI</title>
+    <link href="https://duansiman.github.io/2017/04/26/Java-RMI/"/>
+    <id>https://duansiman.github.io/2017/04/26/Java-RMI/</id>
+    <published>2017-04-26T03:20:29.000Z</published>
+    <updated>2017-04-26T03:24:49.840Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="RMI是什么"><a href="#RMI是什么" class="headerlink" title="RMI是什么"></a>RMI是什么</h2><ul>
+<li>RMI是一套足够优秀的socket框架.</li>
+<li>RMI是相对比较简单命名服务</li>
+<li>RMI是aop的经典实用例子</li>
+<li>相关辅助功能，比如本地GC</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;RMI是什么&quot;&gt;&lt;a href=&quot;#RMI是什么&quot; class=&quot;headerlink&quot; title=&quot;RMI是什么&quot;&gt;&lt;/a&gt;RMI是什么&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;RMI是一套足够优秀的socket框架.&lt;/li&gt;
+&lt;li&gt;RMI是相对比较简单命名服务&lt;/li
+    
+    </summary>
+    
+      <category term="Java" scheme="https://duansiman.github.io/categories/Java/"/>
+    
+      <category term="分布式" scheme="https://duansiman.github.io/categories/Java/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="RMI" scheme="https://duansiman.github.io/tags/RMI/"/>
+    
+  </entry>
   
   <entry>
     <title>tomcat</title>
@@ -248,7 +498,7 @@ wait-timeout
     <link href="https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://duansiman.github.io/2017/04/17/Linux-常用命令/</id>
     <published>2017-04-17T03:07:22.000Z</published>
-    <updated>2017-04-21T11:28:52.876Z</updated>
+    <updated>2017-04-26T07:25:33.221Z</updated>
     
     <content type="html"><![CDATA[<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
 nx         连续向后删除 n 个字符
@@ -276,7 +526,8 @@ n&lt;space&gt;， n&lt;enter&gt;             向右移动n 个字符, 向下移�
 H, M, L                         移动到屏幕的第一行，最后一行，中间行。
 G, nG, gg                       移动文档最后一行,第n行，第一行
 </code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre><code>n， N                    向后，前继续搜索
-</code></pre><h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive 递归复制
+</code></pre><h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive   递归复制
+-p                    连同档案的属性一起复制过去，而非使用预设属性
 </code></pre><h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><pre><code>PID：进程的ID
 USER：进程所有者
 PR：进程的优先级别，越小越优先被执行
@@ -481,7 +732,7 @@ java.net.SocketTimeoutException: connect timed out
     <link href="https://duansiman.github.io/2017/04/06/SQL-%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"/>
     <id>https://duansiman.github.io/2017/04/06/SQL-常用语句/</id>
     <published>2017-04-06T07:14:32.000Z</published>
-    <updated>2017-04-18T02:05:05.897Z</updated>
+    <updated>2017-05-03T07:35:59.585Z</updated>
     
     <content type="html"><![CDATA[<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
 <h4 id="连接数及状态信息"><a href="#连接数及状态信息" class="headerlink" title="连接数及状态信息"></a>连接数及状态信息</h4><pre><code>show status like &apos;%connect%&apos;
@@ -492,7 +743,10 @@ mysqladmin -u -p -h status
     显示当前mysql状态
 mysqladmin -u -p -h extended-status
     显示mysql的其他状态
-</code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>]]></content>
+</code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
+show create function fun_name；        查看函数源码
+</code></pre>]]></content>
     
     <summary type="html">
     
