@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>插入算法 | 安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原理插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]
+代码1234567891011121314int[] datas = new int[]&amp;#123;1, 2, 3, 4, 5, 6&amp;#125;;       for (int i = 1; i &amp;lt; datas.length; i++) &amp;#123;	//次数-&amp;gt;n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="插入算法">
+<meta property="og:url" content="https://duansiman.github.io/2017/04/18/插入算法/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="原理插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]
+代码1234567891011121314int[] datas = new int[]&amp;#123;1, 2, 3, 4, 5, 6&amp;#125;;       for (int i = 1; i &amp;lt; datas.length; i++) &amp;#123;	//次数-&amp;gt;n">
+<meta property="og:updated_time" content="2017-05-13T08:48:24.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="插入算法">
+<meta name="twitter:description" content="原理插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]
+代码1234567891011121314int[] datas = new int[]&amp;#123;1, 2, 3, 4, 5, 6&amp;#125;;       for (int i = 1; i &amp;lt; datas.length; i++) &amp;#123;	//次数-&amp;gt;n">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-插入算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/插入算法/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      插入算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
+<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
+最坏情况数组A[n]是反序的,那么元素比较次数是n-1
+</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/插入算法/" data-id="cj2n14v7y001n0slenops6phe" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/插入算法/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入算法/">插入算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/18/nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          nginx
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/18/单词词性/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">单词词性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能分析"><span class="toc-number">3.</span> <span class="toc-text">性能分析</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  var disqus_url = 'https://duansiman.github.io/2017/04/18/插入算法/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

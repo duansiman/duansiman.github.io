@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>https://duansiman.github.io/2017/04/18/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2017-05-13T08:48:24.024Z</lastmod>
+    <data>
+        <display>
+        <title>插入算法</title>
+        <pubTime>2017-04-18T02:19:19.000Z</pubTime>
+        
+        <tag>插入算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/04/18/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/</loc>
+    <lastmod>2017-05-13T08:48:22.704Z</lastmod>
+    <data>
+        <display>
+        <title>分治策略</title>
+        <pubTime>2017-04-18T02:19:19.000Z</pubTime>
+        
+        <tag>分治策略</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/04/18/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2017-05-13T08:48:11.992Z</lastmod>
+    <data>
+        <display>
+        <title>归并排序</title>
+        <pubTime>2017-04-18T02:19:19.000Z</pubTime>
+        
+        <tag>归并排序</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-05-13T08:40:38.569Z</lastmod>
     <data>
@@ -18,51 +78,6 @@
              
               <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/05/13/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2017-05-13T08:38:42.115Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2017-05-13T08:41:57.603Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/05/13/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</loc>
-    <lastmod>2017-05-13T08:38:42.107Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2017-05-13T08:41:57.608Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/05/13/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/</loc>
-    <lastmod>2017-05-13T08:38:42.097Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2017-05-13T08:41:57.606Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>

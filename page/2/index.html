@@ -85,14 +85,14 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/18/nginx/" class="article-date">
-  <time datetime="2017-04-18T03:34:07.000Z" itemprop="datePublished">2017-04-18</time>
+    <a href="/2017/04/18/归并排序/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
   </div>
 
   </div>
@@ -103,7 +103,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/nginx/">nginx</a>
+      <a class="article-title" href="/2017/04/18/归并排序/">归并排序</a>
     </h1>
   
 
@@ -113,40 +113,21 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="启动、停止和重新加载服务"><a href="#启动、停止和重新加载服务" class="headerlink" title="启动、停止和重新加载服务"></a>启动、停止和重新加载服务</h2><pre><code>nginx
-nginx -s stop
-nginx -s reload
-nginx -s quit        退出
-nginx -t             检查配置文件
-</code></pre><h2 id="配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）"><a href="#配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）" class="headerlink" title="配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）"></a>配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）</h2><pre><code>worker_processes
-    进程的个数，建议设置为CPU的个数
-worker_connections
-    单进程的最大连接数
-server
-    listen                监听端口
-    server_name            服务的域名，可以配置多个用空格隔开
-</code></pre><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>在http中配置</p>
-<pre><code>#设定负载均衡的服务器列表  
-upstream mysvr {  
-    #weigth参数表示权值，权值越高被分配到的几率越大    
-    #同一机器在多网情况下，路由切换，ip可能不同
-    server 127.0.0.1:8080 weight=1;  
-    server 127.0.0.1:8090 weight=1;  
-    server 127.0.0.1:8070 weight=1;  
-}
-</code></pre><h2 id="代理、反向代理"><a href="#代理、反向代理" class="headerlink" title="代理、反向代理"></a>代理、反向代理</h2><h2 id="nginx-403-Forbidden"><a href="#nginx-403-Forbidden" class="headerlink" title="nginx 403 Forbidden"></a>nginx 403 Forbidden</h2><p>nginx的启动用户默认是nginx用户，需要修改web目录的权限</p>
-<h2 id="静态文件缓存"><a href="#静态文件缓存" class="headerlink" title="静态文件缓存"></a>静态文件缓存</h2><p>server中配置缓存，需要指定root值，否则默认是Nginx的目录，会导致找不到文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 30d;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(js|css)?$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 1h;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
+<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/nginx/" data-id="cj2n0zrj9001p2cley4qrquq8" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/归并排序/" data-id="cj2n14v7t001i0slek8nfz9en" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/18/nginx/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/18/归并排序/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/归并排序/">归并排序</a></li></ul>
 
     </footer>
   </div>
@@ -156,14 +137,14 @@ upstream mysvr {
 
 
   
-    <article id="post-单词词性" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-分治策略" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/18/单词词性/" class="article-date">
+    <a href="/2017/04/18/分治策略/" class="article-date">
   <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/English/">English</a>
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
   </div>
 
   </div>
@@ -174,7 +155,7 @@ upstream mysvr {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/单词词性/">单词词性</a>
+      <a class="article-title" href="/2017/04/18/分治策略/">分治策略</a>
     </h1>
   
 
@@ -184,41 +165,23 @@ upstream mysvr {
       
         <!-- Table of Contents -->
         
-        <h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
-<pre><code>I,You,He,She,It,We,You,They
-</code></pre><p>代词宾格：动后介后</p>
-<pre><code>me,you,him,her,it,us,you,them        
-Tom loves him.
-</code></pre><p>代词形容格:跟着名词    </p>
-<pre><code>my,your,his,her,its,our,your,their    
-her friend    她的朋友
-</code></pre><p>代词名词格        </p>
-<pre><code>mine,yours,his,hers,ours,yours,theirs    
-The car is yours
-</code></pre><p>名词格=形容格+名词    </p>
-<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
-</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
-<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
-</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
-<pre><code>例如：very happy
-</code></pre><p>修饰动词，放在反面</p>
-<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
-</code></pre><p>修饰名词，放在后面</p>
-<pre><code>例如：the kids there 哪里的小孩
-</code></pre><h2 id="冠词"><a href="#冠词" class="headerlink" title="冠词"></a>冠词</h2><h4 id="the"><a href="#the" class="headerlink" title="the"></a>the</h4><p>可以和名词的单数、复数和不可数搭配，表达这个，这些</p>
-<h4 id="a-an"><a href="#a-an" class="headerlink" title="a,an"></a>a,an</h4><p>元音字母a,e,i,o,u<br>挨着最近的词开头发元音 + an<br>an old man<br>an hour</p>
-<h2 id="指示代词"><a href="#指示代词" class="headerlink" title="指示代词"></a>指示代词</h2><p>This is water 这些是水<br>That is water 那些是水<br>these are books<br>those are books</p>
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.</p>
+<h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中</p>
+<h2 id="递归伪代码"><a href="#递归伪代码" class="headerlink" title="递归伪代码"></a>递归伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">if</span> (low == high) &#123;</div><div class="line">        tuple.left = low;</div><div class="line">        tuple.right = high;</div><div class="line">        tuple.sum = A[low];</div><div class="line">        <span class="keyword">return</span> tuple;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; lTuple = findMax(A, low, mid);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; cTuple = findCrossMax(A, low, mid, high);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; rTuple = findMax(A, mid + <span class="number">1</span>, high);</div><div class="line">        <span class="keyword">if</span> (lTuple.sum &gt; cTuple.sum &amp;&amp; lTuple.sum &gt; rTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> lTuple;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rTuple.sum &gt; cTuple.sum &amp;&amp; rTuple.sum &gt; lTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> rTuple;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> cTuple;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findCrossMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> lSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &gt;= low; i--) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; lSum) &#123;</div><div class="line">            lSum = temp;</div><div class="line">            l = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> rSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> r = -<span class="number">1</span>;</div><div class="line">    temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= high; i++) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; rSum) &#123;</div><div class="line">            rSum = temp;</div><div class="line">            r= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum = lSum + rSum - A[mid];</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="线性时间求解"><a href="#线性时间求解" class="headerlink" title="线性时间求解"></a>线性时间求解</h2><p>若已知A[1…j]的最大子数组，A[1…j+1]的最大子数组要么是A[1…j]的最大子数组，要么是某个子数组A<a href="1&lt;=i&lt;=j+1">i…j+1</a>.在已知A[1…j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组</p>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> sum = A[low];</div><div class="line">    <span class="keyword">int</span> eSum = A[low];</div><div class="line">    <span class="keyword">int</span> l=low;</div><div class="line">    <span class="keyword">int</span> r=low;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = low+<span class="number">1</span>; i &lt;= high; i++) &#123;</div><div class="line">        eSum += A[i];</div><div class="line">        <span class="keyword">if</span> (eSum &gt; sum) &#123;<span class="comment">//判断A[1...j]是否为最大子数组</span></div><div class="line">            r=i;</div><div class="line">            sum=eSum;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> temp = eSum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt; i; j++) &#123; <span class="comment">//判断A[i...j+1]是否为最大子数组</span></div><div class="line">            temp -= A[j];</div><div class="line">            <span class="keyword">if</span> (temp &gt; sum) &#123;</div><div class="line">                l=j+<span class="number">1</span>;</div><div class="line">                r=i;</div><div class="line">                sum=temp;</div><div class="line">                eSum = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum=sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="伪代码2"><a href="#伪代码2" class="headerlink" title="伪代码2"></a>伪代码2</h2><p>如果一个数组A[k..j]求和得到负值，那么数组A[k..j+1]的最大子数组肯定不会是A[k..j+1]，因为A[k..j]+A[j+1]<a[j+1] <figure="" class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine2</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> tempSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=Integer.MIN_VALUE;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        tempSum+=A[i];</div><div class="line">        <span class="keyword">if</span>(tempSum &gt; sum) &#123;</div><div class="line">            sum=tempSum;</div><div class="line">            tuple.left = k;</div><div class="line">            tuple.right=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(tempSum &lt; <span class="number">0</span>) &#123;</div><div class="line">            tempSum=<span class="number">0</span>;</div><div class="line">            k=i+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.sum = sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></a[j+1]></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/单词词性/" data-id="cj2n0zriq00152cle53gfqymf" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/分治策略/" data-id="cj2n14v7i00140sleqy58np6e" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/18/单词词性/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/18/分治策略/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单词词性/">单词词性</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分治策略/">分治策略</a></li></ul>
 
     </footer>
   </div>
@@ -266,7 +229,7 @@ The car is yours
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj2n0zrix001b2clesetayl7k" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj2n14v7n001c0sle0hgwfkng" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子成分/#disqus_thread" class="article-comment-link">留言</a>
@@ -342,7 +305,7 @@ there be
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj2n0zrit00192clew7uf24b4" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj2n14v7p001f0slesu36ib9p" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子结构/#disqus_thread" class="article-comment-link">留言</a>
@@ -395,7 +358,7 @@ wait-timeout
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj2n0zri9000j2cle3uoboli5" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj2n14v6v000l0sleog5fr3ah" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -485,7 +448,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2n0zri6000f2clewowq8bns" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2n14v6o000d0slejr3lj70h" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -562,7 +525,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2n0zrhw00082clej5cea9ip" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2n14v6s000i0slel2bww53x" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -611,7 +574,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2n0zrip00122clevf6d92wx" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2n14v7k00170slekejnqofa" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -671,7 +634,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2n0zrhq00042clegrzr8v1t" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2n14v6f00080slez8gftb8b" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -726,7 +689,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2n0zri000092clebbvwu1vj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2n14v6900040sleb2zqc5j8" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -768,23 +731,23 @@ natty_main_i18n_Translation-en
       <ul>
         
           <li>
-            <a href="/2017/05/13/归并排序/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/13/分治策略/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/13/插入算法/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
           </li>
         
           <li>
             <a href="/2017/05/05/Git/">Git</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/04/快捷键/">快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/26/Maven/">Maven</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/26/Zookeeper/">Zookeeper</a>
           </li>
         
       </ul>
