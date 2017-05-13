@@ -17,7 +17,7 @@ URL后面的字符串，分别对应相应的目录结构。进入dists目录，
 开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
 查看端口占用lsof">
-<meta property="og:updated_time" content="2017-04-18T09:42:03.147Z">
+<meta property="og:updated_time" content="2017-05-13T08:40:38.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 知识点">
 <meta name="twitter:description" content="源列表Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件sources.list文件内容：
@@ -146,11 +146,15 @@ pmap -d processId        查看进程相关信息占用的内存情况
 free -m                 查看内存
 cat /proc/meminfo        查看内存额定值
 ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre>
+</code></pre><h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
+E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
+natty_main_i18n_Translation-en
+</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2a6gae2000ifcle26mcrzjb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2n0zrhw00082clej5cea9ip" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -205,7 +209,7 @@ ll -h /proc/kcore        查看内存镜像文件的大小
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源列表"><span class="toc-number">1.</span> <span class="toc-text">源列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口占用"><span class="toc-number">2.</span> <span class="toc-text">查看端口占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理CPU、逻辑CPU和CPU核数"><span class="toc-number">3.</span> <span class="toc-text">物理CPU、逻辑CPU和CPU核数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#物理CPU"><span class="toc-number">3.0.1.</span> <span class="toc-text">物理CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑CPU"><span class="toc-number">3.0.2.</span> <span class="toc-text">逻辑CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看物理CPU的个数"><span class="toc-number">3.0.3.</span> <span class="toc-text">查看物理CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看逻辑CPU的个数"><span class="toc-number">3.0.4.</span> <span class="toc-text">查看逻辑CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看CPU是几核"><span class="toc-number">3.0.5.</span> <span class="toc-text">查看CPU是几核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看内存、CPU使用情况"><span class="toc-number">4.</span> <span class="toc-text">查看内存、CPU使用情况</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源列表"><span class="toc-number">1.</span> <span class="toc-text">源列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口占用"><span class="toc-number">2.</span> <span class="toc-text">查看端口占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理CPU、逻辑CPU和CPU核数"><span class="toc-number">3.</span> <span class="toc-text">物理CPU、逻辑CPU和CPU核数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#物理CPU"><span class="toc-number">3.0.1.</span> <span class="toc-text">物理CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑CPU"><span class="toc-number">3.0.2.</span> <span class="toc-text">逻辑CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看物理CPU的个数"><span class="toc-number">3.0.3.</span> <span class="toc-text">查看物理CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看逻辑CPU的个数"><span class="toc-number">3.0.4.</span> <span class="toc-text">查看逻辑CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看CPU是几核"><span class="toc-number">3.0.5.</span> <span class="toc-text">查看CPU是几核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看内存、CPU使用情况"><span class="toc-number">4.</span> <span class="toc-text">查看内存、CPU使用情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无法解析或打开软件包的列表或是状态文件解决方案"><span class="toc-number">5.</span> <span class="toc-text">无法解析或打开软件包的列表或是状态文件解决方案</span></a></li></ol>
           </div>
       </div>
     </div>

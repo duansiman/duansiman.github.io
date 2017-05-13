@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/1.png">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/2.png">
 <meta property="og:image" content="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/3.png">
-<meta property="og:updated_time" content="2017-04-12T02:18:00.959Z">
+<meta property="og:updated_time" content="2017-05-05T09:26:00.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常遇到问题场景">
 <meta name="twitter:description" content="删除仓库中目录或文件　git rm -r 目录 或者 git rm 文件　git commit -m “” 提交　误删可以恢复　git checkout – 文件
@@ -124,11 +124,13 @@ ga('send', 'pageview');
 <h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/3.png" alt=""><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
 <h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
 <h2 id="让git-push命令不需要密码"><a href="#让git-push命令不需要密码" class="headerlink" title="让git push命令不需要密码"></a>让git push命令不需要密码</h2><p>　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。</p>
+<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>git config –global core.quotepath false</p>
+<h2 id="还原文件内容"><a href="#还原文件内容" class="headerlink" title="还原文件内容"></a>还原文件内容</h2><p>使用git checkout file 还原本地修改。如果文件没有add到缓存区，使用IDE的Local History记录，来恢复原来被还原文件的修改内容。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2a6gacd0004fcleecwv90j7" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2n0zri000092clebbvwu1vj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -183,7 +185,7 @@ ga('send', 'pageview');
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除仓库中目录或文件"><span class="toc-number">1.</span> <span class="toc-text">删除仓库中目录或文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#忽略特殊文件"><span class="toc-number">2.</span> <span class="toc-text">忽略特殊文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销文件修改"><span class="toc-number">3.</span> <span class="toc-text">撤销文件修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除仓库中文件，本地文件保留"><span class="toc-number">4.</span> <span class="toc-text">删除仓库中文件，本地文件保留</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让git-push命令不需要密码"><span class="toc-number">5.</span> <span class="toc-text">让git push命令不需要密码</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除仓库中目录或文件"><span class="toc-number">1.</span> <span class="toc-text">删除仓库中目录或文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#忽略特殊文件"><span class="toc-number">2.</span> <span class="toc-text">忽略特殊文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销文件修改"><span class="toc-number">3.</span> <span class="toc-text">撤销文件修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除仓库中文件，本地文件保留"><span class="toc-number">4.</span> <span class="toc-text">删除仓库中文件，本地文件保留</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让git-push命令不需要密码"><span class="toc-number">5.</span> <span class="toc-text">让git push命令不需要密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文显示问题"><span class="toc-number">6.</span> <span class="toc-text">中文显示问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#还原文件内容"><span class="toc-number">7.</span> <span class="toc-text">还原文件内容</span></a></li></ol>
           </div>
       </div>
     </div>

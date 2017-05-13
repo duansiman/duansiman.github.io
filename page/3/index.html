@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java,Linux,Git,Spring,Mybatis,MySQL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="安逸的小猫">
+<meta property="og:url" content="https://duansiman.github.io/page/3/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="Java,Linux,Git,Spring,Mybatis,MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安逸的小猫">
+<meta name="twitter:description" content="Java,Linux,Git,Spring,Mybatis,MySQL">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Redis-安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/07/Redis-安装/" class="article-date">
+  <time datetime="2017-04-07T06:38:41.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/Redis-安装/">Redis 错误集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
+</code></pre><p>需要安装gcc</p>
+<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
+</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
+<pre><code>You need tcl 8.5 or newer in order to run the Redis test
+</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
+<h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
+</code></pre><p>jedis包版本问题</p>
+<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
+Could not get a resource from the pool
+java.net.SocketTimeoutException: connect timed out
+</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
+<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
+</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj2n0zric000l2cle0ija1uzf" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SQL-常用语句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/SQL-常用语句/" class="article-date">
+  <time datetime="2017-04-06T07:14:32.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/SQL-常用语句/">SQL  常用语句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
+<h4 id="连接数及状态信息"><a href="#连接数及状态信息" class="headerlink" title="连接数及状态信息"></a>连接数及状态信息</h4><pre><code>show status like &apos;%connect%&apos;
+    show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
+show processlist;
+    显示当前正在执行的mysql连接
+mysqladmin -u -p -h status
+    显示当前mysql状态
+mysqladmin -u -p -h extended-status
+    显示mysql的其他状态
+</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code>show variables like &apos;max_allowed_packet&apos;;
+    查看MySQL变量
+</code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
+show create function fun_name；        查看函数源码
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj2n0zrif000o2clenyfuklkz" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL语句/">SQL语句</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo-搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/31/Hexo-搭建个人博客/" class="article-date">
+  <time datetime="2017-03-31T06:33:13.000Z" itemprop="datePublished">2017-03-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/31/Hexo-搭建个人博客/">Hexo 搭建个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>使用<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>搭建个人博客，需要安装<a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>和<a href="http://git-scm.com/" target="_blank" rel="external">Git</a>，最后安装Hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>生产博客网站需要的资源，随便指定一个目录名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line"><span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
+<p>执行命令，出现错误Error: Cannot find module ‘/root/hexo_blog/node_modules/dtrace-provider/scripts/install.js’，可能是Node.js版本兼容，可以低版本。我的安装环境：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div><div class="line">hexo: 3.2.2</div><div class="line">hexo-cli: 1.0.2</div><div class="line">os: Windows_NT 6.1.7601 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 6.9.5</div><div class="line">v8: 5.1.281.89</div><div class="line">uv: 1.9.1</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 57.1</div><div class="line">modules: 48</div><div class="line">openssl: 1.0.2k</div></pre></td></tr></table></figure></p>
+<h2 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h2><p>把博客网站资源放到Github上，这样可以通过互联网访问。在GitHub上创建一个仓库，名字为youname.github.io，必须是这格式。然后在hexo资源目录下的_config.yml文件最后加上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">    <span class="built_in">type</span>: git</div><div class="line">    repository: https://github.com/duansiman/duansiman.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure></p>
+<p>最后生产资源文件，部署到GitHub上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>访问地址duansiman.github.io</p>
+<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>执行如下命令,会生成md文件。然后生成资源文件，部署到Github上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"article title"</span></div></pre></td></tr></table></figure></p>
+<p>推荐编辑md文件工具<a href="http://markdownpad.com/" target="_blank" rel="external">MarkdownPad</a>，它的<a href="http://www.jianshu.com/p/9e5cd946696d" target="_blank" rel="external">注册码</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj2n0zrhk00022cle8xu338bd" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title recent-posts">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/13/归并排序/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/13/分治策略/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/13/插入算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/Git/">Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

@@ -85,6 +85,332 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/nginx/" class="article-date">
+  <time datetime="2017-04-18T03:34:07.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/nginx/">nginx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="启动、停止和重新加载服务"><a href="#启动、停止和重新加载服务" class="headerlink" title="启动、停止和重新加载服务"></a>启动、停止和重新加载服务</h2><pre><code>nginx
+nginx -s stop
+nginx -s reload
+nginx -s quit        退出
+nginx -t             检查配置文件
+</code></pre><h2 id="配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）"><a href="#配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）" class="headerlink" title="配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）"></a>配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）</h2><pre><code>worker_processes
+    进程的个数，建议设置为CPU的个数
+worker_connections
+    单进程的最大连接数
+server
+    listen                监听端口
+    server_name            服务的域名，可以配置多个用空格隔开
+</code></pre><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>在http中配置</p>
+<pre><code>#设定负载均衡的服务器列表  
+upstream mysvr {  
+    #weigth参数表示权值，权值越高被分配到的几率越大    
+    #同一机器在多网情况下，路由切换，ip可能不同
+    server 127.0.0.1:8080 weight=1;  
+    server 127.0.0.1:8090 weight=1;  
+    server 127.0.0.1:8070 weight=1;  
+}
+</code></pre><h2 id="代理、反向代理"><a href="#代理、反向代理" class="headerlink" title="代理、反向代理"></a>代理、反向代理</h2><h2 id="nginx-403-Forbidden"><a href="#nginx-403-Forbidden" class="headerlink" title="nginx 403 Forbidden"></a>nginx 403 Forbidden</h2><p>nginx的启动用户默认是nginx用户，需要修改web目录的权限</p>
+<h2 id="静态文件缓存"><a href="#静态文件缓存" class="headerlink" title="静态文件缓存"></a>静态文件缓存</h2><p>server中配置缓存，需要指定root值，否则默认是Nginx的目录，会导致找不到文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 30d;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(js|css)?$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 1h;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/nginx/" data-id="cj2n0zrj9001p2cley4qrquq8" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/nginx/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-单词词性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/单词词性/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/单词词性/">单词词性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
+<pre><code>I,You,He,She,It,We,You,They
+</code></pre><p>代词宾格：动后介后</p>
+<pre><code>me,you,him,her,it,us,you,them        
+Tom loves him.
+</code></pre><p>代词形容格:跟着名词    </p>
+<pre><code>my,your,his,her,its,our,your,their    
+her friend    她的朋友
+</code></pre><p>代词名词格        </p>
+<pre><code>mine,yours,his,hers,ours,yours,theirs    
+The car is yours
+</code></pre><p>名词格=形容格+名词    </p>
+<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
+</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
+<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
+</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
+<pre><code>例如：very happy
+</code></pre><p>修饰动词，放在反面</p>
+<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
+</code></pre><p>修饰名词，放在后面</p>
+<pre><code>例如：the kids there 哪里的小孩
+</code></pre><h2 id="冠词"><a href="#冠词" class="headerlink" title="冠词"></a>冠词</h2><h4 id="the"><a href="#the" class="headerlink" title="the"></a>the</h4><p>可以和名词的单数、复数和不可数搭配，表达这个，这些</p>
+<h4 id="a-an"><a href="#a-an" class="headerlink" title="a,an"></a>a,an</h4><p>元音字母a,e,i,o,u<br>挨着最近的词开头发元音 + an<br>an old man<br>an hour</p>
+<h2 id="指示代词"><a href="#指示代词" class="headerlink" title="指示代词"></a>指示代词</h2><p>This is water 这些是水<br>That is water 那些是水<br>these are books<br>those are books</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/单词词性/" data-id="cj2n0zriq00152cle53gfqymf" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/单词词性/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单词词性/">单词词性</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-句子成分" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/句子成分/" class="article-date">
+  <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/句子成分/">句子成分</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
+<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
+<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
+<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
+<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
+<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj2n0zrix001b2clesetayl7k" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/句子成分/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子成分/">句子成分</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-句子结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/句子结构/" class="article-date">
+  <time datetime="2017-04-18T02:12:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/句子结构/">句子结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="主系表"><a href="#主系表" class="headerlink" title="主系表"></a>主系表</h2><pre><code>主语+be+表语
+</code></pre><p>肯定句:He is in the car.<br>否定句:He is not in the car.<br>一般疑问句:Is he in the car?    Yes,he is. No,he isn’t.</p>
+<p>谁在车里？<br>特殊疑问句——提问主语:Who is in the car?</p>
+<pre><code>疑问词+is,am,are+主语？
+</code></pre><p>他在哪儿？<br>特殊疑问句——提问非主语:Where is he?</p>
+<h4 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h4><p>I am         -&gt; I’m<br>He is         -&gt; He’s<br>It is         -&gt; It’s<br>They are    -&gt; They’re<br>I am not    -&gt; I’m not<br>is not        -&gt; isn’t<br>are not        -&gt; aren’t</p>
+<h2 id="主谓（宾）"><a href="#主谓（宾）" class="headerlink" title="主谓（宾）"></a>主谓（宾）</h2><pre><code>主语+非be+(宾语)+状语
+</code></pre><h4 id="非三单-动原"><a href="#非三单-动原" class="headerlink" title="非三单+动原+"></a>非三单+动原+</h4><p>否定句：非三单+do not+动原+<br>一般疑问句:Do+非三单+动原+<br>特殊疑问句——提问主语：语序不变<br>特殊疑问句——提问非主语：特助主谓，特殊疑问词+主动词do+非三单+动原+</p>
+<h4 id="三单-动s"><a href="#三单-动s" class="headerlink" title="三单+动s+"></a>三单+动s+</h4><p>否定句:三单+does not+动原+<br>一般疑问句:Does+三单+动原+<br>特殊疑问句——提问主语：语序不变<br>特殊疑问句——提问非主语：特助主谓，特殊疑问词+主动词does+三单+动原+</p>
+<h4 id="三单"><a href="#三单" class="headerlink" title="三单"></a>三单</h4><p>人称代词：第三人称 -&gt; he、she、it<br>指示代词：this、this book、that、that dog<br>名词:单数，不可数名词</p>
+<h4 id="非三单"><a href="#非三单" class="headerlink" title="非三单"></a>非三单</h4><p>人称代词:I you we they<br>指示代词:these、those<br>名词:复数</p>
+<p>肯定句:They learn English every day.</p>
+<p>他们每天不学英语。<br>否定句:They don’t learn English every day.</p>
+<p>他们每天学英语吗？<br>一般疑问句:Do they learn English every day?</p>
+<p>谁每天学英语？<br>特殊疑问句——提问主语:Who learn English every day?</p>
+<p>他们每天学什么？<br>特殊疑问句——提问非主语:What do they learn every day?</p>
+<h2 id="There-be-结构"><a href="#There-be-结构" class="headerlink" title="There be 结构"></a>There be 结构</h2><pre><code>(There + is/are)(存在) + 名词 + (地点)
+</code></pre><p>There 不是主语，只是占主语位置。所以is/are由后面名词决定。<br>表达存在，而have表示拥有，例如：我有三辆车 I have three cars.</p>
+<h4 id="就近原则"><a href="#就近原则" class="headerlink" title="就近原则"></a>就近原则</h4><p>There is a cat and two dogs under the tree.<br>There are two dogs and a cat under the tree.</p>
+<p>肯定句:There are many students in the classroom<br>否定句:There are not many students in the classroom(some 在否定句中变成 any)<br>一般疑问句:Are there many students in the classroom?</p>
+<p>教室里有多少同学？<br>特殊疑问句:How many students are there in the classroom?<br>How much + 不可数名词+is there + 地点<br>How many + 可数名词 + are there + 地点</p>
+<h2 id="中译英"><a href="#中译英" class="headerlink" title="中译英"></a>中译英</h2><h4 id="找主谓——定结构"><a href="#找主谓——定结构" class="headerlink" title="找主谓——定结构"></a>找主谓——定结构</h4><pre><code>主谓（宾）
+主系表
+there be
+</code></pre><h4 id="中-中’-英——定语序"><a href="#中-中’-英——定语序" class="headerlink" title="中-中’-英——定语序"></a>中-中’-英——定语序</h4><pre><code>方式、地点、时间
+从小到大
+句首状语
+</code></pre><p>每天6点他在家写作业吗？<br>Dose he do his homework at home at six every day ?</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj2n0zrit00192clew7uf24b4" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/句子结构/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子结构/">句子结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MySQL-知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/MySQL-知识点/" class="article-date">
+  <time datetime="2017-04-17T10:40:55.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/MySQL-知识点/">MySQL 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件在/etc/mysql/my.cnf,一些配置内容如下：</p>
+<pre><code>max_connections        
+    最大支持连接数，设置到500～1000比较合适
+wait-timeout        
+    数据库连接闲置最大时间值，默认值为8小时 
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj2n0zri9000j2cle3uoboli5" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL知识点/">MySQL知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Linux-常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/17/Linux-常用命令/" class="article-date">
@@ -159,7 +485,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2a6gad50008fcleirihu8gf" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2n0zri6000f2clewowq8bns" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -228,11 +554,15 @@ pmap -d processId        查看进程相关信息占用的内存情况
 free -m                 查看内存
 cat /proc/meminfo        查看内存额定值
 ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre>
+</code></pre><h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
+E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
+natty_main_i18n_Translation-en
+</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2a6gae2000ifcle26mcrzjb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2n0zrhw00082clej5cea9ip" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -281,7 +611,7 @@ ll -h /proc/kcore        查看内存镜像文件的大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2a6gae7000ofclepwiucyan" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2n0zrip00122clevf6d92wx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -341,7 +671,7 @@ ll -h /proc/kcore        查看内存镜像文件的大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2a6gady000efcle2xq5h0np" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2n0zrhq00042clegrzr8v1t" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -390,11 +720,13 @@ ll -h /proc/kcore        查看内存镜像文件的大小
 <h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/3.png" alt=""><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
 <h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
 <h2 id="让git-push命令不需要密码"><a href="#让git-push命令不需要密码" class="headerlink" title="让git push命令不需要密码"></a>让git push命令不需要密码</h2><p>　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。</p>
+<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>git config –global core.quotepath false</p>
+<h2 id="还原文件内容"><a href="#还原文件内容" class="headerlink" title="还原文件内容"></a>还原文件内容</h2><p>使用git checkout file 还原本地修改。如果文件没有add到缓存区，使用IDE的Local History记录，来恢复原来被还原文件的修改内容。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2a6gacd0004fcleecwv90j7" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2n0zri000092clebbvwu1vj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -410,189 +742,10 @@ ll -h /proc/kcore        查看内存镜像文件的大小
 
 
   
-    <article id="post-Redis-安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/07/Redis-安装/" class="article-date">
-  <time datetime="2017-04-07T06:38:41.000Z" itemprop="datePublished">2017-04-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/Redis/">Redis</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/Redis-安装/">Redis 错误集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
-</code></pre><p>需要安装gcc</p>
-<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
-</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
-<pre><code>You need tcl 8.5 or newer in order to run the Redis test
-</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
-<h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
-</code></pre><p>jedis包版本问题</p>
-<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
-Could not get a resource from the pool
-java.net.SocketTimeoutException: connect timed out
-</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
-<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
-</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj2a6gaed000ufcle4dq1qpwx" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SQL-常用语句" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/06/SQL-常用语句/" class="article-date">
-  <time datetime="2017-04-06T07:14:32.000Z" itemprop="datePublished">2017-04-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/MySQL/">MySQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/SQL-常用语句/">SQL  常用语句</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
-<h4 id="连接数及状态信息"><a href="#连接数及状态信息" class="headerlink" title="连接数及状态信息"></a>连接数及状态信息</h4><pre><code>show status like &apos;%connect%&apos;
-    show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
-show processlist;
-    显示当前正在执行的mysql连接
-mysqladmin -u -p -h status
-    显示当前mysql状态
-mysqladmin -u -p -h extended-status
-    显示mysql的其他状态
-</code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
-show create function fun_name；        查看函数源码
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj2a6gaeg000yfcleufpgjaz8" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL语句/">SQL语句</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hexo-搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/31/Hexo-搭建个人博客/" class="article-date">
-  <time datetime="2017-03-31T06:33:13.000Z" itemprop="datePublished">2017-03-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Blog/">Blog</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/31/Hexo-搭建个人博客/">Hexo 搭建个人博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>使用<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>搭建个人博客，需要安装<a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>和<a href="http://git-scm.com/" target="_blank" rel="external">Git</a>，最后安装Hexo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>生产博客网站需要的资源，随便指定一个目录名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line"><span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
-<p>执行命令，出现错误Error: Cannot find module ‘/root/hexo_blog/node_modules/dtrace-provider/scripts/install.js’，可能是Node.js版本兼容，可以低版本。我的安装环境：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div><div class="line">hexo: 3.2.2</div><div class="line">hexo-cli: 1.0.2</div><div class="line">os: Windows_NT 6.1.7601 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 6.9.5</div><div class="line">v8: 5.1.281.89</div><div class="line">uv: 1.9.1</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 57.1</div><div class="line">modules: 48</div><div class="line">openssl: 1.0.2k</div></pre></td></tr></table></figure></p>
-<h2 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h2><p>把博客网站资源放到Github上，这样可以通过互联网访问。在GitHub上创建一个仓库，名字为youname.github.io，必须是这格式。然后在hexo资源目录下的_config.yml文件最后加上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">    <span class="built_in">type</span>: git</div><div class="line">    repository: https://github.com/duansiman/duansiman.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure></p>
-<p>最后生产资源文件，部署到GitHub上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
-<p>访问地址duansiman.github.io</p>
-<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>执行如下命令,会生成md文件。然后生成资源文件，部署到Github上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"article title"</span></div></pre></td></tr></table></figure></p>
-<p>推荐编辑md文件工具<a href="http://markdownpad.com/" target="_blank" rel="external">MarkdownPad</a>，它的<a href="http://www.jianshu.com/p/9e5cd946696d" target="_blank" rel="external">注册码</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj2a6gacx0007fcleh3h7e1xl" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页&raquo;</a>
   </nav>
 </section>
            
@@ -615,23 +768,23 @@ show create function fun_name；        查看函数源码
       <ul>
         
           <li>
-            <a href="/2017/05/04/快捷键/">快捷键</a>
+            <a href="/2017/05/13/归并排序/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/04/26/Maven/">Maven</a>
+            <a href="/2017/05/13/分治策略/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/04/26/Zookeeper/">Zookeeper</a>
+            <a href="/2017/05/13/插入算法/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/04/26/Java-RMI/">Java RMI</a>
+            <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
           </li>
         
           <li>
-            <a href="/2017/04/18/tomcat/">tomcat</a>
+            <a href="/2017/05/05/Git/">Git</a>
           </li>
         
       </ul>
