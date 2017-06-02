@@ -85,14 +85,14 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-单词词性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/18/归并排序/" class="article-date">
+    <a href="/2017/04/18/单词词性/" class="article-date">
   <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+    <a class="article-category-link" href="/categories/English/">English</a>
   </div>
 
   </div>
@@ -103,7 +103,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/归并排序/">归并排序</a>
+      <a class="article-title" href="/2017/04/18/单词词性/">单词词性</a>
     </h1>
   
 
@@ -113,21 +113,41 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
-<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
+        <h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
+<pre><code>I,You,He,She,It,We,You,They
+</code></pre><p>代词宾格：动后介后</p>
+<pre><code>me,you,him,her,it,us,you,them        
+Tom loves him.
+</code></pre><p>代词形容格:跟着名词    </p>
+<pre><code>my,your,his,her,its,our,your,their    
+her friend    她的朋友
+</code></pre><p>代词名词格        </p>
+<pre><code>mine,yours,his,hers,ours,yours,theirs    
+The car is yours
+</code></pre><p>名词格=形容格+名词    </p>
+<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
+</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
+<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
+</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
+<pre><code>例如：very happy
+</code></pre><p>修饰动词，放在反面</p>
+<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
+</code></pre><p>修饰名词，放在后面</p>
+<pre><code>例如：the kids there 哪里的小孩
+</code></pre><h2 id="冠词"><a href="#冠词" class="headerlink" title="冠词"></a>冠词</h2><h4 id="the"><a href="#the" class="headerlink" title="the"></a>the</h4><p>可以和名词的单数、复数和不可数搭配，表达这个，这些</p>
+<h4 id="a-an"><a href="#a-an" class="headerlink" title="a,an"></a>a,an</h4><p>元音字母a,e,i,o,u<br>挨着最近的词开头发元音 + an<br>an old man<br>an hour</p>
+<h2 id="指示代词"><a href="#指示代词" class="headerlink" title="指示代词"></a>指示代词</h2><p>This is water 这些是水<br>That is water 那些是水<br>these are books<br>those are books</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/归并排序/" data-id="cj2n14v7t001i0slek8nfz9en" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/单词词性/" data-id="cj3fi80rn001iz0leldx64nx5" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/18/归并排序/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/18/单词词性/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/归并排序/">归并排序</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单词词性/">单词词性</a></li></ul>
 
     </footer>
   </div>
@@ -175,13 +195,119 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/分治策略/" data-id="cj2n14v7i00140sleqy58np6e" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/分治策略/" data-id="cj3fi80r90017z0lekg0wv5qb" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/分治策略/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分治策略/">分治策略</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-插入算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/插入算法/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/插入算法/">插入算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
+<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
+最坏情况数组A[n]是反序的,那么元素比较次数是n-1
+</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/插入算法/" data-id="cj3fi80th0036z0leiw8nklqd" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/插入算法/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入算法/">插入算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/归并排序/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/归并排序/">归并排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
+<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/归并排序/" data-id="cj3fi80s0001sz0le83ik9bm1" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/归并排序/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/归并排序/">归并排序</a></li></ul>
 
     </footer>
   </div>
@@ -229,7 +355,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj2n14v7n001c0sle0hgwfkng" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj3fi80rq001lz0le8sm78cnz" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子成分/#disqus_thread" class="article-comment-link">留言</a>
@@ -305,7 +431,7 @@ there be
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj2n14v7p001f0slesu36ib9p" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj3fi80ru001pz0lec9b1wuw3" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子结构/#disqus_thread" class="article-comment-link">留言</a>
@@ -358,7 +484,7 @@ wait-timeout
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj2n14v6v000l0sleog5fr3ah" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj3fi80ql000oz0leseb4b1ad" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -402,7 +528,8 @@ wait-timeout
       
         <!-- Table of Contents -->
         
-        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>删除</p>
+<pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
 nx         连续向后删除 n 个字符
 dd         删除游标所在这行
 ndd        删除游标所在向下n行
@@ -410,25 +537,22 @@ d1G        删除光标所在到第一行的所有数据
 dG         删除光标所在到最后一行的所有数据
 d$         删除游标所在处，到该行的最后一个字符
 d0         删除游标所在处，到该行的最前面一个字符
-</code></pre><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><pre><code>y1G        复制光标所在行到第一行的所有数据
+</code></pre><p>复制</p>
+<pre><code>y1G        复制光标所在行到第一行的所有数据
 yG        复制光标所在行到最后一行的所有数据
 y0        复制光标所在的那个字符到该行行首的所有数据
 y$        复制光标所在的那个字符到该行行尾的所有数据
-</code></pre><h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
-</code></pre><h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><pre><code>u        复原上一个动作
-</code></pre><h4 id="重复执行"><a href="#重复执行" class="headerlink" title="重复执行"></a>重复执行</h4><pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
-</code></pre><h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><pre><code>r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止
-</code></pre><h4 id="执行其他命令"><a href="#执行其他命令" class="headerlink" title="执行其他命令"></a>执行其他命令</h4><pre><code>:! command        离开 vi 到指令列模式下执行 command 的显示结果
-</code></pre><h4 id="行数"><a href="#行数" class="headerlink" title="行数"></a>行数</h4><pre><code>:set nu, :set nonu         显示行数和取消行数
-</code></pre><h4 id="翻页，移动光标"><a href="#翻页，移动光标" class="headerlink" title="翻页，移动光标"></a>翻页，移动光标</h4><pre><code>ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页
-h, j, k, l                      左，下，上，右
-+, -                            移动下一行，上一行的非空格符号
-n&lt;space&gt;， n&lt;enter&gt;             向右移动n 个字符, 向下移动n行
-0, $                            移动行首,行尾
-H, M, L                         移动到屏幕的第一行，最后一行，中间行。
-G, nG, gg                       移动文档最后一行,第n行，第一行
-</code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre><code>n， N                    向后，前继续搜索
-</code></pre><h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive   递归复制
+</code></pre><p>粘贴</p>
+<pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
+</code></pre><p>撤销</p>
+<pre><code>u        复原上一个动作
+</code></pre><p>重复执行</p>
+<pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
+</code></pre><p>替换<br>    r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止</p>
+<p>执行其他命令<br>    :! command        离开 vi 到指令列模式下执行 command 的显示结果<br>行数<br>    :set nu, :set nonu         显示行数和取消行数</p>
+<p>翻页，移动光标<br>    ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页<br>    h, j, k, l                      左，下，上，右<br>    +, -                            移动下一行，上一行的非空格符号<br>    n<space>， n<enter>             向右移动n 个字符, 向下移动n行<br>    0, $                            移动行首,行尾<br>    H, M, L                         移动到屏幕的第一行，最后一行，中间行。<br>    G, nG, gg                       移动文档最后一行,第n行，第一行</enter></space></p>
+<p>搜索<br>    n， N                    向后，前继续搜索</p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive   递归复制
 -p                    连同档案的属性一起复制过去，而非使用预设属性
 </code></pre><h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><pre><code>PID：进程的ID
 USER：进程所有者
@@ -442,13 +566,19 @@ S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态�
 %MEM：进程使用的物理内存和总内存的百分比
 TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。
 COMMAND：进程启动命令名称
-</code></pre><h4 id="第一行"><a href="#第一行" class="headerlink" title="第一行"></a>第一行</h4><pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
-</code></pre><h4 id="第二行"><a href="#第二行" class="headerlink" title="第二行"></a>第二行</h4><pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre><p>第一行</p>
+<pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
+</code></pre><p>第二行</p>
+<pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre><p>打解包和压缩</p>
+<pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
+tar -zcvf xxx.tar.gz /xxx        打包gzip压缩
+tar -jcvf xxx.tar.bz2 /xxx        打包bzip2压缩
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj2n14v6o000d0slejr3lj70h" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-常用命令/" data-id="cj3fi80pf000jz0lef0zuime5" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-常用命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -525,7 +655,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj2n14v6s000i0slel2bww53x" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj3fi80qj000nz0letlcmwcd7" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -574,128 +704,13 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj2n14v7k00170slekejnqofa" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj3fi80rd001az0le5whwr6eq" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hexo的配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/12/Hexo的配置/" class="article-date">
-  <time datetime="2017-04-12T02:20:34.000Z" itemprop="datePublished">2017-04-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Blog/">Blog</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/Hexo的配置/">Hexo的配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
-<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
-<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用markdown的#标题时，#和标题要隔个空格，否则解析不了。</p>
-<h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
-<h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
-<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
-<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
-<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
-<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
-<h2 id="提交搜索引擎（百度-谷歌）"><a href="#提交搜索引擎（百度-谷歌）" class="headerlink" title="提交搜索引擎（百度+谷歌）"></a>提交搜索引擎（百度+谷歌）</h2><p>　<a href="http://www.jianshu.com/p/619dab2d3c08" target="_blank" rel="external">参考博客</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj2n14v6f00080slez8gftb8b" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Git常遇到使用场景" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/11/Git常遇到使用场景/" class="article-date">
-  <time datetime="2017-04-11T10:52:59.000Z" itemprop="datePublished">2017-04-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/11/Git常遇到使用场景/">Git常遇到问题场景</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="删除仓库中目录或文件"><a href="#删除仓库中目录或文件" class="headerlink" title="删除仓库中目录或文件"></a>删除仓库中目录或文件</h2><p>　git rm -r 目录 或者 git rm 文件<br>　git commit -m “” 提交<br>　误删可以恢复<br>　git checkout – 文件</p>
-<h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>　在git工作区间根目录创建.gitignore文件，然后把要忽略的文件添加进去。<br>　Window环境创建该文件会提示输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore 然后把该文件提交到git<br>　A、被忽略的文件，要强制添加到git<br>　　　git add -f 文件<br>　B、查看忽略文件被个规则忽略了<br>　　　git check-ignore -v 文件<br>　常见的忽略文件：<a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a></p>
-<h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/3.png" alt=""><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
-<h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
-<h2 id="让git-push命令不需要密码"><a href="#让git-push命令不需要密码" class="headerlink" title="让git push命令不需要密码"></a>让git push命令不需要密码</h2><p>　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。</p>
-<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>git config –global core.quotepath false</p>
-<h2 id="还原文件内容"><a href="#还原文件内容" class="headerlink" title="还原文件内容"></a>还原文件内容</h2><p>使用git checkout file 还原本地修改。如果文件没有add到缓存区，使用IDE的Local History记录，来恢复原来被还原文件的修改内容。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj2n14v6900040sleb2zqc5j8" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git问题场景/">Git问题场景</a></li></ul>
 
     </footer>
   </div>
@@ -731,6 +746,14 @@ natty_main_i18n_Translation-en
       <ul>
         
           <li>
+            <a href="/2017/06/02/README/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/18/单元测试/">单元测试</a>
+          </li>
+        
+          <li>
             <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
           </li>
         
@@ -740,14 +763,6 @@ natty_main_i18n_Translation-en
         
           <li>
             <a href="/2017/05/04/快捷键/">快捷键</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/26/Maven/">Maven</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/26/Zookeeper/">Zookeeper</a>
           </li>
         
       </ul>

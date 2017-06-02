@@ -85,6 +85,121 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Hexo的配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/12/Hexo的配置/" class="article-date">
+  <time datetime="2017-04-12T02:20:34.000Z" itemprop="datePublished">2017-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/12/Hexo的配置/">Hexo的配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
+<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
+<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用markdown的#标题时，#和标题要隔个空格，否则解析不了。</p>
+<h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
+<h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
+<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
+<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
+<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
+<h2 id="提交搜索引擎（百度-谷歌）"><a href="#提交搜索引擎（百度-谷歌）" class="headerlink" title="提交搜索引擎（百度+谷歌）"></a>提交搜索引擎（百度+谷歌）</h2><p>　<a href="http://www.jianshu.com/p/619dab2d3c08" target="_blank" rel="external">参考博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj3fi80qs000uz0leto66fwcp" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Git常遇到使用场景" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/Git常遇到使用场景/" class="article-date">
+  <time datetime="2017-04-11T10:52:59.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/Git常遇到使用场景/">Git常遇到问题场景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="删除仓库中目录或文件"><a href="#删除仓库中目录或文件" class="headerlink" title="删除仓库中目录或文件"></a>删除仓库中目录或文件</h2><p>　git rm -r 目录 或者 git rm 文件<br>　git commit -m “” 提交<br>　误删可以恢复<br>　git checkout – 文件</p>
+<h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>　在git工作区间根目录创建.gitignore文件，然后把要忽略的文件添加进去。<br>　Window环境创建该文件会提示输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore 然后把该文件提交到git<br>　A、被忽略的文件，要强制添加到git<br>　　　git add -f 文件<br>　B、查看忽略文件被个规则忽略了<br>　　　git check-ignore -v 文件<br>　常见的忽略文件：<a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a></p>
+<h2 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h2><p>　A、已经git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/1.png" alt=""><br>　<img src="/2017/04/11/Git常遇到使用场景/2.png" alt=""><br>　git reset HEAD file 可把暂存区的修改销掉，重新放回工作区<br>　git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br><br><br>　B、还没git add到暂存区，如图：<br>　<img src="/2017/04/11/Git常遇到使用场景/3.png" alt=""><br>　git checkout – 文件 丢弃工作区的修改<br>　命令“git checkout – 文件”是：把readme.txt文件在工作区的修改全部撤销，这里有两种情况：<br>　一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br>　一种是readme.txt已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。</p>
+<h2 id="删除仓库中文件，本地文件保留"><a href="#删除仓库中文件，本地文件保留" class="headerlink" title="删除仓库中文件，本地文件保留"></a>删除仓库中文件，本地文件保留</h2><p>　git rm –cached filename<br>　git rm -r –cached path</p>
+<h2 id="让git-push命令不需要密码"><a href="#让git-push命令不需要密码" class="headerlink" title="让git push命令不需要密码"></a>让git push命令不需要密码</h2><p>　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。</p>
+<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>git config –global core.quotepath false</p>
+<h2 id="还原文件内容"><a href="#还原文件内容" class="headerlink" title="还原文件内容"></a>还原文件内容</h2><p>使用git checkout file 还原本地修改。如果文件没有add到缓存区，使用IDE的Local History记录，来恢复原来被还原文件的修改内容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj3fi80kn0002z0leelikh9im" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git问题场景/">Git问题场景</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Redis-安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/07/Redis-安装/" class="article-date">
@@ -131,7 +246,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj2n14v70000q0sle2ahcl95x" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj3fi80r00012z0leetct4908" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -193,7 +308,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj2n14v73000u0sle9wb569k6" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj3fi80qy000zz0lenojwjja5" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
@@ -250,7 +365,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj2n14v6d00070sle8rz1c9rg" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj3fi80qu000wz0le14lcbjua" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -292,6 +407,14 @@ show create function fun_name；        查看函数源码
       <ul>
         
           <li>
+            <a href="/2017/06/02/README/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/18/单元测试/">单元测试</a>
+          </li>
+        
+          <li>
             <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
           </li>
         
@@ -301,14 +424,6 @@ show create function fun_name；        查看函数源码
         
           <li>
             <a href="/2017/05/04/快捷键/">快捷键</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/26/Maven/">Maven</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/26/Zookeeper/">Zookeeper</a>
           </li>
         
       </ul>

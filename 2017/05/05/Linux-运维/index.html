@@ -29,7 +29,7 @@ vnstat -u">
 apt-get install vnstat
 创建监听数据库
 vnstat -u">
-<meta property="og:updated_time" content="2017-05-05T10:05:09.120Z">
+<meta property="og:updated_time" content="2017-06-02T07:00:36.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-运维">
 <meta name="twitter:description" content="修改SSH端口和禁止Root远程登录修改端口
@@ -157,11 +157,24 @@ ga('send', 'pageview');
 </code></pre><p>不能统计流量，需要修改.eh0权限，在/var/lib/vnstat目录中</p>
 <pre><code>chown vnstat:vnstat .eth0 -R
 chmod 0640 .eth0
+</code></pre><h2 id="rz，sz命令"><a href="#rz，sz命令" class="headerlink" title="rz，sz命令"></a>rz，sz命令</h2><p>sz：将选定的文件发送（send）到本地机器<br>rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到服务器(receive)</p>
+<p><code>注意：</code>单独用rz会有两个问题：上传中断、上传文件变化（md5不同），解决办法是上传是用rz -be，并且去掉弹出的对话框中“Upload files as ASCII”前的勾选。</p>
+<pre><code>-b binary 用binary的方式上传下载，不解释字符为ascii
+-e 强制escape 所有控制字符，比如Ctrl+x，DEL等
+</code></pre><p>安装</p>
+<pre><code>下载地址    http://www.ohse.de/uwe/software/lrzsz.html
+配置        ./configure --prefix=/usr/local/lrzsz
+编译        make
+安装        make install
+</code></pre><p>创建连接    </p>
+<pre><code>cd /usr/bin  
+sudo ln -s /usr/local/lrzsz/bin/lrz rz  
+sudo ln -s /usr/local/lrzsz/bin/lsz sz 
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj2n14v6p000f0sle32pv5efk" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj3fi80pd000iz0le51t4g2vl" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
@@ -172,6 +185,15 @@ chmod 0640 .eth0
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/05/18/单元测试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          单元测试
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/05/Git/" id="article-nav-older" class="article-nav-link-wrap">
@@ -205,7 +227,7 @@ chmod 0640 .eth0
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改SSH端口和禁止Root远程登录"><span class="toc-number">1.</span> <span class="toc-text">修改SSH端口和禁止Root远程登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流量监控"><span class="toc-number">2.</span> <span class="toc-text">流量监控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vnstat"><span class="toc-number">2.0.1.</span> <span class="toc-text">vnstat</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改SSH端口和禁止Root远程登录"><span class="toc-number">1.</span> <span class="toc-text">修改SSH端口和禁止Root远程登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流量监控"><span class="toc-number">2.</span> <span class="toc-text">流量监控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vnstat"><span class="toc-number">2.0.1.</span> <span class="toc-text">vnstat</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rz，sz命令"><span class="toc-number">3.</span> <span class="toc-text">rz，sz命令</span></a></li></ol>
           </div>
       </div>
     </div>

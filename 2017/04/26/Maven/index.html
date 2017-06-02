@@ -21,7 +21,7 @@ phase        是生命周期阶段
 生命周期阶段有clean、default和site几类，下面出现的顺序就是执行顺序。
 cleanpre-clean, clean, post-clean
 defaultvalid">
-<meta property="og:updated_time" content="2017-05-03T10:26:59.612Z">
+<meta property="og:updated_time" content="2017-06-01T07:49:40.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven">
 <meta name="twitter:description" content="语法mvn [options] [&amp;lt;goal(s)&amp;gt;] [&amp;lt;phase(s)&amp;gt;]
@@ -136,13 +136,33 @@ phase        是生命周期阶段
 <h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><p>pre-site, site, post-site, site-deploy</p>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><pre><code>mvn package -Dmaven.skip.test=true 
     打war包
-mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-    创建项目
+java -cp XXX.jar Main
+    执行main方法
+</code></pre><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>查看项目依赖</p>
+<pre><code>mvn dependency:resolve
+mvn dependency:tree            以树形式打印
+mvn install -X                打开调试标记，查看完整依赖踪迹，包括因为冲突被拒绝加入的构件
+</code></pre><h3 id="Exec-插件"><a href="#Exec-插件" class="headerlink" title="Exec 插件"></a>Exec 插件</h3><p>运行Java类或其他脚本</p>
+<pre><code>mvn exec:java -Dexec.mainClass=com.epdc.maven.App
+</code></pre><h3 id="Surefire插件"><a href="#Surefire插件" class="headerlink" title="Surefire插件"></a>Surefire插件</h3><p>处理单元测试的，如下配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">configuration</span>&gt;</span><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>运行到test阶段为止所有生命周期阶段</p>
+<pre><code>mvn test    有测试单元失败，会停止当前的构建
+</code></pre><h4 id="configuration"><a href="#configuration" class="headerlink" title="configuration"></a>configuration</h4><p>忽略测试失败,或者mvn test -Dmaven.test.failure.ignore=ture</p>
+<pre><code>&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;
+</code></pre><p>完成跳过单元测试，或者mvn test -Dmaven.test.skip=ture</p>
+<pre><code>&lt;skip&gt;true&lt;/skip&gt;
+</code></pre><h3 id="Assembly插件"><a href="#Assembly插件" class="headerlink" title="Assembly插件"></a>Assembly插件</h3><p>创建应用程序特有分发包，包括项目的二进制文件和所有的依赖，配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">descriptorRefs</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">descriptorRef</span>&gt;</span>jar-with-dependencies<span class="tag">&lt;/<span class="name">descriptorRef</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">descriptorRefs</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Archetype-插件"><a href="#Archetype-插件" class="headerlink" title="Archetype 插件"></a>Archetype 插件</h3><h4 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h4><p>创建项目</p>
+<pre><code>mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app    java项目
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-webapp    web项目
+</code></pre><h3 id="Jetty插件"><a href="#Jetty插件" class="headerlink" title="Jetty插件"></a>Jetty插件</h3><p>运行web应用，配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.eclipse.jetty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>9.3.14.v20161028<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">scanIntervalSeconds</span>&gt;</span>1<span class="tag">&lt;/<span class="name">scanIntervalSeconds</span>&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>启动web应用</p>
+<pre><code>mvn jetty:run
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj2n14v6z000o0sle5n153ruh" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj3fi80qf000kz0leedr1nnxo" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Maven/#disqus_thread" class="article-comment-link">留言</a>
@@ -197,7 +217,7 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期阶段"><span class="toc-number">2.</span> <span class="toc-text">生命周期阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#clean"><span class="toc-number">2.0.1.</span> <span class="toc-text">clean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#default"><span class="toc-number">2.0.2.</span> <span class="toc-text">default</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#site"><span class="toc-number">2.0.3.</span> <span class="toc-text">site</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期阶段"><span class="toc-number">2.</span> <span class="toc-text">生命周期阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#clean"><span class="toc-number">2.0.1.</span> <span class="toc-text">clean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#default"><span class="toc-number">2.0.2.</span> <span class="toc-text">default</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#site"><span class="toc-number">2.0.3.</span> <span class="toc-text">site</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">4.</span> <span class="toc-text">目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exec-插件"><span class="toc-number">4.1.</span> <span class="toc-text">Exec 插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Surefire插件"><span class="toc-number">4.2.</span> <span class="toc-text">Surefire插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#configuration"><span class="toc-number">4.2.1.</span> <span class="toc-text">configuration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assembly插件"><span class="toc-number">4.3.</span> <span class="toc-text">Assembly插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Archetype-插件"><span class="toc-number">4.4.</span> <span class="toc-text">Archetype 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#generate"><span class="toc-number">4.4.1.</span> <span class="toc-text">generate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jetty插件"><span class="toc-number">4.5.</span> <span class="toc-text">Jetty插件</span></a></li></ol></li></ol>
           </div>
       </div>
     </div>
