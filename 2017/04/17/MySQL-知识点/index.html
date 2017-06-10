@@ -9,7 +9,9 @@
 max_connections        
     最大支持连接数，设置到500～1000比较合适
 wait-timeout        
-    数据库连接闲置最大时间值，默认值为8小时">
+    数据库连接闲置最大时间值，默认值为8小时 
+URL 格式jdbc:mysql://[host][,failoverhost...][:port]/[database]
+?[pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 知识点">
 <meta property="og:url" content="https://duansiman.github.io/2017/04/17/MySQL-知识点/index.html">
@@ -18,15 +20,19 @@ wait-timeout
 max_connections        
     最大支持连接数，设置到500～1000比较合适
 wait-timeout        
-    数据库连接闲置最大时间值，默认值为8小时">
-<meta property="og:updated_time" content="2017-04-17T10:49:41.410Z">
+    数据库连接闲置最大时间值，默认值为8小时 
+URL 格式jdbc:mysql://[host][,failoverhost...][:port]/[database]
+?[pr">
+<meta property="og:updated_time" content="2017-06-10T10:56:49.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 知识点">
 <meta name="twitter:description" content="配置配置文件在/etc/mysql/my.cnf,一些配置内容如下：
 max_connections        
     最大支持连接数，设置到500～1000比较合适
 wait-timeout        
-    数据库连接闲置最大时间值，默认值为8小时">
+    数据库连接闲置最大时间值，默认值为8小时 
+URL 格式jdbc:mysql://[host][,failoverhost...][:port]/[database]
+?[pr">
   
     <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
   
@@ -129,11 +135,136 @@ ga('send', 'pageview');
     最大支持连接数，设置到500～1000比较合适
 wait-timeout        
     数据库连接闲置最大时间值，默认值为8小时 
+</code></pre><h2 id="URL-格式"><a href="#URL-格式" class="headerlink" title="URL 格式"></a>URL 格式</h2><pre><code>jdbc:mysql://[host][,failoverhost...][:port]/[database]
+?[propertyName1][=propertyValue1][&amp;propertyName2][=propertyValue2]...
+</code></pre><p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">useUnicode</td>
+<td style="text-align:left">是否使用Unicode字符集</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">characterEncoding</td>
+<td style="text-align:left">当useUnicode设置为true时，指定字符编码</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">autoReconnect</td>
+<td style="text-align:left">当数据库连接异常中断时，是否自动重新连接</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">autoReconnectForPools</td>
+<td style="text-align:left">是否使用针对数据库连接池的重连策略</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">failOverReadOnly</td>
+<td style="text-align:left">自动重连成功后，连接是否设置为只读</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">maxReconnects</td>
+<td style="text-align:left">autoReconnect设置为true时，重试连接的次数</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">initialTimeout</td>
+<td style="text-align:left">autoReconnect设置为true时，两次重连之间的时间间隔，单位：秒</td>
+<td style="text-align:left">2秒</td>
+</tr>
+<tr>
+<td style="text-align:left">connectTimeout</td>
+<td style="text-align:left">和数据库服务器建立socket连接时的超时，单位：毫秒。 0表示永不超时</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">socketTimeout</td>
+<td style="text-align:left">socket操作（读写）超时，单位：毫秒。 0表示永不超时</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">useAffectedRows</td>
+<td style="text-align:left">是否用受影响的行数替代查找到的行数来返回数据，例如：当修改的内容与原数据相同，mysql自己返回受影响行数为0，但jdbc/mybatis 返回的却是1，返回的是 sql语句 的匹配行数</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html" target="_blank" rel="external">官方参数配置参考</a></p>
+<h2 id="配置主从数据库"><a href="#配置主从数据库" class="headerlink" title="配置主从数据库"></a>配置主从数据库</h2><p>主ip:192.186.0.101,从ip:192.186.0.102</p>
+<h4 id="主数据库配置"><a href="#主数据库配置" class="headerlink" title="主数据库配置"></a>主数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
+<pre><code>[mysqld]
+#主数据库id
+server-id=1
+#需要同步的database
+binlog-do-db=blog
+#忽略同步的database
+binlog-ignore-db=mysql
+#开启二进制日志机制
+log-bin=/var/lib/mysql/binlog
+</code></pre><p>查看日志信息，得到二进制日志的文件名(file)和位置信息（position）</p>
+<pre><code>show master status
+</code></pre><h4 id="导主数据库已存在的数据"><a href="#导主数据库已存在的数据" class="headerlink" title="导主数据库已存在的数据"></a>导主数据库已存在的数据</h4><p>主数据库导出数据</p>
+<pre><code>mysqldump -uname -ppass database &gt; database.sql
+</code></pre><p>从数据库导入数据</p>
+<pre><code>source database.sql
+</code></pre><h4 id="从数据库配置"><a href="#从数据库配置" class="headerlink" title="从数据库配置"></a>从数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
+<pre><code>[mysqld]
+#从数据库id，不能和主数据库的相同
+server-id=2
+</code></pre><p>配置同步参数</p>
+<pre><code>CHANGE MASTER TO 
+MASTER_HOST=&apos;192.186.0.101&apos;
+MASTER_USER=&apos;root&apos;
+MASTER_PASSWORD=&apos;123456&apos;
+MASTER_LOG_FILE=&apos;binlog.000001&apos;
+MASTER_LOG_POS=154;
+</code></pre><p>MASTER_HOST 主数据库所在服务器ip<br>MASTER_USER,MASTER_PASSWORD链接主数据库的用户密码<br>MASTER_LOG_FILE,MASTER_LOG_POS是从主数据库查到日志信息</p>
+<p>启动同步进程</p>
+<pre><code>start slave
+show slave status\G
+    查看进程状态
+</code></pre><p>进程状态有两个值，都为YES表示配置成功</p>
+<pre><code>Slave_IO_Runing 负责去主数据库读取二进制日志，并写入从数据库的中继日志
+Slave_SQL_Runing 负责把中继日志转换sql执行
+</code></pre><h2 id="允许外网访问"><a href="#允许外网访问" class="headerlink" title="允许外网访问"></a>允许外网访问</h2><p>注释/etc/mysql/mysql.conf.d/mysqld.cnf中 </p>
+<pre><code>bind-address    = 127.0.0.1
+</code></pre><p>查询用户</p>
+<pre><code>use mysql;
+select user,host from user;
+</code></pre><p>授权任意主机都可以以用户root和密码pass连接</p>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
+flush privileges;
+</code></pre><p>授权192.186.0.102主机都可以以用户root和密码pass连接</p>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;192.186.0.102&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
+flush privileges;
+</code></pre><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p>创建数据库表时指定编码和排序编码</p>
+<pre><code>CREATE DATABASE `test`  CHARACTER SET &apos;utf8&apos;  COLLATE &apos;utf8_general_ci&apos;; 
+CREATE TABLE `test` () ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre><p>查看默认编码</p>
+<pre><code>show variables like &quot;%char%&quot;;
+</code></pre><p>设置编码</p>
+<pre><code>SET character_set_client=&apos;utf8&apos;;  
+SET character_set_connection=&apos;utf8&apos;;  
+SET character_set_results=&apos;utf8&apos;;    
+</code></pre><p>设置默认编码</p>
+<pre><code>set names utf8;
+</code></pre><p>在/etc/mysql/my.cnf配置默认编码</p>
+<pre><code>[mysqld]
+default_character_set=utf8;
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj3ficl4w000oigleca5f40iy" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj3r63ggw000w0glefl2dw1gk" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -188,7 +319,7 @@ wait-timeout
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-格式"><span class="toc-number">2.</span> <span class="toc-text">URL 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置主从数据库"><span class="toc-number">3.</span> <span class="toc-text">配置主从数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主数据库配置"><span class="toc-number">3.0.1.</span> <span class="toc-text">主数据库配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#导主数据库已存在的数据"><span class="toc-number">3.0.2.</span> <span class="toc-text">导主数据库已存在的数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从数据库配置"><span class="toc-number">3.0.3.</span> <span class="toc-text">从数据库配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#允许外网访问"><span class="toc-number">4.</span> <span class="toc-text">允许外网访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-number">5.</span> <span class="toc-text">编码问题</span></a></li></ol>
           </div>
       </div>
     </div>
