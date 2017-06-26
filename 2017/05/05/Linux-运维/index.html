@@ -29,7 +29,7 @@ vnstat -u">
 apt-get install vnstat
 创建监听数据库
 vnstat -u">
-<meta property="og:updated_time" content="2017-06-09T08:52:15.626Z">
+<meta property="og:updated_time" content="2017-06-26T01:59:13.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-运维">
 <meta name="twitter:description" content="修改SSH端口和禁止Root远程登录修改端口
@@ -170,17 +170,27 @@ chmod 0640 .eth0
 <pre><code>cd /usr/bin  
 sudo ln -s /usr/local/lrzsz/bin/lrz rz  
 sudo ln -s /usr/local/lrzsz/bin/lsz sz 
-</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
-<h4 id="添加root权限"><a href="#添加root权限" class="headerlink" title="添加root权限"></a>添加root权限</h4><p>使用visudo 来修改/etc/sudoers文件，文件中增加</p>
-<pre><code>username ALL=(ALL) ALL
-</code></pre><h4 id="xshell连接linux系统，操作卡"><a href="#xshell连接linux系统，操作卡" class="headerlink" title="xshell连接linux系统，操作卡"></a>xshell连接linux系统，操作卡</h4><p>关闭DNS解析，修改/etc/ssh/sshd_config文件中：</p>
+</code></pre><h2 id="boot分区不足-清理boot分区"><a href="#boot分区不足-清理boot分区" class="headerlink" title="/boot分区不足,清理boot分区"></a>/boot分区不足,清理boot分区</h2><p>查看系统已安装内核    </p>
+<pre><code>dpkg --get-selections|grep linux-image
+</code></pre><p>查看系统使用内核</p>
+<pre><code>uname -a    
+</code></pre><p>删除不使用内核</p>
+<pre><code>sudo apt-get purge 内核名称
+sudo apt-get remove linux-image-(版本号)
+</code></pre><p>清理</p>
+<pre><code>清理/usr/src下的内核目录
+sudo apt-get autoremove 删除残留文件
+</code></pre><h2 id="xshell连接linux系统，操作卡"><a href="#xshell连接linux系统，操作卡" class="headerlink" title="xshell连接linux系统，操作卡"></a>xshell连接linux系统，操作卡</h2><p>关闭DNS解析，修改/etc/ssh/sshd_config文件中：</p>
 <pre><code>UseDNS no
 /etc/init.d/sshd restart
-</code></pre>
+</code></pre><h2 id="系统使用技巧"><a href="#系统使用技巧" class="headerlink" title="系统使用技巧"></a>系统使用技巧</h2><ul>
+<li>执行某命令时忘记加sudo, 可以输入sudo !! 即可，这里的 !! 代表上一条命令</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj3r63ghk001d0gle9iw69h12" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4e0qoz4000n9gletm2i0lj6" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
@@ -202,7 +212,7 @@ sudo ln -s /usr/local/lrzsz/bin/lsz sz
     </a>
   
   
-    <a href="/2017/05/05/Git/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/05/Git命令/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Git</div>
     </a>
@@ -233,7 +243,7 @@ sudo ln -s /usr/local/lrzsz/bin/lsz sz
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改SSH端口和禁止Root远程登录"><span class="toc-number">1.</span> <span class="toc-text">修改SSH端口和禁止Root远程登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流量监控"><span class="toc-number">2.</span> <span class="toc-text">流量监控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vnstat"><span class="toc-number">2.0.1.</span> <span class="toc-text">vnstat</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rz，sz命令"><span class="toc-number">3.</span> <span class="toc-text">rz，sz命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加用户"><span class="toc-number">4.</span> <span class="toc-text">添加用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加root权限"><span class="toc-number">4.0.1.</span> <span class="toc-text">添加root权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xshell连接linux系统，操作卡"><span class="toc-number">4.0.2.</span> <span class="toc-text">xshell连接linux系统，操作卡</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改SSH端口和禁止Root远程登录"><span class="toc-number">1.</span> <span class="toc-text">修改SSH端口和禁止Root远程登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流量监控"><span class="toc-number">2.</span> <span class="toc-text">流量监控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vnstat"><span class="toc-number">2.0.1.</span> <span class="toc-text">vnstat</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rz，sz命令"><span class="toc-number">3.</span> <span class="toc-text">rz，sz命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#boot分区不足-清理boot分区"><span class="toc-number">4.</span> <span class="toc-text">/boot分区不足,清理boot分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xshell连接linux系统，操作卡"><span class="toc-number">5.</span> <span class="toc-text">xshell连接linux系统，操作卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统使用技巧"><span class="toc-number">6.</span> <span class="toc-text">系统使用技巧</span></a></li></ol>
           </div>
       </div>
     </div>

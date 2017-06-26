@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux疑难杂症解决方法 | 安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ssh远程主机被拒绝12epdc@epdc-ThinkPad-T550:~$ ssh localhostssh: connect to host localhost port 22: Connection refused
+sudo apt-get install openssh-server
+/etc/sudoers文件被破坏123456epdc@epdc-ThinkPad-T550:/etc$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux疑难杂症解决方法">
+<meta property="og:url" content="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="ssh远程主机被拒绝12epdc@epdc-ThinkPad-T550:~$ ssh localhostssh: connect to host localhost port 22: Connection refused
+sudo apt-get install openssh-server
+/etc/sudoers文件被破坏123456epdc@epdc-ThinkPad-T550:/etc$">
+<meta property="og:updated_time" content="2017-06-26T01:58:46.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux疑难杂症解决方法">
+<meta name="twitter:description" content="ssh远程主机被拒绝12epdc@epdc-ThinkPad-T550:~$ ssh localhostssh: connect to host localhost port 22: Connection refused
+sudo apt-get install openssh-server
+/etc/sudoers文件被破坏123456epdc@epdc-ThinkPad-T550:/etc$">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux疑难杂症解解决方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux疑难杂症解解决方法/" class="article-date">
+  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux疑难杂症解决方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="ssh远程主机被拒绝"><a href="#ssh远程主机被拒绝" class="headerlink" title="ssh远程主机被拒绝"></a>ssh远程主机被拒绝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:~$ ssh localhost</div><div class="line">ssh: connect to host localhost port 22: Connection refused</div></pre></td></tr></table></figure>
+<p>sudo apt-get install openssh-server</p>
+<h2 id="etc-sudoers文件被破坏"><a href="#etc-sudoers文件被破坏" class="headerlink" title="/etc/sudoers文件被破坏"></a>/etc/sudoers文件被破坏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:/etc$ sudo gedit sudoers</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">sudo：/etc/sudoers 中第 1 行附近有解析错误</div><div class="line">sudo：no valid sudoers sources found, quitting</div><div class="line">sudo：无法初始化策略插件</div></pre></td></tr></table></figure>
+<ul>
+<li>重启ubuntu，启动时按Esc或Shift键，可以看到引导选项；</li>
+<li>在引导选项中选择Recovery模式的那一项来引导；</li>
+<li>进入Recovery Menu页面，选择root，也就是进入试用root用户进行系统恢复，在这里可以执行超级用户的权限的操作，回车后可以看到熟悉的 root@user ~# 命令提示符；</li>
+<li><p>设置或者撤销/etc/sudoers文件的权限，也可以将该文件改回到发生错误之前的状态。</p>
+<p>  chmod 666 /dev/null<br>  mount -o remount rw /<br>  vi /etc/sudoers<br>  恢复本文件内容并存盘</p>
+</li>
+<li>退出Recovery模式，重新启动ubuntu。</li>
+</ul>
+<h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
+E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
+natty_main_i18n_Translation-en
+</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cj4e0qozc000p9glekgl5pb7t" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux问题解决方法/">Linux问题解决方法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/17/Vim命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Vim命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/17/Linux-知识点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Linux 知识点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh远程主机被拒绝"><span class="toc-number">1.</span> <span class="toc-text">ssh远程主机被拒绝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#etc-sudoers文件被破坏"><span class="toc-number">2.</span> <span class="toc-text">/etc/sudoers文件被破坏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无法解析或打开软件包的列表或是状态文件解决方案"><span class="toc-number">3.</span> <span class="toc-text">无法解析或打开软件包的列表或是状态文件解决方案</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  var disqus_url = 'https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

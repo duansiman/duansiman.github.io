@@ -121,7 +121,7 @@
     <link href="https://duansiman.github.io/2017/05/05/Linux-%E8%BF%90%E7%BB%B4/"/>
     <id>https://duansiman.github.io/2017/05/05/Linux-运维/</id>
     <published>2017-05-05T10:01:21.000Z</published>
-    <updated>2017-06-09T08:52:15.626Z</updated>
+    <updated>2017-06-26T01:59:13.714Z</updated>
     
     <content type="html"><![CDATA[<h2 id="修改SSH端口和禁止Root远程登录"><a href="#修改SSH端口和禁止Root远程登录" class="headerlink" title="修改SSH端口和禁止Root远程登录"></a>修改SSH端口和禁止Root远程登录</h2><p>修改端口</p>
 <pre><code>/etc/ssh/sshd_config文件中
@@ -158,13 +158,23 @@ chmod 0640 .eth0
 <pre><code>cd /usr/bin  
 sudo ln -s /usr/local/lrzsz/bin/lrz rz  
 sudo ln -s /usr/local/lrzsz/bin/lsz sz 
-</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
-<h4 id="添加root权限"><a href="#添加root权限" class="headerlink" title="添加root权限"></a>添加root权限</h4><p>使用visudo 来修改/etc/sudoers文件，文件中增加</p>
-<pre><code>username ALL=(ALL) ALL
-</code></pre><h4 id="xshell连接linux系统，操作卡"><a href="#xshell连接linux系统，操作卡" class="headerlink" title="xshell连接linux系统，操作卡"></a>xshell连接linux系统，操作卡</h4><p>关闭DNS解析，修改/etc/ssh/sshd_config文件中：</p>
+</code></pre><h2 id="boot分区不足-清理boot分区"><a href="#boot分区不足-清理boot分区" class="headerlink" title="/boot分区不足,清理boot分区"></a>/boot分区不足,清理boot分区</h2><p>查看系统已安装内核    </p>
+<pre><code>dpkg --get-selections|grep linux-image
+</code></pre><p>查看系统使用内核</p>
+<pre><code>uname -a    
+</code></pre><p>删除不使用内核</p>
+<pre><code>sudo apt-get purge 内核名称
+sudo apt-get remove linux-image-(版本号)
+</code></pre><p>清理</p>
+<pre><code>清理/usr/src下的内核目录
+sudo apt-get autoremove 删除残留文件
+</code></pre><h2 id="xshell连接linux系统，操作卡"><a href="#xshell连接linux系统，操作卡" class="headerlink" title="xshell连接linux系统，操作卡"></a>xshell连接linux系统，操作卡</h2><p>关闭DNS解析，修改/etc/ssh/sshd_config文件中：</p>
 <pre><code>UseDNS no
 /etc/init.d/sshd restart
-</code></pre>]]></content>
+</code></pre><h2 id="系统使用技巧"><a href="#系统使用技巧" class="headerlink" title="系统使用技巧"></a>系统使用技巧</h2><ul>
+<li>执行某命令时忘记加sudo, 可以输入sudo !! 即可，这里的 !! 代表上一条命令</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
@@ -177,10 +187,10 @@ sudo ln -s /usr/local/lrzsz/bin/lsz sz
   
   <entry>
     <title>Git</title>
-    <link href="https://duansiman.github.io/2017/05/05/Git/"/>
-    <id>https://duansiman.github.io/2017/05/05/Git/</id>
+    <link href="https://duansiman.github.io/2017/05/05/Git%E5%91%BD%E4%BB%A4/"/>
+    <id>https://duansiman.github.io/2017/05/05/Git命令/</id>
     <published>2017-05-05T09:03:22.000Z</published>
-    <updated>2017-05-05T09:25:04.780Z</updated>
+    <updated>2017-06-26T01:43:49.213Z</updated>
     
     <content type="html"><![CDATA[<pre><code>git status        查看状态
 git init        初始化 git 仓库
@@ -259,6 +269,24 @@ git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;日志&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://duansiman.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="https://duansiman.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git学习</title>
+    <link href="https://duansiman.github.io/2017/05/05/Git%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://duansiman.github.io/2017/05/05/Git学习/</id>
+    <published>2017-05-05T09:03:22.000Z</published>
+    <updated>2017-06-26T01:43:49.216Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
@@ -423,7 +451,7 @@ git gc            压缩
     <link href="https://duansiman.github.io/2017/04/26/Maven/"/>
     <id>https://duansiman.github.io/2017/04/26/Maven/</id>
     <published>2017-04-26T07:37:02.000Z</published>
-    <updated>2017-06-05T08:23:34.723Z</updated>
+    <updated>2017-06-26T01:43:57.642Z</updated>
     
     <content type="html"><![CDATA[<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code>mvn [options] [&lt;goal(s)&gt;] [&lt;phase(s)&gt;]
 options     可以用mvn -h 或 mvn --help查看
@@ -615,54 +643,6 @@ ng
   </entry>
   
   <entry>
-    <title>单词词性</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
-    <id>https://duansiman.github.io/2017/04/18/单词词性/</id>
-    <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-04-20T03:21:28.113Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
-<pre><code>I,You,He,She,It,We,You,They
-</code></pre><p>代词宾格：动后介后</p>
-<pre><code>me,you,him,her,it,us,you,them        
-Tom loves him.
-</code></pre><p>代词形容格:跟着名词    </p>
-<pre><code>my,your,his,her,its,our,your,their    
-her friend    她的朋友
-</code></pre><p>代词名词格        </p>
-<pre><code>mine,yours,his,hers,ours,yours,theirs    
-The car is yours
-</code></pre><p>名词格=形容格+名词    </p>
-<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
-</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
-<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
-</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
-<pre><code>例如：very happy
-</code></pre><p>修饰动词，放在反面</p>
-<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
-</code></pre><p>修饰名词，放在后面</p>
-<pre><code>例如：the kids there 哪里的小孩
-</code></pre><h2 id="冠词"><a href="#冠词" class="headerlink" title="冠词"></a>冠词</h2><h4 id="the"><a href="#the" class="headerlink" title="the"></a>the</h4><p>可以和名词的单数、复数和不可数搭配，表达这个，这些</p>
-<h4 id="a-an"><a href="#a-an" class="headerlink" title="a,an"></a>a,an</h4><p>元音字母a,e,i,o,u<br>挨着最近的词开头发元音 + an<br>an old man<br>an hour</p>
-<h2 id="指示代词"><a href="#指示代词" class="headerlink" title="指示代词"></a>指示代词</h2><p>This is water 这些是水<br>That is water 那些是水<br>these are books<br>those are books</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;人称代词&quot;&gt;&lt;a href=&quot;#人称代词&quot; class=&quot;headerlink&quot; title=&quot;人称代词&quot;&gt;&lt;/a&gt;人称代词&lt;/h2&gt;&lt;p&gt;代词主格：做主语    &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;I,You,He,She,It,We,You,They
-&lt;/code
-    
-    </summary>
-    
-      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
-    
-    
-      <category term="单词词性" scheme="https://duansiman.github.io/tags/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
     <title>归并排序</title>
     <link href="https://duansiman.github.io/2017/04/18/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
     <id>https://duansiman.github.io/2017/04/18/归并排序/</id>
@@ -685,35 +665,6 @@ The car is yours
     
     
       <category term="归并排序" scheme="https://duansiman.github.io/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>插入算法</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
-    <id>https://duansiman.github.io/2017/04/18/插入算法/</id>
-    <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-05-13T08:48:24.024Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
-<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
-最坏情况数组A[n]是反序的,那么元素比较次数是n-1
-</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]&lt;/p&gt;
-&lt;h2 id=
-    
-    </summary>
-    
-      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="插入算法" scheme="https://duansiman.github.io/tags/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -747,11 +698,194 @@ The car is yours
   </entry>
   
   <entry>
+    <title>单词词性</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
+    <id>https://duansiman.github.io/2017/04/18/单词词性/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-06-26T01:43:49.247Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
+<pre><code>I,You,He,She,It,We,You,They
+</code></pre><p>代词宾格：动后介后</p>
+<pre><code>me,you,him,her,it,us,you,them        
+Tom loves him.
+</code></pre><p>代词形容格:跟着名词    </p>
+<pre><code>my,your,his,her,its,our,your,their    
+her friend    她的朋友
+</code></pre><p>代词名词格        </p>
+<pre><code>mine,yours,his,hers,ours,yours,theirs    
+The car is yours
+</code></pre><p>名词格=形容格+名词    </p>
+<pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
+</code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
+<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
+</code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
+<pre><code>例如：very happy
+</code></pre><p>修饰动词，放在反面</p>
+<pre><code>例如：Tom misses his sister very much. Tom非常想念他的姐姐    very much 修饰 miss
+</code></pre><p>修饰名词，放在后面</p>
+<pre><code>例如：the kids there 哪里的小孩
+</code></pre><h2 id="冠词"><a href="#冠词" class="headerlink" title="冠词"></a>冠词</h2><h4 id="the"><a href="#the" class="headerlink" title="the"></a>the</h4><p>可以和名词的单数、复数和不可数搭配，表达这个，这些</p>
+<h4 id="a-an"><a href="#a-an" class="headerlink" title="a,an"></a>a,an</h4><p>元音字母a,e,i,o,u<br>挨着最近的词开头发元音 + an<br>an old man<br>an hour</p>
+<h2 id="指示代词"><a href="#指示代词" class="headerlink" title="指示代词"></a>指示代词</h2><p>This is water 这些是水<br>That is water 那些是水<br>these are books<br>those are books</p>
+<h2 id="动词"><a href="#动词" class="headerlink" title="动词"></a>动词</h2><p>变化规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">动词</th>
+<th style="text-align:left">规则变化</th>
+<th style="text-align:left">不规则变化</th>
+<th style="text-align:left">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">动s/名复</td>
+<td style="text-align:left">+s</td>
+<td style="text-align:left">s,o,f,y</td>
+<td style="text-align:left">man-&gt;men,woman-&gt;women,child-&gt;children,tooth-&gt;teeth,foot-&gt;feet. 以s/ss/sh/ch/x结尾的单词+es,例如:bus-&gt;buses,dish-&gt;dishes,watch-&gt;watches.  o原则 1)有生命+es, 例如:hero-&gt;heroes, potato-&gt;potatoes, tomato-&gt;tomato 2)无生命 + s 例如:zoo-&gt;zoos, photo-&gt;photos. f,fe原则 1)多数变f,fe 为ves 例如:wife-&gt;wives, knife-&gt;knives, yourself-yourselves. y原则 1)辅音字母+y, 变y为i加es 例如:baby-&gt;babies, city-&gt;cities 2)元音字母(a,e,i,o,u)+y, 直接加s 例如:day-&gt; days, boy-&gt;boys</td>
+</tr>
+<tr>
+<td style="text-align:left">动过/动分</td>
+<td style="text-align:left">+ed</td>
+<td style="text-align:left">y,e,双</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">动ing</td>
+<td style="text-align:left">+ing</td>
+<td style="text-align:left">y,e,双</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;人称代词&quot;&gt;&lt;a href=&quot;#人称代词&quot; class=&quot;headerlink&quot; title=&quot;人称代词&quot;&gt;&lt;/a&gt;人称代词&lt;/h2&gt;&lt;p&gt;代词主格：做主语    &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;I,You,He,She,It,We,You,They
+&lt;/code
+    
+    </summary>
+    
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
+    
+    
+      <category term="单词词性" scheme="https://duansiman.github.io/tags/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插入算法</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
+    <id>https://duansiman.github.io/2017/04/18/插入算法/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-05-13T08:48:24.024Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
+<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
+最坏情况数组A[n]是反序的,那么元素比较次数是n-1
+</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]&lt;/p&gt;
+&lt;h2 id=
+    
+    </summary>
+    
+      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="插入算法" scheme="https://duansiman.github.io/tags/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>句子时态</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E6%97%B6%E6%80%81/"/>
+    <id>https://duansiman.github.io/2017/04/18/句子时态/</id>
+    <published>2017-04-18T02:16:57.000Z</published>
+    <updated>2017-06-26T01:43:49.254Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一般现在时"><a href="#一般现在时" class="headerlink" title="一般现在时"></a>一般现在时</h2><h4 id="主系表结构或There-Be"><a href="#主系表结构或There-Be" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: is/am are</p>
+<h4 id="主谓-宾-结构"><a href="#主谓-宾-结构" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: 动原/动s, 助动词do, does(助动词出现,谓动用原性)</p>
+<h2 id="一般过去时"><a href="#一般过去时" class="headerlink" title="一般过去时"></a>一般过去时</h2><h4 id="主系表结构或There-Be-1"><a href="#主系表结构或There-Be-1" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: was were</p>
+<h4 id="主谓-宾-结构-1"><a href="#主谓-宾-结构-1" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: 动过, 助动词did(助动词出现,谓动用原性)</p>
+<h4 id="出现过去的时间-用一般过去时"><a href="#出现过去的时间-用一般过去时" class="headerlink" title="出现过去的时间,用一般过去时"></a>出现过去的时间,用一般过去时</h4><p>just now, yesterday, last Saturday, last Sunday, three days age, long long age</p>
+<h4 id="语境暗示了动作发生在过去"><a href="#语境暗示了动作发生在过去" class="headerlink" title="语境暗示了动作发生在过去"></a>语境暗示了动作发生在过去</h4><p>when did you come back ? 你什么时候回来的?<br>I loved you. 我爱过你</p>
+<h2 id="一般将来时"><a href="#一般将来时" class="headerlink" title="一般将来时"></a>一般将来时</h2><h4 id="主系表结构或There-Be-2"><a href="#主系表结构或There-Be-2" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: whil be</p>
+<h4 id="主谓-宾-结构-2"><a href="#主谓-宾-结构-2" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: will + 动原<br>否定句 will not + 动原<br>疑问句 Will you be in Paris tomorrow ?<br>Will there be a party next week ?<br>特殊疑问句 Who will visit us tomorrow ?<br>What will he do tomorrow ?</p>
+<h4 id="Be-going-to"><a href="#Be-going-to" class="headerlink" title="Be going to"></a>Be going to</h4><p>谓语: is/am/are going to + be<br>谓语: is/am/are going to + 动原<br>疑问句: Are you going to know my story?<br>特殊疑问句 Who is he going to Be?</p>
+<h4 id="will-和-Be-going-to-对比"><a href="#will-和-Be-going-to-对比" class="headerlink" title="will 和 Be going to 对比"></a>will 和 Be going to 对比</h4><p>表示意愿 用will</p>
+<pre><code>Marry me!I will make you happy.
+Will you help me?
+</code></pre><p>表示预测 用will/Be going to</p>
+<pre><code>It will be warm tomorrow. 明天会变暖和
+</code></pre><p>表示计划,先规划好 用Be going to</p>
+<pre><code>I have the pen and the paper.
+I am going to draw a picture for you.
+</code></pre><h4 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h4><p>will not = won’t<br>I will = I’ll</p>
+<h4 id="出现将来时间-用一般将来时"><a href="#出现将来时间-用一般将来时" class="headerlink" title="出现将来时间,用一般将来时"></a>出现将来时间,用一般将来时</h4><p>in three days 三天后<br>tomorrow, the day after tomorrow 后天, next week<br>soon 要开始,很快</p>
+<h3 id="情态动词-can-may-must"><a href="#情态动词-can-may-must" class="headerlink" title="情态动词(can, may, must)"></a>情态动词(can, may, must)</h3><p>情态动词 + 动原</p>
+<p>肯定句:You can help me.<br>否定句:You can not help me.<br>疑问句:Can you help me?<br>特殊疑问句: Who can help me? Who can you help?</p>
+<h4 id="can-could"><a href="#can-could" class="headerlink" title="can, could"></a>can, could</h4><p>could 是can 过去式</p>
+<h5 id="表达能力-could并表示过去式"><a href="#表达能力-could并表示过去式" class="headerlink" title="表达能力, could并表示过去式"></a>表达能力, could并表示过去式</h5><p>We can use WeChat now.</p>
+<h5 id="求人办事-could并不表示过去式-表示语气-could更委婉"><a href="#求人办事-could并不表示过去式-表示语气-could更委婉" class="headerlink" title="求人办事, could并不表示过去式,表示语气,could更委婉"></a>求人办事, could并不表示过去式,表示语气,could更委婉</h5><p>Can/Could you open the door?</p>
+<h5 id="请人允许-could并不表示过去式-表示语气-could更委婉"><a href="#请人允许-could并不表示过去式-表示语气-could更委婉" class="headerlink" title="请人允许 could并不表示过去式,表示语气,could更委婉"></a>请人允许 could并不表示过去式,表示语气,could更委婉</h5><p>Can/Could I sit here ?<br>Can/Could I help you ?</p>
+<h5 id="猜测-意思可能"><a href="#猜测-意思可能" class="headerlink" title="猜测,意思可能"></a>猜测,意思可能</h5><p>He can be our teacher.<br>Anything can happen.</p>
+<h4 id="may-might"><a href="#may-might" class="headerlink" title="may, might"></a>may, might</h4><p>might是may的过去式</p>
+<h5 id="请人允许"><a href="#请人允许" class="headerlink" title="请人允许"></a>请人允许</h5><p>May I help you?</p>
+<h5 id="猜测-意思可能-1"><a href="#猜测-意思可能-1" class="headerlink" title="猜测,意思可能"></a>猜测,意思可能</h5><p>He may be our teacher.</p>
+<h4 id="must"><a href="#must" class="headerlink" title="must"></a>must</h4><h5 id="必须"><a href="#必须" class="headerlink" title="必须"></a>必须</h5><p>I must  learn English.(客观)<br>I have to learn English. (不得不)</p>
+<h5 id="必须不-禁止"><a href="#必须不-禁止" class="headerlink" title="必须不,禁止"></a>必须不,禁止</h5><p>I mustn’t learn English.<br>I don’t have to learn English.(不必须)<br>I needn’t learn English.(不需要)</p>
+<h5 id="猜测-意思肯定是"><a href="#猜测-意思肯定是" class="headerlink" title="猜测,意思肯定是"></a>猜测,意思肯定是</h5><p>He must be out teacher.<br>He must be over forty.</p>
+<h4 id="求人办事-礼貌递增"><a href="#求人办事-礼貌递增" class="headerlink" title="求人办事,礼貌递增"></a>求人办事,礼貌递增</h4><p>can &lt; will &lt; could &lt; would<br>Can you do me a favor ? I’d like to, but …</p>
+<h4 id="请人允许-1"><a href="#请人允许-1" class="headerlink" title="请人允许"></a>请人允许</h4><p>can &lt; could &lt; may &lt; might(礼貌过头)<br>Can i smoke here? Yes please.   Sorry, you can’t</p>
+<h4 id="猜测-程度递减"><a href="#猜测-程度递减" class="headerlink" title="猜测,程度递减"></a>猜测,程度递减</h4><p>肯定句(100%) &gt; must(95%) &gt; can/could/may/might(50%) &gt; can’t(5%) &gt; 否定句(0%)<br>He must be a smoker.</p>
+<h2 id="现在进行时"><a href="#现在进行时" class="headerlink" title="现在进行时"></a>现在进行时</h2><h4 id="主系表结构或There-Be-3"><a href="#主系表结构或There-Be-3" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: is/am/are + being</p>
+<h4 id="主谓-宾-结构-3"><a href="#主谓-宾-结构-3" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: is/am/are + 动ing</p>
+<p>否定句: She is not doing her homework at home.<br>疑问句: Is She doing her homework at home?</p>
+<p>What are you doing?你干什么呢?</p>
+<h2 id="过去进行时"><a href="#过去进行时" class="headerlink" title="过去进行时"></a>过去进行时</h2><h4 id="主系表结构或There-Be-4"><a href="#主系表结构或There-Be-4" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: was/were + being</p>
+<h4 id="主谓-宾-结构-4"><a href="#主谓-宾-结构-4" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: was/were + 动ing</p>
+<h3 id="一般过去-过去进行时-对比"><a href="#一般过去-过去进行时-对比" class="headerlink" title="一般过去,过去进行时 对比"></a>一般过去,过去进行时 对比</h3><p>一般过去时表示过去的时间完整做了某事<br>I read a book yeaterday (看完了)</p>
+<p>过去进行时表示过去的时间正在做某事<br>I was reading a book just now (未知是否读完)</p>
+<p>I went shopping this morning.</p>
+<h2 id="现在完成时"><a href="#现在完成时" class="headerlink" title="现在完成时"></a>现在完成时</h2><h4 id="主系表结构或There-Be-5"><a href="#主系表结构或There-Be-5" class="headerlink" title="主系表结构或There Be"></a>主系表结构或There Be</h4><p>谓语: has/have + been</p>
+<h4 id="主谓-宾-结构-5"><a href="#主谓-宾-结构-5" class="headerlink" title="主谓(宾)结构"></a>主谓(宾)结构</h4><p>谓语: has/have + 过分</p>
+<p>Jake has finished her homework.<br>Jake has not finished her homework.<br>Has jake finished her homework?<br>who has finished the homework?<br>what has Jake finished?</p>
+<h3 id="现在完成时-一般过去时-对比"><a href="#现在完成时-一般过去时-对比" class="headerlink" title="现在完成时,一般过去时 对比"></a>现在完成时,一般过去时 对比</h3><p>一般过去时:只是陈述一件发生的事件,与现在无关<br>现在完成时:过去动作对现在有影响</p>
+<p>Jake has just(刚刚) turned off the light.(别人不用去关灯)</p>
+<p>一般过去时:无法判断是否持续<br>现在完成时:表示动作现在持续</p>
+<p>He has lived her for 4 years (现在还住在这儿)<br>He lived here for 4 year.(住过,不知道是否继续住)</p>
+<p>How long have you learned English ? 你学英语多长了?(现在依然在学)</p>
+<p>现在完成时的信号词: 到现在为止<br>so far, up to now, till now, by now<br>since + 过去的时间系列<br>since three days age<br>since you left</p>
+<p>一般过去时的信号词<br>just now<br>last yesterday</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一般现在时&quot;&gt;&lt;a href=&quot;#一般现在时&quot; class=&quot;headerlink&quot; title=&quot;一般现在时&quot;&gt;&lt;/a&gt;一般现在时&lt;/h2&gt;&lt;h4 id=&quot;主系表结构或There-Be&quot;&gt;&lt;a href=&quot;#主系表结构或There-Be&quot; class=&quot;head
+    
+    </summary>
+    
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
+    
+    
+      <category term="句子时态" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E6%97%B6%E6%80%81/"/>
+    
+  </entry>
+  
+  <entry>
     <title>句子成分</title>
     <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
     <id>https://duansiman.github.io/2017/04/18/句子成分/</id>
     <published>2017-04-18T02:16:57.000Z</published>
-    <updated>2017-04-20T03:21:28.118Z</updated>
+    <updated>2017-06-26T01:43:49.250Z</updated>
     
     <content type="html"><![CDATA[<h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
 <h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
@@ -759,6 +893,7 @@ The car is yours
 <h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
 <h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
 <h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
+<p>表示频度副词, 可以放句中. 例如: I often go shopping.</p>
 ]]></content>
     
     <summary type="html">
@@ -830,7 +965,7 @@ there be
     <link href="https://duansiman.github.io/2017/04/17/MySQL-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://duansiman.github.io/2017/04/17/MySQL-知识点/</id>
     <published>2017-04-17T10:40:55.000Z</published>
-    <updated>2017-06-10T10:56:49.170Z</updated>
+    <updated>2017-06-26T01:43:57.647Z</updated>
     
     <content type="html"><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件在/etc/mysql/my.cnf,一些配置内容如下：</p>
 <pre><code>max_connections        
@@ -981,11 +1116,11 @@ default_character_set=utf8;
   </entry>
   
   <entry>
-    <title>Linux 常用命令</title>
-    <link href="https://duansiman.github.io/2017/04/17/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://duansiman.github.io/2017/04/17/Linux-常用命令/</id>
+    <title>Vim命令</title>
+    <link href="https://duansiman.github.io/2017/04/17/Vim%E5%91%BD%E4%BB%A4/"/>
+    <id>https://duansiman.github.io/2017/04/17/Vim命令/</id>
     <published>2017-04-17T03:07:22.000Z</published>
-    <updated>2017-06-02T06:29:31.586Z</updated>
+    <updated>2017-06-26T01:43:49.243Z</updated>
     
     <content type="html"><![CDATA[<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>删除</p>
 <pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
@@ -1011,29 +1146,7 @@ y$        复制光标所在的那个字符到该行行尾的所有数据
 <p>执行其他命令<br>    :! command        离开 vi 到指令列模式下执行 command 的显示结果<br>行数<br>    :set nu, :set nonu         显示行数和取消行数</p>
 <p>翻页，移动光标<br>    ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页<br>    h, j, k, l                      左，下，上，右<br>    +, -                            移动下一行，上一行的非空格符号<br>    n<space>， n<enter>             向右移动n 个字符, 向下移动n行<br>    0, $                            移动行首,行尾<br>    H, M, L                         移动到屏幕的第一行，最后一行，中间行。<br>    G, nG, gg                       移动文档最后一行,第n行，第一行</enter></space></p>
 <p>搜索<br>    n， N                    向后，前继续搜索</p>
-<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><pre><code>-R, -r, --recursive   递归复制
--p                    连同档案的属性一起复制过去，而非使用预设属性
-</code></pre><h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><pre><code>PID：进程的ID
-USER：进程所有者
-PR：进程的优先级别，越小越优先被执行
-NInice：值
-VIRT：进程占用的虚拟内存
-RES：进程占用的物理内存
-SHR：进程使用的共享内存
-S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数
-%CPU：进程占用CPU的使用率
-%MEM：进程使用的物理内存和总内存的百分比
-TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。
-COMMAND：进程启动命令名称
-</code></pre><p>第一行</p>
-<pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
-</code></pre><p>第二行</p>
-<pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
-</code></pre><p>打解包和压缩</p>
-<pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
-tar -zcvf xxx.tar.gz /xxx        打包gzip压缩
-tar -jcvf xxx.tar.bz2 /xxx        打包bzip2压缩
-</code></pre>]]></content>
+]]></content>
     
     <summary type="html">
     
@@ -1046,43 +1159,30 @@ nx         连续
       <category term="Linux" scheme="https://duansiman.github.io/categories/Linux/"/>
     
     
-      <category term="Linux常用命令" scheme="https://duansiman.github.io/tags/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <category term="Vim命令" scheme="https://duansiman.github.io/tags/Vim%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
   <entry>
-    <title>Linux 知识点</title>
-    <link href="https://duansiman.github.io/2017/04/17/Linux-%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>https://duansiman.github.io/2017/04/17/Linux-知识点/</id>
+    <title>Linux疑难杂症解决方法</title>
+    <link href="https://duansiman.github.io/2017/04/17/Linux%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/</id>
     <published>2017-04-17T02:47:21.000Z</published>
-    <updated>2017-05-13T08:40:38.569Z</updated>
+    <updated>2017-06-26T01:58:46.269Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
-<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
-URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
-</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
-    查看占用该端口的进程
-netstat -ntlup | grep 端口号                  
-    根据端口搜索进程
-ps -ef | grep 进程号                        
-    查看进程
-netstat –apn                            
-    查看所有的进程和端口使用情况
-kill -9 processId                        
-    杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
-<h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
-<pre><code>Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><h4 id="查看物理CPU的个数"><a href="#查看物理CPU的个数" class="headerlink" title="查看物理CPU的个数"></a>查看物理CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
-</code></pre><h4 id="查看逻辑CPU的个数"><a href="#查看逻辑CPU的个数" class="headerlink" title="查看逻辑CPU的个数"></a>查看逻辑CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
-</code></pre><h4 id="查看CPU是几核"><a href="#查看CPU是几核" class="headerlink" title="查看CPU是几核"></a>查看CPU是几核</h4><pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
-</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
-<pre><code>top                     查看内存和CPU    
-pmap -d processId        查看进程相关信息占用的内存情况
-free -m                 查看内存
-cat /proc/meminfo        查看内存额定值
-ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre><h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
+    <content type="html"><![CDATA[<h2 id="ssh远程主机被拒绝"><a href="#ssh远程主机被拒绝" class="headerlink" title="ssh远程主机被拒绝"></a>ssh远程主机被拒绝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:~$ ssh localhost</div><div class="line">ssh: connect to host localhost port 22: Connection refused</div></pre></td></tr></table></figure>
+<p>sudo apt-get install openssh-server</p>
+<h2 id="etc-sudoers文件被破坏"><a href="#etc-sudoers文件被破坏" class="headerlink" title="/etc/sudoers文件被破坏"></a>/etc/sudoers文件被破坏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:/etc$ sudo gedit sudoers</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">sudo：/etc/sudoers 中第 1 行附近有解析错误</div><div class="line">sudo：no valid sudoers sources found, quitting</div><div class="line">sudo：无法初始化策略插件</div></pre></td></tr></table></figure>
+<ul>
+<li>重启ubuntu，启动时按Esc或Shift键，可以看到引导选项；</li>
+<li>在引导选项中选择Recovery模式的那一项来引导；</li>
+<li>进入Recovery Menu页面，选择root，也就是进入试用root用户进行系统恢复，在这里可以执行超级用户的权限的操作，回车后可以看到熟悉的 root@user ~# 命令提示符；</li>
+<li><p>设置或者撤销/etc/sudoers文件的权限，也可以将该文件改回到发生错误之前的状态。</p>
+<p>  chmod 666 /dev/null<br>  mount -o remount rw /<br>  vi /etc/sudoers<br>  恢复本文件内容并存盘</p>
+</li>
+<li>退出Recovery模式，重新启动ubuntu。</li>
+</ul>
+<h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
 E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
 natty_main_i18n_Translation-en
 </code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
@@ -1090,71 +1190,14 @@ natty_main_i18n_Translation-en
     
     <summary type="html">
     
-      &lt;h2 id=&quot;源列表&quot;&gt;&lt;a href=&quot;#源列表&quot; class=&quot;headerlink&quot; title=&quot;源列表&quot;&gt;&lt;/a&gt;源列表&lt;/h2&gt;&lt;p&gt;Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list
+      &lt;h2 id=&quot;ssh远程主机被拒绝&quot;&gt;&lt;a href=&quot;#ssh远程主机被拒绝&quot; class=&quot;headerlink&quot; title=&quot;ssh远程主机被拒绝&quot;&gt;&lt;/a&gt;ssh远程主机被拒绝&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
     
     </summary>
     
       <category term="Linux" scheme="https://duansiman.github.io/categories/Linux/"/>
     
     
-      <category term="Linux知识点" scheme="https://duansiman.github.io/tags/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>加密、解密</title>
-    <link href="https://duansiman.github.io/2017/04/14/%E5%8A%A0%E5%AF%86%E3%80%81%E8%A7%A3%E5%AF%86/"/>
-    <id>https://duansiman.github.io/2017/04/14/加密、解密/</id>
-    <published>2017-04-14T09:00:53.000Z</published>
-    <updated>2017-04-17T10:51:44.232Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>　　Base64编码要求把3个8位字节（3<em>8=24）转化为4个6位的字节（4</em>6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Base64&quot;&gt;&lt;a href=&quot;#Base64&quot; class=&quot;headerlink&quot; title=&quot;Base64&quot;&gt;&lt;/a&gt;Base64&lt;/h2&gt;&lt;p&gt;　　Base64编码要求把3个8位字节（3&lt;em&gt;8=24）转化为4个6位的字节（4&lt;/em&gt;6=24），之
-    
-    </summary>
-    
-      <category term="计算机" scheme="https://duansiman.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-      <category term="编码" scheme="https://duansiman.github.io/tags/%E7%BC%96%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo的配置</title>
-    <link href="https://duansiman.github.io/2017/04/12/Hexo%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
-    <id>https://duansiman.github.io/2017/04/12/Hexo的配置/</id>
-    <published>2017-04-12T02:20:34.000Z</published>
-    <updated>2017-04-17T11:01:02.339Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
-<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
-<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用markdown的#标题时，#和标题要隔个空格，否则解析不了。</p>
-<h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
-<h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
-<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
-<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
-<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
-<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
-<h2 id="提交搜索引擎（百度-谷歌）"><a href="#提交搜索引擎（百度-谷歌）" class="headerlink" title="提交搜索引擎（百度+谷歌）"></a>提交搜索引擎（百度+谷歌）</h2><p>　<a href="http://www.jianshu.com/p/619dab2d3c08" target="_blank" rel="external">参考博客</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;设置主题&quot;&gt;&lt;a href=&quot;#设置主题&quot; class=&quot;headerlink&quot; title=&quot;设置主题&quot;&gt;&lt;/a&gt;设置主题&lt;/h2&gt;&lt;p&gt;　&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;extern
-    
-    </summary>
-    
-      <category term="Blog" scheme="https://duansiman.github.io/categories/Blog/"/>
-    
-    
-      <category term="Hexo" scheme="https://duansiman.github.io/tags/Hexo/"/>
+      <category term="Linux问题解决方法" scheme="https://duansiman.github.io/tags/Linux%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   

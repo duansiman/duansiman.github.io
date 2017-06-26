@@ -85,6 +85,239 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux-知识点/" class="article-date">
+  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux-知识点/">Linux 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
+<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
+URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
+    查看占用该端口的进程
+netstat -ntlup | grep 端口号                  
+    根据端口搜索进程
+ps -ef | grep 进程号                        
+    查看进程
+netstat –apn                            
+    查看所有的进程和端口使用情况
+kill -9 processId                        
+    杀进程
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>物理CPU</p>
+<pre><code>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
+</code></pre><p>逻辑CPU</p>
+<pre><code>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
+一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
+逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
+
+Linux下top查看的CPU也是逻辑CPU个数
+</code></pre><p>查看物理CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
+</code></pre><p>查看逻辑CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
+</code></pre><p>查看CPU是几核</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
+</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
+<pre><code>top                     查看内存和CPU    
+pmap -d processId        查看进程相关信息占用的内存情况
+free -m                 查看内存
+cat /proc/meminfo        查看内存额定值
+ll -h /proc/kcore        查看内存镜像文件的大小
+</code></pre><h2 id="apt-get清除文件"><a href="#apt-get清除文件" class="headerlink" title="apt-get清除文件"></a>apt-get清除文件</h2><p>下面命令已清mysql相关文件</p>
+<pre><code>sudo apt-get purge mysql*
+sudo apt-get autoremove
+sudo apt-get autoclean
+</code></pre><h2 id="Ubuntu系统升级"><a href="#Ubuntu系统升级" class="headerlink" title="Ubuntu系统升级"></a>Ubuntu系统升级</h2><pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
+sudo reboot
+sudo update-manager –d
+</code></pre><h2 id="配置root权限"><a href="#配置root权限" class="headerlink" title="配置root权限"></a>配置root权限</h2><p>/etc/sudoers文件中配置了，那些用户可以临时获取root权限</p>
+<pre><code>授权给单个用户：
+    devin    ALL=(ALL)ALL
+解释：
+    devin：允许使用 sudo 的用户名
+    ALL：允许从任何终端（任何机器）使用 sudo
+    (ALL)：允许以任何用户执行 sudo 命令
+    ALL：允许 sudo 权限执行任何命令
+
+让用户 test 只能在本主机（主机名为epdc）以 root 账户执行/bin/chown、/bin/chmod 两条命令
+    test epdc-ThinkPad-T550=(root)/bin/chown,/bin/chmod
+
+授权某组用户，将“用户名”换成“%组名”即可。
+
+使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
+</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
+<h2 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h2><pre><code>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行
+
+使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。
+</code></pre><h2 id="sudo-操作记录日志"><a href="#sudo-操作记录日志" class="headerlink" title="sudo 操作记录日志"></a>sudo 操作记录日志</h2><pre><code>sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修
+
+第一步：创建/var/log/sudo.log文件
+    sudo touch /va/log/sudo.log
+第二步：修改/etc/rsyslog.conf配置文件,加入下面一行：
+    local2.debug    /var/log/sudo.log    #空白不能用空格，必须用tab
+第三步：修改/etc/sudoers配置文件,加入下面一行：
+    Defaults    logfile=/var/log/sudo.log
+第四步：重启syslog服务
+    sudo service rsyslog restart
+</code></pre><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><p>sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： </p>
+<ul>
+<li>sudo能够限制用户只在某台主机上运行某些命令。</li>
+<li>sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。</li>
+<li>sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。</li>
+<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj4e0qoyl000k9gler3eb1q6o" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-加密、解密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/14/加密、解密/" class="article-date">
+  <time datetime="2017-04-14T09:00:53.000Z" itemprop="datePublished">2017-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/计算机/">计算机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/14/加密、解密/">加密、解密</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>　　Base64编码要求把3个8位字节（3<em>8=24）转化为4个6位的字节（4</em>6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，则用0填充，输出字符使用‘=’，因此编码后输出的文本末尾可能会出现‘=’。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj4e0qp0d001e9gler2k5snhc" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo的配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/12/Hexo的配置/" class="article-date">
+  <time datetime="2017-04-12T02:20:34.000Z" itemprop="datePublished">2017-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/12/Hexo的配置/">Hexo的配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>　<a href="https://hexo.io/themes/" target="_blank" rel="external">官方主题网站</a>，在主题下载放到themes目录。然后修改_config.yml配置文件<br>　<img src="/2017/04/12/Hexo的配置/1.jpg" alt=""></p>
+<h2 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h2><p>　使用的是<a href="https://github.com/giscafer/hexo-theme-cafe" target="_blank" rel="external">Cafe</a>主题，由于<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">多说</a>项目关闭，所以使用时国外<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论。<br><br>　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以<br>　<img src="/2017/04/12/Hexo的配置/2.jpg" alt=""></p>
+<h4 id="注册Disqus账号"><a href="#注册Disqus账号" class="headerlink" title="注册Disqus账号"></a>注册Disqus账号</h4><p>　在admin里，setting里的shortname名字才是配置到_config.yml文件中的<br>　<img src="/2017/04/12/Hexo的配置/3.jpg" alt=""></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>　配置像这个分层次的分类<br>　<img src="/2017/04/12/Hexo的配置/4.jpg" alt=""><br>　<img src="/2017/04/12/Hexo的配置/5.jpg" alt=""></p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用markdown的#标题时，#和标题要隔个空格，否则解析不了。</p>
+<h2 id="云标签"><a href="#云标签" class="headerlink" title="云标签"></a>云标签</h2><p>　把Cafe的tagcloud_color设置为true<br>　<img src="/2017/04/12/Hexo的配置/6.jpg" alt=""></p>
+<h2 id="配置关于界面"><a href="#配置关于界面" class="headerlink" title="配置关于界面"></a>配置关于界面</h2><p>　使用hexo new page “about”创建about的页面，在_config.yml中可以修改about名称<br>　<img src="/2017/04/12/Hexo的配置/7.jpg" alt=""></p>
+<h2 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h2><p>　在博客的_config.yml文件设置post_asset_folder为true。在建立文件时，Hexo会自动建立一个与文章同名的文件夹，用来放资源的。<br>然后安装<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">hexo-asset-image</a>插件npm install hexo-asset-image –save。通过下面方法就可以在文章插入图片。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![logo](本地图片测试/logo.jpg) 其中[]里面不写文字则没有图片标题。</div><div class="line">而&#123;% asset_img example.jpg this is an example image %&#125; 生成HTML文件图片路径错误</div></pre></td></tr></table></figure></p>
+<h2 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h2><p>执行命令安装插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div></pre></td></tr></table></figure></p>
+<p>在博客的_config.yml文件配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># RSS订阅支持</span></div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line"></div><div class="line"><span class="comment"># Feed Atom</span></div><div class="line">feed:</div><div class="line"><span class="built_in">type</span>: atom</div><div class="line">path: atom.xml</div><div class="line"><span class="built_in">limit</span>: 20</div></pre></td></tr></table></figure></p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>　在主题的_config.yml文件配置如下,id是Google Analytics生成的追踪id,需要去Google Analytics官网创建。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">google_analytics:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  id: UA-97173941-1</div><div class="line">  site: auto</div></pre></td></tr></table></figure></p>
+<h2 id="提交搜索引擎（百度-谷歌）"><a href="#提交搜索引擎（百度-谷歌）" class="headerlink" title="提交搜索引擎（百度+谷歌）"></a>提交搜索引擎（百度+谷歌）</h2><p>　<a href="http://www.jianshu.com/p/619dab2d3c08" target="_blank" rel="external">参考博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj4e0qoy1000g9glernh2j90d" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Git常遇到使用场景" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/11/Git常遇到使用场景/" class="article-date">
@@ -124,7 +357,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj3r63gel00020gle1zeov509" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj4e0qox5000c9glepvla5lyh" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -187,7 +420,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj3r63gh200110glevjabhmc5" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj4e0qp0300119gle8pq04d84" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -203,9 +436,9 @@ java.net.SocketTimeoutException: connect timed out
 
 
   
-    <article id="post-SQL-常用语句" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SQL语句说明" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/06/SQL-常用语句/" class="article-date">
+    <a href="/2017/04/06/SQL语句说明/" class="article-date">
   <time datetime="2017-04-06T07:14:32.000Z" itemprop="datePublished">2017-04-06</time>
 </a>
     
@@ -221,7 +454,7 @@ java.net.SocketTimeoutException: connect timed out
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/SQL-常用语句/">SQL  常用语句</a>
+      <a class="article-title" href="/2017/04/06/SQL语句说明/">SQL语句说明</a>
     </h1>
   
 
@@ -243,16 +476,22 @@ mysqladmin -u -p -h extended-status
 </code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code>show variables like &apos;max_allowed_packet&apos;;
     查看MySQL变量
 </code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
+<h4 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h4><pre><code>desc 表名;
+show columns from 表名;
+show create table 表名;
+
+use information_schema
+select * from columns where table_name=&apos;表名&apos;
+</code></pre><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>show function status;                 查看自定义函数
 show create function fun_name；        查看函数源码
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL-常用语句/" data-id="cj3r63ghc00170gleo76cx5iu" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj4e0qp00000y9glemrso7mx8" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/06/SQL-常用语句/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/06/SQL语句说明/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL语句/">SQL语句</a></li></ul>
@@ -306,7 +545,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj3r63gf300070glexq914pfu" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj4e0qoxr000e9gles1kqignn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -356,15 +595,15 @@ show create function fun_name；        查看函数源码
           </li>
         
           <li>
-            <a href="/2017/05/05/Git/">Git</a>
+            <a href="/2017/05/05/Git命令/">Git</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/Git学习/">Git学习</a>
           </li>
         
           <li>
             <a href="/2017/05/04/快捷键/">快捷键</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/26/Maven/">Maven</a>
           </li>
         
       </ul>

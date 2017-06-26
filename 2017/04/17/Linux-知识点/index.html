@@ -17,7 +17,7 @@ URL后面的字符串，分别对应相应的目录结构。进入dists目录，
 开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
 URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
 查看端口占用lsof">
-<meta property="og:updated_time" content="2017-05-13T08:40:38.569Z">
+<meta property="og:updated_time" content="2017-06-26T02:08:08.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 知识点">
 <meta name="twitter:description" content="源列表Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件sources.list文件内容：
@@ -134,27 +134,74 @@ netstat –apn
     查看所有的进程和端口使用情况
 kill -9 processId                        
     杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><h4 id="物理CPU"><a href="#物理CPU" class="headerlink" title="物理CPU"></a>物理CPU</h4><p>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。</p>
-<h4 id="逻辑CPU"><a href="#逻辑CPU" class="headerlink" title="逻辑CPU"></a>逻辑CPU</h4><p>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数<br>一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core<br>逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)</p>
-<pre><code>Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><h4 id="查看物理CPU的个数"><a href="#查看物理CPU的个数" class="headerlink" title="查看物理CPU的个数"></a>查看物理CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
-</code></pre><h4 id="查看逻辑CPU的个数"><a href="#查看逻辑CPU的个数" class="headerlink" title="查看逻辑CPU的个数"></a>查看逻辑CPU的个数</h4><pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
-</code></pre><h4 id="查看CPU是几核"><a href="#查看CPU是几核" class="headerlink" title="查看CPU是几核"></a>查看CPU是几核</h4><pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>物理CPU</p>
+<pre><code>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
+</code></pre><p>逻辑CPU</p>
+<pre><code>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
+一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
+逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
+
+Linux下top查看的CPU也是逻辑CPU个数
+</code></pre><p>查看物理CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
+</code></pre><p>查看逻辑CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
+</code></pre><p>查看CPU是几核</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
 </code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
 <pre><code>top                     查看内存和CPU    
 pmap -d processId        查看进程相关信息占用的内存情况
 free -m                 查看内存
 cat /proc/meminfo        查看内存额定值
 ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre><h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
-E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
-natty_main_i18n_Translation-en
-</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
+</code></pre><h2 id="apt-get清除文件"><a href="#apt-get清除文件" class="headerlink" title="apt-get清除文件"></a>apt-get清除文件</h2><p>下面命令已清mysql相关文件</p>
+<pre><code>sudo apt-get purge mysql*
+sudo apt-get autoremove
+sudo apt-get autoclean
+</code></pre><h2 id="Ubuntu系统升级"><a href="#Ubuntu系统升级" class="headerlink" title="Ubuntu系统升级"></a>Ubuntu系统升级</h2><pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
+sudo reboot
+sudo update-manager –d
+</code></pre><h2 id="配置root权限"><a href="#配置root权限" class="headerlink" title="配置root权限"></a>配置root权限</h2><p>/etc/sudoers文件中配置了，那些用户可以临时获取root权限</p>
+<pre><code>授权给单个用户：
+    devin    ALL=(ALL)ALL
+解释：
+    devin：允许使用 sudo 的用户名
+    ALL：允许从任何终端（任何机器）使用 sudo
+    (ALL)：允许以任何用户执行 sudo 命令
+    ALL：允许 sudo 权限执行任何命令
+
+让用户 test 只能在本主机（主机名为epdc）以 root 账户执行/bin/chown、/bin/chmod 两条命令
+    test epdc-ThinkPad-T550=(root)/bin/chown,/bin/chmod
+
+授权某组用户，将“用户名”换成“%组名”即可。
+
+使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
+</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
+<h2 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h2><pre><code>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行
+
+使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。
+</code></pre><h2 id="sudo-操作记录日志"><a href="#sudo-操作记录日志" class="headerlink" title="sudo 操作记录日志"></a>sudo 操作记录日志</h2><pre><code>sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修
+
+第一步：创建/var/log/sudo.log文件
+    sudo touch /va/log/sudo.log
+第二步：修改/etc/rsyslog.conf配置文件,加入下面一行：
+    local2.debug    /var/log/sudo.log    #空白不能用空格，必须用tab
+第三步：修改/etc/sudoers配置文件,加入下面一行：
+    Defaults    logfile=/var/log/sudo.log
+第四步：重启syslog服务
+    sudo service rsyslog restart
+</code></pre><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><p>sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： </p>
+<ul>
+<li>sudo能够限制用户只在某台主机上运行某些命令。</li>
+<li>sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。</li>
+<li>sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。</li>
+<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj3r63ggb000o0gley4uunet8" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj4e0qoyl000k9gler3eb1q6o" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -168,11 +215,11 @@ natty_main_i18n_Translation-en
     
 <nav id="article-nav">
   
-    <a href="/2017/04/17/Linux-常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/17/Linux疑难杂症解解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          Linux 常用命令
+          Linux疑难杂症解决方法
         
       </div>
     </a>
@@ -209,7 +256,7 @@ natty_main_i18n_Translation-en
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源列表"><span class="toc-number">1.</span> <span class="toc-text">源列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口占用"><span class="toc-number">2.</span> <span class="toc-text">查看端口占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理CPU、逻辑CPU和CPU核数"><span class="toc-number">3.</span> <span class="toc-text">物理CPU、逻辑CPU和CPU核数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#物理CPU"><span class="toc-number">3.0.1.</span> <span class="toc-text">物理CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑CPU"><span class="toc-number">3.0.2.</span> <span class="toc-text">逻辑CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看物理CPU的个数"><span class="toc-number">3.0.3.</span> <span class="toc-text">查看物理CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看逻辑CPU的个数"><span class="toc-number">3.0.4.</span> <span class="toc-text">查看逻辑CPU的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看CPU是几核"><span class="toc-number">3.0.5.</span> <span class="toc-text">查看CPU是几核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看内存、CPU使用情况"><span class="toc-number">4.</span> <span class="toc-text">查看内存、CPU使用情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无法解析或打开软件包的列表或是状态文件解决方案"><span class="toc-number">5.</span> <span class="toc-text">无法解析或打开软件包的列表或是状态文件解决方案</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源列表"><span class="toc-number">1.</span> <span class="toc-text">源列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口占用"><span class="toc-number">2.</span> <span class="toc-text">查看端口占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理CPU、逻辑CPU和CPU核数"><span class="toc-number">3.</span> <span class="toc-text">物理CPU、逻辑CPU和CPU核数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看内存、CPU使用情况"><span class="toc-number">4.</span> <span class="toc-text">查看内存、CPU使用情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apt-get清除文件"><span class="toc-number">5.</span> <span class="toc-text">apt-get清除文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu系统升级"><span class="toc-number">6.</span> <span class="toc-text">Ubuntu系统升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置root权限"><span class="toc-number">7.</span> <span class="toc-text">配置root权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加用户"><span class="toc-number">8.</span> <span class="toc-text">添加用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部命令"><span class="toc-number">9.</span> <span class="toc-text">外部命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo-操作记录日志"><span class="toc-number">10.</span> <span class="toc-text">sudo 操作记录日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo命令"><span class="toc-number">11.</span> <span class="toc-text">sudo命令</span></a></li></ol>
           </div>
       </div>
     </div>
