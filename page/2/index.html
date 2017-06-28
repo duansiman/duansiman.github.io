@@ -85,6 +85,77 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/nginx/" class="article-date">
+  <time datetime="2017-04-18T03:34:07.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/nginx/">nginx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="启动、停止和重新加载服务"><a href="#启动、停止和重新加载服务" class="headerlink" title="启动、停止和重新加载服务"></a>启动、停止和重新加载服务</h2><pre><code>nginx
+nginx -s stop
+nginx -s reload
+nginx -s quit        退出
+nginx -t             检查配置文件
+</code></pre><h2 id="配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）"><a href="#配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）" class="headerlink" title="配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）"></a>配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）</h2><pre><code>worker_processes
+    进程的个数，建议设置为CPU的个数
+worker_connections
+    单进程的最大连接数
+server
+    listen                监听端口
+    server_name            服务的域名，可以配置多个用空格隔开
+</code></pre><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>在http中配置</p>
+<pre><code>#设定负载均衡的服务器列表  
+upstream mysvr {  
+    #weigth参数表示权值，权值越高被分配到的几率越大    
+    #同一机器在多网情况下，路由切换，ip可能不同
+    server 127.0.0.1:8080 weight=1;  
+    server 127.0.0.1:8090 weight=1;  
+    server 127.0.0.1:8070 weight=1;  
+}
+</code></pre><h2 id="代理、反向代理"><a href="#代理、反向代理" class="headerlink" title="代理、反向代理"></a>代理、反向代理</h2><h2 id="nginx-403-Forbidden"><a href="#nginx-403-Forbidden" class="headerlink" title="nginx 403 Forbidden"></a>nginx 403 Forbidden</h2><p>nginx的启动用户默认是nginx用户，需要修改web目录的权限</p>
+<h2 id="静态文件缓存"><a href="#静态文件缓存" class="headerlink" title="静态文件缓存"></a>静态文件缓存</h2><p>server中配置缓存，需要指定root值，否则默认是Nginx的目录，会导致找不到文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 30d;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(js|css)?$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 1h;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/nginx/" data-id="cj4gcjxwz00124olefq3ussuy" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/nginx/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-插入算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/18/插入算法/" class="article-date">
@@ -123,7 +194,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/插入算法/" data-id="cj4fd4rad002534lemzivdodo" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/插入算法/" data-id="cj4gcjxyq001z4olemzodda4x" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/插入算法/#disqus_thread" class="article-comment-link">留言</a>
@@ -175,7 +246,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/归并排序/" data-id="cj4fd4ra7001z34lenznj9u47" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/归并排序/" data-id="cj4gcjxyk001v4olef6nccyb2" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/归并排序/#disqus_thread" class="article-comment-link">留言</a>
@@ -229,7 +300,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/分治策略/" data-id="cj4fd4r9m001i34lexogf2v1y" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/分治策略/" data-id="cj4gcjxxd001a4ole4c7iyyoa" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/分治策略/#disqus_thread" class="article-comment-link">留言</a>
@@ -331,13 +402,68 @@ The car is yours
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/单词词性/" data-id="cj4fd4r9u001o34levnt34vku" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/单词词性/" data-id="cj4gcjxxw001i4olelpf6kov7" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/单词词性/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单词词性/">单词词性</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-句子成分" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/句子成分/" class="article-date">
+  <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/句子成分/">句子成分</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
+<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
+<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
+<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
+<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
+<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
+<p>表示频度副词, 可以放句中. 例如: I often go shopping.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj4gcjxy9001p4oleb0bqgoqn" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/句子成分/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子成分/">句子成分</a></li></ul>
 
     </footer>
   </div>
@@ -433,68 +559,13 @@ I am going to draw a picture for you.
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子时态/" data-id="cj4fd4ra2001v34lecfigv8jb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子时态/" data-id="cj4gcjxy0001m4olet95q1pvn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子时态/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子时态/">句子时态</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-句子成分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/句子成分/" class="article-date">
-  <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/English/">English</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/句子成分/">句子成分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
-<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
-<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
-<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
-<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
-<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
-<p>表示频度副词, 可以放句中. 例如: I often go shopping.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子成分/" data-id="cj4fd4r9z001s34lepjw329sy" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/句子成分/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子成分/">句子成分</a></li></ul>
 
     </footer>
   </div>
@@ -564,7 +635,7 @@ there be
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj4fd4ra5001y34leywa22fph" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/句子结构/" data-id="cj4gcjxyd001s4olenuy1wjqn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/句子结构/#disqus_thread" class="article-comment-link">留言</a>
@@ -742,7 +813,7 @@ default_character_set=utf8;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj4fd4r9a001334le6qazct1m" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj4gcjxw5000r4ole3oi6t8mv" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -814,137 +885,13 @@ y$        复制光标所在的那个字符到该行行尾的所有数据
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Vim命令/" data-id="cj4fd4r9c001734le79xfball" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Vim命令/" data-id="cj4gcjxww00104olesqgn4tqu" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Vim命令/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim命令/">Vim命令</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/17/Linux-知识点/" class="article-date">
-  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/Linux-知识点/">Linux 知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
-<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
-URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
-</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
-    查看占用该端口的进程
-netstat -ntlup | grep 端口号                  
-    根据端口搜索进程
-ps -ef | grep 进程号                        
-    查看进程
-netstat –apn                            
-    查看所有的进程和端口使用情况
-kill -9 processId                        
-    杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>物理CPU</p>
-<pre><code>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
-</code></pre><p>逻辑CPU</p>
-<pre><code>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
-逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
-
-Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><p>查看物理CPU的个数</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
-</code></pre><p>查看逻辑CPU的个数</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
-</code></pre><p>查看CPU是几核</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
-</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
-<pre><code>top                     查看内存和CPU    
-pmap -d processId        查看进程相关信息占用的内存情况
-free -m                 查看内存
-cat /proc/meminfo        查看内存额定值
-ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre><h2 id="apt-get清除文件"><a href="#apt-get清除文件" class="headerlink" title="apt-get清除文件"></a>apt-get清除文件</h2><p>下面命令已清mysql相关文件</p>
-<pre><code>sudo apt-get purge mysql*
-sudo apt-get autoremove
-sudo apt-get autoclean
-</code></pre><h2 id="Ubuntu系统升级"><a href="#Ubuntu系统升级" class="headerlink" title="Ubuntu系统升级"></a>Ubuntu系统升级</h2><pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
-sudo reboot
-sudo update-manager –d
-</code></pre><h2 id="配置root权限"><a href="#配置root权限" class="headerlink" title="配置root权限"></a>配置root权限</h2><p>/etc/sudoers文件中配置了，那些用户可以临时获取root权限</p>
-<pre><code>授权给单个用户：
-    devin    ALL=(ALL)ALL
-解释：
-    devin：允许使用 sudo 的用户名
-    ALL：允许从任何终端（任何机器）使用 sudo
-    (ALL)：允许以任何用户执行 sudo 命令
-    ALL：允许 sudo 权限执行任何命令
-
-让用户 test 只能在本主机（主机名为epdc）以 root 账户执行/bin/chown、/bin/chmod 两条命令
-    test epdc-ThinkPad-T550=(root)/bin/chown,/bin/chmod
-
-授权某组用户，将“用户名”换成“%组名”即可。
-
-使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
-</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
-<h2 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h2><pre><code>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行
-
-使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。
-</code></pre><h2 id="sudo-操作记录日志"><a href="#sudo-操作记录日志" class="headerlink" title="sudo 操作记录日志"></a>sudo 操作记录日志</h2><pre><code>sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修
-
-第一步：创建/var/log/sudo.log文件
-    sudo touch /va/log/sudo.log
-第二步：修改/etc/rsyslog.conf配置文件,加入下面一行：
-    local2.debug    /var/log/sudo.log    #空白不能用空格，必须用tab
-第三步：修改/etc/sudoers配置文件,加入下面一行：
-    Defaults    logfile=/var/log/sudo.log
-第四步：重启syslog服务
-    sudo service rsyslog restart
-</code></pre><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><p>sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： </p>
-<ul>
-<li>sudo能够限制用户只在某台主机上运行某些命令。</li>
-<li>sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。</li>
-<li>sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。</li>
-<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj4fd4r8k000e34leeq14b8hv" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
 
     </footer>
   </div>
@@ -980,6 +927,10 @@ sudo update-manager –d
       <ul>
         
           <li>
+            <a href="/2017/06/17/Linux命令/">Linux 命令</a>
+          </li>
+        
+          <li>
             <a href="/2017/05/18/单元测试/">单元测试</a>
           </li>
         
@@ -993,10 +944,6 @@ sudo update-manager –d
         
           <li>
             <a href="/2017/05/05/Git命令/">Git</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/04/快捷键/">快捷键</a>
           </li>
         
       </ul>

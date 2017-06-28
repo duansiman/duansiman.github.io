@@ -85,6 +85,124 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/17/Linux命令/" class="article-date">
+  <time datetime="2017-06-17T02:47:21.000Z" itemprop="datePublished">2017-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/17/Linux命令/">Linux 命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="命令通用参数"><a href="#命令通用参数" class="headerlink" title="命令通用参数"></a>命令通用参数</h2><h3 id="R"><a href="#R" class="headerlink" title="-R"></a>-R</h3><p>表示递归,例如:</p>
+<pre><code>cp -R 递归复制
+chmod -R 递归修改权限
+</code></pre><h3 id="m-h"><a href="#m-h" class="headerlink" title="-m, -h"></a>-m, -h</h3><p>以M,K显示大小</p>
+<pre><code>ls -lh    查看当前目录下文件大小
+df -m    查看磁盘空间
+</code></pre><hr>
+<h2 id="系统相关的"><a href="#系统相关的" class="headerlink" title="系统相关的"></a>系统相关的</h2><p>系统版本<br>    lsb_release -a<br>    cat /etc/issue</p>
+<p>防火墙<br>    ufw status<br>    ufw disable<br>    ufw enable</p>
+<p>Ctrl+Alt+F1-F6     命令行模式<br>Ctrl+Alt+F7    回到桌面<br>Ctrl+Alt+T     打开终端</p>
+<h2 id="文档管理相关的"><a href="#文档管理相关的" class="headerlink" title="文档管理相关的"></a>文档管理相关的</h2><p>/etc/group文件中, 查看用户分组信息.</p>
+<h3 id="7z命令"><a href="#7z命令" class="headerlink" title="7z命令"></a>7z命令</h3><p>安装方法：</p>
+<pre><code>sudo apt-get install p7zip
+</code></pre><p>解压文件：</p>
+<pre><code>7z x manager.7z -r -o /home/xx
+x 代表解压缩文件，并且是按原始目录解压（还有个参数 e 也是解压缩文件，但其会将所有文件都解压到根下，而不是自己原有的文件夹下）manager.7z 是压缩文件，这里大家要换成自己的。如果不在当前目录下要带上完整的目录
+-r 表示递归所有的子文件夹
+-o 是指定解压到的目录，这里大家要注意-o后是没有空格的直接接目录
+</code></pre><p>压缩文件</p>
+<pre><code>7z a -t7z -r manager.7z /home/manager/*
+a 代表添加文件／文件夹到压缩包
+-t 是指定压缩类型 一般我们定为7z
+-r 表示递归所有的子文件夹，manager.7z 是压缩好后的压缩包名，/home/manager/* 是要压缩的目录，＊是表示该目录下所有的文件。
+</code></pre><h3 id="解压和压缩"><a href="#解压和压缩" class="headerlink" title="解压和压缩"></a>解压和压缩</h3><pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
+tar -zcvf xxx.tar.gz /xxx        打包gzip压缩
+tar -jcvf xxx.tar.bz2 /xxx        打包bzip2压缩
+</code></pre><h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><pre><code>-R, -r, --recursive       递归复制
+-p            连同档案的属性一起复制过去，而非使用预设属性
+</code></pre><h3 id="执行运行文件"><a href="#执行运行文件" class="headerlink" title="执行运行文件"></a>执行运行文件</h3><p>bin文件</p>
+<pre><code>chmod +x xxx.bin
+./xxx.bin -d &lt;install path&gt;
+</code></pre><p>deb文件</p>
+<pre><code>dpkg -i
+</code></pre><h2 id="命令本身相关的"><a href="#命令本身相关的" class="headerlink" title="命令本身相关的"></a>命令本身相关的</h2><p>type 命令来查看命令的类型,路径</p>
+<h2 id="http网络相关的"><a href="#http网络相关的" class="headerlink" title="http网络相关的"></a>http网络相关的</h2><h3 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h3><p>在Linux中curl是一个利用URL规则在命令行下工作的文件传输工具，可以说是一款很强大的http命令行工具。它支持文件的上传和下载，是综合传输工具，但按传统，习惯称url为下载工具。</p>
+<pre><code>语法：# curl [option] [url]
+
+常见参数：
+-A/--user-agent &lt;string&gt;              设置用户代理发送给服务器
+-b/--cookie &lt;name=string/file&gt;    cookie字符串或文件读取位置
+-c/--cookie-jar &lt;file&gt;                    操作结束后把cookie写入到这个文件中
+-C/--continue-at &lt;offset&gt;            断点续转
+-D/--dump-header &lt;file&gt;              把header信息写入到该文件中
+-e/--referer                                  来源网址
+-f/--fail                                          连接失败时不显示http错误
+-o/--output                                  把输出写到该文件中
+-O/--remote-name                      把输出写到该文件中，保留远程文件的文件名
+-r/--range &lt;range&gt;                      检索来自HTTP/1.1或FTP服务器字节范围
+-s/--silent                                    静音模式。不输出任何东西
+-T/--upload-file &lt;file&gt;                  上传文件
+-u/--user &lt;user[:password]&gt;      设置服务器的用户和密码
+-w/--write-out [format]                什么输出完成后
+-x/--proxy &lt;host[:port]&gt;              在给定的端口上使用HTTP代理
+-#/--progress-bar                        进度条显示当前的传送状态
+</code></pre><h2 id="系统进程相关"><a href="#系统进程相关" class="headerlink" title="系统进程相关"></a>系统进程相关</h2><h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><pre><code>PID：进程的ID
+USER：进程所有者
+PR：进程的优先级别，越小越优先被执行
+NInice：值
+VIRT：进程占用的虚拟内存
+RES：进程占用的物理内存
+SHR：进程使用的共享内存
+S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数
+%CPU：进程占用CPU的使用率
+%MEM：进程使用的物理内存和总内存的百分比
+TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。
+COMMAND：进程启动命令名称
+</code></pre><p>第一行</p>
+<pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
+</code></pre><p>第二行</p>
+<pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj4gcml2c0000xslev9zcjwqv" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/06/17/Linux命令/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux命令/">Linux命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-单元测试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/18/单元测试/" class="article-date">
@@ -195,7 +313,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4fd4r9q001l34lemtnl9hpb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4gcjxxr001g4ole2ky803dk" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/18/单元测试/#disqus_thread" class="article-comment-link">留言</a>
@@ -290,7 +408,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4fd4r8m000f34leveds0sx8" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4gcjxvd000j4ole00st5jk8" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
@@ -336,7 +454,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4fd4r7d000234lew1oryzzq" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4gcjxuu00044olevwe8r5aj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git学习/#disqus_thread" class="article-comment-link">留言</a>
@@ -452,7 +570,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4fd4r8q000i34le1pkz3lmb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4gcjxum00024ole0t7zflek" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -624,7 +742,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4fd4rab002434lev8yuum2d" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4gcjxyn001x4oleq96bt8ph" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/04/快捷键/#disqus_thread" class="article-comment-link">留言</a>
@@ -707,7 +825,7 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4fd4r8u000o34le3g64xvms" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4gcjxvz000o4ole6uh06ulc" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Maven/#disqus_thread" class="article-comment-link">留言</a>
@@ -766,7 +884,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4fd4r9h001c34le6ph59r8c" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4gcjxx600164olevdd29aqb" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Zookeeper/#disqus_thread" class="article-comment-link">留言</a>
@@ -820,7 +938,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4fd4r8d000b34leaymkcfz3" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4gcjxv7000d4ole6b7saegh" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Java-RMI/#disqus_thread" class="article-comment-link">留言</a>
@@ -870,84 +988,13 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4fd4r9e001834le5fev1po6" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4gcjxxa00184olehhzrxevn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/tomcat/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/">Tomcat</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/nginx/" class="article-date">
-  <time datetime="2017-04-18T03:34:07.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/nginx/">nginx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="启动、停止和重新加载服务"><a href="#启动、停止和重新加载服务" class="headerlink" title="启动、停止和重新加载服务"></a>启动、停止和重新加载服务</h2><pre><code>nginx
-nginx -s stop
-nginx -s reload
-nginx -s quit        退出
-nginx -t             检查配置文件
-</code></pre><h2 id="配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）"><a href="#配置（-etc-nginx-nginx-conf、-etc-nginx-conf-d-default-conf）" class="headerlink" title="配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）"></a>配置（/etc/nginx/nginx.conf、/etc/nginx/conf.d/default.conf）</h2><pre><code>worker_processes
-    进程的个数，建议设置为CPU的个数
-worker_connections
-    单进程的最大连接数
-server
-    listen                监听端口
-    server_name            服务的域名，可以配置多个用空格隔开
-</code></pre><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>在http中配置</p>
-<pre><code>#设定负载均衡的服务器列表  
-upstream mysvr {  
-    #weigth参数表示权值，权值越高被分配到的几率越大    
-    #同一机器在多网情况下，路由切换，ip可能不同
-    server 127.0.0.1:8080 weight=1;  
-    server 127.0.0.1:8090 weight=1;  
-    server 127.0.0.1:8070 weight=1;  
-}
-</code></pre><h2 id="代理、反向代理"><a href="#代理、反向代理" class="headerlink" title="代理、反向代理"></a>代理、反向代理</h2><h2 id="nginx-403-Forbidden"><a href="#nginx-403-Forbidden" class="headerlink" title="nginx 403 Forbidden"></a>nginx 403 Forbidden</h2><p>nginx的启动用户默认是nginx用户，需要修改web目录的权限</p>
-<h2 id="静态文件缓存"><a href="#静态文件缓存" class="headerlink" title="静态文件缓存"></a>静态文件缓存</h2><p>server中配置缓存，需要指定root值，否则默认是Nginx的目录，会导致找不到文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 30d;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">#静态文件缓存时间设置</span></div><div class="line">   location ~ .*\.(js|css)?$ &#123;</div><div class="line">        root   /root/blog_front/blog-front/dist;</div><div class="line">        expires 1h;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/nginx/" data-id="cj4fd4raf002934lezhdevw7p" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/nginx/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
 
     </footer>
   </div>
@@ -992,7 +1039,7 @@ upstream mysvr {
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/分布式/">分布式</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用服务器/">应用服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/分布式/">分布式</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用服务器/">应用服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1002,7 +1049,7 @@ upstream mysvr {
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 25px; color: #ee82ee">Git</a> <a href="/tags/Git问题场景/" style="font-size: 14px; color: #00f">Git问题场景</a> <a href="/tags/Hexo/" style="font-size: 25px; color: #ee82ee">Hexo</a> <a href="/tags/Linux知识点/" style="font-size: 14px; color: #00f">Linux知识点</a> <a href="/tags/Linux问题解决方法/" style="font-size: 14px; color: #00f">Linux问题解决方法</a> <a href="/tags/Maven/" style="font-size: 14px; color: #00f">Maven</a> <a href="/tags/MySQL知识点/" style="font-size: 14px; color: #00f">MySQL知识点</a> <a href="/tags/RMI/" style="font-size: 14px; color: #00f">RMI</a> <a href="/tags/Redis/" style="font-size: 14px; color: #00f">Redis</a> <a href="/tags/SQL语句/" style="font-size: 14px; color: #00f">SQL语句</a> <a href="/tags/Tomcat/" style="font-size: 14px; color: #00f">Tomcat</a> <a href="/tags/Vim命令/" style="font-size: 14px; color: #00f">Vim命令</a> <a href="/tags/Zookeeper/" style="font-size: 14px; color: #00f">Zookeeper</a> <a href="/tags/nginx/" style="font-size: 14px; color: #00f">nginx</a> <a href="/tags/分治策略/" style="font-size: 14px; color: #00f">分治策略</a> <a href="/tags/单元测试/" style="font-size: 14px; color: #00f">单元测试</a> <a href="/tags/单词词性/" style="font-size: 14px; color: #00f">单词词性</a> <a href="/tags/句子成分/" style="font-size: 14px; color: #00f">句子成分</a> <a href="/tags/句子时态/" style="font-size: 14px; color: #00f">句子时态</a> <a href="/tags/句子结构/" style="font-size: 14px; color: #00f">句子结构</a> <a href="/tags/归并排序/" style="font-size: 14px; color: #00f">归并排序</a> <a href="/tags/快捷键/" style="font-size: 14px; color: #00f">快捷键</a> <a href="/tags/插入算法/" style="font-size: 14px; color: #00f">插入算法</a> <a href="/tags/编码/" style="font-size: 14px; color: #00f">编码</a>
+      <a href="/tags/Git/" style="font-size: 25px; color: #ee82ee">Git</a> <a href="/tags/Git问题场景/" style="font-size: 14px; color: #00f">Git问题场景</a> <a href="/tags/Hexo/" style="font-size: 25px; color: #ee82ee">Hexo</a> <a href="/tags/Linux命令/" style="font-size: 14px; color: #00f">Linux命令</a> <a href="/tags/Linux知识点/" style="font-size: 14px; color: #00f">Linux知识点</a> <a href="/tags/Linux问题解决方法/" style="font-size: 14px; color: #00f">Linux问题解决方法</a> <a href="/tags/Maven/" style="font-size: 14px; color: #00f">Maven</a> <a href="/tags/MySQL知识点/" style="font-size: 14px; color: #00f">MySQL知识点</a> <a href="/tags/RMI/" style="font-size: 14px; color: #00f">RMI</a> <a href="/tags/Redis/" style="font-size: 14px; color: #00f">Redis</a> <a href="/tags/SQL语句/" style="font-size: 14px; color: #00f">SQL语句</a> <a href="/tags/Tomcat/" style="font-size: 14px; color: #00f">Tomcat</a> <a href="/tags/Vim命令/" style="font-size: 14px; color: #00f">Vim命令</a> <a href="/tags/Zookeeper/" style="font-size: 14px; color: #00f">Zookeeper</a> <a href="/tags/nginx/" style="font-size: 14px; color: #00f">nginx</a> <a href="/tags/分治策略/" style="font-size: 14px; color: #00f">分治策略</a> <a href="/tags/单元测试/" style="font-size: 14px; color: #00f">单元测试</a> <a href="/tags/单词词性/" style="font-size: 14px; color: #00f">单词词性</a> <a href="/tags/句子成分/" style="font-size: 14px; color: #00f">句子成分</a> <a href="/tags/句子时态/" style="font-size: 14px; color: #00f">句子时态</a> <a href="/tags/句子结构/" style="font-size: 14px; color: #00f">句子结构</a> <a href="/tags/归并排序/" style="font-size: 14px; color: #00f">归并排序</a> <a href="/tags/快捷键/" style="font-size: 14px; color: #00f">快捷键</a> <a href="/tags/插入算法/" style="font-size: 14px; color: #00f">插入算法</a> <a href="/tags/编码/" style="font-size: 14px; color: #00f">编码</a>
     </div>
   </div>
 
@@ -1012,6 +1059,10 @@ upstream mysvr {
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/17/Linux命令/">Linux 命令</a>
+          </li>
         
           <li>
             <a href="/2017/05/18/单元测试/">单元测试</a>
@@ -1029,10 +1080,6 @@ upstream mysvr {
             <a href="/2017/05/05/Git命令/">Git</a>
           </li>
         
-          <li>
-            <a href="/2017/05/04/快捷键/">快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1042,7 +1089,7 @@ upstream mysvr {
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
