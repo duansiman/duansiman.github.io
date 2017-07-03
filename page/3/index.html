@@ -85,6 +85,70 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux疑难杂症解解决方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux疑难杂症解解决方法/" class="article-date">
+  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux疑难杂症解解决方法/">Linux疑难杂症解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="ssh远程主机被拒绝"><a href="#ssh远程主机被拒绝" class="headerlink" title="ssh远程主机被拒绝"></a>ssh远程主机被拒绝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:~$ ssh localhost</div><div class="line">ssh: connect to host localhost port 22: Connection refused</div></pre></td></tr></table></figure>
+<p>sudo apt-get install openssh-server</p>
+<h2 id="etc-sudoers文件被破坏"><a href="#etc-sudoers文件被破坏" class="headerlink" title="/etc/sudoers文件被破坏"></a>/etc/sudoers文件被破坏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:/etc$ sudo gedit sudoers</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">sudo：/etc/sudoers 中第 1 行附近有解析错误</div><div class="line">sudo：no valid sudoers sources found, quitting</div><div class="line">sudo：无法初始化策略插件</div></pre></td></tr></table></figure>
+<ul>
+<li>重启ubuntu，启动时按Esc或Shift键，可以看到引导选项；</li>
+<li>在引导选项中选择Recovery模式的那一项来引导；</li>
+<li>进入Recovery Menu页面，选择root，也就是进入试用root用户进行系统恢复，在这里可以执行超级用户的权限的操作，回车后可以看到熟悉的 root@user ~# 命令提示符；</li>
+<li><p>设置或者撤销/etc/sudoers文件的权限，也可以将该文件改回到发生错误之前的状态。</p>
+<p>  chmod 666 /dev/null<br>  mount -o remount rw /<br>  vi /etc/sudoers<br>  恢复本文件内容并存盘</p>
+</li>
+<li>退出Recovery模式，重新启动ubuntu。</li>
+</ul>
+<h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
+E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
+natty_main_i18n_Translation-en
+</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cj4nmp5lg000nfoleq8fi4klt" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux问题解决方法/">Linux问题解决方法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/17/Linux-知识点/" class="article-date">
@@ -193,77 +257,13 @@ sudo update-manager –d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj4gcjxva000f4olepc8cmnir" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj4nmp5le000kfolex0nlyzuo" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux疑难杂症解解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/17/Linux疑难杂症解解决方法/" class="article-date">
-  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/Linux疑难杂症解解决方法/">Linux疑难杂症解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="ssh远程主机被拒绝"><a href="#ssh远程主机被拒绝" class="headerlink" title="ssh远程主机被拒绝"></a>ssh远程主机被拒绝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:~$ ssh localhost</div><div class="line">ssh: connect to host localhost port 22: Connection refused</div></pre></td></tr></table></figure>
-<p>sudo apt-get install openssh-server</p>
-<h2 id="etc-sudoers文件被破坏"><a href="#etc-sudoers文件被破坏" class="headerlink" title="/etc/sudoers文件被破坏"></a>/etc/sudoers文件被破坏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">epdc@epdc-ThinkPad-T550:/etc$ sudo gedit sudoers</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">&gt;&gt;&gt; /etc/sudoers: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">sudo：/etc/sudoers 中第 1 行附近有解析错误</div><div class="line">sudo：no valid sudoers sources found, quitting</div><div class="line">sudo：无法初始化策略插件</div></pre></td></tr></table></figure>
-<ul>
-<li>重启ubuntu，启动时按Esc或Shift键，可以看到引导选项；</li>
-<li>在引导选项中选择Recovery模式的那一项来引导；</li>
-<li>进入Recovery Menu页面，选择root，也就是进入试用root用户进行系统恢复，在这里可以执行超级用户的权限的操作，回车后可以看到熟悉的 root@user ~# 命令提示符；</li>
-<li><p>设置或者撤销/etc/sudoers文件的权限，也可以将该文件改回到发生错误之前的状态。</p>
-<p>  chmod 666 /dev/null<br>  mount -o remount rw /<br>  vi /etc/sudoers<br>  恢复本文件内容并存盘</p>
-</li>
-<li>退出Recovery模式，重新启动ubuntu。</li>
-</ul>
-<h2 id="无法解析或打开软件包的列表或是状态文件解决方案"><a href="#无法解析或打开软件包的列表或是状态文件解决方案" class="headerlink" title="无法解析或打开软件包的列表或是状态文件解决方案"></a>无法解析或打开软件包的列表或是状态文件解决方案</h2><pre><code>E: Encountered a section with no Package: header
-E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
-natty_main_i18n_Translation-en
-</code></pre><p>sudo rm /var/lib/apt/lists/* -vf</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cj4gcjxvi000l4olepc5yi4bs" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux问题解决方法/">Linux问题解决方法</a></li></ul>
 
     </footer>
   </div>
@@ -306,7 +306,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj4gcjxxj001d4olep54x4ogv" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj4nmp5ma001gfolexagtg526" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -366,7 +366,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj4gcjxv400094olegw68k9kn" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj4nmp5la000gfolensmymge0" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -421,7 +421,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj4gcjxuz00074olezzqgv7mw" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj4nmp5mv001zfolezto795aq" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -455,7 +455,7 @@ natty_main_i18n_Translation-en
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/Redis-安装/">Redis 错误集</a>
+      <a class="article-title" href="/2017/04/07/Redis-安装/">Redis 学习</a>
     </h1>
   
 
@@ -480,11 +480,12 @@ java.net.SocketTimeoutException: connect timed out
 </code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
 <h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
 </code></pre><p>通过auth输入密码，auth “yourpassword”</p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis.clients.jedis.exceptions.JedisConnectionException: Unknown reply: N</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj4gcjxws000w4ole8s9yavge" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj4nmp5ls000wfole257irr5v" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -552,7 +553,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj4gcjxwc000u4olegg1l5gb7" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj4nmp5m50019folewq5k3v2q" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL语句说明/#disqus_thread" class="article-comment-link">留言</a>
@@ -609,7 +610,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj4gcjxv100084olekbsvekho" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj4nmp5kz0007folejsnvoimi" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
