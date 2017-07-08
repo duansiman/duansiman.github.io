@@ -5,16 +5,16 @@
   
   <title>SQL语句说明 | 安逸的小猫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用户名">
+  <meta name="description" content="MySQL数据库数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL语句说明">
 <meta property="og:url" content="https://duansiman.github.io/2017/04/06/SQL语句说明/index.html">
 <meta property="og:site_name" content="安逸的小猫">
-<meta property="og:description" content="MySQL数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用户名">
-<meta property="og:updated_time" content="2017-06-26T01:43:49.239Z">
+<meta property="og:description" content="MySQL数据库数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用">
+<meta property="og:updated_time" content="2017-07-07T11:29:08.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句说明">
-<meta name="twitter:description" content="MySQL数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用户名">
+<meta name="twitter:description" content="MySQL数据库数据导入导出12345678910mysqldump -u用户名 -p密码  数据库名 &amp;gt; 导出的文件名 	导出整个数据库mysqldump -u用户名 -p密码  数据库名 表名&amp;gt; 导出的文件名 	导出一个表，包括表结构和数据mysqldump -u用户名 -p密码 -d 数据库名 &amp;gt; e:\sva_rec.sql 	导出一个数据库结构mysqldump -u用">
   
     <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
   
@@ -112,8 +112,9 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="数据导入导出"><a href="#数据导入导出" class="headerlink" title="数据导入导出"></a>数据导入导出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure>
-<h4 id="连接数及状态信息"><a href="#连接数及状态信息" class="headerlink" title="连接数及状态信息"></a>连接数及状态信息</h4><pre><code>show status like &apos;%connect%&apos;
+        <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>数据库数据导入导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mysqldump -u用户名 -p密码  数据库名 &gt; 导出的文件名 </div><div class="line">	导出整个数据库</div><div class="line">mysqldump -u用户名 -p密码  数据库名 表名&gt; 导出的文件名 </div><div class="line">	导出一个表，包括表结构和数据</div><div class="line">mysqldump -u用户名 -p密码 <span class="_">-d</span> 数据库名 &gt; e:\sva_rec.sql </div><div class="line">	导出一个数据库结构</div><div class="line">mysqldump -u用户名 -p 密码 <span class="_">-d</span>数据库名  表名&gt; 导出的文件名</div><div class="line">	导出一个表，只有表结构 </div><div class="line"><span class="built_in">source</span> sql文件</div><div class="line">	导入数据库</div></pre></td></tr></table></figure></p>
+<p>连接数及状态信息</p>
+<pre><code>show status like &apos;%connect%&apos;
     show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
 show processlist;
     显示当前正在执行的mysql连接
@@ -121,10 +122,15 @@ mysqladmin -u -p -h status
     显示当前mysql状态
 mysqladmin -u -p -h extended-status
     显示mysql的其他状态
-</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code>show variables like &apos;max_allowed_packet&apos;;
+</code></pre><p>配置</p>
+<pre><code>show variables like &apos;max_allowed_packet&apos;;
     查看MySQL变量
+</code></pre><p>把查询结果导出到文件中</p>
+<pre><code>mysql -h 127.0.0.1 -u root -p XXXX -P 3306 blog -Ne &quot;select * from table&quot;  &gt; /tmp/test/txt
+-N 输出到文件内容不带表字段名
 </code></pre><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">describe t_user		</div><div class="line">	查看表结构</div><div class="line">alter table t_user modify id smallint(5) unsigned;	</div><div class="line">	修改字段类型</div></pre></td></tr></table></figure>
-<h4 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h4><pre><code>desc 表名;
+<p>查看表结构</p>
+<pre><code>desc 表名;
 show columns from 表名;
 show create table 表名;
 
@@ -136,7 +142,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj4nmp5m50019folewq5k3v2q" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj4v6mjg3000xnclen134v9cw" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL语句说明/#disqus_thread" class="article-comment-link">留言</a>
@@ -191,7 +197,7 @@ show create function fun_name；        查看函数源码
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据导入导出"><span class="toc-number">1.0.1.</span> <span class="toc-text">数据导入导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接数及状态信息"><span class="toc-number">1.0.2.</span> <span class="toc-text">连接数及状态信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">1.0.3.</span> <span class="toc-text">配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表"><span class="toc-number">2.</span> <span class="toc-text">表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查看表结构"><span class="toc-number">2.0.1.</span> <span class="toc-text">查看表结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表"><span class="toc-number">2.</span> <span class="toc-text">表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a></li></ol>
           </div>
       </div>
     </div>

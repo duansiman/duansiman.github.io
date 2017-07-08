@@ -4,6 +4,49 @@
 
     
   <url>
+    <loc>https://duansiman.github.io/2017/04/06/SQL%E8%AF%AD%E5%8F%A5%E8%AF%B4%E6%98%8E/</loc>
+    <lastmod>2017-07-07T11:29:08.121Z</lastmod>
+    <data>
+        <display>
+        <title>SQL语句说明</title>
+        <pubTime>2017-04-06T07:14:32.000Z</pubTime>
+        
+        <tag>SQL语句</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+             
+              <breadCrumb title="MySQL" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/06/17/Linux%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-07-04T08:03:29.262Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 命令</title>
+        <pubTime>2017-06-17T02:47:21.000Z</pubTime>
+        
+        <tag>Linux命令</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://duansiman.github.io/2017/05/05/Linux-%E8%BF%90%E7%BB%B4/</loc>
     <lastmod>2017-07-03T04:11:03.432Z</lastmod>
     <data>
@@ -40,26 +83,6 @@
           
              
               <breadCrumb title="Redis" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/06/17/Linux%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-06-28T01:55:00.902Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 命令</title>
-        <pubTime>2017-06-17T02:47:21.000Z</pubTime>
-        
-        <tag>Linux命令</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
           
         </display>
     </data>
@@ -223,29 +246,6 @@
            
              
               <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/04/06/SQL%E8%AF%AD%E5%8F%A5%E8%AF%B4%E6%98%8E/</loc>
-    <lastmod>2017-06-26T01:43:49.239Z</lastmod>
-    <data>
-        <display>
-        <title>SQL语句说明</title>
-        <pubTime>2017-04-06T07:14:32.000Z</pubTime>
-        
-        <tag>SQL语句</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据库" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-          
-             
-              <breadCrumb title="MySQL" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
           
         </display>
     </data>

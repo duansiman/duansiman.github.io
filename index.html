@@ -120,9 +120,16 @@ chmod -R 递归修改权限
 <pre><code>ls -lh    查看当前目录下文件大小
 df -m    查看磁盘空间
 </code></pre><hr>
-<h2 id="系统相关的"><a href="#系统相关的" class="headerlink" title="系统相关的"></a>系统相关的</h2><p>系统版本<br>    lsb_release -a<br>    cat /etc/issue</p>
-<p>防火墙<br>    ufw status<br>    ufw disable<br>    ufw enable</p>
-<p>Ctrl+Alt+F1-F6     命令行模式<br>Ctrl+Alt+F7    回到桌面<br>Ctrl+Alt+T     打开终端</p>
+<h2 id="系统相关的"><a href="#系统相关的" class="headerlink" title="系统相关的"></a>系统相关的</h2><p>系统版本</p>
+<pre><code>lsb_release -a
+cat /etc/issue
+getconf LONG_BIT        查看系统位数
+uname -a
+</code></pre><p>防火墙</p>
+<pre><code>ufw status    
+ufw disable
+ufw enable
+</code></pre><p>Ctrl+Alt+F1-F6     命令行模式<br>Ctrl+Alt+F7    回到桌面<br>Ctrl+Alt+T     打开终端</p>
 <h2 id="文档管理相关的"><a href="#文档管理相关的" class="headerlink" title="文档管理相关的"></a>文档管理相关的</h2><p>/etc/group文件中, 查看用户分组信息.</p>
 <h3 id="7z命令"><a href="#7z命令" class="headerlink" title="7z命令"></a>7z命令</h3><p>安装方法：</p>
 <pre><code>sudo apt-get install p7zip
@@ -187,7 +194,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj4nmp5l7000efoleizcb4l1y" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj4v6mjfj000lnclesc29scsp" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/06/17/Linux命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -313,7 +320,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4nmp5mm001qfoleozuib90h" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4v6mjih001wncleku5fj6zx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/18/单元测试/#disqus_thread" class="article-comment-link">留言</a>
@@ -412,7 +419,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4nmp5ln000tfolewfm2vkwx" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4v6mjdd000hncletu54viaj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
@@ -460,7 +467,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4nmp5ke0002folevs4fig4x" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4v6mja90002ncle6ytfr9di" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git学习/#disqus_thread" class="article-comment-link">留言</a>
@@ -576,7 +583,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4nmp5l10009foleh16smjrj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4v6mjcw000enclevvigbp08" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -748,7 +755,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4nmp5n00024foleie2kk1gw" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4v6mjiu002ancleuoow28lj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/04/快捷键/#disqus_thread" class="article-comment-link">留言</a>
@@ -831,7 +838,7 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4nmp5ll000rfolervmr7se1" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4v6mjha001cnclere9lfayi" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Maven/#disqus_thread" class="article-comment-link">留言</a>
@@ -890,7 +897,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4nmp5m20016fole4ln1hvjl" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4v6mjh50015ncle6z8umuzv" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Zookeeper/#disqus_thread" class="article-comment-link">留言</a>
@@ -944,7 +951,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4nmp5l3000cfoleug1gr9a6" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4v6mjcl000cncle7hu1m2oo" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Java-RMI/#disqus_thread" class="article-comment-link">留言</a>
@@ -994,7 +1001,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4nmp5md001jfolewihy0dni" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4v6mjh80019nclerki91r6a" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/tomcat/#disqus_thread" class="article-comment-link">留言</a>
