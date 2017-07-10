@@ -190,11 +190,17 @@ COMMAND：进程启动命令名称
 <pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
 </code></pre><p>第二行</p>
 <pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
-</code></pre>
+</code></pre><h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><p>wc</p>
+<pre><code>wc -l    统计行数
+wc -c    统计字节数
+wc -m    统计字符数
+wc -w    统计词数
+</code></pre><p>file<br>查看文件类型</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj4v6mjfj000lnclesc29scsp" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj4y2qr77001an8lepknh4u1k" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/06/17/Linux命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -320,7 +326,7 @@ COMMAND：进程启动命令名称
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4v6mjih001wncleku5fj6zx" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj4y2qr91002kn8lek9ce1pdi" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/18/单元测试/#disqus_thread" class="article-comment-link">留言</a>
@@ -419,7 +425,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4v6mjdd000hncletu54viaj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj4y2qr69000nn8lexs5q5acc" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
@@ -467,7 +473,7 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4v6mja90002ncle6ytfr9di" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj4y2qqni0002n8lehrs8y5pr" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git学习/#disqus_thread" class="article-comment-link">留言</a>
@@ -515,9 +521,109 @@ sudo apt-get autoremove 删除残留文件
 git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-</code></pre><h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><pre><code>git log 查看日志
-</code></pre><p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
+</code></pre><h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。<code>文件内容保存再.git/objects目录下</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">查看精简状态，第一列M表示：版本库和暂存区的文件比较，第二列M表示：工作区和暂存区</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">显示当前分支名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><pre><code>git commit -e -F .git/COMMIT_EDITIMSG        重新提交(.git/COMMIT_EDITIMSG 是上次提交日志    )
+</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–stat</td>
+<td style="text-align:left">查看提交文件变更记录</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline,–pretty=oneline</td>
+<td style="text-align:left">查看精简日志，前面显示提交哈希值前几位，后面显示全部</td>
+</tr>
+<tr>
+<td style="text-align:left">–graph</td>
+<td style="text-align:left">查看提交跟踪链(树结构显示)</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=raw</td>
+<td style="text-align:left">显示parent属性</td>
+</tr>
+</tbody>
+</table>
+<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把本地和暂存区的文件做比较</p>
+<pre><code>git diff HEAD    把工作区和版本库的文件做比较
+git diff --cached/--staged        把暂存区和版本库的文件做比较
+</code></pre><h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
+<pre><code>git checkout ./--file        撤销工作区全部文件或某个文件未提交的修改
+git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换暂存区和工作区中的文件
+</code></pre><p>创建和切换到新的分支</p>
+<pre><code>git checkout &lt;new_branch&gt; &lt;branch&gt;
+</code></pre><p>切换到某个提交，是分离头指针，head指向具体提交</p>
+<pre><code>git checkout 提交ID
+</code></pre><p>汇总工作区、暂存区、与HEAD的差异</p>
+<pre><code>git checkout
+</code></pre><h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>没有指定提交，默认是HEAD</p>
+<pre><code>git reset HEAD &lt;paths&gt;        把版本库的全部文件替换暂存区的
+</code></pre><p>git reset </p>
+<pre><code>--hard HEAD^        替换暂存区和工作区的全部文件(重置引用指向)
+--soft HEAD^        不改变暂存区和工作区内容(仅重置引用指向)
+--mixed HEAD^        重置暂存区，不改变工作区（重置引用执行，默认是这个参数）
+</code></pre><h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><pre><code>git rm --cached &lt;file&gt; 从暂存区删除文件，不影响工作区
+</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l HEAD 查看版本库的目录树（-l显示文件大小）
+git ls-files -s 查看暂存区的目录树（第三个字段表示暂存区编号）
+</code></pre><p>git write-tree可以把暂存区的目录树写入git对象库，然后用git ls-tree查看。如果是tree对象，可以加上-r -t参数显示tree树内容    </p>
+<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><pre><code>git clean -fd        清除未加入版本库的文件和目录
+git clean -nd        强制删除目录和文件
+</code></pre><h2 id="git-statsh"><a href="#git-statsh" class="headerlink" title="git statsh"></a>git statsh</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
+<pre><code>git stash    保存进度
+save 指定说明
+--patch 显示工作区和HEAD的差异
+-k 不会重置暂存区
+</code></pre><p>查看所以进度</p>
+<pre><code>git stash list
+git reflog show refs/stash
+</code></pre><p>从最近保存的进度进行恢复</p>
+<pre><code>git stash pop    会删除进度
+[--index] 恢复工作区，且尝试恢复暂存区
+git stash apply 不会删除进度
+</code></pre><p>其他命令</p>
+<pre><code>git stash clear 清除所有进度
+git stash branch &lt;branch name&gt; &lt;stash&gt; 基于这个进度创建分支
+</code></pre><h2 id="git对象"><a href="#git对象" class="headerlink" title="git对象"></a>git对象</h2><p>对象保存在.git/objects目录下，对象的40位sha1哈希值前2位作为目录，后38作为文件名</p>
+<p>git cat-file</p>
+<pre><code>git cat-file -t 查看对象类型
+git cat-file -p    查看对象内容
+</code></pre><p>git rev-parse</p>
+<pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
+git rev-parse HEAD:file
+</code></pre><p>符号</p>
+<pre><code>^            指父提交
+^+数字        表示第几个父提交
+~+数字        指祖父提交
+^{对象}        表示提交对应的对象
+提交ID:file    对应提交的文件
+:file        暂存区的文件
+</code></pre><h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>.git/logs记录分支的变更，查看git config core.logallrefupdates是否开启。</p>
+<pre><code>git reflog show master    查看变更记录(&lt;ref&gt;@{&lt;n&gt;}引用之前第几次改变)
+</code></pre><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
 <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>设置全局账号</p>
 <pre><code>git config --global user.email &quot;you@example.com&quot;
 git config --global user.name &quot;Your Name&quot;
@@ -536,17 +642,7 @@ git config --global alias.psm &apos;push origin master&apos;
 </code></pre><p>增加Git’s HTTP buffer                         </p>
 <pre><code>git config http.postBuffer 524288000    
 </code></pre><p>默认这些配置都在 ~/.gitconfig，可以输入 git config -l 命令查看</p>
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><pre><code>git diff                                                
-    提交前查看有哪些改动
-git add                            
-    提交的文件
-git commit -m ‘注释’                    
-    提交
-git add &amp; git commit                    
-    把改动添加到一个「暂存区」然后提交，防止误提交
-git rm --cached                        
-    移除未提交的缓存
-</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
     查看下本地分支情况
 git branch -a                        
     查看所有分支，包括本地和远程
@@ -564,12 +660,6 @@ git tag v1.0                        贴标签，版本控制
 git checkout origin/test                把远程分支test，拉到本地
 git checkout -b test                    新建分支test，并切换到test分支下
 git checkout v1.0                    切换到每个标签，即版本
-</code></pre><h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><pre><code>git checkout a.md                    
-    把原文件还原，只能撤销还没有 add 进暂存区的文件
-git checkout file1 file2 ... fileN             
-    一次回滚多个文件，中间用空格隔开即可
-git checkout .                         
-    直接回滚当前目录一下的所有working tree内的修改，会递归扫描当前目录下的所有子目录
 </code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
 </code></pre><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><pre><code>git push origin master                本地代码推到远程 master 分支
 git push -f                                           强推，覆盖相同的内容
@@ -583,7 +673,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4v6mjcw000enclevvigbp08" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4y2qqnn0003n8lez68bozuf" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -755,7 +845,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4v6mjiu002ancleuoow28lj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj4y2qr90002hn8leahzyyyhj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/04/快捷键/#disqus_thread" class="article-comment-link">留言</a>
@@ -838,7 +928,7 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4v6mjha001cnclere9lfayi" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj4y2qr6g000un8let33mgeuk" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Maven/#disqus_thread" class="article-comment-link">留言</a>
@@ -897,7 +987,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4v6mjh50015ncle6z8umuzv" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj4y2qr8g001tn8lequy261oe" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Zookeeper/#disqus_thread" class="article-comment-link">留言</a>
@@ -951,7 +1041,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4v6mjcl000cncle7hu1m2oo" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj4y2qr5u000hn8lelxmhinpc" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Java-RMI/#disqus_thread" class="article-comment-link">留言</a>
@@ -1001,7 +1091,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4v6mjh80019nclerki91r6a" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/tomcat/" data-id="cj4y2qr7q001kn8lew207gpvn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/tomcat/#disqus_thread" class="article-comment-link">留言</a>

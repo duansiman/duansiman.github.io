@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duansiman.github.io/"/>
-  <updated>2017-07-04T08:03:29.262Z</updated>
+  <updated>2017-07-10T11:28:35.407Z</updated>
   <id>https://duansiman.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://duansiman.github.io/2017/06/17/Linux%E5%91%BD%E4%BB%A4/"/>
     <id>https://duansiman.github.io/2017/06/17/Linux命令/</id>
     <published>2017-06-17T02:47:21.000Z</published>
-    <updated>2017-07-04T08:03:29.262Z</updated>
+    <updated>2017-07-10T11:28:35.407Z</updated>
     
     <content type="html"><![CDATA[<h2 id="命令通用参数"><a href="#命令通用参数" class="headerlink" title="命令通用参数"></a>命令通用参数</h2><h3 id="R"><a href="#R" class="headerlink" title="-R"></a>-R</h3><p>表示递归,例如:</p>
 <pre><code>cp -R 递归复制
@@ -99,7 +99,13 @@ COMMAND：进程启动命令名称
 <pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
 </code></pre><p>第二行</p>
 <pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
-</code></pre>]]></content>
+</code></pre><h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><p>wc</p>
+<pre><code>wc -l    统计行数
+wc -c    统计字节数
+wc -m    统计字符数
+wc -w    统计词数
+</code></pre><p>file<br>查看文件类型</p>
+]]></content>
     
     <summary type="html">
     
@@ -311,15 +317,115 @@ sudo apt-get autoremove 删除残留文件
     <link href="https://duansiman.github.io/2017/05/05/Git%E5%91%BD%E4%BB%A4/"/>
     <id>https://duansiman.github.io/2017/05/05/Git命令/</id>
     <published>2017-05-05T09:03:22.000Z</published>
-    <updated>2017-06-26T01:43:49.213Z</updated>
+    <updated>2017-07-10T11:34:26.108Z</updated>
     
     <content type="html"><![CDATA[<pre><code>git status        查看状态
 git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-</code></pre><h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><pre><code>git log 查看日志
-</code></pre><p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
+</code></pre><h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。<code>文件内容保存再.git/objects目录下</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">查看精简状态，第一列M表示：版本库和暂存区的文件比较，第二列M表示：工作区和暂存区</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">显示当前分支名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><pre><code>git commit -e -F .git/COMMIT_EDITIMSG        重新提交(.git/COMMIT_EDITIMSG 是上次提交日志    )
+</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–stat</td>
+<td style="text-align:left">查看提交文件变更记录</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline,–pretty=oneline</td>
+<td style="text-align:left">查看精简日志，前面显示提交哈希值前几位，后面显示全部</td>
+</tr>
+<tr>
+<td style="text-align:left">–graph</td>
+<td style="text-align:left">查看提交跟踪链(树结构显示)</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=raw</td>
+<td style="text-align:left">显示parent属性</td>
+</tr>
+</tbody>
+</table>
+<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把本地和暂存区的文件做比较</p>
+<pre><code>git diff HEAD    把工作区和版本库的文件做比较
+git diff --cached/--staged        把暂存区和版本库的文件做比较
+</code></pre><h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
+<pre><code>git checkout ./--file        撤销工作区全部文件或某个文件未提交的修改
+git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换暂存区和工作区中的文件
+</code></pre><p>创建和切换到新的分支</p>
+<pre><code>git checkout &lt;new_branch&gt; &lt;branch&gt;
+</code></pre><p>切换到某个提交，是分离头指针，head指向具体提交</p>
+<pre><code>git checkout 提交ID
+</code></pre><p>汇总工作区、暂存区、与HEAD的差异</p>
+<pre><code>git checkout
+</code></pre><h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>没有指定提交，默认是HEAD</p>
+<pre><code>git reset HEAD &lt;paths&gt;        把版本库的全部文件替换暂存区的
+</code></pre><p>git reset </p>
+<pre><code>--hard HEAD^        替换暂存区和工作区的全部文件(重置引用指向)
+--soft HEAD^        不改变暂存区和工作区内容(仅重置引用指向)
+--mixed HEAD^        重置暂存区，不改变工作区（重置引用执行，默认是这个参数）
+</code></pre><h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><pre><code>git rm --cached &lt;file&gt; 从暂存区删除文件，不影响工作区
+</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l HEAD 查看版本库的目录树（-l显示文件大小）
+git ls-files -s 查看暂存区的目录树（第三个字段表示暂存区编号）
+</code></pre><p>git write-tree可以把暂存区的目录树写入git对象库，然后用git ls-tree查看。如果是tree对象，可以加上-r -t参数显示tree树内容    </p>
+<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><pre><code>git clean -fd        清除未加入版本库的文件和目录
+git clean -nd        强制删除目录和文件
+</code></pre><h2 id="git-statsh"><a href="#git-statsh" class="headerlink" title="git statsh"></a>git statsh</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
+<pre><code>git stash    保存进度
+save 指定说明
+--patch 显示工作区和HEAD的差异
+-k 不会重置暂存区
+</code></pre><p>查看所以进度</p>
+<pre><code>git stash list
+git reflog show refs/stash
+</code></pre><p>从最近保存的进度进行恢复</p>
+<pre><code>git stash pop    会删除进度
+[--index] 恢复工作区，且尝试恢复暂存区
+git stash apply 不会删除进度
+</code></pre><p>其他命令</p>
+<pre><code>git stash clear 清除所有进度
+git stash branch &lt;branch name&gt; &lt;stash&gt; 基于这个进度创建分支
+</code></pre><h2 id="git对象"><a href="#git对象" class="headerlink" title="git对象"></a>git对象</h2><p>对象保存在.git/objects目录下，对象的40位sha1哈希值前2位作为目录，后38作为文件名</p>
+<p>git cat-file</p>
+<pre><code>git cat-file -t 查看对象类型
+git cat-file -p    查看对象内容
+</code></pre><p>git rev-parse</p>
+<pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
+git rev-parse HEAD:file
+</code></pre><p>符号</p>
+<pre><code>^            指父提交
+^+数字        表示第几个父提交
+~+数字        指祖父提交
+^{对象}        表示提交对应的对象
+提交ID:file    对应提交的文件
+:file        暂存区的文件
+</code></pre><h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>.git/logs记录分支的变更，查看git config core.logallrefupdates是否开启。</p>
+<pre><code>git reflog show master    查看变更记录(&lt;ref&gt;@{&lt;n&gt;}引用之前第几次改变)
+</code></pre><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
 <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>设置全局账号</p>
 <pre><code>git config --global user.email &quot;you@example.com&quot;
 git config --global user.name &quot;Your Name&quot;
@@ -338,17 +444,7 @@ git config --global alias.psm &apos;push origin master&apos;
 </code></pre><p>增加Git’s HTTP buffer                         </p>
 <pre><code>git config http.postBuffer 524288000    
 </code></pre><p>默认这些配置都在 ~/.gitconfig，可以输入 git config -l 命令查看</p>
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><pre><code>git diff                                                
-    提交前查看有哪些改动
-git add                            
-    提交的文件
-git commit -m ‘注释’                    
-    提交
-git add &amp; git commit                    
-    把改动添加到一个「暂存区」然后提交，防止误提交
-git rm --cached                        
-    移除未提交的缓存
-</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
     查看下本地分支情况
 git branch -a                        
     查看所有分支，包括本地和远程
@@ -366,12 +462,6 @@ git tag v1.0                        贴标签，版本控制
 git checkout origin/test                把远程分支test，拉到本地
 git checkout -b test                    新建分支test，并切换到test分支下
 git checkout v1.0                    切换到每个标签，即版本
-</code></pre><h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><pre><code>git checkout a.md                    
-    把原文件还原，只能撤销还没有 add 进暂存区的文件
-git checkout file1 file2 ... fileN             
-    一次回滚多个文件，中间用空格隔开即可
-git checkout .                         
-    直接回滚当前目录一下的所有working tree内的修改，会递归扫描当前目录下的所有子目录
 </code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
 </code></pre><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><pre><code>git push origin master                本地代码推到远程 master 分支
 git push -f                                           强推，覆盖相同的内容
@@ -389,7 +479,7 @@ git remote -v                        当前项目有哪些远程仓库
 git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;日志&quot;&gt;&lt;a href=&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-status&quot;&gt;&lt;
     
     </summary>
     
@@ -746,6 +836,64 @@ ng
   </entry>
   
   <entry>
+    <title>分治策略</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"/>
+    <id>https://duansiman.github.io/2017/04/18/分治策略/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-05-13T08:48:22.704Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.</p>
+<h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中</p>
+<h2 id="递归伪代码"><a href="#递归伪代码" class="headerlink" title="递归伪代码"></a>递归伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">if</span> (low == high) &#123;</div><div class="line">        tuple.left = low;</div><div class="line">        tuple.right = high;</div><div class="line">        tuple.sum = A[low];</div><div class="line">        <span class="keyword">return</span> tuple;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; lTuple = findMax(A, low, mid);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; cTuple = findCrossMax(A, low, mid, high);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; rTuple = findMax(A, mid + <span class="number">1</span>, high);</div><div class="line">        <span class="keyword">if</span> (lTuple.sum &gt; cTuple.sum &amp;&amp; lTuple.sum &gt; rTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> lTuple;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rTuple.sum &gt; cTuple.sum &amp;&amp; rTuple.sum &gt; lTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> rTuple;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> cTuple;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findCrossMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> lSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &gt;= low; i--) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; lSum) &#123;</div><div class="line">            lSum = temp;</div><div class="line">            l = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> rSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> r = -<span class="number">1</span>;</div><div class="line">    temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= high; i++) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; rSum) &#123;</div><div class="line">            rSum = temp;</div><div class="line">            r= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum = lSum + rSum - A[mid];</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="线性时间求解"><a href="#线性时间求解" class="headerlink" title="线性时间求解"></a>线性时间求解</h2><p>若已知A[1…j]的最大子数组，A[1…j+1]的最大子数组要么是A[1…j]的最大子数组，要么是某个子数组A<a href="1&lt;=i&lt;=j+1">i…j+1</a>.在已知A[1…j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组</p>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> sum = A[low];</div><div class="line">    <span class="keyword">int</span> eSum = A[low];</div><div class="line">    <span class="keyword">int</span> l=low;</div><div class="line">    <span class="keyword">int</span> r=low;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = low+<span class="number">1</span>; i &lt;= high; i++) &#123;</div><div class="line">        eSum += A[i];</div><div class="line">        <span class="keyword">if</span> (eSum &gt; sum) &#123;<span class="comment">//判断A[1...j]是否为最大子数组</span></div><div class="line">            r=i;</div><div class="line">            sum=eSum;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> temp = eSum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt; i; j++) &#123; <span class="comment">//判断A[i...j+1]是否为最大子数组</span></div><div class="line">            temp -= A[j];</div><div class="line">            <span class="keyword">if</span> (temp &gt; sum) &#123;</div><div class="line">                l=j+<span class="number">1</span>;</div><div class="line">                r=i;</div><div class="line">                sum=temp;</div><div class="line">                eSum = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum=sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="伪代码2"><a href="#伪代码2" class="headerlink" title="伪代码2"></a>伪代码2</h2><p>如果一个数组A[k..j]求和得到负值，那么数组A[k..j+1]的最大子数组肯定不会是A[k..j+1]，因为A[k..j]+A[j+1]<a[j+1] <figure="" class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine2</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> tempSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=Integer.MIN_VALUE;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        tempSum+=A[i];</div><div class="line">        <span class="keyword">if</span>(tempSum &gt; sum) &#123;</div><div class="line">            sum=tempSum;</div><div class="line">            tuple.left = k;</div><div class="line">            tuple.right=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(tempSum &lt; <span class="number">0</span>) &#123;</div><div class="line">            tempSum=<span class="number">0</span>;</div><div class="line">            k=i+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.sum = sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></a[j+1]></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.&lt;/p&gt;
+&lt;h2 id=&quot;最大子数组&quot;&gt;&lt;a href=&quot;#最大子数组
+    
+    </summary>
+    
+      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="分治策略" scheme="https://duansiman.github.io/tags/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插入算法</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
+    <id>https://duansiman.github.io/2017/04/18/插入算法/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-05-13T08:48:24.024Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
+<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
+最坏情况数组A[n]是反序的,那么元素比较次数是n-1
+</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]&lt;/p&gt;
+&lt;h2 id=
+    
+    </summary>
+    
+      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="插入算法" scheme="https://duansiman.github.io/tags/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>单词词性</title>
     <link href="https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
     <id>https://duansiman.github.io/2017/04/18/单词词性/</id>
@@ -824,35 +972,6 @@ The car is yours
   </entry>
   
   <entry>
-    <title>插入算法</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
-    <id>https://duansiman.github.io/2017/04/18/插入算法/</id>
-    <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-05-13T08:48:24.024Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
-<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
-最坏情况数组A[n]是反序的,那么元素比较次数是n-1
-</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]&lt;/p&gt;
-&lt;h2 id=
-    
-    </summary>
-    
-      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="插入算法" scheme="https://duansiman.github.io/tags/%E6%8F%92%E5%85%A5%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>归并排序</title>
     <link href="https://duansiman.github.io/2017/04/18/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
     <id>https://duansiman.github.io/2017/04/18/归并排序/</id>
@@ -875,35 +994,6 @@ The car is yours
     
     
       <category term="归并排序" scheme="https://duansiman.github.io/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分治策略</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"/>
-    <id>https://duansiman.github.io/2017/04/18/分治策略/</id>
-    <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-05-13T08:48:22.704Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.</p>
-<h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中</p>
-<h2 id="递归伪代码"><a href="#递归伪代码" class="headerlink" title="递归伪代码"></a>递归伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">if</span> (low == high) &#123;</div><div class="line">        tuple.left = low;</div><div class="line">        tuple.right = high;</div><div class="line">        tuple.sum = A[low];</div><div class="line">        <span class="keyword">return</span> tuple;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; lTuple = findMax(A, low, mid);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; cTuple = findCrossMax(A, low, mid, high);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; rTuple = findMax(A, mid + <span class="number">1</span>, high);</div><div class="line">        <span class="keyword">if</span> (lTuple.sum &gt; cTuple.sum &amp;&amp; lTuple.sum &gt; rTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> lTuple;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rTuple.sum &gt; cTuple.sum &amp;&amp; rTuple.sum &gt; lTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> rTuple;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> cTuple;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findCrossMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> lSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &gt;= low; i--) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; lSum) &#123;</div><div class="line">            lSum = temp;</div><div class="line">            l = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> rSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> r = -<span class="number">1</span>;</div><div class="line">    temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= high; i++) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; rSum) &#123;</div><div class="line">            rSum = temp;</div><div class="line">            r= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum = lSum + rSum - A[mid];</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="线性时间求解"><a href="#线性时间求解" class="headerlink" title="线性时间求解"></a>线性时间求解</h2><p>若已知A[1…j]的最大子数组，A[1…j+1]的最大子数组要么是A[1…j]的最大子数组，要么是某个子数组A<a href="1&lt;=i&lt;=j+1">i…j+1</a>.在已知A[1…j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组</p>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> sum = A[low];</div><div class="line">    <span class="keyword">int</span> eSum = A[low];</div><div class="line">    <span class="keyword">int</span> l=low;</div><div class="line">    <span class="keyword">int</span> r=low;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = low+<span class="number">1</span>; i &lt;= high; i++) &#123;</div><div class="line">        eSum += A[i];</div><div class="line">        <span class="keyword">if</span> (eSum &gt; sum) &#123;<span class="comment">//判断A[1...j]是否为最大子数组</span></div><div class="line">            r=i;</div><div class="line">            sum=eSum;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> temp = eSum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt; i; j++) &#123; <span class="comment">//判断A[i...j+1]是否为最大子数组</span></div><div class="line">            temp -= A[j];</div><div class="line">            <span class="keyword">if</span> (temp &gt; sum) &#123;</div><div class="line">                l=j+<span class="number">1</span>;</div><div class="line">                r=i;</div><div class="line">                sum=temp;</div><div class="line">                eSum = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum=sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="伪代码2"><a href="#伪代码2" class="headerlink" title="伪代码2"></a>伪代码2</h2><p>如果一个数组A[k..j]求和得到负值，那么数组A[k..j+1]的最大子数组肯定不会是A[k..j+1]，因为A[k..j]+A[j+1]<a[j+1] <figure="" class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine2</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> tempSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=Integer.MIN_VALUE;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        tempSum+=A[i];</div><div class="line">        <span class="keyword">if</span>(tempSum &gt; sum) &#123;</div><div class="line">            sum=tempSum;</div><div class="line">            tuple.left = k;</div><div class="line">            tuple.right=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(tempSum &lt; <span class="number">0</span>) &#123;</div><div class="line">            tempSum=<span class="number">0</span>;</div><div class="line">            k=i+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.sum = sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></a[j+1]></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.&lt;/p&gt;
-&lt;h2 id=&quot;最大子数组&quot;&gt;&lt;a href=&quot;#最大子数组
-    
-    </summary>
-    
-      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="分治策略" scheme="https://duansiman.github.io/tags/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"/>
     
   </entry>
   

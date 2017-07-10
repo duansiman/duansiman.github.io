@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>https://duansiman.github.io/2017/05/05/Git%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-07-10T11:34:26.108Z</lastmod>
+    <data>
+        <display>
+        <title>Git</title>
+        <pubTime>2017-05-05T09:03:22.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="https://duansiman.github.io/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://duansiman.github.io/2017/06/17/Linux%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-07-10T11:28:35.407Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 命令</title>
+        <pubTime>2017-06-17T02:47:21.000Z</pubTime>
+        
+        <tag>Linux命令</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://duansiman.github.io/2017/04/06/SQL%E8%AF%AD%E5%8F%A5%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2017-07-07T11:29:08.121Z</lastmod>
     <data>
@@ -20,26 +60,6 @@
           
              
               <breadCrumb title="MySQL" url="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/06/17/Linux%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-07-04T08:03:29.262Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 命令</title>
-        <pubTime>2017-06-17T02:47:21.000Z</pubTime>
-        
-        <tag>Linux命令</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://duansiman.github.io/categories/Linux/"/>
           
         </display>
     </data>
@@ -258,26 +278,6 @@
     <data>
         <display>
         <title>Git学习</title>
-        <pubTime>2017-05-05T09:03:22.000Z</pubTime>
-        
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="Git" url="https://duansiman.github.io/categories/Git/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://duansiman.github.io/2017/05/05/Git%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-06-26T01:43:49.213Z</lastmod>
-    <data>
-        <display>
-        <title>Git</title>
         <pubTime>2017-05-05T09:03:22.000Z</pubTime>
         
         <tag>Git</tag>
