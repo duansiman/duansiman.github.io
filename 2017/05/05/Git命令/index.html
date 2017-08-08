@@ -5,61 +5,31 @@
   
   <title>Git | 安逸的小猫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git status        查看状态
-git init        初始化 git 仓库
+  <meta name="description" content="git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-git status根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。文件内容保存再.git/objects目录下
-
-
-
-参数
-描述
-
-
-
-
--s
-查看精简状态，第一列M表示：版本库和暂存">
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&amp;lt;n&amp;gt;-ID)
+git mv &amp;lt;file&amp;gt; &amp;lt;file&amp;gt;    改名操作
+git rebase对提交执行变基操作，实现将指定范围的提">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="https://duansiman.github.io/2017/05/05/Git命令/index.html">
 <meta property="og:site_name" content="安逸的小猫">
-<meta property="og:description" content="git status        查看状态
-git init        初始化 git 仓库
+<meta property="og:description" content="git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-git status根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。文件内容保存再.git/objects目录下
-
-
-
-参数
-描述
-
-
-
-
--s
-查看精简状态，第一列M表示：版本库和暂存">
-<meta property="og:updated_time" content="2017-07-10T11:34:26.108Z">
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&amp;lt;n&amp;gt;-ID)
+git mv &amp;lt;file&amp;gt; &amp;lt;file&amp;gt;    改名操作
+git rebase对提交执行变基操作，实现将指定范围的提">
+<meta property="og:updated_time" content="2017-07-12T03:17:16.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
-<meta name="twitter:description" content="git status        查看状态
-git init        初始化 git 仓库
+<meta name="twitter:description" content="git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-git status根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。文件内容保存再.git/objects目录下
-
-
-
-参数
-描述
-
-
-
-
--s
-查看精简状态，第一列M表示：版本库和暂存">
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&amp;lt;n&amp;gt;-ID)
+git mv &amp;lt;file&amp;gt; &amp;lt;file&amp;gt;    改名操作
+git rebase对提交执行变基操作，实现将指定范围的提">
   
     <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
   
@@ -157,10 +127,36 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <pre><code>git status        查看状态
-git init        初始化 git 仓库
+        <pre><code>git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&lt;n&gt;-ID)
+git mv &lt;file&gt; &lt;file&gt;    改名操作
+</code></pre><h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>对提交执行变基操作，实现将指定范围的提交嫁接到另外一个提交之上</p>
+<h2 id="git-archive"><a href="#git-archive" class="headerlink" title="git archive"></a>git archive</h2><p>归档打包</p>
+<pre><code>git archive -o &lt;name&gt;.zip HEAD
+git archive -o &lt;name&gt;.zip HEAD &lt;path&gt;...
+git archive --format=tar --prefix=1.0/ v1.0 | gzip &gt; foo-1.0.tar.gz
+</code></pre><p>使用tar格式和提交ID或里程碑ID，ID会记录在文件的文件头中，可以用下面命令获取提交ID</p>
+<pre><code>git tar-commit-id
+</code></pre><p>忽略文件或目录 export-ignore</p>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>作用范围是其在的目录及其子目录</p>
+<pre><code>git status --ignore        可以看到忽略的文件
+git add -f                强制添加忽悠的文件
+</code></pre><p><code>独享式</code>忽悠</p>
+<ul>
+<li>在.git/info/exclude来设置文件忽略(针对具体版本库)</li>
+<li>配置变量core.excludesfile设置文件忽略（所有本地版本库）</li>
+</ul>
+<p>忽略语法</p>
+<pre><code>* 代表任意多字符
+? 一个字符
+/path 忽略此目录下文件，非子目录
+path/ 忽略整个目录，包括子目录
+!&lt;file/path&gt; 不忽略
+</code></pre><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><pre><code>git add -u        把工作区文件加到暂存区（被版本库追踪的）
+git add -A        把工作区文件加到暂存区（包括未被版本库追踪的）
+git add -i        选择性添加到暂存区
 </code></pre><h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。<code>文件内容保存再.git/objects目录下</code></p>
 <table>
 <thead>
@@ -181,7 +177,11 @@ git gc            压缩
 </tbody>
 </table>
 <h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><pre><code>git commit -e -F .git/COMMIT_EDITIMSG        重新提交(.git/COMMIT_EDITIMSG 是上次提交日志    )
-</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><table>
+git commit -a -m                 偷懒提交，不用git add
+git commit --amend -m                修改最新提交说明
+git commit -C 提交ID            重用提交的提交说明
+</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>默认是指HEAD</p>
+<table>
 <thead>
 <tr>
 <th style="text-align:left">参数</th>
@@ -199,23 +199,43 @@ git gc            压缩
 </tr>
 <tr>
 <td style="text-align:left">–graph</td>
-<td style="text-align:left">查看提交跟踪链(树结构显示)</td>
+<td style="text-align:left">查看提交关系图(树结构显示)</td>
 </tr>
 <tr>
 <td style="text-align:left">–pretty=raw</td>
-<td style="text-align:left">显示parent属性</td>
+<td style="text-align:left">显示commit的原始数据（parent属性）</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=fuller</td>
+<td style="text-align:left">显示作者和提交者</td>
+</tr>
+<tr>
+<td style="text-align:left">–decorate</td>
+<td style="text-align:left">显示提交关联引用</td>
+</tr>
+<tr>
+<td style="text-align:left">-<n></n></td>
+<td style="text-align:left">最近几条日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">显示文件具体改动</td>
 </tr>
 </tbody>
 </table>
 <p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把本地和暂存区的文件做比较</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把工作区和暂存区的文件做比较</p>
 <pre><code>git diff HEAD    把工作区和版本库的文件做比较
 git diff --cached/--staged        把暂存区和版本库的文件做比较
-</code></pre><h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
+git diff 提交ID1 提交ID2
+git diff 提交ID1 提交ID2 --&lt;paths&gt;
+</code></pre><p>–word-diff 对每个词比较</p>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
 <pre><code>git checkout ./--file        撤销工作区全部文件或某个文件未提交的修改
 git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换暂存区和工作区中的文件
 </code></pre><p>创建和切换到新的分支</p>
 <pre><code>git checkout &lt;new_branch&gt; &lt;branch&gt;
+git checkout -b test       基于当前分支新建分支test，并切换到test分支下
 </code></pre><p>切换到某个提交，是分离头指针，head指向具体提交</p>
 <pre><code>git checkout 提交ID
 </code></pre><p>汇总工作区、暂存区、与HEAD的差异</p>
@@ -227,12 +247,13 @@ git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换�
 --soft HEAD^        不改变暂存区和工作区内容(仅重置引用指向)
 --mixed HEAD^        重置暂存区，不改变工作区（重置引用执行，默认是这个参数）
 </code></pre><h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><pre><code>git rm --cached &lt;file&gt; 从暂存区删除文件，不影响工作区
-</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l HEAD 查看版本库的目录树（-l显示文件大小）
-git ls-files -s 查看暂存区的目录树（第三个字段表示暂存区编号）
+</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l         HEAD 查看版本库的目录树（-l显示文件大小）
+git ls-files -s     查看暂存区的目录树（第三个字段表示暂存区编号）
+git ls-files --with-tree=HEAD^    查看历史版本的文件列表
 </code></pre><p>git write-tree可以把暂存区的目录树写入git对象库，然后用git ls-tree查看。如果是tree对象，可以加上-r -t参数显示tree树内容    </p>
 <h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><pre><code>git clean -fd        清除未加入版本库的文件和目录
 git clean -nd        强制删除目录和文件
-</code></pre><h2 id="git-statsh"><a href="#git-statsh" class="headerlink" title="git statsh"></a>git statsh</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
+</code></pre><h2 id="git-stash"><a href="#git-stash" class="headerlink" title="git stash"></a>git stash</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
 <pre><code>git stash    保存进度
 save 指定说明
 --patch 显示工作区和HEAD的差异
@@ -251,9 +272,8 @@ git stash branch &lt;branch name&gt; &lt;stash&gt; 基于这个进度创建分�
 <p>git cat-file</p>
 <pre><code>git cat-file -t 查看对象类型
 git cat-file -p    查看对象内容
-</code></pre><p>git rev-parse</p>
-<pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
-git rev-parse HEAD:file
+git cat-file -p HEAD^:file &gt; file    从某个提交中恢复文件
+git show HEAD^:file &gt; file
 </code></pre><p>符号</p>
 <pre><code>^            指父提交
 ^+数字        表示第几个父提交
@@ -263,24 +283,89 @@ git rev-parse HEAD:file
 :file        暂存区的文件
 </code></pre><h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>.git/logs记录分支的变更，查看git config core.logallrefupdates是否开启。</p>
 <pre><code>git reflog show master    查看变更记录(&lt;ref&gt;@{&lt;n&gt;}引用之前第几次改变)
+</code></pre><h2 id="git-rev-parse"><a href="#git-rev-parse" class="headerlink" title="git rev-parse"></a>git rev-parse</h2><pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
+git rev-parse HEAD:file
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–symbolic –branches</td>
+<td style="text-align:left">显示分支</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –tags</td>
+<td style="text-align:left">显示里程碑</td>
+</tr>
+<tr>
+<td style="text-align:left">–git-dir</td>
+<td style="text-align:left">显示版本库位置</td>
+</tr>
+<tr>
+<td style="text-align:left">–show-cdup</td>
+<td style="text-align:left">工作区目录的深度</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –glob=refs/*</td>
+<td style="text-align:left">显示所有引用</td>
+</tr>
+<tr>
+<td style="text-align:left">:/“commit a”</td>
+<td style="text-align:left">在提交日志中查找提交</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-rev-list"><a href="#git-rev-list" class="headerlink" title="git rev-list"></a>git rev-list</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–oneline A</td>
+<td style="text-align:left">显示A版本库以来所有的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D F</td>
+<td style="text-align:left">提交历史并集</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline ^D F（D..F）</td>
+<td style="text-align:left">排除D的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D…F</td>
+<td style="text-align:left">排除共同的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^@</td>
+<td style="text-align:left">D的历史提交，自身除外</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^!</td>
+<td style="text-align:left">提交本身，不包括历史</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-blame"><a href="#git-blame" class="headerlink" title="git blame"></a>git blame</h2><p>显示文件内容，包括每行提交版本，提交者</p>
+<pre><code>-L n, m 从第n行开始，显示m行
 </code></pre><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>设置全局账号</p>
-<pre><code>git config --global user.email &quot;you@example.com&quot;
-git config --global user.name &quot;Your Name&quot;
-</code></pre><p>设置账号</p>
-<pre><code>git config  user.email &quot;you@example.com&quot;
-git config  user.name &quot;Your Name&quot;
-</code></pre><p>设置别名，即 git co == git checkout</p>
-<pre><code>git config --global alias.co checkout   # 别名
-git config --global alias.psm &apos;push origin master&apos;
-</code></pre><p>默认情况下 git 用的编辑器是 vi，设置Editor使用vim                  </p>
-<pre><code>git config --global core.editor &quot;vim&quot;
-</code></pre><p>开启给 Git 着色</p>
-<pre><code>git config --global color.ui true
-</code></pre><p>设置显示中文文件名                              </p>
-<pre><code>git config --global core.quotepath false
-</code></pre><p>增加Git’s HTTP buffer                         </p>
-<pre><code>git config http.postBuffer 524288000    
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>参数</p>
+<pre><code>--global 全局设置
+</code></pre><p>属性</p>
+<pre><code>user.email                邮箱
+user.name                名字
+alias.&lt;name&gt; &apos;命令&apos;        设置别名
+core.editor &quot;vim&quot;        默认情况下 git 用的编辑器是 vi，设置Editor使用vim
+color.ui true            开启给 Git 着色
+core.quotepath false    显示中文文件名
+http.postBuffer 524288000 增加Git’s HTTP buffer                                                                                                            
 </code></pre><p>默认这些配置都在 ~/.gitconfig，可以输入 git config -l 命令查看</p>
 <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
     查看下本地分支情况
@@ -296,10 +381,6 @@ git branch -D test
     强制删除分支test，如果test分支没有整合
 </code></pre><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><pre><code>git tag                            查看版本
 git tag v1.0                        贴标签，版本控制
-</code></pre><h2 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h2><pre><code>git checkout test                    切换分支
-git checkout origin/test                把远程分支test，拉到本地
-git checkout -b test                    新建分支test，并切换到test分支下
-git checkout v1.0                    切换到每个标签，即版本
 </code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
 </code></pre><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><pre><code>git push origin master                本地代码推到远程 master 分支
 git push -f                                           强推，覆盖相同的内容
@@ -313,7 +394,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj4y2qqnn0003n8lez68bozuf" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj62wv9x00002e8lehtlv52fj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -327,19 +408,19 @@ git remote -v                        当前项目有哪些远程仓库
     
 <nav id="article-nav">
   
-    <a href="/2017/05/05/Git学习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/05/Linux-运维/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          Git学习
+          Linux-运维
         
       </div>
     </a>
   
   
-    <a href="/2017/05/04/快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/05/Git学习/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">快捷键</div>
+      <div class="article-nav-title">Git学习</div>
     </a>
   
 </nav>
@@ -368,7 +449,7 @@ git remote -v                        当前项目有哪些远程仓库
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-status"><span class="toc-number">1.</span> <span class="toc-text">git status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-commit"><span class="toc-number">2.</span> <span class="toc-text">git commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-log"><span class="toc-number">3.</span> <span class="toc-text">git log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-diff"><span class="toc-number">4.</span> <span class="toc-text">git diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-checkout"><span class="toc-number">5.</span> <span class="toc-text">git checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reset"><span class="toc-number">6.</span> <span class="toc-text">git reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rm"><span class="toc-number">7.</span> <span class="toc-text">git rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-ls-tree、ls-files"><span class="toc-number">8.</span> <span class="toc-text">git ls-tree、ls-files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-clean"><span class="toc-number">9.</span> <span class="toc-text">git clean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-statsh"><span class="toc-number">10.</span> <span class="toc-text">git statsh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git对象"><span class="toc-number">11.</span> <span class="toc-text">git对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reflog"><span class="toc-number">12.</span> <span class="toc-text">git reflog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权"><span class="toc-number">13.</span> <span class="toc-text">授权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置"><span class="toc-number">14.</span> <span class="toc-text">设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支"><span class="toc-number">15.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-number">16.</span> <span class="toc-text">版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切换"><span class="toc-number">17.</span> <span class="toc-text">切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并"><span class="toc-number">18.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步"><span class="toc-number">19.</span> <span class="toc-text">同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联"><span class="toc-number">20.</span> <span class="toc-text">关联</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rebase"><span class="toc-number">1.</span> <span class="toc-text">git rebase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-archive"><span class="toc-number">2.</span> <span class="toc-text">git archive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore"><span class="toc-number">3.</span> <span class="toc-text">.gitignore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-add"><span class="toc-number">4.</span> <span class="toc-text">git add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-status"><span class="toc-number">5.</span> <span class="toc-text">git status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-commit"><span class="toc-number">6.</span> <span class="toc-text">git commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-log"><span class="toc-number">7.</span> <span class="toc-text">git log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-diff"><span class="toc-number">8.</span> <span class="toc-text">git diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-checkout"><span class="toc-number">9.</span> <span class="toc-text">git checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reset"><span class="toc-number">10.</span> <span class="toc-text">git reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rm"><span class="toc-number">11.</span> <span class="toc-text">git rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-ls-tree、ls-files"><span class="toc-number">12.</span> <span class="toc-text">git ls-tree、ls-files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-clean"><span class="toc-number">13.</span> <span class="toc-text">git clean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-stash"><span class="toc-number">14.</span> <span class="toc-text">git stash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git对象"><span class="toc-number">15.</span> <span class="toc-text">git对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reflog"><span class="toc-number">16.</span> <span class="toc-text">git reflog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rev-parse"><span class="toc-number">17.</span> <span class="toc-text">git rev-parse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-rev-list"><span class="toc-number">18.</span> <span class="toc-text">git rev-list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-blame"><span class="toc-number">19.</span> <span class="toc-text">git blame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#授权"><span class="toc-number">20.</span> <span class="toc-text">授权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-config"><span class="toc-number">21.</span> <span class="toc-text">git config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支"><span class="toc-number">22.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-number">23.</span> <span class="toc-text">版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并"><span class="toc-number">24.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步"><span class="toc-number">25.</span> <span class="toc-text">同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联"><span class="toc-number">26.</span> <span class="toc-text">关联</span></a></li></ol>
           </div>
       </div>
     </div>

@@ -295,34 +295,42 @@ sudo apt-get autoremove 删除残留文件
   </entry>
   
   <entry>
-    <title>Git学习</title>
-    <link href="https://duansiman.github.io/2017/05/05/Git%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://duansiman.github.io/2017/05/05/Git学习/</id>
-    <published>2017-05-05T09:03:22.000Z</published>
-    <updated>2017-06-26T01:43:49.216Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Git" scheme="https://duansiman.github.io/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="https://duansiman.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git</title>
     <link href="https://duansiman.github.io/2017/05/05/Git%E5%91%BD%E4%BB%A4/"/>
     <id>https://duansiman.github.io/2017/05/05/Git命令/</id>
     <published>2017-05-05T09:03:22.000Z</published>
-    <updated>2017-07-10T11:34:26.108Z</updated>
+    <updated>2017-07-12T03:17:16.280Z</updated>
     
-    <content type="html"><![CDATA[<pre><code>git status        查看状态
-git init        初始化 git 仓库
+    <content type="html"><![CDATA[<pre><code>git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&lt;n&gt;-ID)
+git mv &lt;file&gt; &lt;file&gt;    改名操作
+</code></pre><h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>对提交执行变基操作，实现将指定范围的提交嫁接到另外一个提交之上</p>
+<h2 id="git-archive"><a href="#git-archive" class="headerlink" title="git archive"></a>git archive</h2><p>归档打包</p>
+<pre><code>git archive -o &lt;name&gt;.zip HEAD
+git archive -o &lt;name&gt;.zip HEAD &lt;path&gt;...
+git archive --format=tar --prefix=1.0/ v1.0 | gzip &gt; foo-1.0.tar.gz
+</code></pre><p>使用tar格式和提交ID或里程碑ID，ID会记录在文件的文件头中，可以用下面命令获取提交ID</p>
+<pre><code>git tar-commit-id
+</code></pre><p>忽略文件或目录 export-ignore</p>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>作用范围是其在的目录及其子目录</p>
+<pre><code>git status --ignore        可以看到忽略的文件
+git add -f                强制添加忽悠的文件
+</code></pre><p><code>独享式</code>忽悠</p>
+<ul>
+<li>在.git/info/exclude来设置文件忽略(针对具体版本库)</li>
+<li>配置变量core.excludesfile设置文件忽略（所有本地版本库）</li>
+</ul>
+<p>忽略语法</p>
+<pre><code>* 代表任意多字符
+? 一个字符
+/path 忽略此目录下文件，非子目录
+path/ 忽略整个目录，包括子目录
+!&lt;file/path&gt; 不忽略
+</code></pre><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><pre><code>git add -u        把工作区文件加到暂存区（被版本库追踪的）
+git add -A        把工作区文件加到暂存区（包括未被版本库追踪的）
+git add -i        选择性添加到暂存区
 </code></pre><h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。<code>文件内容保存再.git/objects目录下</code></p>
 <table>
 <thead>
@@ -343,7 +351,11 @@ git gc            压缩
 </tbody>
 </table>
 <h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><pre><code>git commit -e -F .git/COMMIT_EDITIMSG        重新提交(.git/COMMIT_EDITIMSG 是上次提交日志    )
-</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><table>
+git commit -a -m                 偷懒提交，不用git add
+git commit --amend -m                修改最新提交说明
+git commit -C 提交ID            重用提交的提交说明
+</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>默认是指HEAD</p>
+<table>
 <thead>
 <tr>
 <th style="text-align:left">参数</th>
@@ -361,23 +373,43 @@ git gc            压缩
 </tr>
 <tr>
 <td style="text-align:left">–graph</td>
-<td style="text-align:left">查看提交跟踪链(树结构显示)</td>
+<td style="text-align:left">查看提交关系图(树结构显示)</td>
 </tr>
 <tr>
 <td style="text-align:left">–pretty=raw</td>
-<td style="text-align:left">显示parent属性</td>
+<td style="text-align:left">显示commit的原始数据（parent属性）</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=fuller</td>
+<td style="text-align:left">显示作者和提交者</td>
+</tr>
+<tr>
+<td style="text-align:left">–decorate</td>
+<td style="text-align:left">显示提交关联引用</td>
+</tr>
+<tr>
+<td style="text-align:left">-<n></n></td>
+<td style="text-align:left">最近几条日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">显示文件具体改动</td>
 </tr>
 </tbody>
 </table>
 <p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
-<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把本地和暂存区的文件做比较</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把工作区和暂存区的文件做比较</p>
 <pre><code>git diff HEAD    把工作区和版本库的文件做比较
 git diff --cached/--staged        把暂存区和版本库的文件做比较
-</code></pre><h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
+git diff 提交ID1 提交ID2
+git diff 提交ID1 提交ID2 --&lt;paths&gt;
+</code></pre><p>–word-diff 对每个词比较</p>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
 <pre><code>git checkout ./--file        撤销工作区全部文件或某个文件未提交的修改
 git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换暂存区和工作区中的文件
 </code></pre><p>创建和切换到新的分支</p>
 <pre><code>git checkout &lt;new_branch&gt; &lt;branch&gt;
+git checkout -b test       基于当前分支新建分支test，并切换到test分支下
 </code></pre><p>切换到某个提交，是分离头指针，head指向具体提交</p>
 <pre><code>git checkout 提交ID
 </code></pre><p>汇总工作区、暂存区、与HEAD的差异</p>
@@ -389,12 +421,13 @@ git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换�
 --soft HEAD^        不改变暂存区和工作区内容(仅重置引用指向)
 --mixed HEAD^        重置暂存区，不改变工作区（重置引用执行，默认是这个参数）
 </code></pre><h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><pre><code>git rm --cached &lt;file&gt; 从暂存区删除文件，不影响工作区
-</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l HEAD 查看版本库的目录树（-l显示文件大小）
-git ls-files -s 查看暂存区的目录树（第三个字段表示暂存区编号）
+</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l         HEAD 查看版本库的目录树（-l显示文件大小）
+git ls-files -s     查看暂存区的目录树（第三个字段表示暂存区编号）
+git ls-files --with-tree=HEAD^    查看历史版本的文件列表
 </code></pre><p>git write-tree可以把暂存区的目录树写入git对象库，然后用git ls-tree查看。如果是tree对象，可以加上-r -t参数显示tree树内容    </p>
 <h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><pre><code>git clean -fd        清除未加入版本库的文件和目录
 git clean -nd        强制删除目录和文件
-</code></pre><h2 id="git-statsh"><a href="#git-statsh" class="headerlink" title="git statsh"></a>git statsh</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
+</code></pre><h2 id="git-stash"><a href="#git-stash" class="headerlink" title="git stash"></a>git stash</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
 <pre><code>git stash    保存进度
 save 指定说明
 --patch 显示工作区和HEAD的差异
@@ -413,9 +446,8 @@ git stash branch &lt;branch name&gt; &lt;stash&gt; 基于这个进度创建分�
 <p>git cat-file</p>
 <pre><code>git cat-file -t 查看对象类型
 git cat-file -p    查看对象内容
-</code></pre><p>git rev-parse</p>
-<pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
-git rev-parse HEAD:file
+git cat-file -p HEAD^:file &gt; file    从某个提交中恢复文件
+git show HEAD^:file &gt; file
 </code></pre><p>符号</p>
 <pre><code>^            指父提交
 ^+数字        表示第几个父提交
@@ -425,24 +457,89 @@ git rev-parse HEAD:file
 :file        暂存区的文件
 </code></pre><h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>.git/logs记录分支的变更，查看git config core.logallrefupdates是否开启。</p>
 <pre><code>git reflog show master    查看变更记录(&lt;ref&gt;@{&lt;n&gt;}引用之前第几次改变)
+</code></pre><h2 id="git-rev-parse"><a href="#git-rev-parse" class="headerlink" title="git rev-parse"></a>git rev-parse</h2><pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
+git rev-parse HEAD:file
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–symbolic –branches</td>
+<td style="text-align:left">显示分支</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –tags</td>
+<td style="text-align:left">显示里程碑</td>
+</tr>
+<tr>
+<td style="text-align:left">–git-dir</td>
+<td style="text-align:left">显示版本库位置</td>
+</tr>
+<tr>
+<td style="text-align:left">–show-cdup</td>
+<td style="text-align:left">工作区目录的深度</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –glob=refs/*</td>
+<td style="text-align:left">显示所有引用</td>
+</tr>
+<tr>
+<td style="text-align:left">:/“commit a”</td>
+<td style="text-align:left">在提交日志中查找提交</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-rev-list"><a href="#git-rev-list" class="headerlink" title="git rev-list"></a>git rev-list</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–oneline A</td>
+<td style="text-align:left">显示A版本库以来所有的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D F</td>
+<td style="text-align:left">提交历史并集</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline ^D F（D..F）</td>
+<td style="text-align:left">排除D的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D…F</td>
+<td style="text-align:left">排除共同的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^@</td>
+<td style="text-align:left">D的历史提交，自身除外</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^!</td>
+<td style="text-align:left">提交本身，不包括历史</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-blame"><a href="#git-blame" class="headerlink" title="git blame"></a>git blame</h2><p>显示文件内容，包括每行提交版本，提交者</p>
+<pre><code>-L n, m 从第n行开始，显示m行
 </code></pre><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>设置全局账号</p>
-<pre><code>git config --global user.email &quot;you@example.com&quot;
-git config --global user.name &quot;Your Name&quot;
-</code></pre><p>设置账号</p>
-<pre><code>git config  user.email &quot;you@example.com&quot;
-git config  user.name &quot;Your Name&quot;
-</code></pre><p>设置别名，即 git co == git checkout</p>
-<pre><code>git config --global alias.co checkout   # 别名
-git config --global alias.psm &apos;push origin master&apos;
-</code></pre><p>默认情况下 git 用的编辑器是 vi，设置Editor使用vim                  </p>
-<pre><code>git config --global core.editor &quot;vim&quot;
-</code></pre><p>开启给 Git 着色</p>
-<pre><code>git config --global color.ui true
-</code></pre><p>设置显示中文文件名                              </p>
-<pre><code>git config --global core.quotepath false
-</code></pre><p>增加Git’s HTTP buffer                         </p>
-<pre><code>git config http.postBuffer 524288000    
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>参数</p>
+<pre><code>--global 全局设置
+</code></pre><p>属性</p>
+<pre><code>user.email                邮箱
+user.name                名字
+alias.&lt;name&gt; &apos;命令&apos;        设置别名
+core.editor &quot;vim&quot;        默认情况下 git 用的编辑器是 vi，设置Editor使用vim
+color.ui true            开启给 Git 着色
+core.quotepath false    显示中文文件名
+http.postBuffer 524288000 增加Git’s HTTP buffer                                                                                                            
 </code></pre><p>默认这些配置都在 ~/.gitconfig，可以输入 git config -l 命令查看</p>
 <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
     查看下本地分支情况
@@ -458,10 +555,6 @@ git branch -D test
     强制删除分支test，如果test分支没有整合
 </code></pre><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><pre><code>git tag                            查看版本
 git tag v1.0                        贴标签，版本控制
-</code></pre><h2 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h2><pre><code>git checkout test                    切换分支
-git checkout origin/test                把远程分支test，拉到本地
-git checkout -b test                    新建分支test，并切换到test分支下
-git checkout v1.0                    切换到每个标签，即版本
 </code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
 </code></pre><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><pre><code>git push origin master                本地代码推到远程 master 分支
 git push -f                                           强推，覆盖相同的内容
@@ -475,11 +568,28 @@ git remote -v                        当前项目有哪些远程仓库
     
     <summary type="html">
     
-      &lt;pre&gt;&lt;code&gt;git status        查看状态
-git init        初始化 git 仓库
+      &lt;pre&gt;&lt;code&gt;git init        初始化 git 仓库
 git fsck        仓库一致性检查
 git gc            压缩
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-status&quot;&gt;&lt;
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&amp;lt;n&amp;gt;-ID)
+    
+    </summary>
+    
+      <category term="Git" scheme="https://duansiman.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="https://duansiman.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git学习</title>
+    <link href="https://duansiman.github.io/2017/05/05/Git%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://duansiman.github.io/2017/05/05/Git学习/</id>
+    <published>2017-05-05T09:03:22.000Z</published>
+    <updated>2017-06-26T01:43:49.216Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
@@ -836,6 +946,32 @@ ng
   </entry>
   
   <entry>
+    <title>归并排序</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+    <id>https://duansiman.github.io/2017/04/18/归并排序/</id>
+    <published>2017-04-18T02:19:19.000Z</published>
+    <updated>2017-05-13T08:48:11.992Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
+<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分治法&quot;&gt;&lt;a href=&quot;#分治法&quot; class=&quot;headerlink&quot; title=&quot;分治法&quot;&gt;&lt;/a&gt;分治法&lt;/h2&gt;&lt;p&gt;将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.&lt;br&gt;三个步骤&lt;br&gt; 
+    
+    </summary>
+    
+      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="归并排序" scheme="https://duansiman.github.io/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>分治策略</title>
     <link href="https://duansiman.github.io/2017/04/18/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"/>
     <id>https://duansiman.github.io/2017/04/18/分治策略/</id>
@@ -898,23 +1034,75 @@ ng
     <link href="https://duansiman.github.io/2017/04/18/%E5%8D%95%E8%AF%8D%E8%AF%8D%E6%80%A7/"/>
     <id>https://duansiman.github.io/2017/04/18/单词词性/</id>
     <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-06-26T01:43:49.247Z</updated>
+    <updated>2017-08-08T01:30:54.901Z</updated>
     
     <content type="html"><![CDATA[<h2 id="人称代词"><a href="#人称代词" class="headerlink" title="人称代词"></a>人称代词</h2><p>代词主格：做主语    </p>
 <pre><code>I,You,He,She,It,We,You,They
 </code></pre><p>代词宾格：动后介后</p>
-<pre><code>me,you,him,her,it,us,you,them        
+<pre><code>me,you,him,her,it,us,you,them
 Tom loves him.
 </code></pre><p>代词形容格:跟着名词    </p>
 <pre><code>my,your,his,her,its,our,your,their    
 her friend    她的朋友
-</code></pre><p>代词名词格        </p>
+</code></pre><p>代词名词格</p>
 <pre><code>mine,yours,his,hers,ours,yours,theirs    
 The car is yours
 </code></pre><p>名词格=形容格+名词    </p>
 <pre><code>The book is mine. Yousr is here.这本书是我的，你的在这儿
 </code></pre><p>反身代词：主语和表语指同一个人，宾语用反身代词</p>
-<pre><code>myself,yourself,himself,herself,isself,ourselves,yourselves,themselves
+<pre><code>myself,yourself,himself,herself,itself,ourselves,yourselves,themselves
+</code></pre><h2 id="形容词"><a href="#形容词" class="headerlink" title="形容词"></a>形容词</h2><p>变化规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">动词</th>
+<th style="text-align:left">规则变化</th>
+<th style="text-align:left">不规则变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">比较级</td>
+<td style="text-align:left">+er</td>
+<td style="text-align:left">y,e,双,多</td>
+</tr>
+<tr>
+<td style="text-align:left">最高级</td>
+<td style="text-align:left">+est</td>
+<td style="text-align:left">y,e,双,多</td>
+</tr>
+</tbody>
+</table>
+<p>特殊变化</p>
+<pre><code>good -&gt; better -&gt; best
+bad -&gt; worse -&gt; worst
+many/much -&gt; more -&gt; most
+little -&gt; less -&gt; least
+far -&gt; further/farther -&gt; furthest/farthest
+old -&gt; older,elder -&gt; oldest, eldest
+</code></pre><p>辅音字母+y:变y为i加er, est</p>
+<pre><code>easy -&gt; easier -&gt; easiest
+</code></pre><p>元音字母+y:直接加ed</p>
+<pre><code>qray -&gt; qrayer -&gt; qrayest
+</code></pre><p>以e结尾:直接加r,st</p>
+<pre><code>large -&gt; larger -&gt; largest
+</code></pre><p>双写原则:辅元辅+重读(单音节)</p>
+<pre><code>hot -&gt; hotter -&gt; hottest
+</code></pre><p>双写原则:辅元辅+重读(多音节)</p>
+<pre><code>beautiful -&gt; more beautiful -&gt; most beautiful
+</code></pre><p>1 原级比较(和…一样)<br>肯定句 A…as + adj/adv原级 + as + B</p>
+<pre><code>you are as tall as Tom
+they can learn Englis as fast as you.
+</code></pre><p>否定句 A…not as/so + adj/adv原级 + as + B</p>
+<pre><code>you are not as/so tall as Tom
+</code></pre><p>He will be back as soon as possible(他会尽快回来)<br>He will be back as soon as he can<br>He is running as fast as possible(他正在尽力奔跑)<br>I will help you as much as possible.(我会尽可能多的帮你)</p>
+<p>2 比较级: A… + 比较级 + than B</p>
+<pre><code>china is larger than USA.
+</code></pre><p>than 后面代词的写法</p>
+<pre><code>Henry is taller than (I am / I / me(口语))
+</code></pre><p>3.最高级, the + 最高级</p>
+<pre><code>she is the most beautiful girl in her class
+she is one of the most beautiful girls in the world(最美丽之一)
 </code></pre><h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><p>修饰形容词，直接放前面</p>
 <pre><code>例如：very happy
 </code></pre><p>修饰动词，放在反面</p>
@@ -931,7 +1119,6 @@ The car is yours
 <th style="text-align:left">动词</th>
 <th style="text-align:left">规则变化</th>
 <th style="text-align:left">不规则变化</th>
-<th style="text-align:left">例子</th>
 </tr>
 </thead>
 <tbody>
@@ -939,13 +1126,11 @@ The car is yours
 <td style="text-align:left">动s/名复</td>
 <td style="text-align:left">+s</td>
 <td style="text-align:left">s,o,f,y</td>
-<td style="text-align:left">man-&gt;men,woman-&gt;women,child-&gt;children,tooth-&gt;teeth,foot-&gt;feet. 以s/ss/sh/ch/x结尾的单词+es,例如:bus-&gt;buses,dish-&gt;dishes,watch-&gt;watches.  o原则 1)有生命+es, 例如:hero-&gt;heroes, potato-&gt;potatoes, tomato-&gt;tomato 2)无生命 + s 例如:zoo-&gt;zoos, photo-&gt;photos. f,fe原则 1)多数变f,fe 为ves 例如:wife-&gt;wives, knife-&gt;knives, yourself-yourselves. y原则 1)辅音字母+y, 变y为i加es 例如:baby-&gt;babies, city-&gt;cities 2)元音字母(a,e,i,o,u)+y, 直接加s 例如:day-&gt; days, boy-&gt;boys</td>
 </tr>
 <tr>
 <td style="text-align:left">动过/动分</td>
 <td style="text-align:left">+ed</td>
 <td style="text-align:left">y,e,双</td>
-<td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">动ing</td>
@@ -954,7 +1139,62 @@ The car is yours
 </tr>
 </tbody>
 </table>
-]]></content>
+<h4 id="动s-名复-例子"><a href="#动s-名复-例子" class="headerlink" title="动s/名复 例子"></a>动s/名复 例子</h4><p>特殊变化</p>
+<pre><code>man-&gt;men,woman-&gt;women,child-&gt;children,tooth-&gt;teeth,foot-&gt;feet. 
+</code></pre><p>s/ss/sh/ch/x结尾的单词+es</p>
+<pre><code>bus-&gt;buses,dish-&gt;dishes,watch-&gt;watches.
+</code></pre><p>o原则 1)有生命+es</p>
+<pre><code>hero-&gt;heroes, potato-&gt;potatoes, tomato-&gt;tomato
+</code></pre><p>2)无生命 + s</p>
+<pre><code>zoo-&gt;zoos, photo-&gt;photos. 
+</code></pre><p>f,fe原则 1)多数变f,fe 为ves</p>
+<pre><code>wife-&gt;wives, knife-&gt;knives, yourself-yourselves. 
+</code></pre><p>y原则 1)辅音字母+y, 变y为i加es</p>
+<pre><code>baby-&gt;babies, city-&gt;cities 
+</code></pre><p>2)元音字母(a,e,i,o,u)+y, 直接加s</p>
+<pre><code>day-&gt; days, boy-&gt;boys
+</code></pre><h4 id="动过-动分-ed-例子"><a href="#动过-动分-ed-例子" class="headerlink" title="动过/动分(ed) 例子"></a>动过/动分(ed) 例子</h4><p>特殊变化</p>
+<pre><code>put-&gt;put--put, cut-&gt;cut--cut, say-&gt;said--said, pay-&gt;paid--paid,
+lay-&gt;laid--laid, run-&gt;ran--run, swim-&gt;swam--swum, begin-&gt;began--begun
+know-&gt;knew-known, get-&gt;got--got
+</code></pre><p>辅音字母+y:变y为i加-ed</p>
+<pre><code>hurry-&gt;hurried--hurried, study-&gt;studied--studied,try-&gt;tried--tried
+</code></pre><p>元音字母+y:直接加ed</p>
+<pre><code>play-&gt;played--played, stay-&gt;stayed--stayed
+</code></pre><p>以e结尾:直接加d</p>
+<pre><code>smile-&gt;smiled--smiled, dance-&gt;danced--danced, agree-&gt;agreed--agreed
+lie(撒谎)-&gt;lied--lied, die-&gt;died--died, tie-&gt;tied--tied
+</code></pre><p>双写原则:辅元辅+重读:单音节(单多音节看有几个发音元音字母)</p>
+<pre><code>stop-&gt;stopped--stopped, plan-&gt;planned-planned
+</code></pre><p>双写原则:辅元辅+重读:双,多音节</p>
+<pre><code>regret-&gt;regretted--regretted, listen-&gt;listened--listened
+</code></pre><p>以y/w/x结尾的词,不管符合双写原则与否,均不双写</p>
+<pre><code>play-&gt;played--played
+snow-&gt;snowed--snowed
+fix-&gt;fixed--fixed
+</code></pre><p>l结尾也符合辅元辅原则的词,英式双写,美式不双写</p>
+<pre><code>travel-&gt; traveled/travelled
+cancel-&gt; canceled/cancelled
+</code></pre><h4 id="动ing-例子"><a href="#动ing-例子" class="headerlink" title="动ing 例子"></a>动ing 例子</h4><p>特殊情况</p>
+<pre><code>be -&gt; being, see -&gt; seeing, agree -&gt; agreeing
+</code></pre><p>以y结尾,直接加ing</p>
+<pre><code>play-&gt;playing, pay-&gt;paying
+</code></pre><p>以e结尾,去e加ing</p>
+<pre><code>write -&gt; writing, dance -&gt; dancing
+</code></pre><p>以ie结尾,去ie加ying</p>
+<pre><code>lie -&gt; lying, die -&gt; dying, tie -&gt; tying
+</code></pre><p>双写原则:辅元辅+重读:单音节(单多音节看有几个发音元音字母)</p>
+<pre><code>stop-&gt;stopping, plan-&gt;planning
+put -&gt; putting, get -&gt; getting
+</code></pre><p>双写原则:辅元辅+重读:双,多音节</p>
+<pre><code>begin -&gt; beginning, forget -&gt; forgetting
+visit -&gt; visiting(重读在前面)
+</code></pre><p>以y/w/x结尾的词,不管符合双写原则与否,均不双写</p>
+<pre><code>play-&gt; playing,    fix-&gt;fixing
+</code></pre><p>l结尾也符合辅元辅原则的词,英式双写,美式不双写</p>
+<pre><code>travel-&gt; traveling/travelling
+cancel-&gt; canceling/cancelling
+</code></pre>]]></content>
     
     <summary type="html">
     
@@ -972,28 +1212,31 @@ The car is yours
   </entry>
   
   <entry>
-    <title>归并排序</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
-    <id>https://duansiman.github.io/2017/04/18/归并排序/</id>
-    <published>2017-04-18T02:19:19.000Z</published>
-    <updated>2017-05-13T08:48:11.992Z</updated>
+    <title>句子成分</title>
+    <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
+    <id>https://duansiman.github.io/2017/04/18/句子成分/</id>
+    <published>2017-04-18T02:16:57.000Z</published>
+    <updated>2017-06-26T01:43:49.250Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
-<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
+    <content type="html"><![CDATA[<h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
+<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
+<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
+<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
+<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
+<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
+<p>表示频度副词, 可以放句中. 例如: I often go shopping.</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;分治法&quot;&gt;&lt;a href=&quot;#分治法&quot; class=&quot;headerlink&quot; title=&quot;分治法&quot;&gt;&lt;/a&gt;分治法&lt;/h2&gt;&lt;p&gt;将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.&lt;br&gt;三个步骤&lt;br&gt; 
+      &lt;h2 id=&quot;词性担当&quot;&gt;&lt;a href=&quot;#词性担当&quot; class=&quot;headerlink&quot; title=&quot;词性担当&quot;&gt;&lt;/a&gt;词性担当&lt;/h2&gt;&lt;p&gt;主语——名、代（主格）&lt;br&gt;谓语——动词&lt;br&gt;表语——名、代、形、副(少量)、介宾&lt;br&gt;宾语——名、代（宾格）&lt;/p&gt;
     
     </summary>
     
-      <category term="数据结构和算法" scheme="https://duansiman.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
     
     
-      <category term="归并排序" scheme="https://duansiman.github.io/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+      <category term="句子成分" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
     
   </entry>
   
@@ -1070,35 +1313,6 @@ I am going to draw a picture for you.
     
     
       <category term="句子时态" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E6%97%B6%E6%80%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>句子成分</title>
-    <link href="https://duansiman.github.io/2017/04/18/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
-    <id>https://duansiman.github.io/2017/04/18/句子成分/</id>
-    <published>2017-04-18T02:16:57.000Z</published>
-    <updated>2017-06-26T01:43:49.250Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="词性担当"><a href="#词性担当" class="headerlink" title="词性担当"></a>词性担当</h2><p>主语——名、代（主格）<br>谓语——动词<br>表语——名、代、形、副(少量)、介宾<br>宾语——名、代（宾格）</p>
-<h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言</p>
-<h4 id="形容词做定语：形容-名"><a href="#形容词做定语：形容-名" class="headerlink" title="形容词做定语：形容+名"></a>形容词做定语：形容+名</h4><p>a clean room</p>
-<h4 id="介宾做定语：名-介宾"><a href="#介宾做定语：名-介宾" class="headerlink" title="介宾做定语：名+介宾"></a>介宾做定语：名+介宾</h4><p>the box on the table 桌子上的盒子</p>
-<h4 id="部分副词做定语：名-副词"><a href="#部分副词做定语：名-副词" class="headerlink" title="部分副词做定语：名+副词"></a>部分副词做定语：名+副词</h4><p>children there 哪里的小孩</p>
-<h2 id="状语"><a href="#状语" class="headerlink" title="状语"></a>状语</h2><p>修饰动词，介宾、副词担当，放在句首、句尾和句中都可以</p>
-<p>表示频度副词, 可以放句中. 例如: I often go shopping.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;词性担当&quot;&gt;&lt;a href=&quot;#词性担当&quot; class=&quot;headerlink&quot; title=&quot;词性担当&quot;&gt;&lt;/a&gt;词性担当&lt;/h2&gt;&lt;p&gt;主语——名、代（主格）&lt;br&gt;谓语——动词&lt;br&gt;表语——名、代、形、副(少量)、介宾&lt;br&gt;宾语——名、代（宾格）&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="https://duansiman.github.io/categories/English/"/>
-    
-    
-      <category term="句子成分" scheme="https://duansiman.github.io/tags/%E5%8F%A5%E5%AD%90%E6%88%90%E5%88%86/"/>
     
   </entry>
   
