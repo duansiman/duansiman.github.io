@@ -85,6 +85,78 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vim命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Vim命令/" class="article-date">
+  <time datetime="2017-04-17T03:07:22.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Vim命令/">Vim命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>删除</p>
+<pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
+nx         连续向后删除 n 个字符
+dd         删除游标所在这行
+ndd        删除游标所在向下n行
+d1G        删除光标所在到第一行的所有数据
+dG         删除光标所在到最后一行的所有数据
+d$         删除游标所在处，到该行的最后一个字符
+d0         删除游标所在处，到该行的最前面一个字符
+</code></pre><p>复制</p>
+<pre><code>y1G        复制光标所在行到第一行的所有数据
+yG        复制光标所在行到最后一行的所有数据
+y0        复制光标所在的那个字符到该行行首的所有数据
+y$        复制光标所在的那个字符到该行行尾的所有数据
+</code></pre><p>粘贴</p>
+<pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
+</code></pre><p>撤销</p>
+<pre><code>u        复原上一个动作
+</code></pre><p>重复执行</p>
+<pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
+</code></pre><p>替换<br>    r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止</p>
+<p>执行其他命令<br>    :! command        离开 vi 到指令列模式下执行 command 的显示结果<br>行数<br>    :set nu, :set nonu         显示行数和取消行数</p>
+<p>翻页，移动光标<br>    ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页<br>    h, j, k, l                      左，下，上，右<br>    +, -                            移动下一行，上一行的非空格符号<br>    n<space>， n<enter>             向右移动n 个字符, 向下移动n行<br>    0, $                            移动行首,行尾<br>    H, M, L                         移动到屏幕的第一行，最后一行，中间行。<br>    G, nG, gg                       移动文档最后一行,第n行，第一行</enter></space></p>
+<p>搜索<br>    n， N                    向后，前继续搜索</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Vim命令/" data-id="cj64n5qc40016j8lebsdw3hrg" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Vim命令/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim命令/">Vim命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Linux疑难杂症解解决方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/17/Linux疑难杂症解解决方法/" class="article-date">
@@ -133,7 +205,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cj62wv9xz000ke8lecqx8vl50" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cj64n5qbg000nj8le9oq3jldj" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/#disqus_thread" class="article-comment-link">留言</a>
@@ -257,7 +329,7 @@ sudo update-manager –d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj62wv9xr000ee8leyfqq2sjb" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cj64n5qba000ij8le5ujb79qo" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -306,7 +378,7 @@ sudo update-manager –d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj62wva04001ze8lebjxy4fsf" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/加密、解密/" data-id="cj64n5qco001mj8le3z5l4vll" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -366,7 +438,7 @@ sudo update-manager –d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj62wv9xn000ce8leyal72kro" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cj64n5qb5000ej8lej85eyit1" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -421,7 +493,7 @@ sudo update-manager –d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj62wv9xc0006e8le9v87o2d4" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cj64n5qaw0009j8led4o37hph" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -485,7 +557,7 @@ java.net.SocketTimeoutException: connect timed out
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj62wv9za001je8leymhyehtc" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Redis-安装/" data-id="cj64n5qc00011j8le2k042gie" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Redis-安装/#disqus_thread" class="article-comment-link">留言</a>
@@ -559,7 +631,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj62wv9ze001me8leeduplbuj" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/SQL语句说明/" data-id="cj64n5qbr000wj8lecz59ivx4" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/SQL语句说明/#disqus_thread" class="article-comment-link">留言</a>
@@ -616,7 +688,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj62wv9xg0008e8let6s6wy81" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cj64n5qay000bj8lek5awrsde" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -658,6 +730,10 @@ show create function fun_name；        查看函数源码
       <ul>
         
           <li>
+            <a href="/2017/08/08/被动语态/">被动语态</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/17/Linux命令/">Linux 命令</a>
           </li>
         
@@ -667,10 +743,6 @@ show create function fun_name；        查看函数源码
         
           <li>
             <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/05/Git命令/">Git</a>
           </li>
         
           <li>
