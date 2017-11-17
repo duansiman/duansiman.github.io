@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Redis 学习 | 安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 学习">
+<meta property="og:url" content="https://duansiman.github.io/2017/04/07/Soft-Redis/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
+<meta property="og:updated_time" content="2017-09-01T10:07:59.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 学习">
+<meta name="twitter:description" content="Redis安装/bin/sh: 1: cc: not found
+需要安装gcc
+fatal error: jemalloc/jemalloc.h: No such file or directory
+博客http://blog.csdn.net/bugall/article/details/45914867
+You need tcl 8.5 or newer in order to run th">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Soft-Redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/07/Soft-Redis/" class="article-date">
+  <time datetime="2017-04-07T06:38:41.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis 学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><pre><code>/bin/sh: 1: cc: not found
+</code></pre><p>需要安装gcc</p>
+<pre><code>fatal error: jemalloc/jemalloc.h: No such file or directory
+</code></pre><p>博客<a href="http://blog.csdn.net/bugall/article/details/45914867" target="_blank" rel="external">http://blog.csdn.net/bugall/article/details/45914867</a></p>
+<pre><code>You need tcl 8.5 or newer in order to run the Redis test
+</code></pre><p>可以不运行redis test, tcl官网<a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" target="_blank" rel="external">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
+<p>启动</p>
+<pre><code>redis-server start    
+/etc/init.d/redis_6379 start
+</code></pre><p>停止</p>
+<pre><code>redis-cli shutdown
+</code></pre><h2 id="Redis代码访问"><a href="#Redis代码访问" class="headerlink" title="Redis代码访问"></a>Redis代码访问</h2><pre><code>java.lang.ClassNotFoundException: redis.clients.jedis.GeoUnit
+</code></pre><p>jedis包版本问题</p>
+<pre><code>Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: 
+Could not get a resource from the pool
+java.net.SocketTimeoutException: connect timed out
+</code></pre><p>redis配置文件，绑定了id，把bind 127.0.0.1注释掉</p>
+<h2 id="Redis-命令学习"><a href="#Redis-命令学习" class="headerlink" title="Redis 命令学习"></a>Redis 命令学习</h2><pre><code>(error) NOAUTH Authentication required.
+</code></pre><p>通过auth输入密码，auth “yourpassword”</p>
+<p>删除所有的key</p>
+<pre><code>redis-cli keys &quot;*&quot; | xargs redis-cli del
+redis-cli -a 123456 keys &quot;*&quot; | xargs redis-cli -a 123456 del
+    需要指定密码
+redis-cli -n 0 keys &quot;*&quot; | xargs redis-cli -n 0 del
+    指定删除那个库，默认0
+flushdb        
+    删掉当前数据库的所有key
+flushall
+</code></pre><h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis.clients.jedis.exceptions.JedisConnectionException: Unknown reply: N</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/07/Soft-Redis/" data-id="cja3ttmsw0028noleytc1mua9" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/07/Soft-Redis/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/11/Git常遇到使用场景/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Git常遇到问题场景
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/06/MySQL-SQL语句说明/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">SQL语句说明</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis安装"><span class="toc-number">1.</span> <span class="toc-text">Redis安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis代码访问"><span class="toc-number">2.</span> <span class="toc-text">Redis代码访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-命令学习"><span class="toc-number">3.</span> <span class="toc-text">Redis 命令学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误"><span class="toc-number">4.</span> <span class="toc-text">错误</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  var disqus_url = 'https://duansiman.github.io/2017/04/07/Soft-Redis/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

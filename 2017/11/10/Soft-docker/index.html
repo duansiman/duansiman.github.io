@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker | 安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#angular-cli
+docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli npm installdocker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="https://duansiman.github.io/2017/11/10/Soft-docker/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="#angular-cli
+docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli npm installdocker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/">
+<meta property="og:updated_time" content="2017-11-16T07:43:10.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker">
+<meta name="twitter:description" content="#angular-cli
+docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli npm installdocker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Soft-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/10/Soft-docker/" class="article-date">
+  <time datetime="2017-11-10T02:47:21.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>#angular-cli</p>
+<p>docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli npm install<br>docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli ng build –prod –aot false</p>
+<p>#nginx</p>
+<p>docker run –name nginx -v /root/blog/conf/nginx:/etc/nginx/conf.d/ -p 80:80 -d nginx “-g” “daemon off;”</p>
+<p>docker run –name nginx –link tomcat:tomcat -v /root/blog/conf/nginx:/etc/nginx/conf.d/ -v /root/blog/blog_front/blog-front/dist:/var/www/html:ro  -v /root/blog/log/nginx:/var/log/nginx -p 80:80 -d nginx</p>
+<p>#maven</p>
+<p>docker run –rm -v /root/blog/blog_server/blog_server:/usr/local/src/blog_server -v /root/blog/m2:/root/.m2 -w /usr/local/src/blog_server maven:3.5.2-ibmjava-8 mvn clean install</p>
+<p>docker run –rm -v /root/blog/blog_server/blog_server:/usr/local/src/blog_server -v /root/blog/m2:”$USER_HOME_DIR”/.m2 -w /usr/local/src/blog_server maven:3.5.2-ibmjava-8 mvn clean install</p>
+<p>#mysql</p>
+<p>docker run –name mysql -e MYSQL_ROOT_PASSWORD=123456 -d -v /root/blog/data/mysql:/var/lib/mysql mysql:5.7.20 –character-set-server=utf8mb4 –collation-server=utf8mb4_unicode_ci</p>
+<p>docker run -it –link mysql:mysql –rm mysql sh -c ‘exec mysql -h”$MYSQL_PORT_3306_TCP_ADDR” -P”$MYSQL_PORT_3306_TCP_PORT” -uroot -p”$MYSQL_ENV_MYSQL_ROOT_PASSWORD”‘</p>
+<p>docker run -it –rm mysql mysql –default-character-set=utf8mb4 -h172.17.0.3 -uroot -p123456<br>docker run -it –rm –link mysql:mysql mysql mysql –default-character-set=utf8mb4 -hmysql -uroot -p123456</p>
+<p>#tomact<br>docker run –name tomcat –link redis:redis –link mysql:mysql -v /root/blog/log/tomact:/usr/local/tomcat/logs -v /root/blog/data/tomcat:/usr/local/tomcat/webapps -v /root/blog/log/blog:/root/blog/logs -v /root/blog/data/blog:/root/blog/article -p 8080:8080 -d tomcat:8.5.23-jre8-alpine</p>
+<p>#redis<br>docker run –name redis -d -v /root/blog/data/redis:/data -v /root/blog/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf redis redis-server –appendonly yes</p>
+<p>docker run –name redis -d -p 6379:6379 -v /root/blog/data/redis:/data -v /root/blog/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf redis redis-server  /usr/local/etc/redis/redis.conf –appendonly yes</p>
+<p>docker run -it –link redis:redis –rm redis redis-cli -h redis -p 6379 -a devin123456.</p>
+<p>#cp<br>cp blog_server/blog_server/blog-webs/web-client/target/blog.war data/tomcat</p>
+<p>#pyspider</p>
+<h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><p>docker run –name pyspider_mysql -d -v /root/blog/data/pyspider_mysql:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:latest</p>
+<h4 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h4><p>docker run –name rabbitmq -d rabbitmq:latest</p>
+<h4 id="phantomjs"><a href="#phantomjs" class="headerlink" title="phantomjs"></a>phantomjs</h4><p>docker run –name phantomjs -d binux/pyspider:latest phantomjs</p>
+<h4 id="result-worker"><a href="#result-worker" class="headerlink" title="result worker"></a>result worker</h4><p>docker run –name result_worker -m 128m -d<br>-v /root/blog/data/pyspider/worker:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq binux/pyspider:latest result_worker</p>
+<h4 id="processor-run-multiple-instance-if-needed"><a href="#processor-run-multiple-instance-if-needed" class="headerlink" title="processor, run multiple instance if needed."></a>processor, run multiple instance if needed.</h4><p>docker run –name processor -m 256m -d –link mysql:mysql –link rabbitmq:rabbitmq binux/pyspider:latest processor</p>
+<h4 id="fetcher-run-multiple-instance-if-needed"><a href="#fetcher-run-multiple-instance-if-needed" class="headerlink" title="fetcher, run multiple instance if needed."></a>fetcher, run multiple instance if needed.</h4><p>docker run –name fetcher -m 256m -d –link phantomjs:phantomjs –link rabbitmq:rabbitmq binux/pyspider:latest fetcher –no-xmlrpc</p>
+<h4 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h4><p>docker run –name scheduler -d<br>-v /root/blog/data/pyspider/scheduler:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq binux/pyspider:latest scheduler</p>
+<h4 id="webui"><a href="#webui" class="headerlink" title="webui"></a>webui</h4><p>docker run –name webui -m 256m -d -p 5000:5000<br>-v /root/blog/data/pyspider/webui:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq –link scheduler:scheduler –link phantomjs:phantomjs binux/pyspider:latest webui</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/11/10/Soft-docker/" data-id="cja3ttmt4002enoleozbflepn" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/11/10/Soft-docker/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/10/Blog-解决问题汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Blog-解决问题汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/26/Soft-solr/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Solr</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql"><span class="toc-number">1.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rabbitmq"><span class="toc-number">2.</span> <span class="toc-text">rabbitmq</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#phantomjs"><span class="toc-number">3.</span> <span class="toc-text">phantomjs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#result-worker"><span class="toc-number">4.</span> <span class="toc-text">result worker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#processor-run-multiple-instance-if-needed"><span class="toc-number">5.</span> <span class="toc-text">processor, run multiple instance if needed.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fetcher-run-multiple-instance-if-needed"><span class="toc-number">6.</span> <span class="toc-text">fetcher, run multiple instance if needed.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scheduler"><span class="toc-number">7.</span> <span class="toc-text">scheduler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webui"><span class="toc-number">8.</span> <span class="toc-text">webui</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  var disqus_url = 'https://duansiman.github.io/2017/11/10/Soft-docker/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

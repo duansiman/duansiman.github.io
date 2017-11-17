@@ -23,7 +23,7 @@ wait-timeout
     数据库连接闲置最大时间值，默认值为8小时 
 URL 格式jdbc:mysql://[host][,failoverhost...][:port]/[database]
 ?[pr">
-<meta property="og:updated_time" content="2017-06-26T01:43:57.647Z">
+<meta property="og:updated_time" content="2017-09-25T02:43:13.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 知识点">
 <meta name="twitter:description" content="配置配置文件在/etc/mysql/my.cnf,一些配置内容如下：
@@ -222,10 +222,10 @@ log-bin=/var/lib/mysql/binlog
 server-id=2
 </code></pre><p>配置同步参数</p>
 <pre><code>CHANGE MASTER TO 
-MASTER_HOST=&apos;192.186.0.101&apos;
-MASTER_USER=&apos;root&apos;
-MASTER_PASSWORD=&apos;123456&apos;
-MASTER_LOG_FILE=&apos;binlog.000001&apos;
+MASTER_HOST=&apos;192.186.0.101&apos;,
+MASTER_USER=&apos;root&apos;,
+MASTER_PASSWORD=&apos;123456&apos;,
+MASTER_LOG_FILE=&apos;binlog.000001&apos;,
 MASTER_LOG_POS=154;
 </code></pre><p>MASTER_HOST 主数据库所在服务器ip<br>MASTER_USER,MASTER_PASSWORD链接主数据库的用户密码<br>MASTER_LOG_FILE,MASTER_LOG_POS是从主数据库查到日志信息</p>
 <p>启动同步进程</p>
@@ -260,11 +260,37 @@ SET character_set_results=&apos;utf8&apos;;
 </code></pre><p>在/etc/mysql/my.cnf配置默认编码</p>
 <pre><code>[mysqld]
 default_character_set=utf8;
+</code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><pre><code>--initialize specified but the data directory has files in it. Aborting.
+</code></pre><p>把/var/lib/mysql目录中文件删掉</p>
+<pre><code>ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+</code></pre><p>flush privileges;</p>
+<pre><code>ERROR 3009 (HY000): Column count of mysql.user is wrong. Expected 45, found 42. Created with MySQL 50557, now running 50719. Please use mysql_upgrade to fix this error.
+</code></pre><p>mysql_upgrade –force -uroot -p</p>
+<pre><code>ERROR 1054 (42S22): Unknown column &apos;Password&apos; in &apos;field list&apos;
+</code></pre><p>update user set authentication_string=password(‘1111’) where user=’root’;</p>
+<pre><code>ERROR 1682 (HY000): Native table &apos;performance_schema&apos;.&apos;session_variables&apos; has the wrong structure
+</code></pre><p>sudo mysql_upgrade -u root -p, then restart mysql</p>
+<pre><code>ERROR 1467 (HY000): Failed to read auto-increment value from storage engine
+</code></pre><p>auto-increment到最大值了。<br>use information_schema;<br>select * from TABLES where TABLE_NAME=’t_article_label’;</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h4 id="字符串连接函数"><a href="#字符串连接函数" class="headerlink" title="字符串连接函数"></a>字符串连接函数</h4><p>concat(str1,str2)</p>
+<pre><code>有一个参数为null,就返回null
+</code></pre><p>CONCAT_WS(separator,str1,str2,…)</p>
+<pre><code>以分隔符separator链接字符，如果有参数为null,跳过这个参数。
+</code></pre><p>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</p>
+<pre><code>这是一个聚合函数，把有多个值的字段连接起来成一行。    
+</code></pre><h4 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h4><p>from_unixtime()/unix_timestamp()</p>
+<pre><code>把Unix时间戳转换为日期/把日期转换为Unix时间戳
+</code></pre><p>inet_aton()/inet_ntoa()</p>
+<pre><code>用无符号整数存储IP地址，把IP转换成整数/把整数转换成IP
+</code></pre><p>date +/- interval expr unit</p>
+<pre><code>日期计算，例如：一天之前，select now() - interval 24 hour;
+</code></pre><h4 id="字符截取函数"><a href="#字符截取函数" class="headerlink" title="字符截取函数"></a>字符截取函数</h4><p>left(str, len)</p>
+<pre><code>截取字符串中前len个字符
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cj67ste4g000ufole1nifu7im" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cja3ttmst0022nolejyzk2bb5" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
@@ -278,7 +304,7 @@ default_character_set=utf8;
     
 <nav id="article-nav">
   
-    <a href="/2017/04/18/句子结构/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/18/English-句子结构/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
@@ -288,7 +314,7 @@ default_character_set=utf8;
     </a>
   
   
-    <a href="/2017/04/17/Vim命令/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/17/Linux-Vim命令/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Vim命令</div>
     </a>
@@ -319,7 +345,7 @@ default_character_set=utf8;
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-格式"><span class="toc-number">2.</span> <span class="toc-text">URL 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置主从数据库"><span class="toc-number">3.</span> <span class="toc-text">配置主从数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主数据库配置"><span class="toc-number">3.0.1.</span> <span class="toc-text">主数据库配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#导主数据库已存在的数据"><span class="toc-number">3.0.2.</span> <span class="toc-text">导主数据库已存在的数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从数据库配置"><span class="toc-number">3.0.3.</span> <span class="toc-text">从数据库配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#允许外网访问"><span class="toc-number">4.</span> <span class="toc-text">允许外网访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-number">5.</span> <span class="toc-text">编码问题</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-格式"><span class="toc-number">2.</span> <span class="toc-text">URL 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置主从数据库"><span class="toc-number">3.</span> <span class="toc-text">配置主从数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主数据库配置"><span class="toc-number">3.0.1.</span> <span class="toc-text">主数据库配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#导主数据库已存在的数据"><span class="toc-number">3.0.2.</span> <span class="toc-text">导主数据库已存在的数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从数据库配置"><span class="toc-number">3.0.3.</span> <span class="toc-text">从数据库配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#允许外网访问"><span class="toc-number">4.</span> <span class="toc-text">允许外网访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-number">5.</span> <span class="toc-text">编码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">6.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">7.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串连接函数"><span class="toc-number">7.0.1.</span> <span class="toc-text">字符串连接函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#时间函数"><span class="toc-number">7.0.2.</span> <span class="toc-text">时间函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符截取函数"><span class="toc-number">7.0.3.</span> <span class="toc-text">字符截取函数</span></a></li></ol></li></ol></li></ol>
           </div>
       </div>
     </div>

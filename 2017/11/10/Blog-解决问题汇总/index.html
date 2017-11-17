@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Blog-解决问题汇总 | 安逸的小猫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前后端分离跨域问题
+在前端项目，请求后台接口的URL指定为 http://epdcsiman.top/blog/xxx 或者http://ip/blog/xxx
+
+出现错误 No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource.
+只可以在后台项目接口响应请求头中，增加Access-C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blog-解决问题汇总">
+<meta property="og:url" content="https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/index.html">
+<meta property="og:site_name" content="安逸的小猫">
+<meta property="og:description" content="前后端分离跨域问题
+在前端项目，请求后台接口的URL指定为 http://epdcsiman.top/blog/xxx 或者http://ip/blog/xxx
+
+出现错误 No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource.
+只可以在后台项目接口响应请求头中，增加Access-C">
+<meta property="og:updated_time" content="2017-11-13T06:34:59.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog-解决问题汇总">
+<meta name="twitter:description" content="前后端分离跨域问题
+在前端项目，请求后台接口的URL指定为 http://epdcsiman.top/blog/xxx 或者http://ip/blog/xxx
+
+出现错误 No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource.
+只可以在后台项目接口响应请求头中，增加Access-C">
+  
+    <link rel="alternate" href="/atom.xml" title="安逸的小猫" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '[object Object]', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://duansiman.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">安逸的小猫</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">苟有恒，何必三更眠、五更起；最无益，莫过一日曝、十日寒。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Blog-解决问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/10/Blog-解决问题汇总/" class="article-date">
+  <time datetime="2017-11-10T02:47:21.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Blog-解决问题汇总
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h2><h5 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h5><ul>
+<li>在前端项目，请求后台接口的URL指定为 <a href="http://epdcsiman.top/blog/xxx" target="_blank" rel="external">http://epdcsiman.top/blog/xxx</a> 或者<a href="http://ip/blog/xxx" target="_blank" rel="external">http://ip/blog/xxx</a></li>
+</ul>
+<p><code>出现错误 No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.</code></p>
+<p>只可以在后台项目接口响应请求头中，增加Access-Control-Allow-Origin的header值为*，允许所有跨域请求。例如：spring项目中，拦截器中统一增加这个header<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//在spring-servlet.xml配置拦截器</div><div class="line">&lt;mvc:interceptors&gt;</div><div class="line">    &lt;mvc:interceptor&gt;</div><div class="line">        &lt;mvc:mapping path="/**"/&gt;</div><div class="line">        &lt;bean class="com.blog.server.client.interceptor.BaseHandlerInterceptor"/&gt;</div><div class="line">    &lt;/mvc:interceptor&gt;</div><div class="line">&lt;/mvc:interceptors&gt;</div><div class="line"></div><div class="line">//编写拦截器</div><div class="line">public class BaseHandlerInterceptor implements HandlerInterceptor &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object o) throws Exception &#123;</div><div class="line">        httpServletResponse.setHeader("Access-Control-Allow-Origin","*");//让Angular可以跨域请求</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>在前端项目，请求后台接口用localhost,例如：<a href="http://localhost/blog/xxx" target="_blank" rel="external">http://localhost/blog/xxx</a></li>
+</ul>
+<p><code>出现错误 net::ERR_CONNECTION_REFUSED</code><br>不会走nginx代理，但服务器用localhost可以访问后台接口，在前端项目中用localhost不行。<code>不知道原因，没有找到解决方法</code></p>
+<ul>
+<li>在前端项目，请求后台接口的URL指定为 /blog/xxx</li>
+</ul>
+<p>通过nginx代理转发到后台接口，这样不会有跨域问题<code>(推荐使用这个方式)</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/" data-id="cja3ttmoq0002nolekafyy1pi" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫-博客/">爬虫, 博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/17/Soft-zabbix/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          zabbix
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/10/Soft-docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Docker</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前后端分离"><span class="toc-number">1.</span> <span class="toc-text">前后端分离</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#跨域问题"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">跨域问题</span></a></li></ol></li></ol></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;epdcsiman@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+    
+<script>
+  var disqus_shortname = 'epdc123';
+  
+  var disqus_url = 'https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

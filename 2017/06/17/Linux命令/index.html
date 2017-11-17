@@ -39,7 +39,7 @@ uname -a
 防火墙
 ufw status    
 ufw">
-<meta property="og:updated_time" content="2017-07-10T11:28:35.407Z">
+<meta property="og:updated_time" content="2017-11-17T11:31:40.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 命令">
 <meta name="twitter:description" content="命令通用参数-R表示递归,例如:
@@ -184,9 +184,19 @@ x 代表解压缩文件，并且是按原始目录解压（还有个参数 e 也
 a 代表添加文件／文件夹到压缩包
 -t 是指定压缩类型 一般我们定为7z
 -r 表示递归所有的子文件夹，manager.7z 是压缩好后的压缩包名，/home/manager/* 是要压缩的目录，＊是表示该目录下所有的文件。
-</code></pre><h3 id="解压和压缩"><a href="#解压和压缩" class="headerlink" title="解压和压缩"></a>解压和压缩</h3><pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
+</code></pre><h3 id="文件解压和压缩"><a href="#文件解压和压缩" class="headerlink" title="文件解压和压缩"></a>文件解压和压缩</h3><p>zip文件</p>
+<pre><code>zip -r path         压缩
+unzip xxx.zip -d path    解压
+</code></pre><p>tar文件</p>
+<pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
 tar -zcvf xxx.tar.gz /xxx        打包gzip压缩
 tar -jcvf xxx.tar.bz2 /xxx        打包bzip2压缩
+</code></pre><p>7z文件</p>
+<pre><code>看7z命令
+</code></pre><p>rar文件</p>
+<pre><code>sudo apt-get install rar    安装
+rar x xxx.rar            解压
+rar a xxx.rar xxx/        压缩
 </code></pre><h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><pre><code>-R, -r, --recursive       递归复制
 -p            连同档案的属性一起复制过去，而非使用预设属性
 </code></pre><h3 id="执行运行文件"><a href="#执行运行文件" class="headerlink" title="执行运行文件"></a>执行运行文件</h3><p>bin文件</p>
@@ -231,6 +241,8 @@ COMMAND：进程启动命令名称
 <pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
 </code></pre><p>第二行</p>
 <pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>date</p>
+<pre><code>-R         以RFC 2822 format查看日期和时间，可以看到时区
 </code></pre><h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><p>wc</p>
 <pre><code>wc -l    统计行数
 wc -c    统计字节数
@@ -241,7 +253,7 @@ wc -w    统计词数
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj67ste47000nfolejjcq32cy" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cja3ttmsq001znoleyi8ve1ns" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/06/17/Linux命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -255,7 +267,7 @@ wc -w    统计词数
     
 <nav id="article-nav">
   
-    <a href="/2017/08/08/被动语态/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/08/English-被动语态/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
@@ -265,7 +277,7 @@ wc -w    统计词数
     </a>
   
   
-    <a href="/2017/05/18/单元测试/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/18/Java-单元测试/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">单元测试</div>
     </a>
@@ -296,7 +308,7 @@ wc -w    统计词数
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令通用参数"><span class="toc-number">1.</span> <span class="toc-text">命令通用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R"><span class="toc-number">1.1.</span> <span class="toc-text">-R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m-h"><span class="toc-number">1.2.</span> <span class="toc-text">-m, -h</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统相关的"><span class="toc-number">2.</span> <span class="toc-text">系统相关的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档管理相关的"><span class="toc-number">3.</span> <span class="toc-text">文档管理相关的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7z命令"><span class="toc-number">3.1.</span> <span class="toc-text">7z命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压和压缩"><span class="toc-number">3.2.</span> <span class="toc-text">解压和压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp"><span class="toc-number">3.3.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行运行文件"><span class="toc-number">3.4.</span> <span class="toc-text">执行运行文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令本身相关的"><span class="toc-number">4.</span> <span class="toc-text">命令本身相关的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http网络相关的"><span class="toc-number">5.</span> <span class="toc-text">http网络相关的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#curl"><span class="toc-number">5.1.</span> <span class="toc-text">curl</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统进程相关"><span class="toc-number">6.</span> <span class="toc-text">系统进程相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top"><span class="toc-number">6.1.</span> <span class="toc-text">top</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他命令"><span class="toc-number">7.</span> <span class="toc-text">其他命令</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令通用参数"><span class="toc-number">1.</span> <span class="toc-text">命令通用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R"><span class="toc-number">1.1.</span> <span class="toc-text">-R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m-h"><span class="toc-number">1.2.</span> <span class="toc-text">-m, -h</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统相关的"><span class="toc-number">2.</span> <span class="toc-text">系统相关的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档管理相关的"><span class="toc-number">3.</span> <span class="toc-text">文档管理相关的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7z命令"><span class="toc-number">3.1.</span> <span class="toc-text">7z命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件解压和压缩"><span class="toc-number">3.2.</span> <span class="toc-text">文件解压和压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp"><span class="toc-number">3.3.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行运行文件"><span class="toc-number">3.4.</span> <span class="toc-text">执行运行文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令本身相关的"><span class="toc-number">4.</span> <span class="toc-text">命令本身相关的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http网络相关的"><span class="toc-number">5.</span> <span class="toc-text">http网络相关的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#curl"><span class="toc-number">5.1.</span> <span class="toc-text">curl</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统进程相关"><span class="toc-number">6.</span> <span class="toc-text">系统进程相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top"><span class="toc-number">6.1.</span> <span class="toc-text">top</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间"><span class="toc-number">7.</span> <span class="toc-text">时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他命令"><span class="toc-number">8.</span> <span class="toc-text">其他命令</span></a></li></ol>
           </div>
       </div>
     </div>

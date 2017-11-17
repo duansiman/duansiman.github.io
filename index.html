@@ -85,9 +85,313 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-被动语态" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Soft-zabbix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/08/被动语态/" class="article-date">
+    <a href="/2017/11/17/Soft-zabbix/" class="article-date">
+  <time datetime="2017-11-17T02:47:21.000Z" itemprop="datePublished">2017-11-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维/">运维</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/Soft-zabbix/">zabbix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>用docker-compose 安装zabbix, 一起安装的zabbix-agent用不了提示下面错误</p>
+<p><code>Received empty response from Zabbix Agent at [107.172.105.140]. Assuming that agent dropped connection because of access permission</code></p>
+<p>用docker logs zabbix_zabbix-agent_1看日志，发现拒绝信息<br><code>20322:20171117:051807.440 failed to accept an incoming connection: connection from &quot;172.19.0.1&quot; rejected, allowed hosts: &quot;127.0.0.1&quot;</code></p>
+<p>需要在docker 数据卷挂载地方zbx_env/etc/zabbix/zabbix_agentd.d/ 创建zabbix_agentd.conf，把拒绝ip加入文件就可以了</p>
+<pre><code>Server=172.19.0.1
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/11/17/Soft-zabbix/" data-id="cja3ttmtb002onolelit8wqpb" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/11/17/Soft-zabbix/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Blog-解决问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/10/Blog-解决问题汇总/" class="article-date">
+  <time datetime="2017-11-10T02:47:21.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/10/Blog-解决问题汇总/">Blog-解决问题汇总</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h2><h5 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h5><ul>
+<li>在前端项目，请求后台接口的URL指定为 <a href="http://epdcsiman.top/blog/xxx" target="_blank" rel="external">http://epdcsiman.top/blog/xxx</a> 或者<a href="http://ip/blog/xxx" target="_blank" rel="external">http://ip/blog/xxx</a></li>
+</ul>
+<p><code>出现错误 No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.</code></p>
+<p>只可以在后台项目接口响应请求头中，增加Access-Control-Allow-Origin的header值为*，允许所有跨域请求。例如：spring项目中，拦截器中统一增加这个header<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//在spring-servlet.xml配置拦截器</div><div class="line">&lt;mvc:interceptors&gt;</div><div class="line">    &lt;mvc:interceptor&gt;</div><div class="line">        &lt;mvc:mapping path="/**"/&gt;</div><div class="line">        &lt;bean class="com.blog.server.client.interceptor.BaseHandlerInterceptor"/&gt;</div><div class="line">    &lt;/mvc:interceptor&gt;</div><div class="line">&lt;/mvc:interceptors&gt;</div><div class="line"></div><div class="line">//编写拦截器</div><div class="line">public class BaseHandlerInterceptor implements HandlerInterceptor &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object o) throws Exception &#123;</div><div class="line">        httpServletResponse.setHeader("Access-Control-Allow-Origin","*");//让Angular可以跨域请求</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>在前端项目，请求后台接口用localhost,例如：<a href="http://localhost/blog/xxx" target="_blank" rel="external">http://localhost/blog/xxx</a></li>
+</ul>
+<p><code>出现错误 net::ERR_CONNECTION_REFUSED</code><br>不会走nginx代理，但服务器用localhost可以访问后台接口，在前端项目中用localhost不行。<code>不知道原因，没有找到解决方法</code></p>
+<ul>
+<li>在前端项目，请求后台接口的URL指定为 /blog/xxx</li>
+</ul>
+<p>通过nginx代理转发到后台接口，这样不会有跨域问题<code>(推荐使用这个方式)</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/" data-id="cja3ttmoq0002nolekafyy1pi" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/11/10/Blog-解决问题汇总/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫-博客/">爬虫, 博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Soft-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/10/Soft-docker/" class="article-date">
+  <time datetime="2017-11-10T02:47:21.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/应用服务器/">应用服务器</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/10/Soft-docker/">Docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>#angular-cli</p>
+<p>docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli npm install<br>docker run -it –rm -w /root/blog -v /root/blog/blog_front/blog-front:/root/blog alexsuch/angular-cli ng build –prod –aot false</p>
+<p>#nginx</p>
+<p>docker run –name nginx -v /root/blog/conf/nginx:/etc/nginx/conf.d/ -p 80:80 -d nginx “-g” “daemon off;”</p>
+<p>docker run –name nginx –link tomcat:tomcat -v /root/blog/conf/nginx:/etc/nginx/conf.d/ -v /root/blog/blog_front/blog-front/dist:/var/www/html:ro  -v /root/blog/log/nginx:/var/log/nginx -p 80:80 -d nginx</p>
+<p>#maven</p>
+<p>docker run –rm -v /root/blog/blog_server/blog_server:/usr/local/src/blog_server -v /root/blog/m2:/root/.m2 -w /usr/local/src/blog_server maven:3.5.2-ibmjava-8 mvn clean install</p>
+<p>docker run –rm -v /root/blog/blog_server/blog_server:/usr/local/src/blog_server -v /root/blog/m2:”$USER_HOME_DIR”/.m2 -w /usr/local/src/blog_server maven:3.5.2-ibmjava-8 mvn clean install</p>
+<p>#mysql</p>
+<p>docker run –name mysql -e MYSQL_ROOT_PASSWORD=123456 -d -v /root/blog/data/mysql:/var/lib/mysql mysql:5.7.20 –character-set-server=utf8mb4 –collation-server=utf8mb4_unicode_ci</p>
+<p>docker run -it –link mysql:mysql –rm mysql sh -c ‘exec mysql -h”$MYSQL_PORT_3306_TCP_ADDR” -P”$MYSQL_PORT_3306_TCP_PORT” -uroot -p”$MYSQL_ENV_MYSQL_ROOT_PASSWORD”‘</p>
+<p>docker run -it –rm mysql mysql –default-character-set=utf8mb4 -h172.17.0.3 -uroot -p123456<br>docker run -it –rm –link mysql:mysql mysql mysql –default-character-set=utf8mb4 -hmysql -uroot -p123456</p>
+<p>#tomact<br>docker run –name tomcat –link redis:redis –link mysql:mysql -v /root/blog/log/tomact:/usr/local/tomcat/logs -v /root/blog/data/tomcat:/usr/local/tomcat/webapps -v /root/blog/log/blog:/root/blog/logs -v /root/blog/data/blog:/root/blog/article -p 8080:8080 -d tomcat:8.5.23-jre8-alpine</p>
+<p>#redis<br>docker run –name redis -d -v /root/blog/data/redis:/data -v /root/blog/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf redis redis-server –appendonly yes</p>
+<p>docker run –name redis -d -p 6379:6379 -v /root/blog/data/redis:/data -v /root/blog/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf redis redis-server  /usr/local/etc/redis/redis.conf –appendonly yes</p>
+<p>docker run -it –link redis:redis –rm redis redis-cli -h redis -p 6379 -a devin123456.</p>
+<p>#cp<br>cp blog_server/blog_server/blog-webs/web-client/target/blog.war data/tomcat</p>
+<p>#pyspider</p>
+<h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><p>docker run –name pyspider_mysql -d -v /root/blog/data/pyspider_mysql:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:latest</p>
+<h4 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h4><p>docker run –name rabbitmq -d rabbitmq:latest</p>
+<h4 id="phantomjs"><a href="#phantomjs" class="headerlink" title="phantomjs"></a>phantomjs</h4><p>docker run –name phantomjs -d binux/pyspider:latest phantomjs</p>
+<h4 id="result-worker"><a href="#result-worker" class="headerlink" title="result worker"></a>result worker</h4><p>docker run –name result_worker -m 128m -d<br>-v /root/blog/data/pyspider/worker:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq binux/pyspider:latest result_worker</p>
+<h4 id="processor-run-multiple-instance-if-needed"><a href="#processor-run-multiple-instance-if-needed" class="headerlink" title="processor, run multiple instance if needed."></a>processor, run multiple instance if needed.</h4><p>docker run –name processor -m 256m -d –link mysql:mysql –link rabbitmq:rabbitmq binux/pyspider:latest processor</p>
+<h4 id="fetcher-run-multiple-instance-if-needed"><a href="#fetcher-run-multiple-instance-if-needed" class="headerlink" title="fetcher, run multiple instance if needed."></a>fetcher, run multiple instance if needed.</h4><p>docker run –name fetcher -m 256m -d –link phantomjs:phantomjs –link rabbitmq:rabbitmq binux/pyspider:latest fetcher –no-xmlrpc</p>
+<h4 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h4><p>docker run –name scheduler -d<br>-v /root/blog/data/pyspider/scheduler:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq binux/pyspider:latest scheduler</p>
+<h4 id="webui"><a href="#webui" class="headerlink" title="webui"></a>webui</h4><p>docker run –name webui -m 256m -d -p 5000:5000<br>-v /root/blog/data/pyspider/webui:/opt/pyspider/data –link pyspider_mysql:pyspider_mysql –link rabbitmq:rabbitmq –link scheduler:scheduler –link phantomjs:phantomjs binux/pyspider:latest webui</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/11/10/Soft-docker/" data-id="cja3ttmt4002enoleozbflepn" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/11/10/Soft-docker/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Soft-solr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/26/Soft-solr/" class="article-date">
+  <time datetime="2017-09-26T06:49:57.000Z" itemprop="datePublished">2017-09-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/26/Soft-solr/">Solr</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>启动服务</p>
+<pre><code>./solr start -force
+</code></pre><p>关闭服务</p>
+<pre><code>./solr stop -all
+</code></pre><p>导入示例core</p>
+<pre><code>./solr -e techproducts -force
+</code></pre><p>创建solr库(core)</p>
+<pre><code>solr create -c &lt;name&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/09/26/Soft-solr/" data-id="cja3ttmt7002gnoleg2arx5d9" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/09/26/Soft-solr/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Solr/">Solr</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Soft-Kafka" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/17/Soft-Kafka/" class="article-date">
+  <time datetime="2017-08-17T06:49:57.000Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/分布式/">分布式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/17/Soft-Kafka/">Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h2><p>Kafka依赖ZooKeeper，Kafka有脚本可以安装并启动一个全新的单节点ZooKeeper实例</p>
+<pre><code>bin/zookeeper-server-start.sh config/zookeeper.properties
+</code></pre><p>启动Kafka服务器</p>
+<pre><code>bin/kafka-server-start.sh config/server.properties
+</code></pre><h2 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h2><p>查看所有Topic</p>
+<pre><code>bin/kafka-topics.sh --list --zookeeper localhost:2181
+</code></pre><h2 id="配置多节点集群"><a href="#配置多节点集群" class="headerlink" title="配置多节点集群"></a>配置多节点集群</h2><p>为每个broker准备配置文件config/server.properties, 修改下面信息</p>
+<pre><code>broker.id=1
+listeners=PLAINTEXT://:9093
+log.dir=/tmp/kafka-logs-1
+</code></pre><p>查看broker情况</p>
+<pre><code>bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test_topic
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/08/17/Soft-Kafka/" data-id="cja3ttmsv0024nolefmm967ri" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/08/17/Soft-Kafka/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kafka/">Kafka</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-English-被动语态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/08/English-被动语态/" class="article-date">
   <time datetime="2017-08-08T02:16:57.000Z" itemprop="datePublished">2017-08-08</time>
 </a>
     
@@ -103,7 +407,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/08/被动语态/">被动语态</a>
+      <a class="article-title" href="/2017/08/08/English-被动语态/">被动语态</a>
     </h1>
   
 
@@ -174,10 +478,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/08/08/被动语态/" data-id="cj67ste680029folekin4ffbk" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/08/08/English-被动语态/" data-id="cja3ttmrf000qnole713e378j" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/08/08/被动语态/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/08/08/English-被动语态/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/被动语态/">被动语态</a></li></ul>
@@ -248,9 +552,19 @@ x 代表解压缩文件，并且是按原始目录解压（还有个参数 e 也
 a 代表添加文件／文件夹到压缩包
 -t 是指定压缩类型 一般我们定为7z
 -r 表示递归所有的子文件夹，manager.7z 是压缩好后的压缩包名，/home/manager/* 是要压缩的目录，＊是表示该目录下所有的文件。
-</code></pre><h3 id="解压和压缩"><a href="#解压和压缩" class="headerlink" title="解压和压缩"></a>解压和压缩</h3><pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
+</code></pre><h3 id="文件解压和压缩"><a href="#文件解压和压缩" class="headerlink" title="文件解压和压缩"></a>文件解压和压缩</h3><p>zip文件</p>
+<pre><code>zip -r path         压缩
+unzip xxx.zip -d path    解压
+</code></pre><p>tar文件</p>
+<pre><code>tar -cvf  xxx.tar /xxx            打包不压缩
 tar -zcvf xxx.tar.gz /xxx        打包gzip压缩
 tar -jcvf xxx.tar.bz2 /xxx        打包bzip2压缩
+</code></pre><p>7z文件</p>
+<pre><code>看7z命令
+</code></pre><p>rar文件</p>
+<pre><code>sudo apt-get install rar    安装
+rar x xxx.rar            解压
+rar a xxx.rar xxx/        压缩
 </code></pre><h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><pre><code>-R, -r, --recursive       递归复制
 -p            连同档案的属性一起复制过去，而非使用预设属性
 </code></pre><h3 id="执行运行文件"><a href="#执行运行文件" class="headerlink" title="执行运行文件"></a>执行运行文件</h3><p>bin文件</p>
@@ -295,6 +609,8 @@ COMMAND：进程启动命令名称
 <pre><code>系统当前时刻、系统启动到现在的运作时间、终端的数目、当前系统负载的平均值，1分钟前、5分钟前、15分钟前进程的平均数
 </code></pre><p>第二行</p>
 <pre><code>进程总数、运行中的进程数、等待状态中的进程数、被停止的系统进程数、被复原的进程数
+</code></pre><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>date</p>
+<pre><code>-R         以RFC 2822 format查看日期和时间，可以看到时区
 </code></pre><h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><p>wc</p>
 <pre><code>wc -l    统计行数
 wc -c    统计字节数
@@ -305,7 +621,7 @@ wc -w    统计词数
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cj67ste47000nfolejjcq32cy" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/06/17/Linux命令/" data-id="cja3ttmsq001znoleyi8ve1ns" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/06/17/Linux命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -321,9 +637,9 @@ wc -w    统计词数
 
 
   
-    <article id="post-单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java-单元测试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/18/单元测试/" class="article-date">
+    <a href="/2017/05/18/Java-单元测试/" class="article-date">
   <time datetime="2017-05-18T03:24:53.000Z" itemprop="datePublished">2017-05-18</time>
 </a>
     
@@ -339,7 +655,7 @@ wc -w    统计词数
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/18/单元测试/">单元测试</a>
+      <a class="article-title" href="/2017/05/18/Java-单元测试/">单元测试</a>
     </h1>
   
 
@@ -431,10 +747,10 @@ wc -w    统计词数
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/18/单元测试/" data-id="cj67ste640024foles3pqq5a7" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/18/Java-单元测试/" data-id="cja3ttmsc001nnoleopl14hdy" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/05/18/单元测试/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/05/18/Java-单元测试/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单元测试/">单元测试</a></li></ul>
@@ -530,61 +846,13 @@ sudo apt-get autoremove 删除残留文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cj67ste4p0010folep06qcmyd" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cja3ttmsg001rnolerg0b6xpm" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux运维/">Linux运维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Git学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/05/Git学习/" class="article-date">
-  <time datetime="2017-05-05T09:03:22.000Z" itemprop="datePublished">2017-05-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/Git学习/">Git学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cj67stdlg0002foleczsddfle" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/05/05/Git学习/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
 
     </footer>
   </div>
@@ -636,7 +904,7 @@ git archive --format=tar --prefix=1.0/ v1.0 | gzip &gt; foo-1.0.tar.gz
 <pre><code>git tar-commit-id
 </code></pre><p>忽略文件或目录 export-ignore</p>
 <h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>作用范围是其在的目录及其子目录</p>
-<pre><code>git status --ignore        可以看到忽略的文件
+<pre><code>git status --ignored        可以看到忽略的文件
 git add -f                强制添加忽悠的文件
 </code></pre><p><code>独享式</code>忽悠</p>
 <ul>
@@ -889,7 +1157,7 @@ git remote -v                        当前项目有哪些远程仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cj67ste360007folejyj2b5l3" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cja3ttmrh000tnolekiurt11e" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -905,378 +1173,10 @@ git remote -v                        当前项目有哪些远程仓库
 
 
   
-    <article id="post-快捷键" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/04/快捷键/" class="article-date">
-  <time datetime="2017-05-04T08:26:06.000Z" itemprop="datePublished">2017-05-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/计算机/">计算机</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/快捷键/">快捷键</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="Sublime-text-3"><a href="#Sublime-text-3" class="headerlink" title="Sublime text 3"></a>Sublime text 3</h2><table>
-<thead>
-<tr>
-<th style="text-align:left">快捷键</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Ctrl Shift L</td>
-<td style="text-align:left">选中多行编辑</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl J</td>
-<td style="text-align:left">多行变一行</td>
-</tr>
-</tbody>
-</table>
-<h2 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h2><table>
-<thead>
-<tr>
-<th style="text-align:left">快捷键</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Ctrl+Shift+V</td>
-<td style="text-align:left">选择剪切板上的文本进行插入</td>
-</tr>
-<tr>
-<td style="text-align:left">右击断点</td>
-<td style="text-align:left">可以看到断点属性</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+H</td>
-<td style="text-align:left">打开类的层次结构</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+W</td>
-<td style="text-align:left">选择文本</td>
-</tr>
-<tr>
-<td style="text-align:left">Alt+F8/Alt+点击表达式</td>
-<td style="text-align:left">调试时看表达式值</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Q</td>
-<td style="text-align:left">查看文档说明</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+P</td>
-<td style="text-align:left">查看方法参数提示</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+B</td>
-<td style="text-align:left">打开方法或类声明地方</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+N</td>
-<td style="text-align:left">搜索类</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+N</td>
-<td style="text-align:left">搜索文件</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+Alt+N</td>
-<td style="text-align:left">搜索文本</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Alt+V</td>
-<td style="text-align:left">把表达式提出为局部</td>
-</tr>
-<tr>
-<td style="text-align:left">Alt+Shift+C</td>
-<td style="text-align:left">查看项目最近修改地方</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+`</td>
-<td style="text-align:left">修改style/color scheme or keymap</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+Enter</td>
-<td style="text-align:left">自动补全代码if,do-while,return,try-catch</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Alt+Shift+C</td>
-<td style="text-align:left">复制field/method/class/file</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+向下上箭头</td>
-<td style="text-align:left">移动代码块</td>
-</tr>
-<tr>
-<td style="text-align:left">Alt+Shift+F10</td>
-<td style="text-align:left">打开run/debug菜单</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+I</td>
-<td style="text-align:left">预览class/file/symbol代码</td>
-</tr>
-<tr>
-<td style="text-align:left">Shift+F6</td>
-<td style="text-align:left">重命名</td>
-</tr>
-<tr>
-<td style="text-align:left">Alt+Home</td>
-<td style="text-align:left">导航栏，修改项目view</td>
-</tr>
-<tr>
-<td style="text-align:left">Alt+F7</td>
-<td style="text-align:left">搜索方法，变量在哪被引用</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+F</td>
-<td style="text-align:left">全局搜索</td>
-</tr>
-<tr>
-<td style="text-align:left">Ctrl+Shift+Z</td>
-<td style="text-align:left">反撤销，Ctrl+Z的反操作</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/04/快捷键/" data-id="cj67ste620022foleoq25bzrr" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/05/04/快捷键/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/快捷键/">快捷键</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/26/Maven/" class="article-date">
-  <time datetime="2017-04-26T07:37:02.000Z" itemprop="datePublished">2017-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/Maven/">Maven</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code>mvn [options] [&lt;goal(s)&gt;] [&lt;phase(s)&gt;]
-options     可以用mvn -h 或 mvn --help查看
-phase        是生命周期阶段
-</code></pre><h2 id="生命周期阶段"><a href="#生命周期阶段" class="headerlink" title="生命周期阶段"></a>生命周期阶段</h2><p>有clean、default和site几类，下面出现的顺序就是执行顺序。</p>
-<h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><p>pre-clean, clean, post-clean</p>
-<h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy</p>
-<h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><p>pre-site, site, post-site, site-deploy</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><pre><code>mvn package -Dmaven.skip.test=true 
-    打war包
-java -cp XXX.jar Main
-    执行main方法
-</code></pre><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><h3 id="Dependency-插件"><a href="#Dependency-插件" class="headerlink" title="Dependency 插件"></a>Dependency 插件</h3><p>分析</p>
-<pre><code>mvn dependency:analyze
-</code></pre><p>查看项目依赖</p>
-<pre><code>mvn dependency:resolve
-mvn dependency:tree            列出直接和传递性依赖，以树形式打印
-mvn install -X                打开调试标记，查看完整依赖踪迹，包括因为冲突被拒绝加入的构件
-</code></pre><h3 id="Exec-插件"><a href="#Exec-插件" class="headerlink" title="Exec 插件"></a>Exec 插件</h3><p>运行Java类或其他脚本</p>
-<pre><code>mvn exec:java -Dexec.mainClass=com.epdc.maven.App
-</code></pre><h3 id="Surefire插件"><a href="#Surefire插件" class="headerlink" title="Surefire插件"></a>Surefire插件</h3><p>处理单元测试的，如下配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">configuration</span>&gt;</span><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>运行到test阶段为止所有生命周期阶段</p>
-<pre><code>mvn test    有测试单元失败，会停止当前的构建
-</code></pre><h4 id="configuration"><a href="#configuration" class="headerlink" title="configuration"></a>configuration</h4><p>忽略测试失败,或者mvn test -Dmaven.test.failure.ignore=ture</p>
-<pre><code>&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;
-</code></pre><p>完成跳过单元测试，或者mvn test -Dmaven.test.skip=ture</p>
-<pre><code>&lt;skip&gt;true&lt;/skip&gt;
-</code></pre><h3 id="Assembly插件"><a href="#Assembly插件" class="headerlink" title="Assembly插件"></a>Assembly插件</h3><p>创建应用程序特有分发包，包括项目的二进制文件和所有的依赖，配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">descriptorRefs</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">descriptorRef</span>&gt;</span>jar-with-dependencies<span class="tag">&lt;/<span class="name">descriptorRef</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">descriptorRefs</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="Archetype-插件"><a href="#Archetype-插件" class="headerlink" title="Archetype 插件"></a>Archetype 插件</h3><h4 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h4><p>创建项目</p>
-<pre><code>mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app    java项目
-mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-webapp    web项目
-</code></pre><h3 id="Jetty插件"><a href="#Jetty插件" class="headerlink" title="Jetty插件"></a>Jetty插件</h3><p>运行web应用，配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.eclipse.jetty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>9.3.14.v20161028<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">scanIntervalSeconds</span>&gt;</span>1<span class="tag">&lt;/<span class="name">scanIntervalSeconds</span>&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>启动web应用</p>
-<pre><code>mvn jetty:run
-</code></pre><h3 id="Help插件"><a href="#Help插件" class="headerlink" title="Help插件"></a>Help插件</h3><p>pom继承超级pom 和 父pom, 得到混合各个pom配置的有效pom。effective-pom目标可以查看有效pom</p>
-<pre><code>mvn help:effective-pom
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Maven/" data-id="cj67ste4d000qfole33220iai" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/26/Maven/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Zookeeper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/26/Zookeeper/" class="article-date">
-  <time datetime="2017-04-26T06:49:57.000Z" itemprop="datePublished">2017-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/分布式/">分布式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/Zookeeper/">Zookeeper</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="配置-conf-zoo-cfg"><a href="#配置-conf-zoo-cfg" class="headerlink" title="配置(conf/zoo.cfg)"></a>配置(conf/zoo.cfg)</h2><p>启动时会找zoo.cfg文件作为默认配置文件,所以复制一份zoo_sample.cfg</p>
-<pre><code>tickTime：服务器之间或客户端与服务器之间维持心跳的时间间隔，每个 tickTime 时间就会发送一个心跳
-dataDir ：保存数据的目录，将写数据的日志文件也保存在这个目录里
-clientPort：监听这个端口，接受客户端的访问请求
-</code></pre><p>启动命令</p>
-<pre><code>./zkServer.sh start
-</code></pre><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><pre><code>./zkCli.sh -server localhost:2181
-</code></pre><h2 id="占用8080端口"><a href="#占用8080端口" class="headerlink" title="占用8080端口"></a>占用8080端口</h2><p>zookeeper有个内嵌的管理控制台是通过jetty启动，也会占用8080端口。可以启动脚本中修改</p>
-<pre><code>admin.serverPort=port 
-</code></pre><p>或者停止这服务</p>
-<pre><code>admin.enableServer=false
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Zookeeper/" data-id="cj67ste4w0016fole3donv09y" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/26/Zookeeper/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zookeeper/">Zookeeper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Java-RMI" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/26/Java-RMI/" class="article-date">
-  <time datetime="2017-04-26T03:20:29.000Z" itemprop="datePublished">2017-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/分布式/">分布式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/Java-RMI/">Java RMI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="RMI是什么"><a href="#RMI是什么" class="headerlink" title="RMI是什么"></a>RMI是什么</h2><ul>
-<li>RMI是一套足够优秀的socket框架.</li>
-<li>RMI是相对比较简单命名服务</li>
-<li>RMI是aop的经典实用例子</li>
-<li>相关辅助功能，比如本地GC</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cj67ste3s000efole4c7qc2eg" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/26/Java-RMI/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RMI/">RMI</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
   </nav>
 </section>
            
@@ -1308,7 +1208,7 @@ clientPort：监听这个端口，接受客户端的访问请求
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/分布式/">分布式</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用服务器/">应用服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/分布式/">分布式</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用服务器/">应用服务器</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1318,7 +1218,7 @@ clientPort：监听这个端口，接受客户端的访问请求
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 25px; color: #ee82ee">Git</a> <a href="/tags/Git问题场景/" style="font-size: 14px; color: #00f">Git问题场景</a> <a href="/tags/Hexo/" style="font-size: 25px; color: #ee82ee">Hexo</a> <a href="/tags/Linux命令/" style="font-size: 14px; color: #00f">Linux命令</a> <a href="/tags/Linux知识点/" style="font-size: 14px; color: #00f">Linux知识点</a> <a href="/tags/Linux运维/" style="font-size: 14px; color: #00f">Linux运维</a> <a href="/tags/Linux问题解决方法/" style="font-size: 14px; color: #00f">Linux问题解决方法</a> <a href="/tags/Maven/" style="font-size: 14px; color: #00f">Maven</a> <a href="/tags/MySQL知识点/" style="font-size: 14px; color: #00f">MySQL知识点</a> <a href="/tags/RMI/" style="font-size: 14px; color: #00f">RMI</a> <a href="/tags/Redis/" style="font-size: 14px; color: #00f">Redis</a> <a href="/tags/SQL语句/" style="font-size: 14px; color: #00f">SQL语句</a> <a href="/tags/Tomcat/" style="font-size: 14px; color: #00f">Tomcat</a> <a href="/tags/Vim命令/" style="font-size: 14px; color: #00f">Vim命令</a> <a href="/tags/Zookeeper/" style="font-size: 14px; color: #00f">Zookeeper</a> <a href="/tags/nginx/" style="font-size: 14px; color: #00f">nginx</a> <a href="/tags/分治策略/" style="font-size: 14px; color: #00f">分治策略</a> <a href="/tags/单元测试/" style="font-size: 14px; color: #00f">单元测试</a> <a href="/tags/单词词性/" style="font-size: 14px; color: #00f">单词词性</a> <a href="/tags/句子成分/" style="font-size: 14px; color: #00f">句子成分</a> <a href="/tags/句子时态/" style="font-size: 14px; color: #00f">句子时态</a> <a href="/tags/句子结构/" style="font-size: 14px; color: #00f">句子结构</a> <a href="/tags/归并排序/" style="font-size: 14px; color: #00f">归并排序</a> <a href="/tags/快捷键/" style="font-size: 14px; color: #00f">快捷键</a> <a href="/tags/插入算法/" style="font-size: 14px; color: #00f">插入算法</a> <a href="/tags/编码/" style="font-size: 14px; color: #00f">编码</a> <a href="/tags/被动语态/" style="font-size: 14px; color: #00f">被动语态</a>
+      <a href="/tags/Docker/" style="font-size: 14px; color: #00f">Docker</a> <a href="/tags/Git/" style="font-size: 25px; color: #ee82ee">Git</a> <a href="/tags/Git问题场景/" style="font-size: 14px; color: #00f">Git问题场景</a> <a href="/tags/Hexo/" style="font-size: 25px; color: #ee82ee">Hexo</a> <a href="/tags/Kafka/" style="font-size: 14px; color: #00f">Kafka</a> <a href="/tags/Linux命令/" style="font-size: 14px; color: #00f">Linux命令</a> <a href="/tags/Linux知识点/" style="font-size: 14px; color: #00f">Linux知识点</a> <a href="/tags/Linux运维/" style="font-size: 14px; color: #00f">Linux运维</a> <a href="/tags/Linux问题解决方法/" style="font-size: 14px; color: #00f">Linux问题解决方法</a> <a href="/tags/Maven/" style="font-size: 14px; color: #00f">Maven</a> <a href="/tags/MySQL知识点/" style="font-size: 14px; color: #00f">MySQL知识点</a> <a href="/tags/RMI/" style="font-size: 14px; color: #00f">RMI</a> <a href="/tags/Redis/" style="font-size: 14px; color: #00f">Redis</a> <a href="/tags/SQL语句/" style="font-size: 14px; color: #00f">SQL语句</a> <a href="/tags/Solr/" style="font-size: 14px; color: #00f">Solr</a> <a href="/tags/Tomcat/" style="font-size: 14px; color: #00f">Tomcat</a> <a href="/tags/Vim命令/" style="font-size: 14px; color: #00f">Vim命令</a> <a href="/tags/Zookeeper/" style="font-size: 14px; color: #00f">Zookeeper</a> <a href="/tags/nginx/" style="font-size: 14px; color: #00f">nginx</a> <a href="/tags/zabbix/" style="font-size: 14px; color: #00f">zabbix</a> <a href="/tags/分治策略/" style="font-size: 14px; color: #00f">分治策略</a> <a href="/tags/单元测试/" style="font-size: 14px; color: #00f">单元测试</a> <a href="/tags/单词/" style="font-size: 14px; color: #00f">单词</a> <a href="/tags/句子从句/" style="font-size: 25px; color: #ee82ee">句子从句</a> <a href="/tags/句子成分/" style="font-size: 25px; color: #ee82ee">句子成分</a> <a href="/tags/句子时态/" style="font-size: 14px; color: #00f">句子时态</a> <a href="/tags/句子结构/" style="font-size: 14px; color: #00f">句子结构</a> <a href="/tags/归并排序/" style="font-size: 14px; color: #00f">归并排序</a> <a href="/tags/快捷键/" style="font-size: 14px; color: #00f">快捷键</a> <a href="/tags/插入算法/" style="font-size: 14px; color: #00f">插入算法</a> <a href="/tags/爬虫-博客/" style="font-size: 14px; color: #00f">爬虫, 博客</a> <a href="/tags/编码/" style="font-size: 14px; color: #00f">编码</a> <a href="/tags/被动语态/" style="font-size: 14px; color: #00f">被动语态</a>
     </div>
   </div>
 
@@ -1330,23 +1230,23 @@ clientPort：监听这个端口，接受客户端的访问请求
       <ul>
         
           <li>
-            <a href="/2017/08/08/被动语态/">被动语态</a>
+            <a href="/2017/11/17/Soft-zabbix/">zabbix</a>
           </li>
         
           <li>
-            <a href="/2017/06/17/Linux命令/">Linux 命令</a>
+            <a href="/2017/11/10/Blog-解决问题汇总/">Blog-解决问题汇总</a>
           </li>
         
           <li>
-            <a href="/2017/05/18/单元测试/">单元测试</a>
+            <a href="/2017/11/10/Soft-docker/">Docker</a>
           </li>
         
           <li>
-            <a href="/2017/05/05/Linux-运维/">Linux-运维</a>
+            <a href="/2017/09/26/Soft-solr/">Solr</a>
           </li>
         
           <li>
-            <a href="/2017/05/05/Git学习/">Git学习</a>
+            <a href="/2017/08/17/Soft-Kafka/">Kafka</a>
           </li>
         
       </ul>
@@ -1358,7 +1258,7 @@ clientPort：监听这个端口，接受客户端的访问请求
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
