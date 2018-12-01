@@ -85,6 +85,406 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL-知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/MySQL-知识点/" class="article-date">
+  <time datetime="2017-04-17T10:40:55.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/MySQL-知识点/">MySQL 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件在/etc/mysql/my.cnf,一些配置内容如下：</p>
+<pre><code>max_connections        
+    最大支持连接数，设置到500～1000比较合适
+wait-timeout        
+    数据库连接闲置最大时间值，默认值为8小时 
+</code></pre><h2 id="URL-格式"><a href="#URL-格式" class="headerlink" title="URL 格式"></a>URL 格式</h2><pre><code>jdbc:mysql://[host][,failoverhost...][:port]/[database]
+?[propertyName1][=propertyValue1][&amp;propertyName2][=propertyValue2]...
+</code></pre><p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">useUnicode</td>
+<td style="text-align:left">是否使用Unicode字符集</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">characterEncoding</td>
+<td style="text-align:left">当useUnicode设置为true时，指定字符编码</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">autoReconnect</td>
+<td style="text-align:left">当数据库连接异常中断时，是否自动重新连接</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">autoReconnectForPools</td>
+<td style="text-align:left">是否使用针对数据库连接池的重连策略</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">failOverReadOnly</td>
+<td style="text-align:left">自动重连成功后，连接是否设置为只读</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">maxReconnects</td>
+<td style="text-align:left">autoReconnect设置为true时，重试连接的次数</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">initialTimeout</td>
+<td style="text-align:left">autoReconnect设置为true时，两次重连之间的时间间隔，单位：秒</td>
+<td style="text-align:left">2秒</td>
+</tr>
+<tr>
+<td style="text-align:left">connectTimeout</td>
+<td style="text-align:left">和数据库服务器建立socket连接时的超时，单位：毫秒。 0表示永不超时</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">socketTimeout</td>
+<td style="text-align:left">socket操作（读写）超时，单位：毫秒。 0表示永不超时</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">useAffectedRows</td>
+<td style="text-align:left">是否用受影响的行数替代查找到的行数来返回数据，例如：当修改的内容与原数据相同，mysql自己返回受影响行数为0，但jdbc/mybatis 返回的却是1，返回的是 sql语句 的匹配行数</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html" target="_blank" rel="external">官方参数配置参考</a></p>
+<h2 id="配置主从数据库"><a href="#配置主从数据库" class="headerlink" title="配置主从数据库"></a>配置主从数据库</h2><p>主ip:192.186.0.101,从ip:192.186.0.102</p>
+<h4 id="主数据库配置"><a href="#主数据库配置" class="headerlink" title="主数据库配置"></a>主数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
+<pre><code>[mysqld]
+#主数据库id
+server-id=1
+#需要同步的database
+binlog-do-db=blog
+#忽略同步的database
+binlog-ignore-db=mysql
+#开启二进制日志机制
+log-bin=/var/lib/mysql/binlog
+</code></pre><p>查看日志信息，得到二进制日志的文件名(file)和位置信息（position）</p>
+<pre><code>show master status
+</code></pre><h4 id="导主数据库已存在的数据"><a href="#导主数据库已存在的数据" class="headerlink" title="导主数据库已存在的数据"></a>导主数据库已存在的数据</h4><p>主数据库导出数据</p>
+<pre><code>mysqldump -uname -ppass database &gt; database.sql
+</code></pre><p>从数据库导入数据</p>
+<pre><code>source database.sql
+</code></pre><h4 id="从数据库配置"><a href="#从数据库配置" class="headerlink" title="从数据库配置"></a>从数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
+<pre><code>[mysqld]
+#从数据库id，不能和主数据库的相同
+server-id=2
+</code></pre><p>配置同步参数</p>
+<pre><code>CHANGE MASTER TO 
+MASTER_HOST=&apos;192.186.0.101&apos;,
+MASTER_USER=&apos;root&apos;,
+MASTER_PASSWORD=&apos;123456&apos;,
+MASTER_LOG_FILE=&apos;binlog.000001&apos;,
+MASTER_LOG_POS=154;
+</code></pre><p>MASTER_HOST 主数据库所在服务器ip<br>MASTER_USER,MASTER_PASSWORD链接主数据库的用户密码<br>MASTER_LOG_FILE,MASTER_LOG_POS是从主数据库查到日志信息</p>
+<p>启动同步进程</p>
+<pre><code>start slave
+show slave status\G
+    查看进程状态
+</code></pre><p>进程状态有两个值，都为YES表示配置成功</p>
+<pre><code>Slave_IO_Runing 负责去主数据库读取二进制日志，并写入从数据库的中继日志
+Slave_SQL_Runing 负责把中继日志转换sql执行
+</code></pre><h2 id="允许外网访问"><a href="#允许外网访问" class="headerlink" title="允许外网访问"></a>允许外网访问</h2><p>注释/etc/mysql/mysql.conf.d/mysqld.cnf中 </p>
+<pre><code>bind-address    = 127.0.0.1
+</code></pre><p>查询用户</p>
+<pre><code>use mysql;
+select user,host from user;
+</code></pre><p>授权任意主机都可以以用户root和密码pass连接</p>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
+flush privileges;
+</code></pre><p>授权192.186.0.102主机都可以以用户root和密码pass连接</p>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;192.186.0.102&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
+flush privileges;
+</code></pre><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p>创建数据库表时指定编码和排序编码</p>
+<pre><code>CREATE DATABASE `test`  CHARACTER SET &apos;utf8&apos;  COLLATE &apos;utf8_general_ci&apos;; 
+CREATE TABLE `test` () ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre><p>查看默认编码</p>
+<pre><code>show variables like &quot;%char%&quot;;
+</code></pre><p>设置编码</p>
+<pre><code>SET character_set_client=&apos;utf8&apos;;  
+SET character_set_connection=&apos;utf8&apos;;  
+SET character_set_results=&apos;utf8&apos;;    
+</code></pre><p>设置默认编码</p>
+<pre><code>set names utf8;
+</code></pre><p>在/etc/mysql/my.cnf配置默认编码</p>
+<pre><code>[mysqld]
+default_character_set=utf8;
+</code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><pre><code>--initialize specified but the data directory has files in it. Aborting.
+</code></pre><p>把/var/lib/mysql目录中文件删掉</p>
+<pre><code>ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+</code></pre><p>flush privileges;</p>
+<pre><code>ERROR 3009 (HY000): Column count of mysql.user is wrong. Expected 45, found 42. Created with MySQL 50557, now running 50719. Please use mysql_upgrade to fix this error.
+</code></pre><p>mysql_upgrade –force -uroot -p</p>
+<pre><code>ERROR 1054 (42S22): Unknown column &apos;Password&apos; in &apos;field list&apos;
+</code></pre><p>update user set authentication_string=password(‘1111’) where user=’root’;</p>
+<pre><code>ERROR 1682 (HY000): Native table &apos;performance_schema&apos;.&apos;session_variables&apos; has the wrong structure
+</code></pre><p>sudo mysql_upgrade -u root -p, then restart mysql</p>
+<pre><code>ERROR 1467 (HY000): Failed to read auto-increment value from storage engine
+</code></pre><p>auto-increment到最大值了。<br>use information_schema;<br>select * from TABLES where TABLE_NAME=’t_article_label’;</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h4 id="字符串连接函数"><a href="#字符串连接函数" class="headerlink" title="字符串连接函数"></a>字符串连接函数</h4><p>concat(str1,str2)</p>
+<pre><code>有一个参数为null,就返回null
+</code></pre><p>CONCAT_WS(separator,str1,str2,…)</p>
+<pre><code>以分隔符separator链接字符，如果有参数为null,跳过这个参数。
+</code></pre><p>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</p>
+<pre><code>这是一个聚合函数，把有多个值的字段连接起来成一行。    
+</code></pre><h4 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h4><p>from_unixtime()/unix_timestamp()</p>
+<pre><code>把Unix时间戳转换为日期/把日期转换为Unix时间戳
+</code></pre><p>inet_aton()/inet_ntoa()</p>
+<pre><code>用无符号整数存储IP地址，把IP转换成整数/把整数转换成IP
+</code></pre><p>date +/- interval expr unit</p>
+<pre><code>日期计算，例如：一天之前，select now() - interval 24 hour;
+</code></pre><h4 id="字符截取函数"><a href="#字符截取函数" class="headerlink" title="字符截取函数"></a>字符截取函数</h4><p>left(str, len)</p>
+<pre><code>截取字符串中前len个字符
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cjp5jyodt002z1cle6e3pema2" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL知识点/">MySQL知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux-Vim命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux-Vim命令/" class="article-date">
+  <time datetime="2017-04-17T03:07:22.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux-Vim命令/">Vim命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>删除</p>
+<pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
+nx         连续向后删除 n 个字符
+dd         删除游标所在这行
+ndd        删除游标所在向下n行
+d1G        删除光标所在到第一行的所有数据
+dG         删除光标所在到最后一行的所有数据
+d$         删除游标所在处，到该行的最后一个字符
+d0         删除游标所在处，到该行的最前面一个字符
+</code></pre><p>复制</p>
+<pre><code>y1G        复制光标所在行到第一行的所有数据
+yG        复制光标所在行到最后一行的所有数据
+y0        复制光标所在的那个字符到该行行首的所有数据
+y$        复制光标所在的那个字符到该行行尾的所有数据
+</code></pre><p>粘贴</p>
+<pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
+</code></pre><p>撤销</p>
+<pre><code>u        复原上一个动作
+</code></pre><p>重复执行</p>
+<pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
+</code></pre><p>替换<br>    r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止</p>
+<p>执行其他命令<br>    :! command        离开 vi 到指令列模式下执行 command 的显示结果<br>行数<br>    :set nu, :set nonu         显示行数和取消行数</p>
+<p>翻页，移动光标<br>    ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页<br>    h, j, k, l                      左，下，上，右<br>    +, -                            移动下一行，上一行的非空格符号<br>    n<space>， n<enter>             向右移动n 个字符, 向下移动n行<br>    0, $                            移动行首,行尾<br>    H, M, L                         移动到屏幕的第一行，最后一行，中间行。<br>    G, nG, gg                       移动文档最后一行,第n行，第一行</enter></space></p>
+<p>搜索<br>    n， N                    向后，前继续搜索</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-Vim命令/" data-id="cjp5jyocl00281clenm1ch7wd" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux-Vim命令/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim命令/">Vim命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/Linux-知识点/" class="article-date">
+  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/Linux-知识点/">Linux 知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
+<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
+URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
+</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
+    查看占用该端口的进程
+netstat -ntlup | grep 端口号                  
+    根据端口搜索进程
+ps -ef | grep 进程号                        
+    查看进程
+netstat –apn                            
+    查看所有的进程和端口使用情况
+kill -9 processId                        
+    杀进程
+</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>物理CPU</p>
+<pre><code>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
+</code></pre><p>逻辑CPU</p>
+<pre><code>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
+一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
+逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
+
+Linux下top查看的CPU也是逻辑CPU个数
+</code></pre><p>查看物理CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
+</code></pre><p>查看逻辑CPU的个数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
+</code></pre><p>查看CPU是几核</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
+</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
+<pre><code>top                     查看内存和CPU    
+pmap -d processId        查看进程相关信息占用的内存情况
+free -m                 查看内存
+cat /proc/meminfo        查看内存额定值
+ll -h /proc/kcore        查看内存镜像文件的大小
+</code></pre><h2 id="apt-get清除文件"><a href="#apt-get清除文件" class="headerlink" title="apt-get清除文件"></a>apt-get清除文件</h2><p>下面命令已清mysql相关文件</p>
+<pre><code>sudo apt-get purge mysql*
+sudo apt-get autoremove
+sudo apt-get autoclean
+</code></pre><h2 id="Ubuntu系统升级"><a href="#Ubuntu系统升级" class="headerlink" title="Ubuntu系统升级"></a>Ubuntu系统升级</h2><pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
+sudo reboot
+sudo update-manager –d
+</code></pre><h2 id="配置root权限"><a href="#配置root权限" class="headerlink" title="配置root权限"></a>配置root权限</h2><p>/etc/sudoers文件中配置了，那些用户可以临时获取root权限</p>
+<pre><code>授权给单个用户：
+    devin    ALL=(ALL)ALL
+解释：
+    devin：允许使用 sudo 的用户名
+    ALL：允许从任何终端（任何机器）使用 sudo
+    (ALL)：允许以任何用户执行 sudo 命令
+    ALL：允许 sudo 权限执行任何命令
+
+让用户 test 只能在本主机（主机名为epdc）以 root 账户执行/bin/chown、/bin/chmod 两条命令
+    test epdc-ThinkPad-T550=(root)/bin/chown,/bin/chmod
+
+授权某组用户，将“用户名”换成“%组名”即可。
+
+使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
+</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
+<h2 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h2><pre><code>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行
+
+使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。
+</code></pre><h2 id="sudo-操作记录日志"><a href="#sudo-操作记录日志" class="headerlink" title="sudo 操作记录日志"></a>sudo 操作记录日志</h2><pre><code>sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修
+
+第一步：创建/var/log/sudo.log文件
+    sudo touch /va/log/sudo.log
+第二步：修改/etc/rsyslog.conf配置文件,加入下面一行：
+    local2.debug    /var/log/sudo.log    #空白不能用空格，必须用tab
+第三步：修改/etc/sudoers配置文件,加入下面一行：
+    Defaults    logfile=/var/log/sudo.log
+第四步：重启syslog服务
+    sudo service rsyslog restart
+</code></pre><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><p>sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： </p>
+<ul>
+<li>sudo能够限制用户只在某台主机上运行某些命令。</li>
+<li>sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。</li>
+<li>sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。</li>
+<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cjp5jyoey003b1clec02wz2rw" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Linux疑难杂症解解决方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/17/Linux疑难杂症解解决方法/" class="article-date">
@@ -135,7 +535,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cja3ttmsi001snolex5r5pdp0" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/" data-id="cjp5jyocv002i1cle4irnqubu" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/17/Linux疑难杂症解解决方法/#disqus_thread" class="article-comment-link">留言</a>
@@ -184,7 +584,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/14/Java-加密、解密/" data-id="cja3ttms2001enolecdq2lugv" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/14/Java-加密、解密/" data-id="cjp5jyob4001b1cleo72i2n4d" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/14/Java-加密、解密/#disqus_thread" class="article-comment-link">留言</a>
@@ -244,7 +644,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cja3ttmrs0012nole107vbs82" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/12/Hexo的配置/" data-id="cjp5jyocb00211clectzmkgog" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/12/Hexo的配置/#disqus_thread" class="article-comment-link">留言</a>
@@ -299,7 +699,7 @@ natty_main_i18n_Translation-en
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cja3ttmrr0010nolezt6reqxc" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/" data-id="cjp5jyob000191clev42g9z42" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/11/Git常遇到使用场景/#disqus_thread" class="article-comment-link">留言</a>
@@ -376,7 +776,7 @@ flushall
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/07/Soft-Redis/" data-id="cja3ttmsw0028noleytc1mua9" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/07/Soft-Redis/" data-id="cjp5jyof5003h1cle0vayr1zm" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/07/Soft-Redis/#disqus_thread" class="article-comment-link">留言</a>
@@ -450,7 +850,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/06/MySQL-SQL语句说明/" data-id="cja3ttmsn001wnolekuj4d95l" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/06/MySQL-SQL语句说明/" data-id="cjp5jyodk002s1clezd3hnxl1" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/06/MySQL-SQL语句说明/#disqus_thread" class="article-comment-link">留言</a>
@@ -507,7 +907,7 @@ show create function fun_name；        查看函数源码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cja3ttmrx0017nolen24y44up" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/" data-id="cjp5jyoav00171cle519hmzwx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/03/31/Hexo-搭建个人博客/#disqus_thread" class="article-comment-link">留言</a>
@@ -549,23 +949,23 @@ show create function fun_name；        查看函数源码
       <ul>
         
           <li>
+            <a href="/2017/11/20/C-Visual Studio/">Visual Studio</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Lib-Promise/">Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Langue-NodeJS/">NodeJS</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/17/Soft-zabbix/">zabbix</a>
           </li>
         
           <li>
             <a href="/2017/11/10/Blog-解决问题汇总/">Blog-解决问题汇总</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/10/Soft-docker/">Docker</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/26/Soft-solr/">Solr</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/17/Soft-Kafka/">Kafka</a>
           </li>
         
       </ul>
@@ -585,7 +985,7 @@ show create function fun_name；        查看函数源码
   
   <div class="outer">
     <div id="footer-left">
-      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      &copy; 2014 - 2018 Devin&nbsp;|&nbsp;
       主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">

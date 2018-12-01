@@ -85,9 +85,292 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-Git学习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Window技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/05/Git学习/" class="article-date">
+    <a href="/2017/06/17/Window技巧/" class="article-date">
+  <time datetime="2017-06-17T02:47:21.000Z" itemprop="datePublished">2017-06-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Window/">Window</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/17/Window技巧/">Window系统使用技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Shell命令"><a href="#Shell命令" class="headerlink" title="Shell命令"></a>Shell命令</h2><p>查询占用端口进程</p>
+<pre><code>netstat -ano | findstr 8000
+</code></pre><p>根据进程查进程名称</p>
+<pre><code>tasklist | findstr 18140
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/06/17/Window技巧/" data-id="cjp5jyofj003n1clexvj31bte" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/06/17/Window技巧/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Window/">Window</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/18/Java-单元测试/" class="article-date">
+  <time datetime="2017-05-18T03:24:53.000Z" itemprop="datePublished">2017-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/18/Java-单元测试/">单元测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>软件测试分为单元测试、集成测试、功能测试、系统测试。</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>测试某个功能正确性，通常情况一个功能模块会关联多个其他功能模块，这时模拟对象就有用，可以模拟其他模块特定操作行为</p>
+<h4 id="被测系统（SUT）"><a href="#被测系统（SUT）" class="headerlink" title="被测系统（SUT）"></a>被测系统（SUT）</h4><h4 id="测试替身（Test-Double）"><a href="#测试替身（Test-Double）" class="headerlink" title="测试替身（Test Double）"></a>测试替身（Test Double）</h4><p>减少对被测对象的依赖</p>
+<h5 id="Dummy-Objects"><a href="#Dummy-Objects" class="headerlink" title="Dummy Objects"></a>Dummy Objects</h5><pre><code>测试中必须传入的对象，传入这些对象并不会生产如何作用
+</code></pre><h5 id="Test-Stub"><a href="#Test-Stub" class="headerlink" title="Test Stub"></a>Test Stub</h5><pre><code>测试桩接受SUT内部的间接输入，可以按照我们的要求返回特定的内容给SUT
+</code></pre><h5 id="Test-Spy"><a href="#Test-Spy" class="headerlink" title="Test Spy"></a>Test Spy</h5><pre><code>将SUT内部的间接输出传到外部，不负责验证传出数据
+</code></pre><h5 id="Mock-Object"><a href="#Mock-Object" class="headerlink" title="Mock Object"></a>Mock Object</h5><pre><code>和Test Spy类似，但负责验证传出的数据
+</code></pre><h5 id="Fake-Object"><a href="#Fake-Object" class="headerlink" title="Fake Object"></a>Fake Object</h5><pre><code>和Test Stub类似，不关注SUT内部间接输入输出，仅仅是用来代替一个实际的对象
+</code></pre><h3 id="测试夹具（Test-Fixture）"><a href="#测试夹具（Test-Fixture）" class="headerlink" title="测试夹具（Test Fixture）"></a>测试夹具（Test Fixture）</h3><p>在测试之前自动初始化、回收资源。JUnit4中有@before和@After注解的方法，每个测试之前之后都执行一次。但这个缺点是效率低。</p>
+<p>JUnit4引入类级别的夹具设置方法：</p>
+<pre><code>使用@beforeClass和@afterClass修饰，且方法用public static void 修饰
+</code></pre><h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>JUnit4中测试方法用@Test修饰方法，一个测试用例可以有多个测试方法</p>
+<h3 id="测试套件（Test-Suite）"><a href="#测试套件（Test-Suite）" class="headerlink" title="测试套件（Test Suite）"></a>测试套件（Test Suite）</h3><p>将多个测试用例组装成一个测试套件，批量运行。使用@RunWith和@SuiteClasses注解空类</p>
+<pre><code>@RunWith(Suite.class) 表示此类为运行器
+@SuiteClasses({}) 把测试用例类作为它的参数
+</code></pre><h3 id="断言（Assertiosn）"><a href="#断言（Assertiosn）" class="headerlink" title="断言（Assertiosn）"></a>断言（Assertiosn）</h3><p>判断某个语句的结果是否为真，判断是否和预期相符，例如：Assert.assertEquals()方法。可以使用assert关键字，使用它必须指定Java的-ea参数，否则断言将被忽略</p>
+<h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><p>验证功能模块之间集成后的正确性</p>
+<h2 id="JUnit4"><a href="#JUnit4" class="headerlink" title="JUnit4"></a>JUnit4</h2><p>优秀测试框架具备几点：</p>
+<ul>
+<li>单元测试必须独立于其他的单元测试</li>
+<li>单元测试中产生的错误必须被记录下来</li>
+<li>用户能够轻松指定要执行的单元测试</li>
+</ul>
+<p>JUnit4采用Java 5的注解而不是子类，反射或命名机制来识别测试，它不是JUnit3.8的扩展版本，而是一个全新的测试框架</p>
+<h4 id="Test"><a href="#Test" class="headerlink" title="@Test"></a>@Test</h4><p>注解测试方法，参数：</p>
+<ul>
+<li>expected 抛出异常类型，如果测试方法没有抛出这个异常，测试失败</li>
+<li>timeout 设置超时时间，如果运行时间超过这个值，测试失败</li>
+</ul>
+<h4 id="参数化测试"><a href="#参数化测试" class="headerlink" title="参数化测试"></a>参数化测试</h4><ul>
+<li>使用@RunWith 指定特殊运行器：Parameterized.class</li>
+<li>声明一个带参数构造参数</li>
+<li>创建一个@Parameterized.Parameters方法返回多组数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(Parameterized.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParamTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Integer value;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ParamTest</span><span class="params">(Integer value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Parameterized</span>.Parameters</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Collection&lt;Integer[]&gt; data() &#123;</div><div class="line">        Integer[][] data = <span class="keyword">new</span> Integer[][]&#123;&#123;<span class="number">1</span>&#125;,&#123;<span class="number">3</span>&#125;,&#123;<span class="number">5</span>&#125;,&#123;<span class="number">7</span>&#125;&#125;;</div><div class="line">        <span class="keyword">return</span> Arrays.asList(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">assert</span> <span class="keyword">this</span>.value &lt; <span class="number">5</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="测试运行器"><a href="#测试运行器" class="headerlink" title="测试运行器"></a>测试运行器</h4><p>执行测试方法的，默认测试运行器BlockJUnit4ClassRunner.可以自定义运行器，只要继承org.junit.runner.Runner,使用@Runwith显示地声明</p>
+<h4 id="Junit4断言"><a href="#Junit4断言" class="headerlink" title="Junit4断言"></a>Junit4断言</h4><p>assertArrayEquals方法比较数组是否相等，只有两个数组的元素都相等，则两个数组相等。</p>
+<h4 id="assertThat断言"><a href="#assertThat断言" class="headerlink" title="assertThat断言"></a>assertThat断言</h4><p>assertThat断言是结合Hamcrest新的断言语句。结合Hamcrest提供匹配符，Hamcrest是个测试辅助工具，提供一套通用匹配符Matcher,有个静态类Matchers</p>
+<h2 id="模拟利器Mockito"><a href="#模拟利器Mockito" class="headerlink" title="模拟利器Mockito"></a>模拟利器Mockito</h2><p>是一套通过简单方法对于指定接口或类生成Mock对象的类库</p>
+<h4 id="Stub对象"><a href="#Stub对象" class="headerlink" title="Stub对象"></a>Stub对象</h4><p>提供测试时所需要的测试数据，对各种交互设置相应的回应。when().thenReturn() 设置方法调用的返回值，也可以设置方法何时调用会抛出异常</p>
+<pre><code>when(mockUserService.getUserByName(&quot;devin&quot;)).thenReturn(new User(&quot;devin&quot;, &quot;123&quot;));
+</code></pre><h4 id="Mock对象"><a href="#Mock对象" class="headerlink" title="Mock对象"></a>Mock对象</h4><p>验证测试中所依赖对象间的交互是否能够达到预期，verify().methodXxx()语法来验证methodXxx方法是否按照预期进行了调用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">when(mockUserService.getUserByName(<span class="string">"devin"</span>)).thenReturn(<span class="keyword">new</span> User(<span class="string">"devin"</span>, <span class="string">"123"</span>));</div><div class="line"></div><div class="line">      User devin = mockUserService.getUserByName(<span class="string">"devin"</span>);</div><div class="line">      assertNotNull(devin);</div><div class="line"></div><div class="line">      verify(mockUserService).getUserByName(<span class="string">"devin"</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="Mockito-使用"><a href="#Mockito-使用" class="headerlink" title="Mockito 使用"></a>Mockito 使用</h2><h4 id="创建Mock对象"><a href="#创建Mock对象" class="headerlink" title="创建Mock对象"></a>创建Mock对象</h4><p>对于final类，匿名类和Java的基本类型无法进行Mock,创建方式：</p>
+<ul>
+<li>mock(Class) 方法</li>
+<li>@mock注解，注解需要MockitoAnnotations.initMocks方法初始化</li>
+</ul>
+<h4 id="设置Mock对象的期望行为及返回值"><a href="#设置Mock对象的期望行为及返回值" class="headerlink" title="设置Mock对象的期望行为及返回值"></a>设置Mock对象的期望行为及返回值</h4><p>通过when(mock.someMethod).thenReturn(value),对于static和final修饰的方法无法设定</p>
+<ul>
+<li>when().thenReturn()</li>
+<li>doReturnn().when().methodXxx()  </li>
+<li>doNothing().when().methodXxx()  返回void</li>
+</ul>
+<h4 id="验证交互行为"><a href="#验证交互行为" class="headerlink" title="验证交互行为"></a>验证交互行为</h4><p>Mock对象一旦建立会自测试动记录自己的交互行为</p>
+<ul>
+<li>verify(mock, atLeastOnce()).methodXxx 方法至少调用一次</li>
+<li>verify(mock, atLeast(1)).methodXxx</li>
+<li>verify(mock, atMost(1)).methodXxx 至多调用一次</li>
+<li><ul>
+<li>verify(mock, never()).methodXxx 从未</li>
+</ul>
+</li>
+</ul>
+<h2 id="测试整合之王Unitils"><a href="#测试整合之王Unitils" class="headerlink" title="测试整合之王Unitils"></a>测试整合之王Unitils</h2><p>构建DbUnit和EasyMock项目之上，与JUnit和TestNG结合，支持数据库测试、支持Mock对象进行测试，并提供与Spring和Hibernate集成</p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><ul>
+<li>unitils-defaults.properties 默认配置文件，开启所以功能</li>
+<li>unitils.properties 项目级配置文件</li>
+<li>unitils-local.properties 用户级配置文件</li>
+</ul>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><h4 id="assertReflectionEquals-反射断言"><a href="#assertReflectionEquals-反射断言" class="headerlink" title="assertReflectionEquals 反射断言"></a>assertReflectionEquals 反射断言</h4><p>判断两个对象是否相等，判断对象属性值是否一样，不需要重写equals方法</p>
+<pre><code>ReflectionAssert.AssertReflectionEquals()
+</code></pre><ul>
+<li>IGNORE_DEFAULTS 忽略Java类型默认值</li>
+<li>LENIENT_DATES 忽略Date的值是否相等，比较是不是被设置值或都为null</li>
+<li>LENIENT_ORDER 忽略集合数组中元素顺序</li>
+</ul>
+<h4 id="assertLenientEquals"><a href="#assertLenientEquals" class="headerlink" title="assertLenientEquals"></a>assertLenientEquals</h4><p>忽略顺序忽略默认值的断言</p>
+<h4 id="assertPropertyXxxEquals-属性断言"><a href="#assertPropertyXxxEquals-属性断言" class="headerlink" title="assertPropertyXxxEquals 属性断言"></a>assertPropertyXxxEquals 属性断言</h4><p>只比较对象特定属性assertPropertyReflectionEquals和assertPropertyLenientEquals</p>
+<h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><p>@RunWith(SpringJUnit4ClassRunner.class)<br>@SpringBootTest<br>@ActiveProfiles(“dev”)</p>
+<h3 id="Web-Flux-Test"><a href="#Web-Flux-Test" class="headerlink" title="Web Flux Test"></a>Web Flux Test</h3><p>WebTestClient 测试WebFlux服务器端点，无论是否有正在运行的服务器。<br>测试没有正在运行的服务器与Spring MVC中的MockMvc相当，其中使用模拟请求和响应而不是使用套接字通过网络连接</p>
+<h3 id="Maven-Test"><a href="#Maven-Test" class="headerlink" title="Maven Test"></a>Maven Test</h3><pre><code>mvn test -Dtest=[ClassName]
+执行测试类
+mvn test -Dtest=[ClassName]#[MethodName]
+执行测试方法
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/05/18/Java-单元测试/" data-id="cjp5jyoci00261cleigavz17e" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/05/18/Java-单元测试/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单元测试/">单元测试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux-运维" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/05/Linux-运维/" class="article-date">
+  <time datetime="2017-05-05T10:01:21.000Z" itemprop="datePublished">2017-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/Linux-运维/">Linux-运维</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="修改SSH端口和禁止Root远程登录"><a href="#修改SSH端口和禁止Root远程登录" class="headerlink" title="修改SSH端口和禁止Root远程登录"></a>修改SSH端口和禁止Root远程登录</h2><p>修改端口</p>
+<pre><code>/etc/ssh/sshd_config文件中
+修改SSH端口，修改port后的端口
+</code></pre><p>禁止Root远程登录：</p>
+<pre><code>把PermitRootLogin yes 改为 PermitRootLogin no
+重启服务，service ssh restart
+</code></pre><h2 id="流量监控"><a href="#流量监控" class="headerlink" title="流量监控"></a>流量监控</h2><h4 id="vnstat"><a href="#vnstat" class="headerlink" title="vnstat"></a>vnstat</h4><p>安装</p>
+<pre><code>apt-get install vnstat
+</code></pre><p>创建监听数据库</p>
+<pre><code>vnstat -u -i eth0    -&gt;    eth0是系统网卡
+</code></pre><p>启动服务</p>
+<pre><code>service vnstat start
+</code></pre><p>开机自启动，在/etc/rc.local文件中加：</p>
+<pre><code>service vnstat start
+</code></pre><p>查看流量情况命令</p>
+<pre><code>每天的，vnstat -d
+每月的，vnstat -m    
+实时流量，vnstat -l -i eth0
+查看五秒平均流量，vnstat -tr -i eth0
+</code></pre><p>不能统计流量，需要修改.eh0权限，在/var/lib/vnstat目录中</p>
+<pre><code>chown vnstat:vnstat .eth0 -R
+chmod 0640 .eth0
+</code></pre><h2 id="rz，sz命令"><a href="#rz，sz命令" class="headerlink" title="rz，sz命令"></a>rz，sz命令</h2><p>sz：将选定的文件发送（send）到本地机器<br>rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到服务器(receive)</p>
+<p><code>注意：</code>单独用rz会有两个问题：上传中断、上传文件变化（md5不同），解决办法是上传是用rz -be，并且去掉弹出的对话框中“Upload files as ASCII”前的勾选。</p>
+<pre><code>-b binary 用binary的方式上传下载，不解释字符为ascii
+-e 强制escape 所有控制字符，比如Ctrl+x，DEL等
+</code></pre><p>安装</p>
+<pre><code>下载地址    http://www.ohse.de/uwe/software/lrzsz.html
+配置        ./configure --prefix=/usr/local/lrzsz
+编译        make
+安装        make install
+</code></pre><p>创建连接    </p>
+<pre><code>cd /usr/bin  
+sudo ln -s /usr/local/lrzsz/bin/lrz rz  
+sudo ln -s /usr/local/lrzsz/bin/lsz sz 
+</code></pre><h2 id="boot分区不足-清理boot分区"><a href="#boot分区不足-清理boot分区" class="headerlink" title="/boot分区不足,清理boot分区"></a>/boot分区不足,清理boot分区</h2><p>查看系统已安装内核    </p>
+<pre><code>dpkg --get-selections|grep linux-image
+</code></pre><p>查看系统使用内核</p>
+<pre><code>uname -a    
+</code></pre><p>删除不使用内核</p>
+<pre><code>sudo apt-get purge 内核名称
+sudo apt-get remove linux-image-(版本号)
+</code></pre><p>清理</p>
+<pre><code>清理/usr/src下的内核目录
+sudo apt-get autoremove 删除残留文件
+</code></pre><h2 id="xshell连接linux系统，操作卡"><a href="#xshell连接linux系统，操作卡" class="headerlink" title="xshell连接linux系统，操作卡"></a>xshell连接linux系统，操作卡</h2><p>关闭DNS解析，修改/etc/ssh/sshd_config文件中：</p>
+<pre><code>UseDNS no
+/etc/init.d/sshd restart
+</code></pre><h2 id="系统使用技巧"><a href="#系统使用技巧" class="headerlink" title="系统使用技巧"></a>系统使用技巧</h2><ul>
+<li>执行某命令时忘记加sudo, 可以输入sudo !! 即可，这里的 !! 代表上一条命令</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/05/05/Linux-运维/" data-id="cjp5jyod8002p1cle62pc37jo" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/05/05/Linux-运维/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux运维/">Linux运维</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Git命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/05/Git命令/" class="article-date">
   <time datetime="2017-05-05T09:03:22.000Z" itemprop="datePublished">2017-05-05</time>
 </a>
     
@@ -103,7 +386,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/Git学习/">Git学习</a>
+      <a class="article-title" href="/2017/05/05/Git命令/">Git</a>
     </h1>
   
 
@@ -113,14 +396,279 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        
+        <pre><code>git init        初始化 git 仓库
+git fsck        仓库一致性检查
+git gc            压缩
+git describe     显示提交易记名称(最近的里程碑名字 tag_name-&lt;n&gt;-ID)
+git mv &lt;file&gt; &lt;file&gt;    改名操作
+</code></pre><h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>对提交执行变基操作，实现将指定范围的提交嫁接到另外一个提交之上</p>
+<h2 id="git-archive"><a href="#git-archive" class="headerlink" title="git archive"></a>git archive</h2><p>归档打包</p>
+<pre><code>git archive -o &lt;name&gt;.zip HEAD
+git archive -o &lt;name&gt;.zip HEAD &lt;path&gt;...
+git archive --format=tar --prefix=1.0/ v1.0 | gzip &gt; foo-1.0.tar.gz
+</code></pre><p>使用tar格式和提交ID或里程碑ID，ID会记录在文件的文件头中，可以用下面命令获取提交ID</p>
+<pre><code>git tar-commit-id
+</code></pre><p>忽略文件或目录 export-ignore</p>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>作用范围是其在的目录及其子目录</p>
+<pre><code>git status --ignored        可以看到忽略的文件
+git add -f                强制添加忽悠的文件
+</code></pre><p><code>独享式</code>忽悠</p>
+<ul>
+<li>在.git/info/exclude来设置文件忽略(针对具体版本库)</li>
+<li>配置变量core.excludesfile设置文件忽略（所有本地版本库）</li>
+</ul>
+<p>忽略语法</p>
+<pre><code>* 代表任意多字符
+? 一个字符
+/path 忽略此目录下文件，非子目录
+path/ 忽略整个目录，包括子目录
+!&lt;file/path&gt; 不忽略
+</code></pre><h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><pre><code>git add -u        把工作区文件加到暂存区（被版本库追踪的）
+git add -A        把工作区文件加到暂存区（包括未被版本库追踪的）
+git add -i        选择性添加到暂存区
+</code></pre><h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>根据文件时间戳，长度判断文件是否改变，如果时间戳改变，再看内容是否改变。<code>文件内容保存再.git/objects目录下</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">查看精简状态，第一列M表示：版本库和暂存区的文件比较，第二列M表示：工作区和暂存区</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">显示当前分支名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><pre><code>git commit -e -F .git/COMMIT_EDITIMSG        重新提交(.git/COMMIT_EDITIMSG 是上次提交日志    )
+git commit -a -m                 偷懒提交，不用git add
+git commit --amend -m                修改最新提交说明
+git commit -C 提交ID            重用提交的提交说明
+</code></pre><h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>默认是指HEAD</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–stat</td>
+<td style="text-align:left">查看提交文件变更记录</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline,–pretty=oneline</td>
+<td style="text-align:left">查看精简日志，前面显示提交哈希值前几位，后面显示全部</td>
+</tr>
+<tr>
+<td style="text-align:left">–graph</td>
+<td style="text-align:left">查看提交关系图(树结构显示)</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=raw</td>
+<td style="text-align:left">显示commit的原始数据（parent属性）</td>
+</tr>
+<tr>
+<td style="text-align:left">–pretty=fuller</td>
+<td style="text-align:left">显示作者和提交者</td>
+</tr>
+<tr>
+<td style="text-align:left">–decorate</td>
+<td style="text-align:left">显示提交关联引用</td>
+</tr>
+<tr>
+<td style="text-align:left">-<n></n></td>
+<td style="text-align:left">最近几条日志</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">显示文件具体改动</td>
+</tr>
+</tbody>
+</table>
+<p>git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>默认是把工作区和暂存区的文件做比较</p>
+<pre><code>git diff HEAD    把工作区和版本库的文件做比较
+git diff --cached/--staged        把暂存区和版本库的文件做比较
+git diff 提交ID1 提交ID2
+git diff 提交ID1 提交ID2 --&lt;paths&gt;
+</code></pre><p>–word-diff 对每个词比较</p>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p>默认是暂存区，覆盖工作区文件</p>
+<pre><code>git checkout ./--file        撤销工作区全部文件或某个文件未提交的修改
+git checkout HEAD ./&lt;file&gt;    用版本库的全部或部分文件替换暂存区和工作区中的文件
+</code></pre><p>创建和切换到新的分支</p>
+<pre><code>git checkout &lt;new_branch&gt; &lt;branch&gt;
+git checkout -b test       基于当前分支新建分支test，并切换到test分支下
+</code></pre><p>切换到某个提交，是分离头指针，head指向具体提交</p>
+<pre><code>git checkout 提交ID
+</code></pre><p>汇总工作区、暂存区、与HEAD的差异</p>
+<pre><code>git checkout
+</code></pre><h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><p>没有指定提交，默认是HEAD</p>
+<pre><code>git reset HEAD &lt;paths&gt;        把版本库的全部文件替换暂存区的
+</code></pre><p>git reset </p>
+<pre><code>--hard HEAD^        替换暂存区和工作区的全部文件(重置引用指向)
+--soft HEAD^        不改变暂存区和工作区内容(仅重置引用指向)
+--mixed HEAD^        重置暂存区，不改变工作区（重置引用执行，默认是这个参数）
+</code></pre><h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><pre><code>git rm --cached &lt;file&gt; 从暂存区删除文件，不影响工作区
+</code></pre><h2 id="git-ls-tree、ls-files"><a href="#git-ls-tree、ls-files" class="headerlink" title="git ls-tree、ls-files"></a>git ls-tree、ls-files</h2><pre><code>git ls-tree -l         HEAD 查看版本库的目录树（-l显示文件大小）
+git ls-files -s     查看暂存区的目录树（第三个字段表示暂存区编号）
+git ls-files --with-tree=HEAD^    查看历史版本的文件列表
+</code></pre><p>git write-tree可以把暂存区的目录树写入git对象库，然后用git ls-tree查看。如果是tree对象，可以加上-r -t参数显示tree树内容    </p>
+<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><pre><code>git clean -fd        清除未加入版本库的文件和目录
+git clean -nd        强制删除目录和文件
+</code></pre><h2 id="git-stash"><a href="#git-stash" class="headerlink" title="git stash"></a>git stash</h2><p>保存工作区和暂存区的修改，然后改动全不见了。</p>
+<pre><code>git stash    保存进度
+save 指定说明
+--patch 显示工作区和HEAD的差异
+-k 不会重置暂存区
+</code></pre><p>查看所以进度</p>
+<pre><code>git stash list
+git reflog show refs/stash
+</code></pre><p>从最近保存的进度进行恢复</p>
+<pre><code>git stash pop    会删除进度
+[--index] 恢复工作区，且尝试恢复暂存区
+git stash apply 不会删除进度
+</code></pre><p>其他命令</p>
+<pre><code>git stash clear 清除所有进度
+git stash branch &lt;branch name&gt; &lt;stash&gt; 基于这个进度创建分支
+</code></pre><h2 id="git对象"><a href="#git对象" class="headerlink" title="git对象"></a>git对象</h2><p>对象保存在.git/objects目录下，对象的40位sha1哈希值前2位作为目录，后38作为文件名</p>
+<p>git cat-file</p>
+<pre><code>git cat-file -t 查看对象类型
+git cat-file -p    查看对象内容
+git cat-file -p HEAD^:file &gt; file    从某个提交中恢复文件
+git show HEAD^:file &gt; file
+</code></pre><p>符号</p>
+<pre><code>^            指父提交
+^+数字        表示第几个父提交
+~+数字        指祖父提交
+^{对象}        表示提交对应的对象
+提交ID:file    对应提交的文件
+:file        暂存区的文件
+</code></pre><h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>.git/logs记录分支的变更，查看git config core.logallrefupdates是否开启。</p>
+<pre><code>git reflog show master    查看变更记录(&lt;ref&gt;@{&lt;n&gt;}引用之前第几次改变)
+</code></pre><h2 id="git-rev-parse"><a href="#git-rev-parse" class="headerlink" title="git rev-parse"></a>git rev-parse</h2><pre><code>git rev-parse HEAD        查看引用对应sha1哈希值
+git rev-parse HEAD:file
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–symbolic –branches</td>
+<td style="text-align:left">显示分支</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –tags</td>
+<td style="text-align:left">显示里程碑</td>
+</tr>
+<tr>
+<td style="text-align:left">–git-dir</td>
+<td style="text-align:left">显示版本库位置</td>
+</tr>
+<tr>
+<td style="text-align:left">–show-cdup</td>
+<td style="text-align:left">工作区目录的深度</td>
+</tr>
+<tr>
+<td style="text-align:left">–symbolic –glob=refs/*</td>
+<td style="text-align:left">显示所有引用</td>
+</tr>
+<tr>
+<td style="text-align:left">:/“commit a”</td>
+<td style="text-align:left">在提交日志中查找提交</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-rev-list"><a href="#git-rev-list" class="headerlink" title="git rev-list"></a>git rev-list</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–oneline A</td>
+<td style="text-align:left">显示A版本库以来所有的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D F</td>
+<td style="text-align:left">提交历史并集</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline ^D F（D..F）</td>
+<td style="text-align:left">排除D的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D…F</td>
+<td style="text-align:left">排除共同的历史提交</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^@</td>
+<td style="text-align:left">D的历史提交，自身除外</td>
+</tr>
+<tr>
+<td style="text-align:left">–oneline D^!</td>
+<td style="text-align:left">提交本身，不包括历史</td>
+</tr>
+</tbody>
+</table>
+<h2 id="git-blame"><a href="#git-blame" class="headerlink" title="git blame"></a>git blame</h2><p>显示文件内容，包括每行提交版本，提交者</p>
+<pre><code>-L n, m 从第n行开始，显示m行
+</code></pre><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>ssh-keygen -t rsa                    生成公钥密钥</p>
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>参数</p>
+<pre><code>--global 全局设置
+</code></pre><p>属性</p>
+<pre><code>user.email                邮箱
+user.name                名字
+alias.&lt;name&gt; &apos;命令&apos;        设置别名
+core.editor &quot;vim&quot;        默认情况下 git 用的编辑器是 vi，设置Editor使用vim
+color.ui true            开启给 Git 着色
+core.quotepath false    显示中文文件名
+http.postBuffer 524288000 增加Git’s HTTP buffer                                                                                                            
+</code></pre><p>默认这些配置都在 ~/.gitconfig，可以输入 git config -l 命令查看</p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>git branch                                
+    查看下本地分支情况
+git branch -a                        
+    查看所有分支，包括本地和远程
+git branch -r                        
+    查看远程分支
+git branch test                        
+    新建分支test
+git branch -d test                    
+    删除分支test
+git branch -D test                    
+    强制删除分支test，如果test分支没有整合
+git branch --set-upstream-to=origin/&lt;branch&gt; master
+    set tracking information for this branch
+</code></pre><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><pre><code>git tag                            查看版本
+git tag v1.0                        贴标签，版本控制
+</code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
+</code></pre><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><pre><code>git push origin master                本地代码推到远程 master 分支
+git push -f                                           强推，覆盖相同的内容
+git pull origin master                远程最新的代码更新到本地
+git clone url                        把项目 clone 到了本地
+</code></pre><h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><pre><code>git remote add origin url                与 GitHub 上的项目进行关联,origin 是给这个项目的远程仓库起的名字
+git remote remove &lt;name&gt;                 取消关联
+git remote rm origin                    删除关联
+git remote -v                        当前项目有哪些远程仓库    
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git学习/" data-id="cja3ttmrl000wnolep3h0ojfy" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cjp5jyob9001e1clejdd3z6jn" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/05/05/Git学习/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -285,11 +833,57 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+<h2 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ctrl+J</td>
+<td style="text-align:left">代码提示</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shitf+Space</td>
+<td style="text-align:left">参数提示</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+K+F</td>
+<td style="text-align:left">格式化整个块</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+K, F</td>
+<td style="text-align:left">格式化整个文件</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl +]</td>
+<td style="text-align:left">检查括号匹配(在左右括号间切换)</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+7(8)</td>
+<td style="text-align:left">方法定义和调用之点切换</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+K,C</td>
+<td style="text-align:left">注释代码</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+K,U</td>
+<td style="text-align:left">取消注释</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+Shift+L</td>
+<td style="text-align:left">删除当前行</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/04/Soft-快捷键/" data-id="cja3ttmtd002tnoledv5gdqd5" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/04/Soft-快捷键/" data-id="cjp5jyofg003l1clebsztk4cv" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/04/Soft-快捷键/#disqus_thread" class="article-comment-link">留言</a>
@@ -372,7 +966,7 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-Maven/" data-id="cja3ttmru0014nole4k6za02a" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Java-Maven/" data-id="cjp5jyocf00241cleil1efw4v" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Java-Maven/#disqus_thread" class="article-comment-link">留言</a>
@@ -433,7 +1027,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Soft-Zookeeper/" data-id="cja3ttmt2002anolefbovw9io" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Soft-Zookeeper/" data-id="cjp5jyof1003e1cleecxqsvzx" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Soft-Zookeeper/#disqus_thread" class="article-comment-link">留言</a>
@@ -487,7 +1081,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cja3ttmrz001anolemyekparo" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/26/Java-RMI/" data-id="cjp5jyobd001h1clep4ak031x" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/26/Java-RMI/#disqus_thread" class="article-comment-link">留言</a>
@@ -537,7 +1131,7 @@ clientPort：监听这个端口，接受客户端的访问请求
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/Soft-tomcat/" data-id="cja3ttmta002mnolek6b900gn" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/Soft-tomcat/" data-id="cjp5jyofp003r1cletrufz8ip" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/Soft-tomcat/#disqus_thread" class="article-comment-link">留言</a>
@@ -608,173 +1202,13 @@ upstream mysvr {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/Soft-nginx/" data-id="cja3ttmt9002jnolejetoroft" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/Soft-nginx/" data-id="cjp5jyoe600351cle2g9gtz6q" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/Soft-nginx/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-算法-插入算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/算法-插入算法/" class="article-date">
-  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/算法-插入算法/">插入算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
-<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
-最坏情况数组A[n]是反序的,那么元素比较次数是n-1
-</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/算法-插入算法/" data-id="cja3ttmtk002znolesd3na7j3" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/算法-插入算法/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入算法/">插入算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-算法-分治策略" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/算法-分治策略/" class="article-date">
-  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/算法-分治策略/">分治策略</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.</p>
-<h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中</p>
-<h2 id="递归伪代码"><a href="#递归伪代码" class="headerlink" title="递归伪代码"></a>递归伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">if</span> (low == high) &#123;</div><div class="line">        tuple.left = low;</div><div class="line">        tuple.right = high;</div><div class="line">        tuple.sum = A[low];</div><div class="line">        <span class="keyword">return</span> tuple;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; lTuple = findMax(A, low, mid);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; cTuple = findCrossMax(A, low, mid, high);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; rTuple = findMax(A, mid + <span class="number">1</span>, high);</div><div class="line">        <span class="keyword">if</span> (lTuple.sum &gt; cTuple.sum &amp;&amp; lTuple.sum &gt; rTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> lTuple;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rTuple.sum &gt; cTuple.sum &amp;&amp; rTuple.sum &gt; lTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> rTuple;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> cTuple;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findCrossMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> lSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &gt;= low; i--) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; lSum) &#123;</div><div class="line">            lSum = temp;</div><div class="line">            l = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> rSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> r = -<span class="number">1</span>;</div><div class="line">    temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= high; i++) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; rSum) &#123;</div><div class="line">            rSum = temp;</div><div class="line">            r= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum = lSum + rSum - A[mid];</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="线性时间求解"><a href="#线性时间求解" class="headerlink" title="线性时间求解"></a>线性时间求解</h2><p>若已知A[1…j]的最大子数组，A[1…j+1]的最大子数组要么是A[1…j]的最大子数组，要么是某个子数组A<a href="1&lt;=i&lt;=j+1">i…j+1</a>.在已知A[1…j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组</p>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> sum = A[low];</div><div class="line">    <span class="keyword">int</span> eSum = A[low];</div><div class="line">    <span class="keyword">int</span> l=low;</div><div class="line">    <span class="keyword">int</span> r=low;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = low+<span class="number">1</span>; i &lt;= high; i++) &#123;</div><div class="line">        eSum += A[i];</div><div class="line">        <span class="keyword">if</span> (eSum &gt; sum) &#123;<span class="comment">//判断A[1...j]是否为最大子数组</span></div><div class="line">            r=i;</div><div class="line">            sum=eSum;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> temp = eSum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt; i; j++) &#123; <span class="comment">//判断A[i...j+1]是否为最大子数组</span></div><div class="line">            temp -= A[j];</div><div class="line">            <span class="keyword">if</span> (temp &gt; sum) &#123;</div><div class="line">                l=j+<span class="number">1</span>;</div><div class="line">                r=i;</div><div class="line">                sum=temp;</div><div class="line">                eSum = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum=sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="伪代码2"><a href="#伪代码2" class="headerlink" title="伪代码2"></a>伪代码2</h2><p>如果一个数组A[k..j]求和得到负值，那么数组A[k..j+1]的最大子数组肯定不会是A[k..j+1]，因为A[k..j]+A[j+1]<a[j+1] <figure="" class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine2</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> tempSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=Integer.MIN_VALUE;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        tempSum+=A[i];</div><div class="line">        <span class="keyword">if</span>(tempSum &gt; sum) &#123;</div><div class="line">            sum=tempSum;</div><div class="line">            tuple.left = k;</div><div class="line">            tuple.right=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(tempSum &lt; <span class="number">0</span>) &#123;</div><div class="line">            tempSum=<span class="number">0</span>;</div><div class="line">            k=i+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.sum = sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></a[j+1]></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/算法-分治策略/" data-id="cja3ttmth002vnoleia4gya7n" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/算法-分治策略/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分治策略/">分治策略</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-算法-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/算法-归并排序/" class="article-date">
-  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/算法-归并排序/">归并排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
-<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/算法-归并排序/" data-id="cja3ttmtl0032noleo09x8ul0" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/算法-归并排序/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/归并排序/">归并排序</a></li></ul>
 
     </footer>
   </div>
@@ -810,23 +1244,23 @@ upstream mysvr {
       <ul>
         
           <li>
+            <a href="/2017/11/20/C-Visual Studio/">Visual Studio</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Lib-Promise/">Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Langue-NodeJS/">NodeJS</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/17/Soft-zabbix/">zabbix</a>
           </li>
         
           <li>
             <a href="/2017/11/10/Blog-解决问题汇总/">Blog-解决问题汇总</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/10/Soft-docker/">Docker</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/26/Soft-solr/">Solr</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/17/Soft-Kafka/">Kafka</a>
           </li>
         
       </ul>
@@ -846,7 +1280,7 @@ upstream mysvr {
   
   <div class="outer">
     <div id="footer-left">
-      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      &copy; 2014 - 2018 Devin&nbsp;|&nbsp;
       主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">

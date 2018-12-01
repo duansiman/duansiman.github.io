@@ -85,9 +85,169 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-English-句子时态" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-算法-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/18/English-句子时态/" class="article-date">
+    <a href="/2017/04/18/算法-归并排序/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/算法-归并排序/">归并排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>将问题分解为若干个规模小但类型原问题的子问题,递归地求解这些子问题,然后合并这些子问题的解来求原问题的解.<br>三个步骤<br>    分解:把问题分解成若干个规模小的子问题,这些子问题是原问题的规模小的实例<br>    解决:递归求解各个子问题,如果规模足够小,直接求解<br>    合并:根据子问题的解,求原问题解</p>
+<h2 id="排序原理"><a href="#排序原理" class="headerlink" title="排序原理"></a>排序原理</h2><p>分解:把待排序N个元素的序列分解成两个N/2个元素的子序列<br>解决:递归地排序两个子序列,但子序列长度为1.递归返回<br>合并:把两个已排序的子序列,合并成一个已排序的序列</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">    <span class="keyword">int</span> q = (p + r)/<span class="number">2</span>;</div><div class="line">    mergeSort(A, p, q);</div><div class="line">    mergeSort(A, q+<span class="number">1</span>, r);</div><div class="line">    merge(A, p, q, r);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">       <span class="keyword">int</span>[] lp = <span class="keyword">new</span> <span class="keyword">int</span>[q - p + <span class="number">1</span>];</div><div class="line">       <span class="keyword">int</span>[] lq = <span class="keyword">new</span> <span class="keyword">int</span>[r - q];</div><div class="line">       System.arraycopy(A, p, lp, <span class="number">0</span>, q - p + <span class="number">1</span>);</div><div class="line">       System.arraycopy(A, q+<span class="number">1</span>, lq, <span class="number">0</span>, r - q);</div><div class="line">       <span class="keyword">int</span> k = p, i, j;</div><div class="line">       <span class="keyword">for</span> (i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; lp.length &amp;&amp; j &lt; lq.length; k++) &#123;</div><div class="line">           <span class="keyword">if</span> (lp[i] &gt; lq[j]) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">               j++;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">               i++;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (i &lt; lp.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;i&lt;lp.length;i++,k++) &#123;</div><div class="line">               A[k] = lp[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (j &lt; lq.length) &#123;</div><div class="line">           <span class="keyword">for</span> (;j&lt;lq.length;j++,k++) &#123;</div><div class="line">               A[k] = lq[j];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>merge方法合并N/2长两个序列需要N长时间.当子序列长度为1,递归返回时,merge合并N/2对长度为1的子序列,即总时间N.<br>然而这递归过程可以建立一个二叉树,N个元素当做叶子节点.非叶子节点即是两个子节点序列合并而成. 所以这颗树的高度是logN,每一层合并的时间是N.因此归并排序时间复杂度是:NlogN</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/算法-归并排序/" data-id="cjp5jyoft00401clea4z1comr" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/算法-归并排序/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/归并排序/">归并排序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法-分治策略" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/算法-分治策略/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/算法-分治策略/">分治策略</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.</p>
+<h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中</p>
+<h2 id="递归伪代码"><a href="#递归伪代码" class="headerlink" title="递归伪代码"></a>递归伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">if</span> (low == high) &#123;</div><div class="line">        tuple.left = low;</div><div class="line">        tuple.right = high;</div><div class="line">        tuple.sum = A[low];</div><div class="line">        <span class="keyword">return</span> tuple;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; lTuple = findMax(A, low, mid);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; cTuple = findCrossMax(A, low, mid, high);</div><div class="line">        Tuple&lt;Integer, Integer, Integer&gt; rTuple = findMax(A, mid + <span class="number">1</span>, high);</div><div class="line">        <span class="keyword">if</span> (lTuple.sum &gt; cTuple.sum &amp;&amp; lTuple.sum &gt; rTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> lTuple;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rTuple.sum &gt; cTuple.sum &amp;&amp; rTuple.sum &gt; lTuple.sum) &#123;</div><div class="line">            <span class="keyword">return</span> rTuple;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> cTuple;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findCrossMax</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> lSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &gt;= low; i--) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; lSum) &#123;</div><div class="line">            lSum = temp;</div><div class="line">            l = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> rSum = Integer.MIN_VALUE;</div><div class="line">    <span class="keyword">int</span> r = -<span class="number">1</span>;</div><div class="line">    temp = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid; i &lt;= high; i++) &#123;</div><div class="line">        temp += A[i];</div><div class="line">        <span class="keyword">if</span> (temp &gt; rSum) &#123;</div><div class="line">            rSum = temp;</div><div class="line">            r= i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum = lSum + rSum - A[mid];</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="线性时间求解"><a href="#线性时间求解" class="headerlink" title="线性时间求解"></a>线性时间求解</h2><p>若已知A[1…j]的最大子数组，A[1…j+1]的最大子数组要么是A[1…j]的最大子数组，要么是某个子数组A<a href="1&lt;=i&lt;=j+1">i…j+1</a>.在已知A[1…j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组</p>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> sum = A[low];</div><div class="line">    <span class="keyword">int</span> eSum = A[low];</div><div class="line">    <span class="keyword">int</span> l=low;</div><div class="line">    <span class="keyword">int</span> r=low;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = low+<span class="number">1</span>; i &lt;= high; i++) &#123;</div><div class="line">        eSum += A[i];</div><div class="line">        <span class="keyword">if</span> (eSum &gt; sum) &#123;<span class="comment">//判断A[1...j]是否为最大子数组</span></div><div class="line">            r=i;</div><div class="line">            sum=eSum;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> temp = eSum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt; i; j++) &#123; <span class="comment">//判断A[i...j+1]是否为最大子数组</span></div><div class="line">            temp -= A[j];</div><div class="line">            <span class="keyword">if</span> (temp &gt; sum) &#123;</div><div class="line">                l=j+<span class="number">1</span>;</div><div class="line">                r=i;</div><div class="line">                sum=temp;</div><div class="line">                eSum = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.left=l;</div><div class="line">    tuple.right=r;</div><div class="line">    tuple.sum=sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="伪代码2"><a href="#伪代码2" class="headerlink" title="伪代码2"></a>伪代码2</h2><p>如果一个数组A[k..j]求和得到负值，那么数组A[k..j+1]的最大子数组肯定不会是A[k..j+1]，因为A[k..j]+A[j+1]<a[j+1] <figure="" class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tuple <span class="title">findMaxOfLine2</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> tempSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum=Integer.MIN_VALUE;</div><div class="line">    Tuple&lt;Integer, Integer, Integer&gt; tuple = <span class="keyword">new</span> Tuple&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)&#123;</div><div class="line">        tempSum+=A[i];</div><div class="line">        <span class="keyword">if</span>(tempSum &gt; sum) &#123;</div><div class="line">            sum=tempSum;</div><div class="line">            tuple.left = k;</div><div class="line">            tuple.right=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(tempSum &lt; <span class="number">0</span>) &#123;</div><div class="line">            tempSum=<span class="number">0</span>;</div><div class="line">            k=i+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    tuple.sum = sum;</div><div class="line">    <span class="keyword">return</span> tuple;</div><div class="line">&#125;</div></pre></td></tr></table></a[j+1]></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/算法-分治策略/" data-id="cjp5jyoft003y1cleph1sb0v7" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/算法-分治策略/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分治策略/">分治策略</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法-插入算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/算法-插入算法/" class="article-date">
+  <time datetime="2017-04-18T02:19:19.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/算法-插入算法/">插入算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>插入排序是使用了增量方法,在已经排序好的子数组A[1..j-1]中插入A[j],产生已经排序好的子数组A[1..j]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] datas = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; datas.length; i++) &#123;	<span class="comment">//次数-&gt;n-1</span></div><div class="line">           <span class="keyword">int</span> k = i;</div><div class="line">           <span class="keyword">int</span> value = datas[i];</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;		<span class="comment">//次数-&gt;最坏n-1,最好1</span></div><div class="line">               <span class="keyword">if</span> (datas[j] &gt; value) &#123;</div><div class="line">                   datas[k] = datas[j];</div><div class="line">                   k = j;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (k != i) &#123;</div><div class="line">               datas[k] = value;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>外层循环n-1次,内层循环次数,也是元素的比较次数</p>
+<pre><code>最好情况:数组A[n]是已经排序好的,那么元素比较次数是1
+最坏情况数组A[n]是反序的,那么元素比较次数是n-1
+</code></pre><p>所以最好情况是n,最坏情况是n^2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/算法-插入算法/" data-id="cjp5jyofw00441clenosgygwf" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/算法-插入算法/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入算法/">插入算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-English-并列句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/English-并列句/" class="article-date">
   <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
 </a>
     
@@ -103,7 +263,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/English-句子时态/">句子时态</a>
+      <a class="article-title" href="/2017/04/18/English-并列句/">并列句</a>
     </h1>
   
 
@@ -113,113 +273,20 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <h2 id="一般现在时"><a href="#一般现在时" class="headerlink" title="一般现在时"></a>一般现在时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: is/am are
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: 动原/动s, 助动词do, does(助动词出现,谓动用原性)
-</code></pre><h2 id="一般过去时"><a href="#一般过去时" class="headerlink" title="一般过去时"></a>一般过去时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: was were
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: 动过, 助动词did(助动词出现,谓动用原性)
-</code></pre><p>出现过去的时间,用一般过去时</p>
-<pre><code>just now, yesterday, last Saturday, last Sunday, three days age, long long age
-</code></pre><p>语境暗示了动作发生在过去</p>
-<pre><code>when did you come back ? 你什么时候回来的?
-I loved you. 我爱过你
-</code></pre><h2 id="一般将来时"><a href="#一般将来时" class="headerlink" title="一般将来时"></a>一般将来时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: whil be
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: will + 动原
-</code></pre><p>否定句 will not + 动原<br>疑问句 Will you be in Paris tomorrow ?<br>Will there be a party next week ?<br>特殊疑问句 Who will visit us tomorrow ?<br>What will he do tomorrow ?</p>
-<h4 id="Be-going-to"><a href="#Be-going-to" class="headerlink" title="Be going to"></a>Be going to</h4><p>谓语: is/am/are going to + be<br>谓语: is/am/are going to + 动原<br>疑问句: Are you going to know my story?<br>特殊疑问句 Who is he going to Be?</p>
-<h4 id="will-和-Be-going-to-对比"><a href="#will-和-Be-going-to-对比" class="headerlink" title="will 和 Be going to 对比"></a>will 和 Be going to 对比</h4><p>表示意愿 用will</p>
-<pre><code>Marry me!I will make you happy.
-Will you help me?
-</code></pre><p>表示预测 用will/Be going to</p>
-<pre><code>It will be warm tomorrow. 明天会变暖和
-</code></pre><p>表示计划,先规划好 用Be going to</p>
-<pre><code>I have the pen and the paper.
-I am going to draw a picture for you.
-</code></pre><p>缩写</p>
-<pre><code>will not = won&apos;t
-I will = I&apos;ll
-</code></pre><p>出现将来时间,用一般将来时</p>
-<pre><code>in three days 三天后
-tomorrow, the day after tomorrow 后天, next week
-soon 要开始,很快
-</code></pre><h4 id="情态动词-can-may-must"><a href="#情态动词-can-may-must" class="headerlink" title="情态动词(can, may, must)"></a>情态动词(can, may, must)</h4><p>情态动词 + 动原</p>
-<p>肯定句:You can help me.<br>否定句:You can not help me.<br>疑问句:Can you help me?<br>特殊疑问句: Who can help me? Who can you help?</p>
-<p>####can, could<br>could 是can 过去式</p>
-<p>表达能力, could并表示过去式</p>
-<pre><code>We can use WeChat now.
-</code></pre><p>求人办事, could并不表示过去式,表示语气,could更委婉</p>
-<pre><code>Can/Could you open the door?
-</code></pre><p>请人允许 could并不表示过去式,表示语气,could更委婉</p>
-<pre><code>Can/Could I sit here ?
-Can/Could I help you ?
-</code></pre><p>猜测,意思可能</p>
-<pre><code>He can be our teacher.
-Anything can happen.
-</code></pre><h4 id="may-might"><a href="#may-might" class="headerlink" title="may, might"></a>may, might</h4><p>might是may的过去式</p>
-<p>请人允许</p>
-<pre><code>May I help you?
-</code></pre><p>猜测,意思可能</p>
-<pre><code>He may be our teacher.
-</code></pre><h4 id="must"><a href="#must" class="headerlink" title="must"></a>must</h4><p>必须</p>
-<pre><code>I must  learn English.(客观)
-I have to learn English. (不得不)
-</code></pre><p>必须不,禁止</p>
-<pre><code>I mustn&apos;t learn English.
-I don&apos;t have to learn English.(不必须)
-I needn&apos;t learn English.(不需要)
-</code></pre><p>猜测,意思肯定是<br>    He must be out teacher.<br>    He must be over forty.</p>
-<h4 id="求人办事-礼貌递增"><a href="#求人办事-礼貌递增" class="headerlink" title="求人办事,礼貌递增"></a>求人办事,礼貌递增</h4><p>can &lt; will &lt; could &lt; would<br>Can you do me a favor ? I’d like to, but …</p>
-<h4 id="请人允许"><a href="#请人允许" class="headerlink" title="请人允许"></a>请人允许</h4><p>can &lt; could &lt; may &lt; might(礼貌过头)<br>Can i smoke here? Yes please.   Sorry, you can’t</p>
-<h4 id="猜测-程度递减"><a href="#猜测-程度递减" class="headerlink" title="猜测,程度递减"></a>猜测,程度递减</h4><p>肯定句(100%) &gt; must(95%) &gt; can/could/may/might(50%) &gt; can’t(5%) &gt; 否定句(0%)<br>He must be a smoker.</p>
-<h2 id="现在进行时"><a href="#现在进行时" class="headerlink" title="现在进行时"></a>现在进行时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: is/am/are + being
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: is/am/are + 动ing
-</code></pre><p>否定句: She is not doing her homework at home.<br>疑问句: Is She doing her homework at home?</p>
-<p>What are you doing?你干什么呢?</p>
-<h2 id="过去进行时"><a href="#过去进行时" class="headerlink" title="过去进行时"></a>过去进行时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: was/were + being
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: was/were + 动ing
-</code></pre><h4 id="一般过去-过去进行时-对比"><a href="#一般过去-过去进行时-对比" class="headerlink" title="一般过去,过去进行时 对比"></a>一般过去,过去进行时 对比</h4><p>一般过去时表示过去的时间完整做了某事<br>I read a book yeaterday (看完了)</p>
-<p>过去进行时表示过去的时间正在做某事<br>I was reading a book just now (未知是否读完)</p>
-<p>I went shopping this morning.</p>
-<h2 id="现在完成时"><a href="#现在完成时" class="headerlink" title="现在完成时"></a>现在完成时</h2><p>主系表结构或There Be</p>
-<pre><code>谓语: has/have + been
-</code></pre><p>主谓(宾)结构</p>
-<pre><code>谓语: has/have + 过分
-</code></pre><p>Jake has finished her homework.<br>Jake has not finished her homework.<br>Has jake finished her homework?<br>who has finished the homework?<br>what has Jake finished?</p>
-<h3 id="现在完成时-一般过去时-对比"><a href="#现在完成时-一般过去时-对比" class="headerlink" title="现在完成时,一般过去时 对比"></a>现在完成时,一般过去时 对比</h3><p>一般过去时:只是陈述一件发生的事件,与现在无关<br>现在完成时:过去动作对现在有影响</p>
-<pre><code>Jake has just(刚刚) turned off the light.(别人不用去关灯)
-</code></pre><p>一般过去时:无法判断是否持续<br>现在完成时:表示动作现在持续</p>
-<pre><code>He has lived her for 4 years (现在还住在这儿)
-He lived here for 4 year.(住过,不知道是否继续住)
+        <h2 id="并列关系"><a href="#并列关系" class="headerlink" title="并列关系"></a>并列关系</h2><p>He can sing and he can dance.<br>He can sing and dance.<br>He can both sing and dance.(both…and…两者都)<br>He can not only sing but also dance.(不但..而且)</p>
+<h2 id="选择关系"><a href="#选择关系" class="headerlink" title="选择关系"></a>选择关系</h2><p>You may go or stay.(或者)<br>Hurry up or you’ll be late for school.(不然)<br>Either Tom or Jerry must sing a song.(eithor..or…或者…或者(二选一))<br>Neither Tom nor Jerry must sing a song.(neithor..nor…两者都不(二全否))</p>
+<h2 id="转折关系"><a href="#转折关系" class="headerlink" title="转折关系"></a>转折关系</h2><p>Many is a pretty girl, but i don’t like her.(但是,然而)<br>Many is a pretty girl, yet he doesn’t like her.(但是,然而(惊讶))<br>Many is a pretty girl. However, i don’t like her.(但是,然而(没有连接作用,起转折副词))</p>
 
-How long have you learned English ? 你学英语多长了?(现在依然在学)
-</code></pre><p>现在完成时的信号词: 到现在为止</p>
-<pre><code>so far, up to now, till now, by now
-since + 过去的时间系列
-since three days age
-since you left
-</code></pre><p>一般过去时的信号词</p>
-<pre><code>just now
-last yesterday
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-句子时态/" data-id="cja3ttmou0003nolevhvmamhd" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-并列句/" data-id="cjp5jyocs002f1cleamf2i2hp" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/18/English-句子时态/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/18/English-并列句/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子时态/">句子时态</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子从句/">句子从句</a></li></ul>
 
     </footer>
   </div>
@@ -458,83 +525,13 @@ the girl dancing in the room
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-单词词性/" data-id="cja3ttmpd000cnolex0cg03zr" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-单词词性/" data-id="cjp5jyn6n00071clexi8yzs3p" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/English-单词词性/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单词/">单词</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-English-定语" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/18/English-定语/" class="article-date">
-  <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/English/">English</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/English-定语/">定语</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言. 追着名词跑(名前,名后)</p>
-<h4 id="位置看资质-比大小-短语"><a href="#位置看资质-比大小-短语" class="headerlink" title="位置看资质,比大小(短语)"></a>位置看资质,比大小(短语)</h4><p>写在名前</p>
-<pre><code>形容词,doing, done
-</code></pre><p>写在名后</p>
-<pre><code>个别副词(方位),介词短语,to do, 定语从句
-形容词短语,doing短语,done短语
-并列形容词短语可以放前面    the big and round apple(又大又圆的苹果)
-</code></pre><p>形容词做定语：形容+名</p>
-<pre><code>a clean room
-</code></pre><p>介宾做定语：名+介宾</p>
-<pre><code>the box on the table 桌子上的盒子
-</code></pre><p>部分副词做定语：名+副词</p>
-<pre><code>children there 哪里的小孩
-</code></pre><p>句子当定语(翻译 找主干,定位置(句子放名词后面),关系词(who/which),顺着写)</p>
-<pre><code>我是喜欢你的人
-i am the person who/which(人/物) likes you
-i am the person who you like
-the person (who likes you) is me
-</code></pre><h4 id="关系词"><a href="#关系词" class="headerlink" title="关系词"></a>关系词</h4><p>人当主语的,可以用who/that. 当宾语的可以用who/that/whom<br>物,可以用which/that<br>当宾语时,关系词可以省略</p>
-<pre><code>is there anything i can do for you
-is there anything that i can do for you
-is there anything (that i can do for you)
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-定语/" data-id="cja3ttmr4000gnoledi7j05oq" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/18/English-定语/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子成分/">句子成分</a></li></ul>
 
     </footer>
   </div>
@@ -601,7 +598,7 @@ i don&apos;t believe tha he speaks english
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-名词性从句/" data-id="cja3ttmr9000inole1flvayiv" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-名词性从句/" data-id="cjp5jyn8f000d1cleuejurj88" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/English-名词性从句/#disqus_thread" class="article-comment-link">留言</a>
@@ -617,9 +614,9 @@ i don&apos;t believe tha he speaks english
 
 
   
-    <article id="post-English-并列句" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-English-定语" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/18/English-并列句/" class="article-date">
+    <a href="/2017/04/18/English-定语/" class="article-date">
   <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
 </a>
     
@@ -635,7 +632,7 @@ i don&apos;t believe tha he speaks english
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/English-并列句/">并列句</a>
+      <a class="article-title" href="/2017/04/18/English-定语/">定语</a>
     </h1>
   
 
@@ -645,20 +642,183 @@ i don&apos;t believe tha he speaks english
       
         <!-- Table of Contents -->
         
-        <h2 id="并列关系"><a href="#并列关系" class="headerlink" title="并列关系"></a>并列关系</h2><p>He can sing and he can dance.<br>He can sing and dance.<br>He can both sing and dance.(both…and…两者都)<br>He can not only sing but also dance.(不但..而且)</p>
-<h2 id="选择关系"><a href="#选择关系" class="headerlink" title="选择关系"></a>选择关系</h2><p>You may go or stay.(或者)<br>Hurry up or you’ll be late for school.(不然)<br>Either Tom or Jerry must sing a song.(eithor..or…或者…或者(二选一))<br>Neither Tom nor Jerry must sing a song.(neithor..nor…两者都不(二全否))</p>
-<h2 id="转折关系"><a href="#转折关系" class="headerlink" title="转折关系"></a>转折关系</h2><p>Many is a pretty girl, but i don’t like her.(但是,然而)<br>Many is a pretty girl, yet he doesn’t like her.(但是,然而(惊讶))<br>Many is a pretty girl. However, i don’t like her.(但是,然而(没有连接作用,起转折副词))</p>
-
+        <h2 id="定语"><a href="#定语" class="headerlink" title="定语"></a>定语</h2><p>修饰名词，对名词进行限定的语言. 追着名词跑(名前,名后)</p>
+<h4 id="位置看资质-比大小-短语"><a href="#位置看资质-比大小-短语" class="headerlink" title="位置看资质,比大小(短语)"></a>位置看资质,比大小(短语)</h4><p>写在名前</p>
+<pre><code>形容词,doing, done
+</code></pre><p>写在名后</p>
+<pre><code>个别副词(方位),介词短语,to do, 定语从句
+形容词短语,doing短语,done短语
+并列形容词短语可以放前面    the big and round apple(又大又圆的苹果)
+</code></pre><p>形容词做定语：形容+名</p>
+<pre><code>a clean room
+</code></pre><p>介宾做定语：名+介宾</p>
+<pre><code>the box on the table 桌子上的盒子
+</code></pre><p>部分副词做定语：名+副词</p>
+<pre><code>children there 哪里的小孩
+</code></pre><p>句子当定语(翻译 找主干,定位置(句子放名词后面),关系词(who/which),顺着写)</p>
+<pre><code>我是喜欢你的人
+i am the person who/which(人/物) likes you
+i am the person who you like
+the person (who likes you) is me
+</code></pre><h4 id="关系词"><a href="#关系词" class="headerlink" title="关系词"></a>关系词</h4><p>人当主语的,可以用who/that. 当宾语的可以用who/that/whom<br>物,可以用which/that<br>当宾语时,关系词可以省略</p>
+<pre><code>is there anything i can do for you
+is there anything that i can do for you
+is there anything (that i can do for you)
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-并列句/" data-id="cja3ttmra000knoleavxfvta1" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-定语/" data-id="cjp5jyn8i000f1cleit22er9v" class="article-share-link">分享</a>
       
       
-        <a href="https://duansiman.github.io/2017/04/18/English-并列句/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://duansiman.github.io/2017/04/18/English-定语/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子从句/">句子从句</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子成分/">句子成分</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-English-句子时态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/18/English-句子时态/" class="article-date">
+  <time datetime="2017-04-18T02:16:57.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/English/">English</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/English-句子时态/">句子时态</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="一般现在时"><a href="#一般现在时" class="headerlink" title="一般现在时"></a>一般现在时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: is/am are
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: 动原/动s, 助动词do, does(助动词出现,谓动用原性)
+</code></pre><h2 id="一般过去时"><a href="#一般过去时" class="headerlink" title="一般过去时"></a>一般过去时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: was were
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: 动过, 助动词did(助动词出现,谓动用原性)
+</code></pre><p>出现过去的时间,用一般过去时</p>
+<pre><code>just now, yesterday, last Saturday, last Sunday, three days age, long long age
+</code></pre><p>语境暗示了动作发生在过去</p>
+<pre><code>when did you come back ? 你什么时候回来的?
+I loved you. 我爱过你
+</code></pre><h2 id="一般将来时"><a href="#一般将来时" class="headerlink" title="一般将来时"></a>一般将来时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: whil be
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: will + 动原
+</code></pre><p>否定句 will not + 动原<br>疑问句 Will you be in Paris tomorrow ?<br>Will there be a party next week ?<br>特殊疑问句 Who will visit us tomorrow ?<br>What will he do tomorrow ?</p>
+<h4 id="Be-going-to"><a href="#Be-going-to" class="headerlink" title="Be going to"></a>Be going to</h4><p>谓语: is/am/are going to + be<br>谓语: is/am/are going to + 动原<br>疑问句: Are you going to know my story?<br>特殊疑问句 Who is he going to Be?</p>
+<h4 id="will-和-Be-going-to-对比"><a href="#will-和-Be-going-to-对比" class="headerlink" title="will 和 Be going to 对比"></a>will 和 Be going to 对比</h4><p>表示意愿 用will</p>
+<pre><code>Marry me!I will make you happy.
+Will you help me?
+</code></pre><p>表示预测 用will/Be going to</p>
+<pre><code>It will be warm tomorrow. 明天会变暖和
+</code></pre><p>表示计划,先规划好 用Be going to</p>
+<pre><code>I have the pen and the paper.
+I am going to draw a picture for you.
+</code></pre><p>缩写</p>
+<pre><code>will not = won&apos;t
+I will = I&apos;ll
+</code></pre><p>出现将来时间,用一般将来时</p>
+<pre><code>in three days 三天后
+tomorrow, the day after tomorrow 后天, next week
+soon 要开始,很快
+</code></pre><h4 id="情态动词-can-may-must"><a href="#情态动词-can-may-must" class="headerlink" title="情态动词(can, may, must)"></a>情态动词(can, may, must)</h4><p>情态动词 + 动原</p>
+<p>肯定句:You can help me.<br>否定句:You can not help me.<br>疑问句:Can you help me?<br>特殊疑问句: Who can help me? Who can you help?</p>
+<p>####can, could<br>could 是can 过去式</p>
+<p>表达能力, could并表示过去式</p>
+<pre><code>We can use WeChat now.
+</code></pre><p>求人办事, could并不表示过去式,表示语气,could更委婉</p>
+<pre><code>Can/Could you open the door?
+</code></pre><p>请人允许 could并不表示过去式,表示语气,could更委婉</p>
+<pre><code>Can/Could I sit here ?
+Can/Could I help you ?
+</code></pre><p>猜测,意思可能</p>
+<pre><code>He can be our teacher.
+Anything can happen.
+</code></pre><h4 id="may-might"><a href="#may-might" class="headerlink" title="may, might"></a>may, might</h4><p>might是may的过去式</p>
+<p>请人允许</p>
+<pre><code>May I help you?
+</code></pre><p>猜测,意思可能</p>
+<pre><code>He may be our teacher.
+</code></pre><h4 id="must"><a href="#must" class="headerlink" title="must"></a>must</h4><p>必须</p>
+<pre><code>I must  learn English.(客观)
+I have to learn English. (不得不)
+</code></pre><p>必须不,禁止</p>
+<pre><code>I mustn&apos;t learn English.
+I don&apos;t have to learn English.(不必须)
+I needn&apos;t learn English.(不需要)
+</code></pre><p>猜测,意思肯定是<br>    He must be out teacher.<br>    He must be over forty.</p>
+<h4 id="求人办事-礼貌递增"><a href="#求人办事-礼貌递增" class="headerlink" title="求人办事,礼貌递增"></a>求人办事,礼貌递增</h4><p>can &lt; will &lt; could &lt; would<br>Can you do me a favor ? I’d like to, but …</p>
+<h4 id="请人允许"><a href="#请人允许" class="headerlink" title="请人允许"></a>请人允许</h4><p>can &lt; could &lt; may &lt; might(礼貌过头)<br>Can i smoke here? Yes please.   Sorry, you can’t</p>
+<h4 id="猜测-程度递减"><a href="#猜测-程度递减" class="headerlink" title="猜测,程度递减"></a>猜测,程度递减</h4><p>肯定句(100%) &gt; must(95%) &gt; can/could/may/might(50%) &gt; can’t(5%) &gt; 否定句(0%)<br>He must be a smoker.</p>
+<h2 id="现在进行时"><a href="#现在进行时" class="headerlink" title="现在进行时"></a>现在进行时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: is/am/are + being
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: is/am/are + 动ing
+</code></pre><p>否定句: She is not doing her homework at home.<br>疑问句: Is She doing her homework at home?</p>
+<p>What are you doing?你干什么呢?</p>
+<h2 id="过去进行时"><a href="#过去进行时" class="headerlink" title="过去进行时"></a>过去进行时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: was/were + being
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: was/were + 动ing
+</code></pre><h4 id="一般过去-过去进行时-对比"><a href="#一般过去-过去进行时-对比" class="headerlink" title="一般过去,过去进行时 对比"></a>一般过去,过去进行时 对比</h4><p>一般过去时表示过去的时间完整做了某事<br>I read a book yeaterday (看完了)</p>
+<p>过去进行时表示过去的时间正在做某事<br>I was reading a book just now (未知是否读完)</p>
+<p>I went shopping this morning.</p>
+<h2 id="现在完成时"><a href="#现在完成时" class="headerlink" title="现在完成时"></a>现在完成时</h2><p>主系表结构或There Be</p>
+<pre><code>谓语: has/have + been
+</code></pre><p>主谓(宾)结构</p>
+<pre><code>谓语: has/have + 过分
+</code></pre><p>Jake has finished her homework.<br>Jake has not finished her homework.<br>Has jake finished her homework?<br>who has finished the homework?<br>what has Jake finished?</p>
+<h3 id="现在完成时-一般过去时-对比"><a href="#现在完成时-一般过去时-对比" class="headerlink" title="现在完成时,一般过去时 对比"></a>现在完成时,一般过去时 对比</h3><p>一般过去时:只是陈述一件发生的事件,与现在无关<br>现在完成时:过去动作对现在有影响</p>
+<pre><code>Jake has just(刚刚) turned off the light.(别人不用去关灯)
+</code></pre><p>一般过去时:无法判断是否持续<br>现在完成时:表示动作现在持续</p>
+<pre><code>He has lived her for 4 years (现在还住在这儿)
+He lived here for 4 year.(住过,不知道是否继续住)
+
+How long have you learned English ? 你学英语多长了?(现在依然在学)
+</code></pre><p>现在完成时的信号词: 到现在为止</p>
+<pre><code>so far, up to now, till now, by now
+since + 过去的时间系列
+since three days age
+since you left
+</code></pre><p>一般过去时的信号词</p>
+<pre><code>just now
+last yesterday
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://duansiman.github.io/2017/04/18/English-句子时态/" data-id="cjp5jyn8k000i1clea9enu09j" class="article-share-link">分享</a>
+      
+      
+        <a href="https://duansiman.github.io/2017/04/18/English-句子时态/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子时态/">句子时态</a></li></ul>
 
     </footer>
   </div>
@@ -709,7 +869,7 @@ i don&apos;t believe tha he speaks english
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-状语/" data-id="cja3ttmrc000onolenhrejra6" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-状语/" data-id="cjp5jyoaq00161cleknlnrou3" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/English-状语/#disqus_thread" class="article-comment-link">留言</a>
@@ -785,413 +945,13 @@ there be
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/18/English-句子结构/" data-id="cja3ttmpe000enoleztv6d4iq" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/04/18/English-句子结构/" data-id="cjp5jyn6p00081clevlyqlah8" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/04/18/English-句子结构/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句子结构/">句子结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-MySQL-知识点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/17/MySQL-知识点/" class="article-date">
-  <time datetime="2017-04-17T10:40:55.000Z" itemprop="datePublished">2017-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>►<a class="article-category-link" href="/categories/数据库/MySQL/">MySQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/MySQL-知识点/">MySQL 知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件在/etc/mysql/my.cnf,一些配置内容如下：</p>
-<pre><code>max_connections        
-    最大支持连接数，设置到500～1000比较合适
-wait-timeout        
-    数据库连接闲置最大时间值，默认值为8小时 
-</code></pre><h2 id="URL-格式"><a href="#URL-格式" class="headerlink" title="URL 格式"></a>URL 格式</h2><pre><code>jdbc:mysql://[host][,failoverhost...][:port]/[database]
-?[propertyName1][=propertyValue1][&amp;propertyName2][=propertyValue2]...
-</code></pre><p>常用参数：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数名称</th>
-<th style="text-align:left">说明</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">useUnicode</td>
-<td style="text-align:left">是否使用Unicode字符集</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td style="text-align:left">characterEncoding</td>
-<td style="text-align:left">当useUnicode设置为true时，指定字符编码</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">autoReconnect</td>
-<td style="text-align:left">当数据库连接异常中断时，是否自动重新连接</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td style="text-align:left">autoReconnectForPools</td>
-<td style="text-align:left">是否使用针对数据库连接池的重连策略</td>
-<td style="text-align:left">false</td>
-</tr>
-<tr>
-<td style="text-align:left">failOverReadOnly</td>
-<td style="text-align:left">自动重连成功后，连接是否设置为只读</td>
-<td style="text-align:left">true</td>
-</tr>
-<tr>
-<td style="text-align:left">maxReconnects</td>
-<td style="text-align:left">autoReconnect设置为true时，重试连接的次数</td>
-<td style="text-align:left">3</td>
-</tr>
-<tr>
-<td style="text-align:left">initialTimeout</td>
-<td style="text-align:left">autoReconnect设置为true时，两次重连之间的时间间隔，单位：秒</td>
-<td style="text-align:left">2秒</td>
-</tr>
-<tr>
-<td style="text-align:left">connectTimeout</td>
-<td style="text-align:left">和数据库服务器建立socket连接时的超时，单位：毫秒。 0表示永不超时</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td style="text-align:left">socketTimeout</td>
-<td style="text-align:left">socket操作（读写）超时，单位：毫秒。 0表示永不超时</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td style="text-align:left">useAffectedRows</td>
-<td style="text-align:left">是否用受影响的行数替代查找到的行数来返回数据，例如：当修改的内容与原数据相同，mysql自己返回受影响行数为0，但jdbc/mybatis 返回的却是1，返回的是 sql语句 的匹配行数</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html" target="_blank" rel="external">官方参数配置参考</a></p>
-<h2 id="配置主从数据库"><a href="#配置主从数据库" class="headerlink" title="配置主从数据库"></a>配置主从数据库</h2><p>主ip:192.186.0.101,从ip:192.186.0.102</p>
-<h4 id="主数据库配置"><a href="#主数据库配置" class="headerlink" title="主数据库配置"></a>主数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
-<pre><code>[mysqld]
-#主数据库id
-server-id=1
-#需要同步的database
-binlog-do-db=blog
-#忽略同步的database
-binlog-ignore-db=mysql
-#开启二进制日志机制
-log-bin=/var/lib/mysql/binlog
-</code></pre><p>查看日志信息，得到二进制日志的文件名(file)和位置信息（position）</p>
-<pre><code>show master status
-</code></pre><h4 id="导主数据库已存在的数据"><a href="#导主数据库已存在的数据" class="headerlink" title="导主数据库已存在的数据"></a>导主数据库已存在的数据</h4><p>主数据库导出数据</p>
-<pre><code>mysqldump -uname -ppass database &gt; database.sql
-</code></pre><p>从数据库导入数据</p>
-<pre><code>source database.sql
-</code></pre><h4 id="从数据库配置"><a href="#从数据库配置" class="headerlink" title="从数据库配置"></a>从数据库配置</h4><p>在/etc/mysql/my.cnf文件增加如下配置：</p>
-<pre><code>[mysqld]
-#从数据库id，不能和主数据库的相同
-server-id=2
-</code></pre><p>配置同步参数</p>
-<pre><code>CHANGE MASTER TO 
-MASTER_HOST=&apos;192.186.0.101&apos;,
-MASTER_USER=&apos;root&apos;,
-MASTER_PASSWORD=&apos;123456&apos;,
-MASTER_LOG_FILE=&apos;binlog.000001&apos;,
-MASTER_LOG_POS=154;
-</code></pre><p>MASTER_HOST 主数据库所在服务器ip<br>MASTER_USER,MASTER_PASSWORD链接主数据库的用户密码<br>MASTER_LOG_FILE,MASTER_LOG_POS是从主数据库查到日志信息</p>
-<p>启动同步进程</p>
-<pre><code>start slave
-show slave status\G
-    查看进程状态
-</code></pre><p>进程状态有两个值，都为YES表示配置成功</p>
-<pre><code>Slave_IO_Runing 负责去主数据库读取二进制日志，并写入从数据库的中继日志
-Slave_SQL_Runing 负责把中继日志转换sql执行
-</code></pre><h2 id="允许外网访问"><a href="#允许外网访问" class="headerlink" title="允许外网访问"></a>允许外网访问</h2><p>注释/etc/mysql/mysql.conf.d/mysqld.cnf中 </p>
-<pre><code>bind-address    = 127.0.0.1
-</code></pre><p>查询用户</p>
-<pre><code>use mysql;
-select user,host from user;
-</code></pre><p>授权任意主机都可以以用户root和密码pass连接</p>
-<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
-flush privileges;
-</code></pre><p>授权192.186.0.102主机都可以以用户root和密码pass连接</p>
-<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;192.186.0.102&apos; IDENTIFIED BY &apos;pass&apos; WITH GRANT OPTION;
-flush privileges;
-</code></pre><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p>创建数据库表时指定编码和排序编码</p>
-<pre><code>CREATE DATABASE `test`  CHARACTER SET &apos;utf8&apos;  COLLATE &apos;utf8_general_ci&apos;; 
-CREATE TABLE `test` () ENGINE=InnoDB DEFAULT CHARSET=utf8;
-</code></pre><p>查看默认编码</p>
-<pre><code>show variables like &quot;%char%&quot;;
-</code></pre><p>设置编码</p>
-<pre><code>SET character_set_client=&apos;utf8&apos;;  
-SET character_set_connection=&apos;utf8&apos;;  
-SET character_set_results=&apos;utf8&apos;;    
-</code></pre><p>设置默认编码</p>
-<pre><code>set names utf8;
-</code></pre><p>在/etc/mysql/my.cnf配置默认编码</p>
-<pre><code>[mysqld]
-default_character_set=utf8;
-</code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><pre><code>--initialize specified but the data directory has files in it. Aborting.
-</code></pre><p>把/var/lib/mysql目录中文件删掉</p>
-<pre><code>ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
-</code></pre><p>flush privileges;</p>
-<pre><code>ERROR 3009 (HY000): Column count of mysql.user is wrong. Expected 45, found 42. Created with MySQL 50557, now running 50719. Please use mysql_upgrade to fix this error.
-</code></pre><p>mysql_upgrade –force -uroot -p</p>
-<pre><code>ERROR 1054 (42S22): Unknown column &apos;Password&apos; in &apos;field list&apos;
-</code></pre><p>update user set authentication_string=password(‘1111’) where user=’root’;</p>
-<pre><code>ERROR 1682 (HY000): Native table &apos;performance_schema&apos;.&apos;session_variables&apos; has the wrong structure
-</code></pre><p>sudo mysql_upgrade -u root -p, then restart mysql</p>
-<pre><code>ERROR 1467 (HY000): Failed to read auto-increment value from storage engine
-</code></pre><p>auto-increment到最大值了。<br>use information_schema;<br>select * from TABLES where TABLE_NAME=’t_article_label’;</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h4 id="字符串连接函数"><a href="#字符串连接函数" class="headerlink" title="字符串连接函数"></a>字符串连接函数</h4><p>concat(str1,str2)</p>
-<pre><code>有一个参数为null,就返回null
-</code></pre><p>CONCAT_WS(separator,str1,str2,…)</p>
-<pre><code>以分隔符separator链接字符，如果有参数为null,跳过这个参数。
-</code></pre><p>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</p>
-<pre><code>这是一个聚合函数，把有多个值的字段连接起来成一行。    
-</code></pre><h4 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h4><p>from_unixtime()/unix_timestamp()</p>
-<pre><code>把Unix时间戳转换为日期/把日期转换为Unix时间戳
-</code></pre><p>inet_aton()/inet_ntoa()</p>
-<pre><code>用无符号整数存储IP地址，把IP转换成整数/把整数转换成IP
-</code></pre><p>date +/- interval expr unit</p>
-<pre><code>日期计算，例如：一天之前，select now() - interval 24 hour;
-</code></pre><h4 id="字符截取函数"><a href="#字符截取函数" class="headerlink" title="字符截取函数"></a>字符截取函数</h4><p>left(str, len)</p>
-<pre><code>截取字符串中前len个字符
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/MySQL-知识点/" data-id="cja3ttmst0022nolejyzk2bb5" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/17/MySQL-知识点/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL知识点/">MySQL知识点</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux-Vim命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/17/Linux-Vim命令/" class="article-date">
-  <time datetime="2017-04-17T03:07:22.000Z" itemprop="datePublished">2017-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/Linux-Vim命令/">Vim命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>删除</p>
-<pre><code>x, X       x 为向后删除一个字符, X为向前删除一个字符
-nx         连续向后删除 n 个字符
-dd         删除游标所在这行
-ndd        删除游标所在向下n行
-d1G        删除光标所在到第一行的所有数据
-dG         删除光标所在到最后一行的所有数据
-d$         删除游标所在处，到该行的最后一个字符
-d0         删除游标所在处，到该行的最前面一个字符
-</code></pre><p>复制</p>
-<pre><code>y1G        复制光标所在行到第一行的所有数据
-yG        复制光标所在行到最后一行的所有数据
-y0        复制光标所在的那个字符到该行行首的所有数据
-y$        复制光标所在的那个字符到该行行尾的所有数据
-</code></pre><p>粘贴</p>
-<pre><code>p,P        p粘贴到光标所在行的下一行,P所在行的上一行
-</code></pre><p>撤销</p>
-<pre><code>u        复原上一个动作
-</code></pre><p>重复执行</p>
-<pre><code>ctrl+r    再执行一次上一个动作；也可以按小数点&apos;.&apos; 一样的效果
-</code></pre><p>替换<br>    r,R     r 会取代光标所在的那一个字符； R 会一直取代光标所在的文字，直到按下 ESC 为止</p>
-<p>执行其他命令<br>    :! command        离开 vi 到指令列模式下执行 command 的显示结果<br>行数<br>    :set nu, :set nonu         显示行数和取消行数</p>
-<p>翻页，移动光标<br>    ctrl +f, +b, +d, +u             向后，前翻一页，向后，前翻半页<br>    h, j, k, l                      左，下，上，右<br>    +, -                            移动下一行，上一行的非空格符号<br>    n<space>， n<enter>             向右移动n 个字符, 向下移动n行<br>    0, $                            移动行首,行尾<br>    H, M, L                         移动到屏幕的第一行，最后一行，中间行。<br>    G, nG, gg                       移动文档最后一行,第n行，第一行</enter></space></p>
-<p>搜索<br>    n， N                    向后，前继续搜索</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-Vim命令/" data-id="cja3ttms3001hnolex6j3v5dv" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/17/Linux-Vim命令/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim命令/">Vim命令</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux-知识点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/17/Linux-知识点/" class="article-date">
-  <time datetime="2017-04-17T02:47:21.000Z" itemprop="datePublished">2017-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/Linux-知识点/">Linux 知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="源列表"><a href="#源列表" class="headerlink" title="源列表"></a>源列表</h2><p>Linux存放源有两个地方：/etc/apt/sources.list和/etc/apt/sources.list.d/*.list，后一个通常用来安装第三方的软件<br>sources.list文件内容：</p>
-<pre><code>开头是deb或者deb-src，通过.deb文件进行安装和通过源文件的方式进行安装。
-URL后面的字符串，分别对应相应的目录结构。进入dists目录，就看到URL后目录结构
-</code></pre><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><pre><code>lsof -i:端口号                            
-    查看占用该端口的进程
-netstat -ntlup | grep 端口号                  
-    根据端口搜索进程
-ps -ef | grep 进程号                        
-    查看进程
-netstat –apn                            
-    查看所有的进程和端口使用情况
-kill -9 processId                        
-    杀进程
-</code></pre><h2 id="物理CPU、逻辑CPU和CPU核数"><a href="#物理CPU、逻辑CPU和CPU核数" class="headerlink" title="物理CPU、逻辑CPU和CPU核数"></a>物理CPU、逻辑CPU和CPU核数</h2><p>物理CPU</p>
-<pre><code>插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
-</code></pre><p>逻辑CPU</p>
-<pre><code>/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
-逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
-
-Linux下top查看的CPU也是逻辑CPU个数
-</code></pre><p>查看物理CPU的个数</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;physical id&quot;|sort |uniq|wc -l
-</code></pre><p>查看逻辑CPU的个数</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot;|wc -l
-</code></pre><p>查看CPU是几核</p>
-<pre><code>cat /proc/cpuinfo |grep &quot;cores&quot;|uniq
-</code></pre><h2 id="查看内存、CPU使用情况"><a href="#查看内存、CPU使用情况" class="headerlink" title="查看内存、CPU使用情况"></a>查看内存、CPU使用情况</h2><p>可用内存=系统free memory+buffers+cached</p>
-<pre><code>top                     查看内存和CPU    
-pmap -d processId        查看进程相关信息占用的内存情况
-free -m                 查看内存
-cat /proc/meminfo        查看内存额定值
-ll -h /proc/kcore        查看内存镜像文件的大小
-</code></pre><h2 id="apt-get清除文件"><a href="#apt-get清除文件" class="headerlink" title="apt-get清除文件"></a>apt-get清除文件</h2><p>下面命令已清mysql相关文件</p>
-<pre><code>sudo apt-get purge mysql*
-sudo apt-get autoremove
-sudo apt-get autoclean
-</code></pre><h2 id="Ubuntu系统升级"><a href="#Ubuntu系统升级" class="headerlink" title="Ubuntu系统升级"></a>Ubuntu系统升级</h2><pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
-sudo reboot
-sudo update-manager –d
-</code></pre><h2 id="配置root权限"><a href="#配置root权限" class="headerlink" title="配置root权限"></a>配置root权限</h2><p>/etc/sudoers文件中配置了，那些用户可以临时获取root权限</p>
-<pre><code>授权给单个用户：
-    devin    ALL=(ALL)ALL
-解释：
-    devin：允许使用 sudo 的用户名
-    ALL：允许从任何终端（任何机器）使用 sudo
-    (ALL)：允许以任何用户执行 sudo 命令
-    ALL：允许 sudo 权限执行任何命令
-
-让用户 test 只能在本主机（主机名为epdc）以 root 账户执行/bin/chown、/bin/chmod 两条命令
-    test epdc-ThinkPad-T550=(root)/bin/chown,/bin/chmod
-
-授权某组用户，将“用户名”换成“%组名”即可。
-
-使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
-</code></pre><h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录</p>
-<h2 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h2><pre><code>shell 是一个交互式的应用程序，在执行外部命令时通过 fork 来创建一个子进程，再通过 exec 来加载外部命令的程序来执行，但是如果一个命令是 shell 内置命令，那么只能直接由 shell 来运行
-
-使用 sudo 获得root shell 的权限，然后在root shell 中执行该命令。进入root shell 很简单，输入sudo bash 确认本用户的密码即可，此时你会发现命令提示符显示当前是 root。一旦获得root shell，你可以执行任何命令而不需要在每条命令前输入sudo了。
-</code></pre><h2 id="sudo-操作记录日志"><a href="#sudo-操作记录日志" class="headerlink" title="sudo 操作记录日志"></a>sudo 操作记录日志</h2><pre><code>sudo的日志功能就可以用户跟踪用户输入的命令，这不仅能增进系统的安全性，还能用来进行故障检修
-
-第一步：创建/var/log/sudo.log文件
-    sudo touch /va/log/sudo.log
-第二步：修改/etc/rsyslog.conf配置文件,加入下面一行：
-    local2.debug    /var/log/sudo.log    #空白不能用空格，必须用tab
-第三步：修改/etc/sudoers配置文件,加入下面一行：
-    Defaults    logfile=/var/log/sudo.log
-第四步：重启syslog服务
-    sudo service rsyslog restart
-</code></pre><h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h2><p>sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： </p>
-<ul>
-<li>sudo能够限制用户只在某台主机上运行某些命令。</li>
-<li>sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。</li>
-<li>sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。</li>
-<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/04/17/Linux-知识点/" data-id="cja3ttms7001lnoleu0suhc1u" class="article-share-link">分享</a>
-      
-      
-        <a href="https://duansiman.github.io/2017/04/17/Linux-知识点/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux知识点/">Linux知识点</a></li></ul>
 
     </footer>
   </div>
@@ -1227,23 +987,23 @@ sudo update-manager –d
       <ul>
         
           <li>
+            <a href="/2017/11/20/C-Visual Studio/">Visual Studio</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Lib-Promise/">Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/Langue-NodeJS/">NodeJS</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/17/Soft-zabbix/">zabbix</a>
           </li>
         
           <li>
             <a href="/2017/11/10/Blog-解决问题汇总/">Blog-解决问题汇总</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/10/Soft-docker/">Docker</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/26/Soft-solr/">Solr</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/17/Soft-Kafka/">Kafka</a>
           </li>
         
       </ul>
@@ -1263,7 +1023,7 @@ sudo update-manager –d
   
   <div class="outer">
     <div id="footer-left">
-      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      &copy; 2014 - 2018 Devin&nbsp;|&nbsp;
       主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">

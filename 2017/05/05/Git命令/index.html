@@ -21,7 +21,7 @@ git gc            压缩
 git describe     显示提交易记名称(最近的里程碑名字 tag_name-&amp;lt;n&amp;gt;-ID)
 git mv &amp;lt;file&amp;gt; &amp;lt;file&amp;gt;    改名操作
 git rebase对提交执行变基操作，实现将指定范围的提">
-<meta property="og:updated_time" content="2017-09-01T10:23:16.338Z">
+<meta property="og:updated_time" content="2017-11-20T03:39:38.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="git init        初始化 git 仓库
@@ -379,6 +379,8 @@ git branch -d test
     删除分支test
 git branch -D test                    
     强制删除分支test，如果test分支没有整合
+git branch --set-upstream-to=origin/&lt;branch&gt; master
+    set tracking information for this branch
 </code></pre><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><pre><code>git tag                            查看版本
 git tag v1.0                        贴标签，版本控制
 </code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><pre><code>git merge    test                        合并分支， 在master分支执行这命令
@@ -388,13 +390,13 @@ git pull origin master                远程最新的代码更新到本地
 git clone url                        把项目 clone 到了本地
 </code></pre><h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><pre><code>git remote add origin url                与 GitHub 上的项目进行关联,origin 是给这个项目的远程仓库起的名字
 git remote remove &lt;name&gt;                 取消关联
-git remote rm 分支                    删除关联
+git remote rm origin                    删除关联
 git remote -v                        当前项目有哪些远程仓库    
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cja3ttmrh000tnolekiurt11e" class="article-share-link">分享</a>
+      <a data-url="https://duansiman.github.io/2017/05/05/Git命令/" data-id="cjp5jyob9001e1clejdd3z6jn" class="article-share-link">分享</a>
       
       
         <a href="https://duansiman.github.io/2017/05/05/Git命令/#disqus_thread" class="article-comment-link">留言</a>
@@ -418,9 +420,9 @@ git remote -v                        当前项目有哪些远程仓库
     </a>
   
   
-    <a href="/2017/05/05/Git学习/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/04/Soft-快捷键/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Git学习</div>
+      <div class="article-nav-title">快捷键</div>
     </a>
   
 </nav>
@@ -474,7 +476,7 @@ git remote -v                        当前项目有哪些远程仓库
   
   <div class="outer">
     <div id="footer-left">
-      &copy; 2014 - 2017 Devin&nbsp;|&nbsp;
+      &copy; 2014 - 2018 Devin&nbsp;|&nbsp;
       主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
